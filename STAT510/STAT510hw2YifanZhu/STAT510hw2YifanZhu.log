@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.8.26)  23 JAN 2017 15:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.8.26)  24 JAN 2017 17:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -427,31 +427,34 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 37.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./STAT510h
-w2YifanZhu.aux) ) 
+{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] (./STAT
+510hw2YifanZhu.aux) ) 
 Here is how much of TeX's memory you used:
  5265 strings out of 493014
  72618 string characters out of 6137001
- 159752 words of memory out of 5000000
+ 162752 words of memory out of 5000000
  8707 multiletter control sequences out of 15000+600000
  15809 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,9n,35p,420b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
-x10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
-c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texliv
-e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2016/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2016/texmf-dist/
-fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><c:/texlive/2016/texmf-dist/font
-s/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:
-/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on STAT510hw2YifanZhu.pdf (2 pages, 116847 bytes).
+ 38i,9n,35p,681b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmbx10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.p
+fb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/te
+xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2016
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2016/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2016/texmf-dist/fonts/
+type1/public/amsfonts/cmextra/cmmib7.pfb><c:/texlive/2016/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr17.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb>
+<c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive
+/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2016/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2016/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on STAT510hw2YifanZhu.pdf (3 pages, 155688 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 74 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

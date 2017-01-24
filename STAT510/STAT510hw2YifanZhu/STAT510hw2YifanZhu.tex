@@ -109,16 +109,104 @@
 		$\bm \epsilon \sim N(\bm 0, \sigma^2 \bm I)$, thus $\bm C \bm \beta \sim N(\bm \mu , \bm \Sigma)$, where
 		\begin{align*}
 		&\bm \mu = \bm C \bm \beta\\
-		&\bm \Sigma = \bm A \bm P_{\bm X} \sigma^2 \bm I \bm P_{\bm X}^T \bm A^T = \bm A \bm P_{\bm X}\bm A^T = \bm A \bm X(\bm X^T \bm X)^- \bm X^T \bm A^T = \bm C (\bm X^T \bm X)^- \bm C^T
+		&\bm \Sigma = \bm A \bm P_{\bm X} \sigma^2 \bm I \bm P_{\bm X}^T \bm A^T = \sigma^2 \bm A \bm P_{\bm X}\bm A^T = \sigma^2 \bm A \bm X(\bm X^T \bm X)^- \bm X^T \bm A^T = \sigma^2 \bm C (\bm X^T \bm X)^- \bm C^T
 		\end{align*}
 
 
 		\item 
 		Let $\bm G = (\bm X^T \bm X)^-$ be one of the generalized inverse of $\bm X^T \bm X$ and $\bm G^T$ be its transpose. Thus
-		\[Var(\bm C (\bm X^T \bm X)^- \bm X^T \bm y) = \bm C \bm G \bm X^T \sigma^2 \bm I \bm X \bm G^T \bm C^T = \bm C \bm G \bm X^T\bm X \bm G^T \bm C^T\]
+		\[Var(\bm C (\bm X^T \bm X)^- \bm X^T \bm y) = \bm C \bm G \bm X^T \sigma^2 \bm I \bm X \bm G^T \bm C^T = \sigma^2 \bm C \bm G \bm X^T\bm X \bm G^T \bm C^T\]
+
+
+		\item 
+		We know that $\bm c^T \bm \hat{\bm \beta} \sim N(\bm c^T \bm \beta, \sigma^2 \bm c^T (\bm X^T \bm X)^- \bm c)$, thus $\bm c^T \bm \hat{\bm \beta} - d \sim N(\bm c^T \bm \beta - d, \sigma^2 \bm c^T (\bm X^T \bm X)^- \bm c) \Rightarrow \frac{1}{\sigma \sqrt{\bm c^T (\bm X^T \bm X)^- \bm c}} (\bm c^T \bm \hat{\bm \beta} - d) \sim (\frac{\bm c^T \bm \beta -d}{\sqrt{\sigma^2 \bm c^T (\bm X^T \bm X)^- \bm c}}, 1)$.
+
+		Also we know $\hat{\sigma^2} = \frac{\bm y^T (\bm I - \bm P_{X}) \bm y}{n-r} \Rightarrow \frac{n-r}{\sigma^2} \hat{\sigma^2}  \sim \chi_{n-r}^2.$ 
+
+		And from $\bm c^T \hat{\bm \beta} = \bm A \bm P_{\bm X} \bm y$ and $\hat{\sigma^2} = \frac{\bm y^T (\bm I - \bm P_{X})\bm y}{n-r}$ we know $\bm A \bm P_{\bm X} \sigma^2 \bm I (\bm I - \bm P_{\bm X})/(n-r) = \bm 0 \Rightarrow (\bm c^T \hat{\bm \beta} - d ) \perp \hat{\sigma^2} $.
+
+		Hence, 
+		\[\frac{\bm c^T \hat{\bm \beta} - d}{\sqrt{\hat{\sigma^2}\bm c^T (\bm X^T \bm X)^-\bm c}}=\frac{\frac{1}{\sigma \sqrt{\bm c^T (\bm X^T \bm X)^- \bm c}} (\bm c^T \bm \hat{\bm \beta} - d)}{\sqrt{\frac{n-r}{\sigma^2} \hat{\sigma^2}/(n-r)}} \sim t_{n-r}(\delta)\]
+		where $\delta = \frac{\bm c^T \bm \beta -d}{\sqrt{\sigma^2 \bm c^T (\bm X^T \bm X)^- \bm c}}$.
+
 		
 
 	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item
+	
+	\[\bm X = \begin{bmatrix}
+		1 & -1 & 0 & 0& 0\\
+		0 & 0 & 1 & -1 & 0\\
+		0 & 1 & 0 & 0& -1\\
+		1 & 0 & 0 & 0& -1
+	\end{bmatrix}\]
+
+
+	\item 
+	$E(\bm y) = \begin{bmatrix}
+		\beta_1 - \beta_2\\
+		\beta_3 - \beta_4\\
+		\beta_2 - \beta_5\\
+		\beta_1 - \beta_5
+	\end{bmatrix}$ and $\beta_1 - \beta_2 = \begin{bmatrix}
+		1 & 0 & 0 & 0
+	\end{bmatrix}E(\bm y)$, thus $\beta_1 - \beta_2$ is estimable.
+
+
+	\item 
+	It is not estimable. Suppose $\beta_1 - \beta_3$ is estimable, then there exists $\lambda_1, \cdots, \lambda_4$ such that $\lambda_1 (\beta_1 - \beta_2) + \lambda_2 (\beta_3 - \beta_4) + \lambda_3 (\beta_2 - \beta_5) + \lambda_4 (\beta_1 - \beta_5) = \beta_1 - \beta_3$, which means $(\lambda_1 + \lambda_4) \beta_1 + (-\lambda_1 + \lambda_3) \beta_2 + \lambda_2 \beta_3 + (-\lambda_2)\beta_4 + (-\lambda_3 - \lambda_4)\beta_5 = \beta_1 - \beta_3$. The coefficient of $\beta_3$ should be -1 and coefficient of $\beta_4$ should be 0 $\Rightarrow \lambda_2 = -1$ and $-\lambda_2 = 0$. It is impossible, thus $\beta_1 - \beta_3$ is not estimable.
+
+
+		\item 
+		\[(\bm X^T \bm X)^- = ginv(\bm X^T \bm X) = \begin{bmatrix}
+			2/9 & -1/9 & 0 & 0& -1/9\\
+			-1/9 & 2/9 & 0 & 0& -1/9\\
+			0 & 0 & 1/4 & -1/4 & 0\\
+			0 & 0 & -1/4 & 1/4 & 0\\
+			-1/9 & -1/9 & 0 & 0 & 2/9
+		\end{bmatrix}\]
+
+
+		\item 
+		$\bm X^T \bm X \bm b = \bm X^T \bm y \Rightarrow$
+		\[\begin{bmatrix}
+			 2  & -1  &  0  &  0 &  -1\\
+ 			-1   & 2  &  0   & 0  & -1\\
+			0   & 0    &1   &-1    &0\\
+   			0   & 0   &-1    &1    &0\\
+ 			 -1  & -1  &  0  &  0   & 2
+		\end{bmatrix} \bm b = \begin{bmatrix}
+			y_{12} + y_{15}\\
+			-y_{12} + y_{25}\\
+			y_{34}\\
+			-y_{34}\\
+			-y_{25} - y_{15}
+		\end{bmatrix}\]
+
+		\item 
+		\[\hat{\bm \beta} = (\bm X^T \bm X)^- \bm X^T \bm y = \begin{bmatrix}
+			\frac{y_{12} + y_{15}}{3}\\
+			\frac{-y_{12}+ y_{25}}{3}\\
+			\frac{y_{34}}{2}\\
+			\frac{-y_{34}}{2}\\
+			\frac{-y_{25} - y_15}{3}
+		\end{bmatrix}\]
+
+
+		\item 
+		$OLS(\beta_1 - \beta_5) = \begin{bmatrix}
+			1 & 0 & 0 & 0 & -1
+		\end{bmatrix}\hat{\bm \beta} = \frac{y_{12} + 2 y_{15} + y_{25}}{3}$.
+
+
+		\item 
+		$E(y_{15}) = \beta_1 - \beta_5$, hence $y_{15}$ is an unbiased estimator of $\beta_1 - \beta_5$. By the uniqueness of OLS estimator we know $y_{15}$ is not an OLS estimator of $\beta_1 - \beta_5$.
+	\end{enumerate}
+	
+
 	
 
 	
