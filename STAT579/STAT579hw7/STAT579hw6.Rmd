@@ -1,0 +1,224 @@
+---
+title: "STAT 579 Homework 7"
+author: "Yifan Zhu"
+date: "November 3, 2016"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tidy = TRUE, warning = FALSE, fig.align= "center", fig.width = 5, fig.height = 5)
+```
+
+
+**Problem 1**
+
+```{r}
+tridiag <- function(k,n){
+  A <- matrix(rep(0, n*n), ncol = n)
+  diag(A) <- rep(k, n)
+  diag(A[-1,-n]) <- rep(1, n-1)
+  diag(A[-n,-1]) <- rep(1, n-1)
+  return(A)
+}
+
+tridiag(n = 6, k = 5)
+```
+
+\newpage
+
+**Problem 2**
+
+```{r}
+tmpFn <- function(xVec){
+  x <- xVec
+  ifelse(x < 0, x^2 + 2 * x + 3, ifelse(x<2, x+3, x^2 + 4*x - 7))
+}
+x <- seq(-3, 3, 0.1)
+fx <- tmpFn(x)
+
+plot(x = x, y = fx, "l", col = "blue", xlab = "x", ylab = "f(x)")
+```
+
+\newpage
+
+**Problem 3**
+
+```{r}
+gcd <- function(m, n){
+  re <- m%%n
+  while(re != 0){
+    m <- n
+    n <- re
+    re <- m%%n
+  }
+  return(n)
+}
+
+gcd(60,130)
+```
+
+\newpage
+
+**Problem 4**
+
+```{r}
+order.matrix <- function(x){
+  dimx <- dim(x)
+  ord <- order(x)
+  n <- length(ord)
+  dim(ord) <- dimx
+  indices <- NULL
+  for (i in 1:n){
+    indice <- which(ord == i, arr.ind = T)
+    indices <- rbind(indices, indice)
+  }
+  indices <- cbind(1:n, indices)
+  colnames(indices) <- c("order", "row", "column")
+  return(indices)
+}
+
+x <- matrix(rchisq(n = 4*3, df = 1), ncol = 3)
+
+order.matrix(x)
+```
+
+
+\newpage
+
+**Problem 5**
+
+(a)
+
+```{r}
+polaroid <- function(x){
+  p <- length(x)
+  q <- rep(0, p-1)
+  R <- sqrt(sum(x^2))
+  q[p-1] <- ifelse(atan(x[p]/x[p-1]) >= 0, atan(x[p]/x[p-1]), atan(x[p]/x[p-1]) + pi)
+  for (i in (p-2):2){
+    arctan <- atan((x[i+1]/cos(q[i+1]))/x[i])
+    q[i] <- ifelse(arctan >= 0, arctan, arctan + pi)
+  }
+  q[1] <- ifelse(x[2]/cos(q[2]) >= 0, atan2(y = x[2]/cos(q[2]), x = x[1]), atan2(y = x[2]/cos(q[2]), x = x[1]) + 2*pi)
+  
+  return(c(R, q))
+}
+```
+
+(b)
+```{r}
+normalize <- function(X){
+  norm <- sqrt(apply(X^2, MARGIN = 1, FUN =  sum))
+  sweep(X, MARGIN = 1, STAT = norm, FUN = "/")
+}
+```
+
+(c)
+```{r}
+y <- matrix(rnorm(n = 1000*5), ncol = 5)
+
+z <- normalize(y)
+
+kstest <- apply(z, MARGIN = 2 ,FUN = ks.test, "punif",min=-1,max=1)
+
+kstest
+
+```
+
+P-values are small, so they should not follow the uniform distribution on $(-1,1)$.
+
+(d)
+
+```{r, fig.width = 12, fig.height = 3}
+polar <- apply(y, MARGIN = 1, FUN = polaroid)
+
+R2 <- (polar[1,])^2
+
+ks.test(R2, "pchisq", df = 5)
+
+theta <- polar[-1,]
+
+par(mfrow = c(1,4))
+
+hist(theta[1,], xlab = "theta1", freq = F, main = "")
+hist(theta[2,], xlab = "theta2", freq = F, main = "")
+hist(theta[3,], xlab = "theta3", freq = F, main = "")
+hist(theta[4,], xlab = "theta4", freq = F, main = "")
+
+ks.test(theta[1,], "punif", min = 0, max = 2*pi)
+
+ks.test(theta[2,], "punif", min = 0, max = pi)
+ks.test(theta[3,], "punif", min = 0, max = pi)
+ks.test(theta[4,], "punif", min = 0, max = pi)
+
+```
+
+P-value for test for $R^2$ is large, so it shoould follow the $\chi_5^2$. P-value for $\theta_1, \theta_2, \theta_3$ are small, so they should not follow uniform distribution. P-value for $\theta_4$ is large, thus it should follow the uniform distribution on $[0, \pi)$.
+
+\newpage
+
+**Problem 6**
+
+(a)
+
+```{r}
+x <- c(3.91,4.85, 2.28, 4.06, 3.70, 4.04, 5.46, 3.53, 2.28, 1.96, 2.53, 3.88, 2.22, 3.47, 4.82,
+2.46, 2.99, 2.54, 0.52, 2.50)
+
+l <- function(theta,x){
+  n <- length(x)
+  -n*log(2*pi) + sum(log(1-cos(x - theta)))
+}
+
+theta <- seq(-pi, pi, 0.01)
+
+ltheta <- apply(t(theta), MARGIN = 2, FUN = l, x = x)
+
+plot(x = theta, y = ltheta, "l", col = "blue", xlab = "theta", ylab = "l(theta)", main = "")
+```
+
+(b)
+
+```{r}
+thetamin <- optimize(f = l, x = x, interval = c(-pi, pi), maximum = T)
+
+thetamin
+```
+
+(c)
+```{r}
+options(digits = 20)
+
+newton <- function(fun, derf, x0, eps)
+{
+iter <- 0
+repeat {
+iter <- iter + 1
+x1 <- x0 - fun(x0) / derf(x0)
+if (abs(x0 - x1) < eps || abs(fun(x1)) < 1e-10)
+break
+x0 <- x1
+cat('****** Iter. No: ', iter, ' Current Iterate = ', x1,fill=T)
+}
+return(x1)
+}
+
+derl <- function(theta){
+  sum(sin(x - theta)/(1 - cos(x - theta)))
+}
+
+dderl <- function(theta){
+  - sum(1/(1 - cos(x - theta)))
+}
+
+newton(fun = derl, derf = dderl, x0 = 0, eps = 1e-4)
+```
+
+(d)
+```{r}
+newton(fun = derl, derf = dderl, x0 = -2, eps = 1e-4)
+
+newton(fun = derl, derf = dderl, x0 = -2.7, eps = 1e-4)
+```
+
+The results are different with different initial point. It is because Newton method will end with it finds a point with zero value which is nearest to the starting point. And the function has many points when its derivative is 0.

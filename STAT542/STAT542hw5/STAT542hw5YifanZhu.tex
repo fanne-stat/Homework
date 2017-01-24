@@ -1,0 +1,259 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 542 Homework 5}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	\begin{enumerate}
+		\item $X \sim Binomial(n = 2000, p = 0.01)$.
+		\item  $P(X = 100) = \binom{2000}{100} (0.01)^{100} (0.99)^{1900}$ .
+
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item For $X \sim Possion(\lambda)$, we have
+		\[P(X > 0) = 1 - P(X = 0) = 1 - \frac{\mathrm{e}^{- \lambda} \lambda ^0}{0!} = 1 - e^{- \lambda}\]
+		Then 
+		\[f_{X_T} = P(X_T = x) = \frac{P(X = x)}{P(X > 0)} = \frac{\mathrm{e}^{- \lambda} \lambda^x / x!}{1 - \mathrm{e}^{-\lambda}} = \frac{\lambda^x}{x! (\mathrm{e}^\lambda -1)}\]
+		\[E(X_T) = \sum_{x = 1}^\infty x \frac{P(X = x)}{P(X > 0)} = \frac{E(X)}{P(X > 0)} = \frac{\lambda}{1 - \mathrm{e}^{-\lambda}}\]
+		We also have
+		\[E(X_T^2) = \sum_{x = 1}^\infty x^2 \frac{P(X = x)}{P(X > 0)} = \frac{E(X^2)}{P(X > 0)} = \frac{\lambda^2 + \lambda}{1- \mathrm{e}^{-\lambda}}\]
+		Then
+		\[Var(X_T) = E(X_T^2) - (E(X_T))^2 = \frac{\lambda^2 + \lambda}{1 - \mathrm{e}^{- \lambda}} + \left(\frac{\lambda}{1 - \mathrm{e}^{-\lambda}}\right)^2 = \frac{- \mathrm{e}^{- \lambda}\lambda^2 + (1 - \mathrm{e}^{-\lambda})\lambda}{(1 - \mathrm{e}^{-\lambda})^2}\]
+	\end{enumerate}
+	
+	\item $X \sim Gamma(\alpha , \beta)$, then $f_X (x) = \frac{x^{\alpha - 1}\mathrm{e}^{-x / \beta}}{\Gamma (\alpha) \beta^\alpha}$.
+	\[EX^\nu = \int_{0}^\infty x^{\nu} \frac{1}{\Gamma(\alpha) \beta^\alpha} x^{\alpha -1} \mathrm{e}^{- x / \beta} \mathrm{d}x = \frac{1}{\Gamma(\alpha)\beta^\alpha} \int_{0}^\infty x^{\alpha + \nu -1} \mathrm{e}^{- x / \beta}\mathrm{d}x = \frac{1}{\Gamma(\alpha) \beta^\alpha} \Gamma(\alpha + \nu) \beta^{\alpha + \nu} = \frac{\Gamma(\alpha + \nu) \beta^\nu}{\Gamma(\alpha)}\]
+
+	
+	\item  
+	\begin{align*}
+	&\int_{x}^\infty \frac{1}{\Gamma (\alpha)} z^{\alpha -1}\mathrm{e}^{-z} \mathrm{d}z \\
+	= & \int_{x}^\infty \frac{1}{(\alpha - 1)!} z^{\alpha -1} \mathrm{d}(- \mathrm{e}^{- z})\\
+	= & \left. - \frac{z^{\alpha - 1} \mathrm{e}^{-z}}{(\alpha - 1)!} \right|_{x}^\infty + (\alpha - 1)\int_{x}^\infty \mathrm{e}^{- z} z^{\alpha - 2} \mathrm{d}z\\
+	= & \frac{z^{\alpha -1} \mathrm{e}^{-x}}{(\alpha - 1)!} + \frac{1}{(\alpha - 2)!}\int_{x}^\infty \mathrm{e}^{-z} z^{\alpha - 2} \mathrm{d}z\\
+	=& \frac{z^{\alpha -1} \mathrm{e}^{-x}}{(\alpha - 1)!} + \frac{z^{\alpha -2} \mathrm{e}^{-x}}{(\alpha - 2)!} + \frac{1}{(\alpha - 3)!}\int_{x}^\infty \mathrm{e}^{-z} z^{\alpha - 3} \mathrm{d}z\\
+	= & \cdots \\
+	= & \frac{z^{\alpha -1} \mathrm{e}^{-x}}{(\alpha - 1)!} + \frac{z^{\alpha -2} \mathrm{e}^{-x}}{(\alpha - 2)!} + \cdots + \frac{z^{1} \mathrm{e}^{-x}}{1!} +\frac{1}{0!}\int_{x}^\infty \mathrm{e}^{-z} z^{0} \mathrm{d}z\\
+	= & \sum_{k = 0}^{\alpha - 1} \frac{z^{\alpha - 1}}{k!} \mathrm{e}^{-x}
+	\end{align*}
+
+
+	\item 
+	\begin{itemize}
+		\item[(a)]
+		$g(x) = x^{1/\gamma}$ is monotone on $(0, \infty)$. And $f_X (x) = \frac{1}{\beta}\mathrm{e}^{-x/\beta},\, x>0$. $g^{-1}(y) = y^{\gamma},\, \left|\frac{\mathrm{d}}{\mathrm{d}y} g^{-1}(y)\right| = \gamma y^{\gamma -1}$.
+
+		For $y > 0$,
+		\begin{align*}
+		f_{Y}(y) &= f_{X}(g^{-1}(y))\left|\frac{\mathrm{d}}{\mathrm{d}y} g^{-1}(y)\right|= \frac{1}{\beta} \mathrm{e}^{- y^\gamma / \beta} \gamma y^{\gamma -1}
+		\intertext{For $y \leq 0$}
+		f_Y(y) &= 0 
+		\end{align*}
+
+		Verify the pdf:
+		\begin{align*}
+		&\int_{0}^{\infty} \frac{1}{\beta} \mathrm{e}^{- y^\gamma / \beta} \gamma y^{\gamma -1}\mathrm{d}y \\
+		= & \int_{0}^\infty \mathrm{e}^{- y^\gamma / \beta} \mathrm{d} (y^\gamma / \beta)\\\
+		\intertext{Let $t = y^\gamma / \beta$}
+		= & \mathrm{e}^{- t} \mathrm{d}t = \left. -\mathrm{e}^{-t}\right|_{0}^\infty = 1
+		\end{align*}
+
+		\begin{align*}
+		E(Y) &= E(X^{1/\gamma}) =\int_{0}^\infty x^{1 / \gamma + 1 -1} \frac{1}{\beta} \mathrm{e}^{- x / \beta} \mathrm{d}x\\
+		& = \frac{1}{\beta} \Gamma(1 / \gamma + 1) \beta^{1 / \gamma + 1} \\
+		&=  \Gamma(1 / \gamma + 1) \beta^{1 / \gamma }\\
+		\\
+		E(Y^2) &= E(X^{2 / \gamma}) = \int_{0}^\infty x^{2 / \gamma + 1 -1} \frac{1}{\beta} \mathrm{e}^{-x / \beta}\mathrm{d}x\\
+		&= \frac{1}{\beta} \Gamma(2 / \gamma + 1) \beta^{2 / \gamma + 1}\\
+		& = \Gamma(2 / \gamma +1) \beta^{2 / \gamma}
+		\\
+		Var(Y) &= E(Y^2) - (E(Y))^2 \\
+		&= \Gamma(2 / \gamma + 1) \beta^{2 / \gamma} -  \left( \Gamma(1/\gamma + 1)\right)^2  \beta^{2 / \gamma}     
+		\end{align*}
+		
+		
+
+		
+
+		\item[(c)] 
+		$g(x) = \frac{1}{x}$ is monotone on $(0, \infty)$. And $f_X (x) = \frac{1}{\Gamma(\alpha) \beta^\alpha} x^{\alpha -1} \mathrm{e}^{-x/\beta},\, x>0$. $g^{-1}(y) = \frac{1}{y},\, \left|\frac{\mathrm{d}}{\mathrm{d}y} g^{-1}(y)\right| = \frac{1}{y^2}$.
+
+		For $y > 0$,
+		\begin{align*}
+		f_{Y}(y) &= f_{X}(g^{-1}(y))\left|\frac{\mathrm{d}}{\mathrm{d}y} g^{-1}(y)\right|\\
+		=& \frac{1}{\Gamma(\alpha) \beta^\alpha} \frac{1}{y^{\alpha -1}} \mathrm{e}^{-\frac{1}{\beta y}} \cdot \frac{1}{y^2}\\
+		= & \frac{1}{\Gamma(\alpha) \beta^\alpha} \frac{1}{y^{\alpha +1}} \mathrm{e}^{-1 / \beta y}
+		\intertext{For $y \leq 0$}
+		f_Y(y) &= 0 
+		\end{align*}
+
+		Verify the pdf:
+		\begin{align*}
+		&\int_{0}^{\infty} \frac{1}{\Gamma(\alpha) \beta^\alpha} \frac{1}{y^{\alpha +1}} \mathrm{e}^{-1 / \beta y}\mathrm{d}y \\
+		= & - \int_{0}^\infty \frac{1}{\Gamma(\alpha) \beta^\alpha} \frac{1}{y^{\alpha -1}} \mathrm{e}^{- \frac{1}{\beta} \frac{1}{y}} \mathrm{d} \left(\frac{1}{y}\right)\\
+		\intertext{Let $t = 1 / y$}
+		= & \int_0^\infty \frac{1}{\Gamma(a) \beta^\alpha} t^{\alpha -1} \mathrm{e}^{- t / \beta} \mathrm{d}t  = 1
+		\end{align*}
+
+		\begin{align*}
+		E(Y) & = E(X^{-1}) = \int_{0}^\infty x^{-1} \frac{1}{\Gamma(\alpha) \beta^\alpha}x^{\alpha - 1} \mathrm{e}^{-x / \beta} \mathrm{d}x\\
+		& = \frac{\Gamma(\alpha - 1) \beta^{\alpha - 1}}{\Gamma(\alpha) \beta^{\alpha}} = \frac{1}{(\alpha - 1) \beta}\\
+		\\
+		E(Y^2) & = E(X^{-2}) = \int_{0}^\infty x^{-2} \frac{1}{\Gamma(\alpha) \beta^\alpha} x^{\alpha -1} \mathrm{e}^{-x / \beta} \mathrm{d}x\\
+		&= \frac{\Gamma(\alpha - 2) \beta^{\alpha - 2}}{\Gamma(\alpha) \beta^\alpha} = \frac{1}{(\alpha - 1)(\alpha - 2) \beta^2}\\
+		\\
+		Var(Y) &= E(Y^2) - (E(Y))^2 \\
+		& = \frac{1}{(\alpha - 1)(\alpha - 2)\beta^2} - \frac{1}{(\alpha - 1)^2 \beta^2} \\
+		& = \frac{1}{(\alpha - 1)^2 (\alpha - 2) \beta^2} 
+		\end{align*}
+		
+	\end{itemize}
+	
+	
+	\item 
+	\begin{enumerate}
+		\item 
+		\begin{align*}
+		P( X \geq \mu)& = \int_{\mu}^\infty \frac{1}{\sigma \pi \left(1 + \left(\frac{x - \mu}{\sigma} \right)^2\right)} \mathrm{d}x \\
+		\intertext{Let $t = \frac{x - \mu}{\sigma}$}
+		& = \int_{0}^\infty \frac{1}{\pi (t^2 + 1)} \mathrm{d}t\\
+		& = \frac{1}{\pi} \arctan (t)\big|_{0}^\infty\\
+		& = \frac{1}{\pi} \frac{\pi}{2} = \frac{1}{2}
+		\intertext{Then}
+		P(X \leq \mu) &= 1 - P(X \geq \mu) = \frac{1}{2}
+		\end{align*}
+
+		\item 
+		\begin{align*}
+		P(X \geq \mu + \sigma) &= \int_{\mu + \sigma}^\infty \frac{1}{\sigma \pi \left(1 + \left(\frac{x - \mu}{\sigma}\right)^2\right)} \mathrm{d}x\\
+		\intertext{Let $t = \frac{x - \mu}{\sigma}$}
+		& = \int_{1}^\infty \frac{1}{\pi (1 + t^2)} \mathrm{d}t\\
+		& = \frac{1}{\pi} \arctan (t)\big|_{1}^\infty\\
+		& = \frac{1}{\pi}(\frac{\pi}{2} - \frac{\pi}{4})\\
+		& = \frac{1}{4}
+		\end{align*}
+		
+		\begin{align*}
+		P(X \leq \mu - \sigma) &= \int_{-\infty}^{\mu - \sigma} \frac{1}{\sigma \pi \left(1 + \left(\frac{x - \mu}{\sigma}\right)^2\right)} \mathrm{d}x\\
+		\intertext{Let $t = \frac{x - \mu}{\sigma}$}
+		& = \int_{-\infty}^{-1} \frac{1}{\pi (1 + t^2)} \mathrm{d}t\\
+		& = \frac{1}{\pi} \arctan (t)\big|_{-\infty}^{-1}\\
+		& = \frac{1}{\pi}(- \frac{\pi}{4} - (- \frac{\pi}{2}))\\
+		& = \frac{1}{4}
+		\end{align*}
+		
+	\end{enumerate}
+
+	\item 
+	$\mu$ and $\sigma$ are not unique.
+
+	\begin{align*}
+	P(|X| < 2)\\
+	=& P( -2 < X < 2)\\
+	=& P(\frac{-2 - \mu}{\sigma} < \frac{X - \mu}{\sigma} < \frac{2 - \mu}{\sigma})\\
+	& = \Phi (\frac{2- \mu}{\sigma}) - \Phi(\frac{-2 - \mu}{\sigma})\\
+	& = \Phi(\frac{2 - \mu}{\sigma}) + \Phi(\frac{2 + \mu}{\sigma}) - 1 = \frac{1}{2}
+	\intertext{$\Rightarrow$}
+	&\Phi(\frac{2 - \mu}{\sigma}) + \Phi(\frac{2 + \mu}{\sigma}) = \frac{3}{2}
+	\end{align*}
+
+	For $\mu = 0$, we need
+	\[2 \Phi(\frac{2}{\sigma}) = \frac{3}{2} \Rightarrow \Phi(\frac{2}{\sigma}) = \frac{3}{4}\]
+
+	Beacause $\Phi(x)$ is continous function whose range is $(0, 1)$, there must be a point $x_1$ such that $\Phi(x_1) = \frac{3}{4}$. Then $(\mu , \sigma) = (0, \frac{2}{x_1})$ satisfies the condition.
+
+	For $\mu = 1$, we need
+	\[ \Phi(\frac{1}{\sigma}) + \Phi(\frac{3} {\sigma})= \frac{3}{2} \]
+
+	Beacause $\Phi(x) + \Phi(3x)$ is continous function whose range is $(0, 2)$ ($\lim_{x \to -\infty} \Phi(x) + \Phi(3 x) = 0$, $\lim_{x\to\infty} \Phi(x) + \Phi(3x) = 1 + 1 = 2$ ), there must be a point $x_2$ such that $\Phi(x_2) + \Phi(3 x_2) = \frac{3}{2}$. Then $(\mu , \sigma) = (1, \frac{2}{x_2})$ satisfies the condition.
+
+	Hence we have at leat two sets of $(\mu , \sigma)$ that satisfies the condition.
+
+	\item 
+	\begin{enumerate}
+		\item $S(t) = P(T > t) = 1 - P(T \leq t) = 1 - F(t)$.
+
+		\item 
+		\begin{align*}
+		h(t) &= \lim_{\delta \to 0} \frac{P(t< T < t + \delta | T > t)}{\delta}\\
+		& = \lim_{\delta \to 0} \frac{P(t < T < t + \delta)}{\delta P(T > t)}\\
+		& = \lim_{\delta \to 0} \frac{F(t + \delta) - F(t)}{\delta (1 - F(t))}\\
+		& =  \frac{f(t)}{1 - F(t)}
+		\end{align*}
+		
+$S(t) = 1 - F(t) \Rightarrow S'(t) = - F'(t) = -f(t)$, thus
+\begin{align*}
+h(t) = \frac{-S'(t)}{S(t)} \Rightarrow S'(t) + h(t) S(t) = 0
+\end{align*}
+
+From the differential equation $S'(t) + h(t) S(t) = 0,\, S(0) = 1$, we can solve 
+\[S(t) = \exp \left(- \int_{0}^t h(x) \mathrm{d}x\right)\]
+
+\item 
+$T \sim \mathrm{Exp}(\beta)$, then
+\[f(t) = \frac{1}{\beta} \mathrm{e}^{-t / \beta},\, F(t) = \int_{0}^t = \frac{1}{\beta} \mathrm{e}^{-x/\beta}\mathrm{d}x = - \mathrm{e}^{- x / \beta}|_0^t = 1 - \mathrm{e}^{- t / \beta}\]
+Then
+\[h(t) = \frac{f(t)}{1 - F(t)} = \frac{\frac{1}{\beta}\mathrm{e}^{- t / \beta}}{\mathrm{e}^{-t / \beta}} = \frac{1}{\beta}\]
+$h(t)$ is a constant.
+
+
+\item 
+$T \sim \mathrm{Weibull}(\gamma , \beta)$, then
+\begin{align*}
+f(t) & = \frac{\gamma}{\beta} t^{\gamma - 1} \mathrm{e}^{-t^\gamma / \beta}\\
+F(t) & = \int_{0}^t \frac{\gamma}{\beta} x^{\gamma - 1} \mathrm{e}^{-x^\gamma / \beta} \mathrm{d}x\\
+& = \int_{0}^t \mathrm{e}^{- x^\gamma / \beta} \mathrm{d}(x^\gamma / \beta)\\
+\intertext{Let $u = x^\gamma / \beta$}
+& = \int_0^{t^\gamma / \beta} \mathrm{e}^{-u} \mathrm{u}\\
+& = -\mathrm{e}^{-u}\Big|_{0}^{t^\gamma / \beta}\\
+& = 1 - \mathrm{e}^{- t^\gamma/\beta}
+\end{align*}
+Then
+\[h(t) = \frac{f(t)}{1 - F(t)} = \frac{\frac{\gamma}{\beta} t^{\gamma - 1} \mathrm{e}^{-t^\gamma / \beta}}{\mathrm{e}^{- t^\gamma/\beta}} = \frac{\gamma}{\beta} t^{\gamma - 1}\]
+When $\gamma > 1$, $h(t)$ increases as $t$ increases.
+
+	\end{enumerate}
+	
+
+	
+	
+ 	\end{enumerate}
+
+
+	
+	
+	
+	\end{document}

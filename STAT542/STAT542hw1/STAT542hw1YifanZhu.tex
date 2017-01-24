@@ -1,0 +1,133 @@
+
+	\documentclass[letter]{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage{enumitem}
+	\usepackage{blindtext}
+	
+	\begin{document}
+	
+	\title{STAT 542 Homework 1}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{itemize}[leftmargin = 0 em]
+	\item [\bf 1.1] For each of the following experients, describe the sample space.
+	\begin{itemize}[leftmargin = 0 em]
+	\item [(b)] Count the number of insect-damaged leavs on a plant.
+		
+		$S = \{0,1,2,3, \cdots \}$
+	\item [(c)] Measure the lifetime (in hours) of a particular brand of light bulb.
+
+	$S = (0, +\infty)$
+	\item [(e)] Observe the proportion of defectives in a shipment of electronic components.
+	$S = [0,1]$
+ 	\end{itemize}
+	
+	\item [\bf 1.2] Verify the following identities.
+	\begin{itemize}[leftmargin = 0em] 
+		\item [(b)] $B = (B \cap A) \cup (B \cap A^c)$
+
+		\begin{enumerate}[label = (\roman*)]
+			\item $\forall x \in B$, since $A\cup A^c = S$, we have $x\in B\cap A $ or $x\in B\cap A^c$, thus $x\in (B\cap A)\cup (B\cap A^c)$. $\Rightarrow B \subset (B\cap A)\cup (B\cap A^c)$.
+			\item $\forall x\in (B\cap A)\cup (B\cap A^c)$, we have $x\in B\cap A$ or $x\in B\cap A^c$. Therefore in any of these situations, $x\in B$ holds true. Therefore $(B\cap A)\cup(B\cap A^c)\subset B$.
+		\end{enumerate}
+		
+		\item [(d)] $A \cup B = A \cup (B \cap A^c)$
+		\begin{enumerate}[label = (\roman*)]
+			\item $\forall x\in A\cup B$, if $x\in A$, then $X\in A\cup(B\cap A^c)$; if $x\notin A$, then we have $x\in B$, thus $x\in B\cap A^c \Rightarrow x\in A\cup (B\cap A^c).$ Therefore, $A\cup B \subset A\cup (B\cap A^c)$.
+			\item $\forall x\in A\cup(B\cap A^c)$, we have $x\in A$ or $x\in B$ and $x\notin A$. If $x\in A$, we have $x\in A\cup B$; otherwise we also have $x\in B$, thus $x \in A\cup B$.
+		\end{enumerate}
+		
+	\end{itemize}
+	
+	\item [\bf 1.4] For events $A$ and $B$, find formulas for the probabilities of the following events in terms of the quantities $P(A)$, $P(B)$, and $P(A \cap B)$ .
+	\begin{enumerate}[label = (\alph*), leftmargin = 0em]
+		\item either $A$ or $B$ or both
+		
+		$P(A\cup B) = P(A) + P(B) -P(A\cap B)$
+		\item either $A$ or $B$ but not both
+		
+		$P((A\cup B)\backslash (A\cap B)) = P(A) + P(B) - 2P(A\cap B)$
+		\item at least one of $A$ or $B$
+
+		$P(A\cup B) = P(A) + P(B) - P(A\cap B)$
+		\item at most one of $A$ or $B$
+		
+		$P((A\backslash B)\cup(B\backslash A) \cup A^c \cup B^c )= 1 - P(A\cap B) $
+	\end{enumerate}
+	
+
+	\item [\bf 1.12] It was noted in Section 1.2.1 that statisticians who follow the deFinetti school do not accept the Axiom of Countable Additivity, instead adhering to the Axiom of Finite Additivity.
+	\begin{enumerate}[label = (\alph*), leftmargin = 0em]
+		\item Show that the Axiom of Countable Additivity implies Finite Additivity.
+
+
+		$1 = P(S) = P(S\cup \emptyset \cup \emptyset \cup \cdots ) = P(S) + \sum_{i =1}^{\infty}P (\emptyset) = 1 + \sum_{i =1 }^{\infty}  P(\emptyset) \Rightarrow  P(\emptyset) = 0$. With that, for an finite disjoint series of $\{A_i\}_{i=1}^n$, we generate an infinite disjoint series of $\{A_i\}_{i=1}^\infty$ by adding $\emptyset$. $\emptyset = A_{n+1} = A_{n+2} = \cdots$ Therefore, by the Countable Additivity, we have 
+		\[P(\bigcup_{i=1}^n A_i) = P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i) = \sum_{i=1}^{n} P(A_i) + \sum_{i=n+1}^{\infty}P(\emptyset) = \sum_{i=1}^n P(A_i)\]
+		\item Although, by itself, the Axiom of Finite Additivity does not imply Countable
+Additivity, suppose we supplement it with the following. Let $A_1 \supset A_2 \supset \cdots \supset A_n \supset \cdots $be an infinite sequence of nested sets whose limit is the empty set, which we denote by $A_n \downarrow \emptyset$. Consider the following:
+\[\textbf{Axiom of Continuity:} \quad \textrm{If} \, A_n \downarrow \emptyset, \textrm{then} \, P(A_n) \rightarrow 0.\]
+Prove that the Axiom of Continuity and the Axiom of Finite Additivity imply
+Countable Additivity.
+
+\
+
+We denote $C_n = \bigcup_{t = n+1}^\infty A_t$. Then by Finite Additivity we have $P(\bigcup_{i =1}^\infty A_i) = P(\bigcup_{i=1}^{n} A_i \cup C_n) = \sum_{i=1}^n P(A_i) + P(C_n)$. If we can show as $n\to \infty, P(C_n) \to 0$, we will have the Countable Additivity.
+
+Now we need to prove that in fact $C_n \downarrow \emptyset$. Then by Axiom of Continuity we will have $P(C_n) \to 0$. 
+
+If $C_n \downarrow \emptyset$ is now true, that means the series will converge to an non-empty set. Therefore, there must be at least one elemnt in that set, and we denote it as $x$. As $C_1 \supset C_2 \supset C_3 \supset \cdots C_n \supset \cdots$, the limit should be $\bigcap_{k=1}^\infty C_k$. Thus $x$ should be in all $C_k$s. Considering that $C_1 = \bigcup_{t = 1}^\infty A_t$, and $A_t$s are disjoint, then there should be only one set $A_N$ including the element $x$. However, by the definition of $C_n = \bigcup_{t = n+1}^\infty A_t$, the element $x$ will not appear in $C_N, C_{N+1}, \cdots$, whichi contradicts with the previous assumption. So the series $\{C_n\}_{n=1}^\infty$ will converge to $\emptyset$ as $n\to \infty$. By the Finite Additivity and Axiom of Continuity, taking limits on both sides of $P(\bigcup_{i=1}^\infty A_i)=\sum_{i=1}^n P(A_i) + P(C_n)$, we have
+\[P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)\]  
+
+
+
+
+
+	\end{enumerate}
+	
+	\item [\bf 1.13] If $P(A) = 1/3$ and $P(B^c) = 1/4$, can $A$ and $B$ be disjoint? Explain.
+
+	No. By Bonferroni's Inequality, we have
+	\[P(A\cup B) \geq P(A) + P(B) - 1 = \frac{1}{3} - (1 - \frac{1}{4}) - 1 = \frac{1}{12} > 0\] 
+
+	If $A$ and $B$ are disjoint, then $A\cap B$ should be an empty set and $P(A\cap B) = 0$. Thus, $A$ and $B$ cannot be disjoint.
+
+	\item  [\bf 6] There are four basic blood groups $O$, $A$, $B$, $AB$. Ordinarily, any one receive the blood of donor from their own group. Also, anyone can receive the blood of a donor from the $O$ group. and anyone in the $AB$ group can receive the blood of a donor from any of the 4 blood groups. All the otehr pairings are undesirable. An experiment consists of drawing blood and determining its type for each of the next two donors  who enter a blood bank.
+	\begin{enumerate}[label = (\alph*), leftmargin = 0em]
+		\item List the sample space $S$ for the experiment.
+
+		$S = \{(O, O), (O, A), (O, B), (O, AB), (A, O), (A, A), (A, B), (A, AB), (B, O), $
+
+		$(B, A), (B, B), (B, AB), (AB, O), (AB, A), (AB, B), (AB, AB)\}$
+		\item Suppose we assign equal probability to each point in the sample space. (This assumes that blood groups are equally likely in the population which is not true in reality.) Find the probability that the second donor can receive the blood of the first donor.
+
+		Denote the event as $A$, then $A = \{(O, O), (A, A), (O, A), (B, B), (O, B), (AB, AB),$
+
+		$ (O, AB), (A, AB), (B, AB)\}$, therefore
+		\[P(A) = \frac{|A|}{|S|} = \frac{9}{16}\]
+		\item Again assuming equally likely samle points, find the probability that each donor can receive the blood of the other.
+
+		Denote the event as $B$, then $B = \{(O, O), (A, A), (B, B), (AB, AB)\}$, therefore
+		\[P(B) = \frac{|B|}{|S|} = \frac{1}{4}\]
+	\end{enumerate}
+	
+
+	\item [\bf 7] Suppose a family has 4 children, name $a,\, b,\, c$
+ and $d$, who take turns washing 4 plates denoted $p_1,\, p_2,\, p_3,\, p_4$. These children are not so careful in their work so, over time, each of the plates will be broken. Suppose any child could break any plate and that the ways in which plates $p_1,\, p_2,\, p_3,\,p_4$ could be broken by children $a,\, b,\, c,\, d$ are equally likely.
+ \begin{enumerate}[label = (\alph*), leftmargin = 0em]
+ 	\item Find the probability that child $a$ break 3 plates.
+
+ 	Each plate can be broken by any of the child, so $|S| = 4^4 = 256$. And the event $|\{\textrm{child $a$ break 3 plates}\}| = \binom{4}{3}\times 3 = 12$. Therefore, $P(\{\textrm{child $a$ break 3 plates}\}) = \frac{12}{256} = \frac{3}{64}$.
+
+ 	\item Find the probability that one of the four children breaks 3 plates.
+
+ 	$P(\{\textrm{one of the four children breaks 3 plates}\}) = P(\{\textrm{child $a$ break 3 plates}\} \cup $
+
+ 	$\{\textrm{child $b$ break 3 plates}\}\cup \{\textrm{child $c$ break 3 plates}\}\cup \{\textrm{child $d$ break 3 plates}\}) = \frac{4\times 4\times 3}{256} = \frac{3}{16}$.
+ \end{enumerate}
+ 
+ 	\end{itemize}
+	
+	
+	
+	\end{document}

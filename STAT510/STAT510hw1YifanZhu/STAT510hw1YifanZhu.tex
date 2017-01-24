@@ -1,0 +1,232 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 510 Homework 1}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	\begin{align*}
+	\bm A \bm B & = \begin{bmatrix}
+		1 & 5 \\
+		4 & -1\\
+		0 & 1	
+	\end{bmatrix}
+	\begin{bmatrix}
+		3 & 3 & -2 & 4\\
+		5 & -1 & 2 & 3
+	\end{bmatrix}\\
+	& = \begin{bmatrix}
+		1 \\ 4 \\ 0
+	\end{bmatrix}
+	\begin{bmatrix}
+		3 & 3 & -2 & 4
+	\end{bmatrix} +
+	\begin{bmatrix}
+		5 \\ -1 \\ 1
+	\end{bmatrix} \begin{bmatrix}
+		5 & -1 & 2 & 3
+	\end{bmatrix}\\
+	& = \begin{bmatrix}
+		3 & 3 & -2 & 4\\
+		12 & 12 & -8 & 16\\
+		0 & 0 & 0& 0
+	\end{bmatrix}
+		\begin{bmatrix}
+			25 & -5 & 10 & 15\\
+			-5 & 1 & -2 & -3\\
+			5 & -1 & 2 & 3
+		\end{bmatrix}\\
+		& = \begin{bmatrix}
+			28 & -2 & 8 & 19\\
+			7 & 13 & -10 & 13\\
+			5 & -1 & 2 & 3
+		\end{bmatrix}\\
+	\end{align*}
+	
+
+\item 
+\begin{enumerate}
+	\item 
+	$\bm W = \begin{bmatrix}
+			1 & 5 \\
+			3 & -1
+		\end{bmatrix}$, thus $\bm W^{-1} = \begin{bmatrix}
+			-0.0625 &  0.3125\\
+			0.1875 & -0.0625
+		\end{bmatrix}$. Hence
+		\[\bm G = \begin{bmatrix}
+			(\bm W^{-1})^{T} & \bm 0
+		\end{bmatrix}^T = \begin{bmatrix}
+			\bm W^{-1}\\
+			\bm 0
+		\end{bmatrix} = \begin{bmatrix}
+			-0.0625 &  0.3125\\
+			0.1875 & -0.0625\\
+			0 & 0
+		\end{bmatrix}\]
+
+		\item 
+		From R we have
+		\[\bm G = ginv(\bm A) = 
+		\begin{bmatrix}
+			 0.01414514  &0.04797048\\
+             0.18880689 &-0.05535055\\
+			 0.02091021  &0.11439114
+		\end{bmatrix}\]
+
+\end{enumerate}
+
+\item 
+From the definition, for $u \sim t_m (\delta)$, there exist independent $y \sim N(\delta , 1)$ and $w \sim \chi_m^2$ such that $u = \frac{y}{\sqrt{w/m}}$. 
+
+Hence $u^2 =  \frac{y^2}{w/m} = \frac{y/1}{w/m}$. From the definition of non-central chi-squared distribution, we know that $y^2 \sim \chi_1^2 (\delta^2 / 2)$. Also, $y^2$ and $w$ are independent. Then from the definition of $F$ distribution, we have $u^2 \sim F_{1,m}(\delta^2/2)$.
+
+\item 
+Let $\bm z = \begin{bmatrix}
+	x\\y
+\end{bmatrix}$, then $\bm z \sim N(\bm \mu, \bm I_{2\times 2})$, where $\bm \mu = \begin{bmatrix}
+	2\\1
+\end{bmatrix}$. Then we have $\bm z^T \bm z \sim \chi_2^2 (\bm \mu^T \bm \mu / 2 = 5/2)$. Thus
+\begin{align*}
+&P(\textrm{\{the string will need to be
+longer than 6 units\}})\\
+=& P(\bm z^T \bm z > 36) =    1 - pchisq(36, df = 2, ncp = 5) = 0.00014096
+\end{align*}
+
+\item 
+\begin{enumerate}
+	\item 
+	Let $\bm z = \begin{bmatrix}
+		z_1 \\ z_2
+	\end{bmatrix}$, then $\bm z \sim N(\bm 0, \bm I_{2\times 2})$. Thus $z_1 - z_2  = \begin{bmatrix}
+		1 & -1
+	\end{bmatrix}\bm z\sim N(0,2)$ and hence $(z_1 - z_2)/\sqrt{2} \sim N(0,1)$. From the definition of $\chi^2$ distribution, we know that 
+	\[(z_1 - z_2)^2 / 2 = \left((z_1 - z_2)/\sqrt{2}\right)^2 \sim \chi_1^2 \]
+
+	\item 
+	$\begin{bmatrix}
+		z_1 + z_2 \\
+		z_1 - z_2
+	\end{bmatrix} = \begin{bmatrix}
+		1 & 1\\
+		1 & -1
+	\end{bmatrix} \begin{bmatrix}
+		z_1 \\ z_2
+	\end{bmatrix} \sim N(\bm 0, \begin{bmatrix}
+		2 & 0\\
+		0 & 2
+	\end{bmatrix})$. Hence $z_1 + z_2 $and $z_1 - z_2$ are independent, and $(z_1 + z_2)/\sqrt{2} \perp (z_1 - z_2)^2/2$. From (a) we know $(z_1 - z_2)^2 / 2 \sim \chi^2_1$. And $(z_1 + z_2)/\sqrt{2} \sim N(0,1)$. Then from the definition of $t$ distribution, 
+	\[(z_1 + z_2)/|z_1 - z_2| = \frac{(z_1 + z_2)/\sqrt{2}}{\sqrt{(z_1 - z_2)^2/2}} \sim t_1\]
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+	\item 
+	$\bar{y} = \frac{1}{n} \bm 1^T \bm y$, thus $\bm y - \bar{y}\bm 1 = \bm y - \frac{1}{n} \bm 1 \bm 1^T \bm y = (\bm I - \frac{1}{n} \bm 1 \bm 1^T)\bm y$. Hence
+
+\begin{align*}
+s^2 &= \frac{1}{n-1} \sum_{i = 1}^n (y_i - \bar{y})^2 \\
+& = \frac{1}{n-1}((\bm I - \frac{1}{n} \bm 1 \bm 1^T)\bm y)^T (\bm I - \frac{1}{n} \bm 1 \bm 1^T)\bm y\\
+& = \frac{1}{n-1} \bm y^T (\bm I - \frac{1}{n}\bm 1 \bm 1^T)^T(\bm I - \frac{1}{n}\bm 1 \bm 1^T) \bm y\\
+&  = \frac{1}{n-1} \bm y (\bm I - \frac{2}{n} \bm 1 \bm 1^T + \frac{1}{n^2} \bm 1 \bm 1^T \bm 1 \bm 1^T)\bm y\\
+&  =\frac{1}{n-1}\bm y^T (\bm I - \frac{1}{n} \bm 1 \bm 1^T) \bm y\\
+& = \bm Y^T \frac{1}{n-1}(\bm I - \frac{1}{n} \bm 1 \bm 1^T) \bm y = \bm y^T \bm B \bm y
+\end{align*}
+
+Here $\bm B = \frac{1}{n-1} (\bm I - \frac{1}{n}\bm 1 \bm 1^T)$
+
+\item 
+$(n-1)s^2 / \sigma^2 = \bm y^T \frac{1}{\sigma^2} (\bm I - \frac{1}{n} \bm 1 \bm 1^T)\bm y$. Let $\bm A = \frac{1}{\sigma^2} (\bm I - \frac{1}{n} \bm 1 \bm 1^T)$, then $\bm A \bm \Sigma = \bm I - \frac{1}{n} \bm 1 \bm 1^T$. From the proof of (a) we know that $\bm A \bm \Sigma = \bm I - \frac{1}{n} \bm 1 \bm 1^T$ is idempotent. $rank(\bm A) = rank(\bm I - \frac{1}{n} \bm 1 \bm 1^T) = tr(\bm I - \frac{1}{n}\bm 1 \bm 1^T) = tr(\bm I) - \frac{1}{n}tr(\bm 1 \bm 1^T) = n - \frac{1}{n} n = n-1 $. Then we know 
+\[(n-1)s^2 / \sigma^2 \sim \chi_{n-1}^2 (\bm \mu^T \bm A \bm \mu / 2)\]
+We also have $\bm \mu^T\bm A \bm \mu = \mu^2 \bm 1^T \bm A \bm 1 = \frac{\mu^2}{\sigma^2}\bm 1^T(\bm I - \frac{1}{n} \bm 1 \bm 1^T)\bm 1 = \frac{\mu^2}{\sigma^2} (\bm 1^T \bm 1 - \frac{1}{n} \bm 1^T \bm 1 \bm 1^T \bm 1) = \frac{\mu^2}{\sigma^2} (n - \frac{1}{n} n^2) = 0$, hence
+\[(n-1)s^2 / \sigma^2 \sim \chi_{n-1}^2 \]
+
+\end{enumerate}
+\item 
+\begin{enumerate}
+	\item 
+	If $\bm A = \bm 0$ then $\bm A^T \bm A = \bm 0$.
+
+	If $\bm A^T \bm A = \bm 0$, then $(\bm A^T \bm A)_{ii}$ in the diagonal line should also be 0.  And for every $i$, we have $(\bm A^T \bm A)_{ii} = \sum_{j = 1}^n a_{ji}^2 = 0 \Rightarrow a_{ji} = 0$ for all $j = 1, 2, \cdots, n$ , where $a_{ji}$ is the $(j,i)$ component of $\bm A$. Hence for every element in $\bm A$, we have $a_{ij} = 0, i,j = 1,2,\cdots, n$.Thus $\bm A = \bm 0$.
+
+	\item 
+	$\bm X\bm A = \bm X\bm B \Rightarrow \bm X^T \bm X \bm A = \bm X^T \bm X \bm B$.
+
+	$\bm X^T \bm X \bm A = \bm X^T \bm X \bm B \Rightarrow \bm X^T \bm X(\bm A - \bm B) = \bm 0 \Rightarrow (\bm A - \bm B)^T \bm X^T \bm X \bm (\bm A - \bm B) = \bm 0 \Rightarrow (\bm X \bm (\bm A - \bm B))^T (\bm X(\bm A - \bm B)) = \bm 0$. From (a) we know that $\bm X(\bm A - \bm B) = \bm 0 \Rightarrow \bm X \bm A = \bm X \bm B$.
+	\item 
+	For any generalized inverse $(\bm X^T \bm X)^{-}$, we have $\bm X^T \bm X (\bm X^T \bm X)^{-} \bm X^T \bm X = \bm X^T \bm X$. Let $(\bm X^T \bm X)^{-} \bm X^T \bm X = \bm A$ and $\bm I = \bm B$, from (b) we have 
+	\[\bm X (\bm X^T \bm X)^{-} \bm X^T \bm X = \bm X\]
+
+	\item 
+	$\bm G$ is a generalized inverse of $\bm A$, then $\bm A \bm G \bm A = \bm A$. Take transpose on both sides we have $\bm A^T \bm G^T \bm A^T = \bm A^T$. $\bm A$ is symmetric then $\bm A^T = \bm A$, then $\bm A \bm G^T \bm A = \bm A$. Hence $\bm G^T$ is also a generalized inverse of $\bm A$.
+
+	\item 
+	Denote $\bm G = (\bm X^T \bm X)^{-}$. As $\bm X^T \bm X$ is symmetric, then $\bm G^T$ is also a generalized inverse of $\bm X^T \bm X$. Hence we have 
+	\[\bm X \bm G^T \bm X^T \bm X = \bm X\]
+	Take transpose on both sides and we have 
+	\[\bm X^T \bm X \bm G \bm X^T = \bm X \Rightarrow \bm X^T \bm X (\bm X^T \bm X)^{-} \bm X^T = \bm X^T\]
+
+	\item 
+	From (c):
+	\[\bm P_{\bm X} \bm P_{\bm X} = \bm X(\bm X^T \bm X)^- \bm X^T \bm X (\bm X^T \bm X)^- \bm X^T = (\bm X(\bm X^T \bm X)^- \bm X^T \bm X) (\bm X^T \bm X)^- \bm X^T = \bm X (\bm X^T \bm X)^- \bm X^T = \bm P_{\bm X} \]
+	From (e):
+	\[\bm P_{\bm X} \bm P_{\bm X} = \bm X(\bm X^T \bm X)^- \bm X^T \bm X (\bm X^T \bm X)^- \bm X^T = \bm X(\bm X^T \bm X)^- (\bm X^T \bm X (\bm X^T \bm X)^- \bm X^T) = \bm X (\bm X^T \bm X)^- \bm X^T = \bm P_{\bm X} \]
+
+\item 
+From (e) we have $\bm X^T = \bm X^T \bm X \bm G_2 \bm X^T$. Hence we can plug this into $\bm X \bm G_1 \bm X^T$ and we have 
+\[\bm X \bm G_1 \bm X^T = \bm X \bm G_1 \bm X^T \bm X \bm G_2 \bm X^T = (\bm X \bm G_1 \bm X^T \bm X) \bm G_2 \bm X^T = \bm X \bm G_2 \bm X^T\]
+$\bm X \bm G_1 \bm X^T \bm X = \bm X$ is from (c).
+
+
+\item 
+Denote $(\bm X^T \bm X)^- = \bm G = \bm G_1$ and $\bm G^T = \bm G_2$. From (d) we know that $\bm G_1 $ and $\bm G_2$ are both generalized inverse of $\bm X^T \bm X$, and from (g) we have $\bm X \bm G \bm X^T  =\bm X \bm G_1 \bm X^T = \bm X \bm G_2 \bm X^T = \bm X \bm G^T \bm X^T. $ Hence
+\[\bm P_{\bm X}^T = \bm X \bm G^T \bm X^T = \bm X \bm G \bm X^T = \bm P_{\bm X}\]
+\end{enumerate}
+
+
+
+
+
+
+
+
+ 	\end{enumerate}
+
+
+	
+	
+	
+	\end{document}

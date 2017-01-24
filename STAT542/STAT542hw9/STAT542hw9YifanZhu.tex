@@ -1,0 +1,285 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 542 Homework 9}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	\begin{enumerate}
+		\item $X_1,\, X_2 \sim Exponential(\theta)$, thus $M_{X_1} (t) = M_{X_2} (t) =  \frac{1}{1 - \theta t} \quad t < 1/\theta$. Hence,
+		\[M_{X_1, X_2} (t_1, t_2) = M_{X_2} (t_1) M_{X_2} (t_2) = \frac{1}{(1 - \theta t_1) (1 - \theta_2 t)}, \quad t_1, t_2 < 1/\theta\]
+		
+
+
+		\item 
+		\begin{align*}
+		M_{X_1 - X_2} (t) & = E(\mathrm{e}^{X_1 - X_2}t)\\
+		& = E(\mathrm{e}^{t X_1 + (-t) X_2})\\
+		& = M_{X_1 , X_2} (t, -t)
+		\end{align*}
+
+		\item 
+		$Y = X_1 - X_2$, the support of $Y$ is $(-\infty, \infty)$. We also have 
+		\begin{align*}
+		M_{X_1 - X_2}(t) & = M_{X_1, X_2}(t, -t)\\
+		& = \frac{1}{(1 - \theta t)(1 + \theta t)}\\
+		& = \frac{1}{2} [\frac{1}{1 - \theta t} + \frac{1}{1 - \theta (-t)}]\\
+		& = \int_{0}^{\infty} \frac{1}{2} \frac{1}{\theta}\mathrm{e}^{-y/\theta} \mathrm{e}^{ty} \mathrm{d}y + \int_{0}^\infty \frac{1}{2} \frac{1}{\theta}\mathrm{e}^{-y/\theta} \mathrm{e}^{-ty} \mathrm{d}y\\
+		& = \int_{0}^{\infty} \frac{1}{2} \frac{1}{\theta}\mathrm{e}^{-y/\theta} \mathrm{e}^{ty} \mathrm{d}y + \int_{-\infty}^0 \frac{1}{2} \frac{1}{\theta}\mathrm{e}^{y/\theta} \mathrm{e}^{ty} \mathrm{d}y\\
+		& = \int_{-\infty}^\infty f_Y (y) \mathrm{e}^{ty} \mathrm{d}y
+		\end{align*}
+
+		Hence, we have 
+		\[f_Y (y) = \begin{cases}
+			\frac{1}{2\theta}\mathrm{e}^{-y/\theta} & y \geq 0\\
+		     \frac{1}{2\theta}\mathrm{e}^{y/\theta} & y < 0
+		\end{cases}\]
+		
+		
+	\end{enumerate}
+
+\item 
+\begin{enumerate}
+	\item 
+	$Y | X = x \sim N(x, x^2)$, $X \sim Uniform(0,1)$, thus
+	\begin{align*}
+	EY &= E[E[Y|X]] = E[X] = 1/2\\
+	Var[Y] &= E[Var[Y|X]] + Var[E[Y|X]]\\
+	& = E[X^2] + Var[X]\\
+	& = Var[X] + (E[X])^2 + Var[Y]\\
+	& = \frac{1}{12} + \frac{1}{4} + \frac{1}{12}\\
+	& = \frac{5}{12}\\
+	E[XY] &= E[E[XY|X]] \\
+	& = E[X E[Y|X]] \\
+	& = E[X^2] = Var[X] + (E[X])^2\\
+	& = \frac{1}{12} + \frac{1}{4} = \frac{1}{3} \\
+	Cov(X, Y) & = E[XY] - E[X] E[Y]\\
+	& = \frac{1}{3} - \frac{1}{2} \cdot \frac{1}{2}\\
+	& = \frac{1}{12}
+	\end{align*}
+
+	\item 
+	\begin{align*}
+	f(x, y ) = f(y|x) f(x) = \frac{1}{\sqrt{2 \pi}x} \mathrm{e}^{- \frac{(y - x)^2}{2 x^2}}, \quad (x,y)\in (0,1)\times (-\infty, \infty)
+	\end{align*}
+
+	Let
+	\[U = Y/X,\, V = X\]
+	Then the support of $(U,V)$ is $(-\infty, \infty) \times (0,1)$. The transformation
+	\[\begin{cases}
+		x = v\\
+		y = uv
+	\end{cases}\]
+
+	\[J = \begin{bmatrix}
+		\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v}\\
+		\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		0 & 1\\
+		v & u
+	\end{bmatrix}
+	\]
+	\[|\det J| = |-v| = v\]
+
+	\begin{align*}
+	f(u,v) & = \frac{1}{\sqrt{2 \pi}v} \mathrm{e}^{- \frac{(uv - v)^2}{2v^2}} \cdot v\\
+	& = \frac{1}{\sqrt{2 \pi}} \mathrm{e}^{- \frac{(u-1)^2}{2}}\\
+	& = f_U (u) \cdot f_V(v)
+	\end{align*}
+	Hence $U, V$ are independent, and we have
+	$U \sim N(1,1)$ and $V \sim Uniform(0,1)$. Thus $Y/X$ and $X$ are independent.
+	
+\end{enumerate}
+
+\newpage
+
+\item 
+$X_i \sim Uniform(0,1)$, Let $Y_i = -\log X_i$, then
+\[P(Y_i \leq y) = P(-\log X_i \leq y) = P(X_i \geq \mathrm{e}^{-y}) = 1 - P(X_i < \mathrm{e}^{-y})\]
+Hence $Y_i \sim Exponential(1) \sim Gamma(1,1)$.
+
+Let $Y = -\log (\prod_{i = 1}^n X_i)$, then
+\[Y = -\log (\prod_{i = 1}^n X_i) =  \sum_{i = 1}^n -\log X_i = \sum_{i=1}^n Y_i \sim Gamma(n,1)\]
+
+Let $S = \prod_{i = 1}^n X_i$, then the transformation $y = -\log(u)$. Thus
+\[f_U (u) = f_Y (y(u)) |y'(u)| = \frac{(- \log y)^{n-1} \mathrm{e}^{\log y}}{\Gamma(n)} \frac{1}{y} = \frac{(- \log y)^{n-1}}{\Gamma (n)}, \quad y \in (0,1)\]
+
+
+\item 
+\begin{enumerate}
+	\item 
+	When $z < 0$, we have
+	\begin{align*}
+	P(Z \leq z) &= P(Z \leq z \cap XY >0) + P(Z \leq z \cap XY <0)\\
+	& = P(X \leq z \cap XY >0) + P(-X \leq z \cap XY <0)\\
+	& = P(X \leq z , Y < 0) + P(X \geq -z , Y < 0)\\
+	& = P(X \leq z , Y < 0) + P(X \leq z, Y >0) \quad (P(X \geq -z, Y <0) = P(X \leq z, Y >0))\\
+	& = P(X \leq z)(P(Y < 0) + P(Y > 0))\\
+	& = F_X (z)
+	\end{align*}
+	
+	When $z \geq 0$, we can also show that $P(Z > 0) = P(X >0)$, thus $P(Z \leq z) = P(X \leq z) = F_X (z)$. Hence $Z \sim X \sim N(0,1)$.
+
+
+	\item 
+	When $Y > 0$, $Z = X > 0$ when $X >0$ and $Z = -X > 0$ when $X <0$. When $Y <0$, $Z = X < 0$ when $X <0$ and $Z = -X < 0 $ when $X >0$. Hence $Z$ and $Y$ always have the same sign. The joint distribution cannot be multi-normal. 
+
+\end{enumerate}
+
+\item 
+Let $(X_1, Y_1), (X_2, Y_2)$ be two points hit by bullets. And we know that $X_1, X_2, Y_1, Y_2$ are iid $N(0,1)$. Then we have $X_1 - X_2 \sim N(0,2)$ and $Y_1 - Y_2 \sim N(0,2)$. Thus $(\frac{X_1 - X_2}{\sqrt{2}})^2 + (\frac{Y_1 - Y_2}{\sqrt{2}})^2 \sim \chi_2^2$. The distance between this two points are $S = \sqrt{(X_1 - X_2)^2 + (Y_1 - Y_2)^2}$. Let $U = \frac{1}{2} (X_1 - X_2)^2 + \frac{1}{2} (Y_1 - Y_2)^2$, then $S = \sqrt{2 U} \Rightarrow U = S^2 /2$. $f_U (u) = \frac{1}{2} \mathrm{e}^{- u /2},\quad u >0$, then
+\[f_S (s) = f_U (s^2 / 2) |s| = \frac{s}{2} \mathrm{e}^{-s^2/4},\quad s >0.\]
+	
+	
+
+	\item 
+	$X_1 , X_2, X_3 $ are iid $Exponential(\lambda)$. $X_{(3)} = \max{X_1, X_2, X_3}$, then by formula for the density of order statistics
+	\[f_{X_{(3)}}(x) = 3 f_{X_1}(x) ( F_{X-1}(x))^{2} = \frac{3}{\lambda} \mathrm{e}^{- x /\lambda} (1 - \mathrm{e}^{- x / \lambda} )^2 ,\, x > 0\]
+	
+	
+	
+
+\item 
+\begin{enumerate}
+	\item
+Define the transformation
+\[\begin{cases}
+	u = \frac{x}{x+y}\\
+	v = x
+\end{cases}\]
+then
+\[\begin{cases}
+	x = v\\
+	y = \frac{v}{u} - v
+\end{cases}\]
+
+Then
+$J = \begin{bmatrix}
+	\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v}\\
+	\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+\end{bmatrix} = \begin{bmatrix}
+	0 & 1 \\
+	-\frac{v}{u^2} & \frac{1}{u} - 1
+\end{bmatrix}$ and $|J| = \left|\frac{v}{u^2}\right| = \frac{|v|}{u^2}$.
+
+Hence
+\[f_{U,V}(u,v) = f_{X,Y}(x(u,v), y(u,v)) |J| = \frac{1}{2 \pi} \mathrm{e}^{-\frac{v^2}{2}} \mathrm{e}^{\frac{-v^2 (\frac{1}{u} -1)^2}{2}} \frac{|v|}{u^2}\]
+The marginal density of $U$,
+\begin{align*}
+f_{U}(u) &= \int_{-\infty}^{\infty} \frac{1}{2 \pi} \mathrm{e}^{-\frac{v^2}{2}} \mathrm{e}^{\frac{-v^2 (\frac{1}{u} -1)^2}{2}} \frac{|v|}{u^2}\\
+& = \frac{2}{2 \pi u^2} \int_{0}^{\infty}\mathrm{e}^{\frac{(1/u - 1)^2}{2} + \frac{1}{2}v^2} v \mathrm{d}v\\
+& =  \frac{1}{2 \pi u^2} \int_{0}^{\infty} \mathrm{e}^{\frac{(1/u - 1)^2}{2} + \frac{1}{2}t}\mathrm{d}t\\
+& = \frac{1}{2 \pi u^2} \frac{2}{1 + (1/u - 1)^2}\\
+& = \frac{1}{\pi} \frac{1}{2 u^2 - 2 u +1}\\
+& = \frac{1}{\pi \frac{1}{2}} \frac{1}{((u - \frac{1}{2}) / \frac{1}{2})^2 +1}
+\end{align*}
+
+Hence $\frac{X}{X+y} = U \sim Cauchy(x_0 = \frac{1}{2}, \gamma = \frac{1}{2})$
+
+
+\item 
+Define the transformation
+\[\begin{cases}
+	u = \frac{x}{|y|}\\
+	v = x
+\end{cases}\]
+Then 
+\[\begin{cases}
+	x_1 = v\\
+	y_1 = \frac{v}{u}
+\end{cases}\]
+and 
+\[\begin{cases}
+	x_2 = v\\
+	y_2 = -\frac{v}{u}
+\end{cases}\]
+
+
+Thus $J_1 = \begin{bmatrix}
+	\frac{\partial x_1}{\partial u} & \frac{\partial x_1}{\partial v}\\
+	\frac{\partial y_1}{\partial u} & \frac{\partial y_1}{\partial v}
+\end{bmatrix}$
+and $J_2 = \begin{bmatrix}
+	\frac{\partial x_2}{\partial u} & \frac{\partial x_2}{\partial v}\\
+	\frac{\partial y_2}{\partial u} & \frac{\partial y_2}{\partial v}
+\end{bmatrix}$. Thus we have $|J_1| = |J_2| = \frac{|v|}{u^2}$.
+
+The joint density of $(U,V)$, notice that $U$ and $V$ have the same sign, thus the support of $(U,V) \in (0, \infty)\times(0, \infty) \cup (-\infty, 0)\times(-\infty, 0)$.
+\begin{align*}
+f_{U,V}(u,v) & = f_{X,Y}(v, \frac{v}{u}) \frac{|v|}{u^2} + f_{X,Y}(v, -\frac{v}{u})\frac{|v|}{u^2}\\
+& = \frac{1}{\pi} \mathrm{e}^{- v^2 /2} \mathrm{e}^{-(\frac{v}{u})^2/2} \frac{|v|}{u^2}\\
+& = \frac{1}{\pi u^2} \mathrm{e}^{-v^2 (\frac{1}{2} + \frac{1}{2 u^2})}\frac{|v|}{u^2}
+\end{align*}
+
+When $u > 0$, 
+\begin{align*}
+f_U (u) &= \int_{0}^\infty \frac{1}{\pi u^2} \mathrm{e}^{-v^2 (\frac{1}{2} + \frac{1}{2 u^2})}\frac{v}{u^2}\mathrm{d}v\\
+& = \int_{0}^\infty \frac{1}{2 \pi u^2} \mathrm{e}^{-t (\frac{1}{2} + \frac{1}{2 u^2})}\mathrm{d}t\\
+& = \frac{1}{2 \pi u^2} \frac{1}{\frac{1}{2} + \frac{1}{2 u^2}}\\
+& = \frac{1}{\pi} \frac{1}{1 +u^2}
+\end{align*}
+When $u < 0$,
+\begin{align*}
+f_U (u) &= \int_{-\infty}^0 \frac{1}{\pi u^2} \mathrm{e}^{-v^2 (\frac{1}{2} + \frac{1}{2 u^2})}\frac{-v}{u^2}\mathrm{d}v\\
+& = \int_{0}^\infty \frac{1}{2 \pi u^2} \mathrm{e}^{-t (\frac{1}{2} + \frac{1}{2 u^2})}\mathrm{d}t\\
+& = \frac{1}{2 \pi u^2} \frac{1}{\frac{1}{2} + \frac{1}{2 u^2}}\\
+& = \frac{1}{\pi} \frac{1}{1 +u^2}
+\end{align*}
+Hence $\frac{X}{|Y|} = U \sim Cauchy(x_0 = 0, \gamma = 1)$.
+
+
+\item 
+A normally distributed r.v. divided by another normally distributed r.v. will be a Cauchy distribution r.v.
+\end{enumerate}
+
+
+\item 
+Let $\Sigma = \begin{bmatrix}
+	1 & \rho\\
+	\rho & 1
+\end{bmatrix}$ Thus $\det \Sigma = 1 - \rho^2$. And $\Sigma^{-1} = \frac{1}{1 - \rho^2} \begin{bmatrix}
+	1 & -\rho\\
+	-\rho & 1
+\end{bmatrix}$. The distribution of $X, Y$ with covariance matrix $\Sigma$ and mean $ \mu = (0,0)^{T}$ is like the density in the problem.
+
+Thus $Corr(X,Y) = \frac{Cov(X,Y)}{\sqrt{Var{X}}\sqrt{Var{Y}}} = \frac{\rho}{1 \cdot 1} = \rho.$
+ 	\end{enumerate}
+
+
+
+	
+	\end{document}

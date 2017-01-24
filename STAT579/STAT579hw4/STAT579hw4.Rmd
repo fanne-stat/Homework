@@ -1,0 +1,151 @@
+---
+title: "STAT 579 Homework 4"
+author: "Yifan Zhu"
+date: "October 8, 2016"
+output: pdf_document
+---
+
+**Problem 1**
+
+(a) read the data
+```{r, tidy=TRUE}
+# read the data and take apostroph as character
+senate109 <- read.table(file = "http://maitra.public.iastate.edu/stat579/datasets/senate-109.txt", sep = "\t", quote = "\"",  header = T)
+```
+
+(b) Bill type
+    i. 
+    ```{r}
+    # remove the characters after "_"
+    billtype <- sub(pattern = "_.*", replacement = "", x = senate109$bill_type_bill_name_bill_ID)
+    ```
+    ii. tabulate each type of bill
+    ```{r}
+    table(billtype)
+    ```
+
+(c) Data quality
+```{r}
+# the matrix
+X <- as.matrix(senate109[3: ncol(senate109)]) 
+
+# extract the diagnal elements of XX'
+XX.diag <- diag(X %*% t(X))
+
+# add the missing votes
+
+number.senators <- XX.diag + senate109$missing_votes
+
+#check if there is any discrepancy
+
+prod(number.senators == ncol(senate109) - 2)
+```
+
+From the result above we can see the returned vector should be all 1. Thus there is no discrepancy.
+
+(d)
+```{r, tidy=TRUE, message= FALSE, warning= FALSE}
+leader <- senate109$William.H...Bill..Frist..TN.
+# create the matrix using the leader's opnion
+leader.matrix <- matrix(rep(x = leader, times = ncol(X)), ncol = ncol(X))
+#determine whether other senator's for/against/indifferent with the leader's choice
+trend <- X * leader.matrix 
+# remove the rows where the leader did not record a vote
+trend <- trend[leader != 0,]
+trend <- trend[, -ncol(trend)]
+```
+(e)
+```{r, tidy=TRUE, warning= FALSE}
+# count the for number in each column
+fornum <- apply(X = trend == 1, MARGIN = 1, FUN = sum)
+# count the against number in each column
+againstnum <- apply(X = trend == -1, MARGIN = 1, FUN = sum)
+# count the indifferent number in each column
+indifferentnum <- apply(X = trend == 0, MARGIN = 1, FUN = sum)
+
+trendcount <- data.frame(bill_type = billtype[leader != 0], for_number = fornum, against_number = againstnum, indifferent_number = indifferentnum)
+
+
+# using aggregate calculating the mean for each bill type
+treandcount.mean <- aggregate(trendcount, by = list(trendcount$bill_type), FUN = mean)[-2]
+treandcount.mean
+```
+
+\newpage
+
+**Problem 2**
+
+(a) Read the data as matrix
+```{r, message=FALSE, tidy=TRUE}
+PET <- matrix(scan(file ="http://maitra.public.iastate.edu/stat579/datasets/fbp-img.dat"), ncol = 128, nrow = 128, byrow = T)
+
+```
+
+(b) image the plot
+```{r, fig.align='center', fig.width=5, fig.width=5}
+image(1:128, 1:128, PET[, 128:1], col = topo.colors(128^2))
+
+```
+
+(c)
+    i.
+    ```{r, fig.align='center', fig.width=5, fig.width=5}
+    range <- max(PET) - min(PET)
+    bin <- seq(min(PET), max(PET), length.out = 9)
+    # vector of the mid points
+    bin.mid <- (bin[-1] + bin[- length(bin)]) / 2
+    
+    # function to determine which bin is the value x in and return the mid point
+    deterbin <- function(x){
+      y <- bin.mid[(bin[-1] > x)&((bin[-length(bin)] < x))]
+      return(y)
+    }
+    PET_new1 <- apply(PET, MARGIN = c(1,2), FUN = deterbin)
+    mode(PET_new1) <- 'numeric'
+    
+    image(1:128, 1:128, PET_new1[, 128:1], col = topo.colors(128^2))
+    ```
+    
+    ii. 
+    ```{r, fig.align='center', fig.width=5, fig.width=5}
+    qtbin <- quantile(PET, probs = seq(0, 1, length = 9))
+    # vector of the mid points
+    qtbin.mid <- (qtbin[-1] + qtbin[- length(qtbin)]) / 2
+    
+    # function to determine which quantile bin is the value x in and return the mid point
+    deterqtbin <- function(x){
+      y <- qtbin.mid[(qtbin[-1] > x)&((qtbin[-length(qtbin)] < x))]
+      return(y)
+    }
+    PET_new2 <- apply(PET, MARGIN = c(1,2), FUN = deterqtbin)
+    mode(PET_new2) <- 'numeric'
+    
+    image(1:128, 1:128, PET_new2[, 128:1], col = topo.colors(128^2))
+    ```
+    
+    iii. Comment: These two methods can both discribe the image, but in the detail of the background, the method of quantile bin is better. In my opinion, using quantile bin is better. This method reflects the concentration of data and can discribe the image better.
+    
+\newpage
+
+**Problem 3**
+
+(a) read the data
+```{r}
+auto <- read.table(file = "C:/Users/fanne/Desktop/STAT579/Auto.txt", header = T)
+```
+
+(b) 
+```{r}
+X <- matrix(c(auto$horsepower, rep(1, length(auto$horsepower))), ncol = 2)
+Y <- auto$mpg
+
+beta_hat <- solve(t(X) %*% X) %*% t(X) %*% Y
+beta_hat
+```
+
+(c)
+```{r}
+lmbeta <- lm(formula = mpg ~ horsepower, data = auto)
+summary(lmbeta)
+```
+The result of these two methods are similar. 

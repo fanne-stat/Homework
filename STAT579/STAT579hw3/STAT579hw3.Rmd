@@ -1,0 +1,202 @@
+---
+title: "STAT 579 Homework 3"
+author: "Yifan Zhu"
+date: "September 29, 2016"
+output: pdf_document
+---
+
+**Problem 1**
+
+(a) read data
+
+```{r, message=FALSE, tidy=TRUE}
+require(gdata) # load package
+wind <- read.xls(xls = "http://maitra.public.iastate.edu/stat579/datasets/wind.xls", perl = "C:/Perl64/bin/perl.exe") # read xls file and assign it to a data frame
+```
+
+(b) calculate the summary statistics
+
+```{r}
+summary(wind) # min, Q1, median, Q3, max, mean
+sapply(wind, sd) # standard deviation
+sapply(wind, IQR) # IQR
+```
+
+(c) They all make sense because the values of these statistics are all between 0 to 359.
+
+(d) plot the angles in $(\cos \theta, \sin \theta)$. We use arrows to represent the angle, and use different lengths to avoid overlapping.In the figure, red arrows represent spring wind angles; blue arrows represent summer wind angles; green arrows represent autumn wind angles and black arrows represent winter wind angles.
+```{r, message=FALSE, fig.width=8, fig.height=8, fig.align='center', tidy=TRUE, tidy.opts=list(width.cutoff=70)}
+require(latex2exp)
+require(shape)
+costheta <- cos(pi * wind / 180)
+sintheta <- sin(pi * wind / 180)
+plot(x = -1:1, y = -1:1, 'n', xlab = TeX('$\\cos \\theta$'), ylab = TeX('$\\sin \\theta$'), main = "Wind Angles in Spring, Summer, Autumn and Winter") 
+Arrows(x0 = 0, y0 = 0, x1 = costheta$Spring, y1 = sintheta$Spring, col = "red")
+# For angles of wind in summer, the length is reduced to 0.8.
+Arrows(x0 = 0, y0 = 0, x1 = 0.8*costheta$Summer, y1 = 0.8*sintheta$Summer, col = "blue") 
+Arrows(x0 = 0, y0 = 0, x1 = 0.6*costheta$Autumn, y1 = 0.6*sintheta$Autumn, col = "green") 
+Arrows(x0 = 0, y0 = 0, x1 = 0.4*costheta$Winter, y1 = 0.4*sintheta$Winter, col = "black")
+```
+
+In spring, the wind is mostly to west, east and northeast; in summer, the wind is mostly to west and east; in autumn and winter, wind is to all directions.
+
+\newpage
+
+**Problem 2**
+
+(a) read data.
+```{r, message=FALSE, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+bikes <- read.csv("C:/Users/fanne/Desktop/STAT579/bikes.csv", header = T)
+nrow(bikes)
+str(bikes)
+```
+
+There are 77186 trips. There are 6 factor variables and 2 others.
+
+(b) 
+    i. 
+    ```{r}
+    summary(bikes$Duration) 
+    775600 / (24 * 60 * 60)
+    ```
+    The longest rental is 9 days.
+    ii. The rental time varies a lot. There is a big spread.
+    iii. 
+    ```{r}
+    # count the number of trips whose duration was longer than one day
+    sum(bikes$Duration > (24 * 60 * 60)) 
+    ```
+    7 retals lasted for more than one day.
+    
+(c) 
+    i. 
+    ```{r}
+    nstart <- table(bikes$Start.Station) 
+    # find the index
+    which(nstart == max(nstart)) 
+    ```
+    
+    Most trips originated from Massachusetts Ave & Dupont Circle NW.
+    
+    ii. 
+    ```{r}
+    nend <- table(bikes$End.Station)
+    which(nend == max(nend))
+    ```
+    It is the same station Massachusetts Ave & Dupont Circle NW.
+    
+(d)
+
+```{r}
+# count the number of trips that bike was not returned
+sum(bikes$End.Station == "") 
+# check the duration of those trips
+bikes$Duration[bikes$End.Station == ""] 
+# set the duration to NA
+bikes$Duration[bikes$End.Station == ""] <- NA 
+```
+
+Among all 77186 trips only 1 bike rented was not returned, so it is very rare that bike do not get returned. The duration for that trip is 120 seconds.
+
+(e) 
+```{r, fig.align = 'center', fig.width= 20, fig.height= 9, tidy=TRUE, tidy.opts=list(width.cutoff=70)}
+wdorder <- c("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun")
+par(mfrow = c(1,2))
+# select the casual subscribers and plot the bar plot
+barplot(table(bikes$wday[bikes$Subscriber.Type == "Casual"])[wdorder], main = "Casual Subscirbers' Bike Rentals" )
+# select the registered subscribers and plot the bar plot
+barplot(table(bikes$wday[bikes$Subscriber.Type == "Registered"])[wdorder], main = "Registered Subscribers' Bike Rentals") 
+```
+
+The casual subscrubers tend to rent the bikes on weekends, and the registered subscribers tend to rent the bikes every day of the week, and are more likely to rent bikes on weekdays.
+
+\newpage
+
+**Problem 3**
+
+(a) read the data.
+```{r, tidy= TRUE}
+titanic <- read.table(file = "http://maitra.public.iastate.edu/stat579/datasets/titanic.txt", header = T, sep = ",")
+```
+(b) cross-classify the passengers.
+```{r}
+# cross-classify the gender and passenger class
+table(titanic$Sex, titanic$PClass)
+
+# cross-classify the gender and passenger class stratified by survival status
+table(titanic$Sex, titanic$PClass, titanic$Survived)
+
+```
+
+We can see there were more male passengers, especially in the 3rd class. most female passengers in the 1st and 2nd class survived. Most male passengers did not survive. Female passengers in 3rd class have higher survival rate than that of the male passengers in the 3rd class, but is much lower than that of the female passengers in 1st and 2nd class. The overall survival rate is much lower for the 3rd class passengers.
+
+(b) 
+```{r}
+F0 <- titanic$Age[titanic$Sex == "female" & titanic$Survived == 0]
+F1 <- titanic$Age[titanic$Sex == "female" & titanic$Survived == 1]
+M0 <- titanic$Age[titanic$Sex == "male" & titanic$Survived == 0] 
+M1 <- titanic$Age[titanic$Sex == "male" & titanic$Survived == 1]
+
+# mean age of female passengers that survived with NA value removed
+muF0 <- mean(F0, na.rm = T)
+muF0
+# mean age of female passengers that did not survive with NA value removed
+muF1 <- mean(F1, na.rm = T) 
+muF1
+# difference of mean age between female passengers that survived and that did not
+difff <- muF0 -muF1
+difff
+# number of female passengers that survived and whose age is avalaible
+fn0 <- sum(!is.na(F0))
+# number of female passengers that did not survive and whose age is avalaible
+fn1 <- sum(!is.na(F1))
+
+# standard error of mean age of female passengers that survived with NA value removed
+SEmuF0 <- sd(F0, na.rm = T) / sqrt(fn0)
+SEmuF0
+# standard error of mean age of female passengers that did not survive with NA value removed
+SEmuF1 <- sd(F1, na.rm = T) / sqrt(fn1)
+SEmuF1
+
+# mean age of female passengers that survived with NA value removed
+muM0 <- mean(M0, na.rm = T) 
+muM0
+# mean age of male passengers that did not survive with NA value removed
+muM1 <- mean(M1, na.rm = T)
+muM1
+# difference of mean age between male passengers that survived and that did not
+diffm <- muM0 - muM1
+diffm
+# number of male passengers that survived and whose age is avalaible
+mn0 <- sum(!is.na(F0))
+# number of male passengers that did not survive and whose age is avalaible
+mn1 <- sum(!is.na(F1))
+
+# standard error of mean age of female passengers that survived with NA value removed
+SEmuM0 <- sd(M0, na.rm = T) / sqrt(mn0)
+SEmuM0
+# standard error of mean age of female passengers that did not survive with NA value removed
+SEmuM1 <- sd(M1, na.rm = T) / sqrt(mn1)
+SEmuM1
+```
+
+We use t-test to check if there is significant difference in mean age between the female passengers that survived and that did not. We need to make an assumption that they are normally distributed, and ages are all independent. Denote the mean age of female passsengers that survived $\mu_{F_1}$, those that did not survive $\mu_{F_0}$, then
+
+$H_0: \, \mu_{F_1} = \mu_{F_0}$
+
+$H_a: \, \mu_{F_1} \neq \mu_{F_0}$
+```{r}
+t.test(F0[!is.na(F0)], F1[!is.na(F1)])
+```
+The p-value is very small, thus we decide to reject the mull hypothesis and conclude that there is difference in the mean age between the female passengers that did not survive and that did survive.
+
+We use t-test to check if there is significant difference in mean age between the male passengers that survived and that did not. We need to make an assumption that they are normally distributed, and ages are all independent. Denote the mean age of male passsengers that survived $\mu_{M_1}$, those that did not survive $\mu_{M_0}$, then
+
+$H_0: \, \mu_{M_1} = \mu_{M_0}$
+
+$H_a: \, \mu_{M_1} \neq \mu_{M_0}$
+```{r}
+t.test(M0[!is.na(M0)], M1[!is.na(M1)])
+```
+The p-value is very small, thus we decide to reject the mull hypothesis and conclude that there is difference in the mean age between the male passengers that did not survive and that did survive.
+

@@ -1,0 +1,196 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 542 Homework 4}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item \begin{enumerate}
+		\item 
+		\begin{align*}
+		M_{X}(t) &= E(\mathrm{e}^{Xt}) = \int_{0}^c \mathrm{e}^{xt} \frac{1}{c} \mathrm{d}x\\
+		&=\left.\frac{1}{c} \frac{1}{t} \mathrm{e}^{tx}\right|_{0}^c = \frac{1}{ct} (\mathrm{e}^{ct} - 1)\qquad t\in \mathbb{R}
+		\end{align*}
+
+
+	\item
+	\begin{align*}
+	M_{X}(t) & = E(\mathrm{e}^{Xt}) = \int_{0}^c \mathrm{e}^{xt} \frac{2 x}{c^2} \mathrm{d}x\\
+	&= \frac{2}{c^2} \int_0^{c} x \mathrm{d}\left( \frac{1}{t} \mathrm{e}^{xt}\right)\\
+	&= \frac{2}{c^2}\left[\left. x \frac{1}{t} \mathrm{e}^{xt}\right|_0^{c} - \int_{0}^c \frac{1}{t}\mathrm{e}^{xt}\mathrm{d}x\right]\\
+	&= \frac{2}{c^2}\left( \frac{c}{t} \mathrm{e}^{ct} - \frac{1}{t^2} \mathrm{e}^{ct} + \frac{1}{t^2}\right)\\
+	&= \frac{2}{ct}\mathrm{e}^{ct} - \frac{2}{c^2 t^2} \mathrm{e}^{ct} + \frac{2}{c^2 t^2}\qquad t\in \mathbb{R}
+	\end{align*}
+	
+	\item
+	\begin{align*}
+	M_X (t) &= E(\mathrm{e}^{Xt}) = \int_{-\infty}^{\infty} \mathrm{e}^{xt} \frac{1}{2 \beta} \mathrm{e}^{-|x - \alpha|/\beta} \mathrm{d}x\\
+	&= \frac{1}{2 \beta} \int_{-\infty}^\alpha \mathrm{e}^{xt} \mathrm{e}^{(x - \alpha)/ \beta} \mathrm{d}x + \frac{1}{2 \beta } \int_{\alpha}^\infty \mathrm{e}^{xt} \mathrm{e}^{-(x -\alpha)/\beta}\mathrm{d}x\\
+	 &= \frac{\mathrm{e}^{- \alpha / \beta}}{2 \beta} \int_{-\infty}^\alpha \mathrm{e}^{(t+ \frac{1}{\beta})x}\mathrm{d}x + \frac{\mathrm{e}^{\alpha / \beta}}{2 \beta}\int_\alpha^\infty \mathrm{e}^{(t - \frac{1}{\beta})x}\mathrm{d}x\\
+	 &= \frac{\mathrm{e}^{-\alpha / \beta}}{2 \beta} \frac{1}{t + \frac{1}{\beta}} \mathrm{e}^{(t + \frac{1}{\beta})\alpha} - \frac{\mathrm{e}^{\alpha / \beta}}{2 \beta} \frac{1}{t - \frac{1}{\beta}} \mathrm{e}^{(t - \frac{1}{\beta})\alpha}\\
+	 &= \frac{\mathrm{e}^{\alpha t}}{2 \beta t +2} - \frac{\mathrm{e}^{\alpha t}}{2 \beta t -2} = \frac{\mathrm{e}^{\alpha t}}{1 - \beta^2 t^2}\qquad t\in (- \frac{1}{\beta}, \frac{1}{\beta})
+	\end{align*}
+	
+		
+	\end{enumerate}
+
+	\item
+	For any mgf, $M_X(t) = E(\mathrm{e}^{Xt}) \Rightarrow M_{X}(0) = E(\mathrm{e}{0}) = E(1) = 1$. However, $\frac{t}{1 - t}|_{t = 0} = 0$. Thus it cannot be an mgf.
+
+	\item
+	\begin{enumerate}
+		\item \begin{align*}
+		M_X (t) &= E(\mathrm{e}^{Xt}) = \int_{-\infty}^{infty} \mathrm{e}^{tx} \mathrm{d}F_{X}(x)\\
+		& \geq \int_{a}^{\infty} \mathrm{e}^{tx} \mathrm{d}F_X(x)\\
+		&\geq \mathrm{e}^{at} \int_{a}^\infty \mathrm{d}F_X (x) \qquad (\textrm{when $t>0$, $\mathrm{e}^{xt}$ increases as $x$ increases})\\
+		&= \mathrm{e}^{at}P(X\geq a)
+		\end{align*}
+		Thus $P(X \geq a) \leq \mathrm{e}^{-at} M_X (t)$.
+		\item \begin{align*}
+		M_X (t) &= E(\mathrm{e}^{Xt}) = \int_{-\infty}^{infty} \mathrm{e}^{tx} \mathrm{d}F_{X}(x)\\
+		& \geq \int_{-\infty}^{a} \mathrm{e}^{tx} \mathrm{d}F_X(x)\\
+		&\geq \mathrm{e}^{at} \int_{-\infty}^a \mathrm{d}F_X (x) \qquad (\textrm{when $t<0$, $\mathrm{e}^{xt}$ decreases as $x$ increases})\\
+		&= \mathrm{e}^{at}P(X\leq a)
+		\end{align*}
+		Thus $P(X \leq a) \leq \mathrm{e}^{-at} M_X (t)$.
+
+		\item Add these conditions on $h(t, x)$: \begin{enumerate*}[label = (\roman*)]
+			\item $h(t, x) \geq 0$; 
+			\item $\{x | h(t,x) \geq 1\} \subset \{x| x\geq 0\}$ for all $t\geq 0$.
+		\end{enumerate*}
+
+		Then by Marcov's Inequality,
+		\[P(X \geq 0) \geq  P(h(t, X) \geq 1) \geq \frac{E(h(t, X))}{1} = E(h(t,X))\]
+		
+		
+	\end{enumerate}
+	\item
+	\begin{enumerate}
+		\item 
+	\begin{align*}
+	E(Y) &= E(\mathrm{e}^{Xr}) = \int_{-\infty}^\infty \mathrm{e}^{xr} \frac{1}{\sqrt{2 \pi}} \mathrm{e}^{- x^2 / 2} \mathrm{d}x\\
+	& = \frac{\mathrm{e}^{r^2 / 2}}{\sqrt{2 \pi}} \int_{-\infty}^\infty \mathrm{e}^{- \frac{1}{2}(x - r)^2} \mathrm{d}x \\
+	& = \frac{\mathrm{e}^{r^2 / 2}}{\sqrt{2 \pi}} \int_{-\infty}^\infty \mathrm{e}^{- \frac{1}{2}u^2} \mathrm{d}u \qquad (u = x-r) \\
+	& = \mathrm{e}^{r^2 /2}
+	\end{align*}
+
+	\item For any $t > 0$,
+	\begin{align*}
+	M_Y(t) &= E(\mathrm{e}^{Yt}) = \int_{-\infty}^{\infty} \mathrm{e}^{\mathrm{e}^x t} \frac{1}{\sqrt{2 \pi}}\mathrm{e}^{-x^2 / 2} \mathrm{d}x\\
+	& = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} \mathrm{e}^{t \mathrm{e}^x - x^2 / 2} \mathrm{d}x\\
+	\intertext{Because $\frac{\mathrm{e}^x}{x^2} \to \infty$ as $x \to \infty$, for any $t>0$, there would be an constant $x_t > 0$ such that $\frac{\mathrm{e}^x}{x^2} > \frac{1}{t}$. Thus for any $x> x_t$, we have $t \mathrm{e}^{x} - x^2/ 2 > t \frac{1}{t} x^2 - x^2 / 2 = x^2 /2$. So}
+	&\geq \frac{1}{\sqrt{2 \pi}} \int_{x_t}^{\infty} \mathrm{e}^{x^2 / 2} \mathrm{d}x = \infty
+	\end{align*}
+Hence, we can not find a interval containing 0 such that $E(\mathrm{e}^{Yt})$ exists. Thus $M_{Y}(t)$ dose not exist.
+	
+	
+	\end{enumerate}
+
+	\item
+	Let $g(x) = \mathrm{e}^{tx}.$ We have $g''(x) = t^2 \mathrm{e}^{tx} \geq 0$, thus $g(x)$ is a convex function. So by Jensen's Inequality,
+	\[E(g(X)) \geq g(E(X)) \Rightarrow E(\mathrm{e}^{Xt}) \geq \mathrm{e}^{\mu t} \Rightarrow M_X(t) \geq \mathrm{e}^{\mu t}\]
+	
+\item
+\begin{align*}
+M_{X}(t) &= \sum_{x = 1}^\infty \mathrm{e}^{tx} p ( 1- p )^{1 - x}\\
+& = p \mathrm{e}^{t} \sum_{x = 1}^\infty \mathrm{e}^{t(x-1)} (1- p)^{x-1} \\
+& =  p \mathrm{e}^{t} \sum_{u = 0}^\infty [\mathrm{e}^{t} (1- p)]^{u} = \frac{p \mathrm{e}^t}{1 - \mathrm{e}^{t}(1 - p)}\qquad |\mathrm{e}^t(1-p)| <1 \Rightarrow t< -\log(1-p)\\
+M'_{X}(t) &= p\frac{\mathrm{e}^{t}(1- \mathrm{e}^t(1-p)) - \mathrm{e}^t (- (1-p)\mathrm{e}^t)}{(1- \mathrm{e}^t( 1- p))^2} \\
+&= \frac{p \mathrm{e}^t}{(1- \mathrm{e}^t (1-p))^2}\\
+M''_X(t) &= \left(\frac{p \mathrm{e}^t}{(1- \mathrm{e}^t (1-p))^2}\right)' \\
+&= p \frac{\mathrm{e}^t (1 - \mathrm{e}^2 (1 - p))^2 - \mathrm{e}^t \cdot 2(1 - \mathrm{e}^t (1 - p))(-(1 - p) \mathrm{e}^t)}{(1 - \mathrm{e}^t (1-p))^4} \\
+&= \frac{p \mathrm{e}^t (1 + \mathrm{e}^t(1-p))}{(1 - \mathrm{e}^t(1 - p))^3}
+\end{align*}
+
+Thus
+\[E(X) = M'_X (0) = \frac{1}{p},\, E(X^2)=M''_X (0) = \frac{2 - p}{p^2},\, Var(X) = E(X^2) - (E(X))^2 = \frac{1 - p}{p^2}\]
+
+
+\item
+\begin{enumerate}
+	\item We need
+	\[P = \frac{\binom{95}{K} \binom{5}{0}}{\binom{100}{K}} \leq 1\]
+When $K = 36$, $P = 0.1013$; when $K = 37$, $P = 0.0934$. Thus $K = 37$ is the smallest $K$.
+
+\item
+We need 
+\[ P = \binom{K}{5}(0.95)^5 (0.05)^0 \leq 1\]
+When $K = 44$, $P = 0.1047$; when $K = 45$, $P = 0.0994$. Thus $K = 45$ is the smallest $K$.
+
+\item
+\begin{align*}
+& P(\{\textrm{the manufactuer accepts the lot with 5 defective parts}\}) = \frac{\binom{95}{10} \binom{5}{0}}{\binom{100}{10}} = 0.584 \\
+& P(\{\textrm{the manufactuer accepts the lot with 10 defective parts}\}) = \frac{\binom{90}{10} \binom{5}{0}}{\binom{100}{10}} = 0.330 \\
+& P(\{\textrm{the manufactuer accepts the lot with 15 defective parts}\}) = \frac{\binom{85}{10} \binom{5}{0}}{\binom{100}{10}} = 0.181
+\end{align*}
+
+\end{enumerate}
+
+\item
+\begin{enumerate}
+	\item 
+For $s < c$, $P(S = s) = P(X = s) = f(s)$. For $s = c$, $P(S = s) = f(c) + P(X > c ) = f(c) + 1 - P(X \leq c) = f(c) + 1 - F(c)$.
+Thus
+\[f_S (x) = 
+\begin{cases}
+f(x) & x \in \{0,1,2,\cdots , c -1\}\\
+f(c) + 1 - F(c) & x\in \{c\}\\
+0 & \mathrm{otherwise}
+\end{cases}
+\]
+Then the expectation
+\[E(S = \sum_{x = 0}^{c - 1} x f(x) + c(f(c) + 1 - F(c)) = \sum_{x = 0}^c x f(x) + c(1 - F(c))\]
+
+\item
+$Y = d_2 S - d_1 c$. Then
+\[E(Y) = d_2 E(S) - d_1 c = d_2 \sum_{x = 0}^c xf(x) - d_2 c F(c) + (d_2 - d_1)c\]
+
+\item We need the $E(Y)$ be bigger for $c$ than for $c+1$, so
+\begin{align*}
+ &d_2 \sum_{x = 0}^{c} xf(x) - d_2 c F(c) + (d_2 - d_1)c \geq d_2 \sum_{x = 0}^{c+1} xf(x) - d_2 (c+1) F(c+1) + (d_2 - d_1)(c+1)\\
+ \Rightarrow& d_2 (c+1)F(c+1) - d_2 c F(c) \geq d_2 (c+1)f(c+1) + (d_2 -  d_1)\\
+ \Rightarrow& d_2 (c+1)F(c+1) - d_2 c F(c) - d_2 (c+1)F(c+1) + d_2 (c+1)F(c) \geq d_2 - d_1\\
+ \Rightarrow& d_2 F(c) \geq d_2 - d_1\\
+ \Rightarrow & F(c) \geq \frac{d_2 - d_1}{d_2}
+\end{align*}
+Hence, $c$ should be the smallest integer satistiying the inequality above.
+
+\end{enumerate}
+
+
+ 	\end{enumerate}
+
+
+	
+	
+	
+	\end{document}

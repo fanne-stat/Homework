@@ -1,0 +1,247 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 542 Homework 8}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	\begin{enumerate}
+		\item 
+		\begin{align*}
+		f(x,y) &= f(y|x) f(x)\\
+		&= \frac{1}{\sqrt{2 \pi}} \mathrm{e}^{- \frac{(y - x)^2}{2}} \cdot \frac{1}{\sqrt{2 \pi}} \mathrm{e}^{- \frac{x^2}{2}}\\
+		& = \frac{1}{2 \pi} \mathrm{e}^{- \frac{(y - x)^2 +x^2}{2}}
+		\end{align*}
+		
+		\item 
+		\begin{align*}
+		f(y) &= \int_{-\infty}^{\infty} f(x,y) \mathrm{d}x\\
+		& = \int_{-\infty}^{\infty} \frac{1}{2 \pi} \mathrm{e}^{- \frac{(y - x)^2 + x^2}{2}} \mathrm{d}x\\
+		& = \int_{-\infty}^{\infty} \frac{1}{2 \pi} \mathrm{e}^{- \frac{2 x^2 - 2 xy + y^2}{2}} \mathrm{d}x\\
+		& = \int_{-\infty}^{\infty} \frac{1}{2 \pi} \mathrm{e}^{- \frac{(x - \frac{1}{2} y)^2 + \frac{1}{2}y^2 }{2}} \mathrm{d}x\\
+		& = \frac{\sqrt{1/2}}{\sqrt{2 \pi}} \mathrm{e}^{\frac{1}{4} y^2} \int_{-\infty}^{\infty} \frac{1}{\sqrt{2 \pi} \sqrt{\frac{1}{2}}} \mathrm{e}^{- \frac{(x - \frac{1}{2} y)^2}{2 (\sqrt{\frac{1}{2}})^2}} \mathrm{d}x \\
+		& = \frac{1}{2 \sqrt{\pi}} \mathrm{e}^{- \frac{1}{4}y^2}
+		\end{align*}
+		Thus $Y \sim N(0, 2)$
+
+		\item 
+		\begin{align*}
+		f(w) & = \frac{1}{\sqrt{2 \pi}\sqrt{2}} \mathrm{e}^{-\frac{w^2}{2 (\sqrt{2})^2}}\\
+		f(v|w) & = \frac{f(v,w)}{f(w)}\\
+		& = \frac{1}{2 \pi} \mathrm{e}^{\frac{(w - v)^2 + v^2}{2}} \bigg/ \frac{1}{2 \sqrt{\pi}} \mathrm{e}^{\frac{w^2}{4}}\\
+		& = \frac{1}{\sqrt{\pi}} \mathrm{e}^{\frac{2(w - v)^2 + 2v^2 - w^2}{4}}\\
+		& = \frac{1}{\sqrt{\pi}} \mathrm{e}^{(v - \frac{1}{2} w)^2}\\
+		& = \frac{1}{\sqrt{2 \pi} \sqrt{\frac{1}{2}}} \mathrm{e}^{\frac{(v - \frac{1}{2}w )^2}{2 \cdot \frac{1}{2}}}
+		\end{align*}
+		Thus $V|W = w \sim N( \frac{1}{2}w , \frac{1}{2})$
+		
+	\end{enumerate}
+
+	\item 
+	$D \sim unif(8,8.5),\, T \sim unif(2/3, 5/6)$. $f(d,t) = f_D (d) f_T (t) = \frac{1}{8.5 - 8} \frac{1}{5/6 - 2/3} = 12$. Thus
+	\begin{align*}
+	P(D+T \leq 9) = \int_{2/3}^{5/6} \int_{8}^{9-t} 12 \mathrm{d}d \mathrm{d}t = 1/2
+	\end{align*}
+
+	\item
+	\begin{enumerate}
+	 	\item 
+	$P(X = 1) = 1/4, \, P(X = 2) = 1/2,\, P(X = 3) = 1/4,\, P(Y = 2) = 1/3,\, P(Y = 3) = 1/3,\, P(Y = 4) = 1/3$. Thus $P(X = 1) P(Y = 4) = 1/4 \times 1/3 = 1/12 \neq P(X = 1, Y = 4) = 0$. Hence, $X,\, Y$ are dependent.
+
+	\item \ 
+
+\begin{center}
+	\begin{tabular}{cc|ccc}
+                     &   & \multicolumn{3}{c}{$U$} \\
+                     &   & 1      & 2     & 3      \\
+                     \hline
+\multirow{3}{*}{$V$} & 2 & 1/12   & 1/6   & 1/12   \\
+                     & 3 & 1/12   & 1/6   & 1/12   \\
+                     & 4 & 1/12   & 1/6   & 1/6   
+\end{tabular}
+	\end{center}
+	 \end{enumerate}
+
+	 \item 
+	 $X \sim Geometric(p),\, Y \sim Geometric(p)$. 
+
+	 When $v \geq 0$, $X - Y \geq 0 \Rightarrow U = \min (X, Y) = Y$. Thus
+	 \begin{align*}
+	 P(U = u, V = v) &= P(Y = u, X - Y = v) \\
+	 & = P(X = u+v, Y = u) = p (1 - p)^{u + v - 1} p (1 - p)^{u-1} \\
+	 & = p^2 (1- p)^{2u + v - 2} \qquad u = 1, 2, \cdots,\, v = 0, 1, 2, \cdots
+	 \end{align*}
+
+	 When $v < 0$, $X - Y <0 \Rightarrow U = \min(X,Y) = X$. Thus 
+	 \begin{align*}
+	 P(U = u, V = v) &= P(X = u, X- Y = v)\\
+	 & = P(X = u, Y = u - v)\\
+	 & = p(1- p)^{u-1} p (1- p)^{u - v - 1}\\
+	 & = p^2 (1- p)^{2u - v - 2} \qquad u = 1, 2, \cdots, \, v = -1, -2, \cdots
+	 \end{align*}
+
+	 Thus
+	 \[f(u,v) = p^2(1 - p)^{2u + |v| - 2},\, u = 1,2,\cdots,\, v = 0, \pm 1, \pm 2,\cdots \]
+
+	 \item 
+	 \begin{align*}
+	 P(X + Y = k) &= \sum_{i=1}^{k-1}P(X = i, Y = k - i) \\
+	 & = \sum_{i=1}^{k-1} P(X = i) P(Y = k-i)\\
+	 & = \sum_{i=1}^{k-1} p(1-p)^{i-1} p(1-p)^{k-i-1}\\
+	 & = \sum_{i=1}^{k-1} p^2 (1- p)^{k-2}\\
+	 &  =(k-1)p^2 (1-p)^{k-2}
+	 \end{align*}
+	 \begin{align*}
+	 P(X  =x | X+ Y = k) & = \frac{P(X  =x , X+Y = k)}{P(X+Y  =k)}\\
+	 & = \frac{P(X = x, Y = k - x)}{P(X+Y = k)}\\
+	 & = \frac{p(1-p)^{x - 1} p (1-p)^{k-x-1}} {(k-1)p^2 (1-p)^{k-2}}\\
+	 & = \frac{p^2 (1-p)^{k-2}}{(k-1)p^2 (1-p)^{k-2}} \\
+	 & = \frac{1}{k-1} \qquad x = 1,2,\cdots,\, k-1
+	 \end{align*}
+
+	 \item 
+	 From 
+	 \[\begin{cases}
+	 	u = x + y\\
+	 	v = x - y
+	 \end{cases}\]
+	 we have 
+	 \[\begin{cases}
+	 	x = \frac{1}{2} (u +v)\\
+	 	y = \frac{1}{2} (u - v)
+	 \end{cases}\]
+	 Thus 
+	 \[\det J = \begin{vmatrix}
+	 	\frac{1}{2} & \frac{1}{2}\\
+	 	\frac{1}{2} & -\frac{1}{2}
+	 \end{vmatrix}
+	 = -\frac{1}{2}\]
+
+	 We also have
+	 \[f_{X,Y}(x,y) = f_X (x) f_{Y}(y) = \frac{1}{\sqrt{2 \pi}\sigma}\mathrm{e}^{-\frac{(x - \mu)^2}{2 \sigma^2}} \frac{1}{\sqrt{2 \pi}\sigma}\mathrm{e}^{-\frac{(y - \gamma)^2}{2 \sigma^2}} = \frac{1}{2 \pi \sigma^2} \mathrm{e}^{-\frac{(x - \mu)^2 + (y - \gamma)^2}{2 \sigma^2}}\]
+
+	 \begin{align*}
+	 f_{U,V}(u,v) &= f_{X,Y}(\frac{1}{2}(u+v), \frac{1}{2} (u-v))|\det J|\\
+	 & =  \frac{1}{2} \frac{1}{2 \pi \sigma^2} \mathrm{e}^{- \frac{(\frac{1}{2}(u+v) - \mu)^2 + (\frac{1}{2}(u-v) - \gamma)^2}{2 \sigma^2}}\\
+	 & = \frac{1}{4 \pi \sigma^2} \mathrm{e}^{- \frac{\frac{1}{2}u^2 + \frac{1}{2}v^2 - \mu(u + v) - \gamma(u - v) + \mu^2 + \gamma^2}{2 \sigma^2}}\\
+	 & = \frac{1}{4 \pi \sigma^2} \mathrm{e}^{- \frac{(u - (\mu+ \gamma))^2 + (v - (\mu - \gamma))^2}{4 \sigma^2}}\\
+	 & = \frac{1}{\sqrt{2 \pi} \sqrt{2}\sigma} \mathrm{e}^{- \frac{(u - (\mu + \gamma))^2}{2 (\sqrt{2}\sigma)^2}} \cdot \frac{1}{\sqrt{2 \pi} \sqrt{2}\sigma} \mathrm{e}^{- \frac{(v - (\mu - \gamma))^2}{2 (\sqrt{2}\sigma)^2}}\\
+	 & = g(u)f(v) = f_U (u) \cdot f_{V}(v)
+	 \end{align*}
+
+	 $U,V$ are independent, and $U \sim N(\mu+\gamma, 2 \sigma^2),\, V \sim N(\mu - \gamma, 2 \sigma^2)$
+
+
+	 \item 
+	 \begin{align*}
+	 Cov(XY, Y) & = E(XY^2) - E(XY)E(Y)\\
+	 & = E(X)E(Y^2) - E(X)(E(Y))^2\\
+	 & = \mu_X (\sigma_Y^2 + \mu_Y^2) - \mu_X \mu_Y^2\\
+	 & = \mu_X \sigma_Y^2
+	 \end{align*}
+
+	 \begin{align*}
+	 Var(XY) & = E(X^2 Y^2) - (E(XY))^2\\
+	 & = E(X^2)E(Y^2) - (E(X) E(Y))^2\\
+	 & = (\sigma_X^2 + \mu_X^2)(\sigma_Y^2 + \mu_{Y}^2) - \mu_X^2 \mu_Y^2\\
+	 & = \sigma_X^2 \mu_Y^2 + \mu_X^2 \sigma_Y^2 + \sigma_X^2 \sigma_Y^2
+	 \end{align*}
+
+	 \begin{align*}
+	 Corr(X,Y) & = \frac{Cov(XY,Y)}{\sqrt{Var(XY)}\sqrt{Var(Y)}}\\
+	 & = \frac{\mu_X \sigma_Y^2}{\sqrt{\sigma_X^2 \mu_Y^2 + \mu_X^2 \sigma_Y^2 + \sigma_X^2 \sigma_Y^2} \sigma_Y} \\
+	 & = \frac{\mu_X \sigma_Y}{\sqrt{\sigma_X^2 \mu_Y^2 + \mu_X^2 \sigma_Y^2 + \sigma_X^2 \sigma_Y^2}} 
+	 \end{align*}
+
+
+	 \item 
+	 \begin{enumerate}
+	 	\item 
+	 	 No. With different $X_1$ and $X_3$, according to the support of $(X_1, X_2, X_3)$, $X_2$ has different support.
+
+	 	 \item 
+	 	 \[f_{X_2} (x_2) = \int_{x_2}^1 \int_{0}^{x_2} f(x_1, x_2, x_3) \mathrm{d}x_1 \mathrm{d}x_3 = 6 x_2 (1 - x_2) = \frac{1}{B(2,2)} x_2^{2 - 1} (1 - x_2)^{2-1}\]
+	 	 Thus $X_2 \sim Beta(2,2)$
+
+	 	 \item 
+	 	 Under the condition $X_2 = x_2$, the support of $(X_1, X_2)$ is a rectangle $(0, x_2)\times (x_2 ,1)$.
+	 	 \[f(x_1, x_2 |x_3) = \frac{f(x_1, x_2, x_3)}{f_{X_2}(x_2)} = \frac{6}{6x_2 (1 - x_2)} \]
+	 	
+
+	 	 \item 
+	 	 Given $X_2 = x_2$, the support of $(X_1, X_2)$ is a rectangle $(0, x_2)\times (x_2 ,1)$, and the joint pdf can be written as $g(x_1)h(x_3)$ when we view $x_2$ as a constant.
+	 	 \[f(x_1, x_2 |x_3) =\frac{1}{x_2} \frac{1}{1 - x_2} = f(x_1 | x_2) f(x_3 | x_2)\]
+	 	 Hence $X_1$ and $X_3$ are independent conditioning on $X_2 = x_2$. And $X_1 | X_2 = x_2 \sim unif(0, x_2),\, X_3 | X_2 = x_2 \sim unif(x_2, 1)$.
+	 	 \item 
+	 	 $X_1$ and $X_3$ are independent given $X_2 = x_2$, thus 
+	 	 \begin{align*}
+	 	 Cov(X_1|X_2 = x_2, X_3|X_2 = x_2) &= E(X_1 X_3 | X_2 = x_2) - E(X_1|X_2 = x_2) E(X_3 | X_2 = x_2) \\
+	 	 & = E(X_1 | X_2 = x_2) E(X_3 | X_2 = x_2) - E(X_1 | X_2 = x_2) E(X_3 | X_2 = x_2)\\
+	 	 & = 0
+	 	 \end{align*}
+	 	 
+	 	  
+
+	 \end{enumerate}
+
+	 \item 
+	 $X$ and $Y$ are independent, thus $f(x,y) = f_X (x) f_{Y}(y) = 1$.
+	 \[F_Z (z) = P(Z \leq z) = P(\sqrt{X+Y} \leq z) = P(X+Y \leq z^2) = \int_{0}^{z^2} \int_{0}^{z^2 - x} \mathrm{d}y \mathrm{d}x = \frac{1}{2} z^4\]
+
+	 Hence $f_Z (z) = \frac{\mathrm{d}}{\mathrm{d}z} F_Z (z) = 2 z^3,\, z > 0$.
+	 
+	
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	  
+	
+	
+
+
+ 	\end{enumerate}
+
+
+	
+	
+	
+	\end{document}

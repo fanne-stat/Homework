@@ -1,0 +1,153 @@
+---
+title: "STAT 579 Homework 5"
+author: "Yifan Zhu"
+date: "October 13, 2016"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, tidy = TRUE)
+```
+
+**Problem 1**
+
+(a) read data
+```{r}
+diurnaldata <- read.csv(file = "http://maitra.public.iastate.edu/stat579/datasets/diurnaldata.csv", header = T)
+```
+
+(b) mean at each time point
+```{r}
+# create array of dimension 22810*11*2
+diurnal.array <- as.matrix(diurnaldata[,-1])
+dim(diurnal.array) <- c(22810, 11, 2)
+diurnal.mean <- apply(X = diurnal.array, MARGIN = c(1,2), FUN = mean)
+```
+
+(c) standardization
+    i.
+    ```{r}
+    # calculate the mean of the mean abundance level over all time-points for each gene
+    diurnal.mean.mean <- apply(X = diurnal.mean, MARGIN = 1, FUN = mean)
+    ```
+
+    ii.
+    ```{r}
+    # replicate 11 times
+    diurnal.mean.mean.rep <- rep(diurnal.mean.mean, 11)
+    dim(diurnal.mean.mean.rep) <- c(22810, 11)
+    
+    # eliminate the mean
+    diurnal.mean.mean.minusmean <- diurnal.mean - diurnal.mean.mean.rep
+    ```
+    iii.
+    ```{r}
+    #  calculate the standard deviation of each row of the matrix
+    diurnal.mean.sd <- apply(X = diurnal.mean, MARGIN = 1, FUN = sd)
+    
+    # replicate the standard deviation
+    diurnal.mean.sd.rep <- rep(diurnal.mean.sd, 11)
+    dim(diurnal.mean.sd.rep) <- c(22810, 11) 
+    
+    #standardize
+    diurnal.mean.standardized <- diurnal.mean.mean.minusmean / diurnal.mean.sd.rep
+    ```
+    
+(d) 
+```{r}
+micromean <- matrix(scan(file = "http://maitra.public.iastate.edu/stat579/datasets/micromeans.dat"), ncol = 11, byrow = T)
+
+# calculate mean for each row and repliacate
+micromean.mean <- apply(X = micromean, MARGIN = 1, FUN = mean)
+micromean.mean.rep <- rep(micromean.mean, 11)
+dim(micromean.mean.rep) <- c(20,11)
+
+# calculate standard deviation for each row and replicate
+micromean.sd <- apply(X = micromean, MARGIN = 1, FUN = sd)
+micromean.sd.rep <- rep(micromean.sd, 11)
+dim(micromean.sd.rep) <- c(20,11)
+
+# standardization
+micromean.standardized <- (micromean - micromean.mean.rep) / micromean.sd.rep
+```
+
+(e)
+```{r, fig.align='center', fig.width=5, fig.height=5}
+diurnal.mean.rep <- rep(diurnal.mean.standardized, 20)
+dim(diurnal.mean.rep) <- c(22810, 11, 20)
+
+micromean.rep <- rep(t(micromean.standardized), each = 22810)
+dim(micromean.rep) <- c(22810, 11, 20)
+
+# calculate the distance
+distance <- sqrt(apply((diurnal.mean.rep - micromean.rep)^2, MARGIN = c(1,3), FUN = sum))
+
+min.id <- apply(X = distance, MARGIN = 1, FUN = which.min)
+
+# tabulate the frequency
+table(min.id)
+
+# piechart
+pie(table(min.id))
+
+```
+
+\newpage
+
+**Problem 2**
+
+(a)
+```{r}
+tapply(X = state.x77[,"Income"], INDEX = state.region, FUN = mean)
+
+aggregate(x = state.x77[,"Income"], by = list(state.region), FUN = mean)
+```
+
+(b)
+```{r}
+tapply(X = state.x77[,"Illiteracy"], INDEX = state.division, FUN = max)
+
+aggregate(x = state.x77[,"Illiteracy"], by = list(state.division), FUN = max)
+```
+
+(c)
+```{r}
+count <- rep(1, nrow(state.x77))
+
+tapply(X = count, INDEX = state.region, FUN = sum)
+
+aggregate(x = count, by = list(state.region), FUN = sum)
+```
+
+(d)
+```{r}
+names <- rownames(state.x77)
+
+tapply(X = names, INDEX = state.division, FUN = '[')
+
+aggregate(names ~ state.division, data = state.x77, FUN = '[')
+```
+
+(e)
+```{r}
+state.size <- cut(x = state.x77[, "Population"], breaks = c(0, 2000, 10000, Inf), labels = c("Small", "Medium", "Large"))
+
+tapply(X = state.x77[, "HS Grad"], INDEX = list(state.region, state.size), FUN = median)
+
+aggregate(state.x77[, "HS Grad"] ~ state.region + state.size, data = state.x77, FUN = median)
+```
+
+\newpage
+
+**Problem 3**
+
+(a) 
+```{r}
+apply(X = mtcars, MARGIN = 2, FUN = mad)
+```
+
+(b)
+```{r}
+mtcar.median <- apply(mtcars, MARGIN = 2, FUN = median)
+1.4826 * apply(abs(sweep(mtcars, MARGIN = 2, mtcar.median)), MARGIN = 2, FUN = median)
+```

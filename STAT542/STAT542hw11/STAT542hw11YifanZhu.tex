@@ -1,0 +1,176 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+	\newcommand{\dto}{\overset{d}{\to}}
+	\newcommand{\pto}{\overset{p}{\to}}
+	
+	\title{STAT 542 Homework 11}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	\begin{enumerate}
+		\item 
+		Since $X_i \sim Bernolli(p_i)$, then $E(X_i - p_i) = 0$ and $Var(X_i - p_i) = Var(X_i) = p_i(1 - p_i)\leq \frac{1}{4}$.
+	\[E(Y_n) = E(\frac{1}{n} \sum_{i=1}^n (X_i - p_i)) = 0\]
+	\[Var(Y_n) = \frac{1}{n^2} \sum_{i=1}^n Var(X_i - p_i) = \frac{\sum_{i=1}^n p_i (1 - p_i)}{n^2} \leq \frac{1}{4n}\]
+	Thus
+	\[E(Y_n^2) = Var(Y_n) + (E(Y_n))^2 = Var(Y_n) \leq \frac{1}{4n}\]
+
+	By Markov's Inequality,
+	\begin{align*}
+	P(|Y_n| > \epsilon) & = P(Y_n^2 > \epsilon^2)\\
+	& \leq \frac{E(Y_n^2)}{\epsilon^2}\\
+	& \leq \frac{1}{4 n \epsilon^2}
+	\end{align*}
+	Hence $P(|Y_n |> \epsilon) \to 0 $ as $n\to \infty$, $Y_n \pto 0$.
+
+	\item 
+	For any $\epsilon>0$,  $Z_n \pto a,\, W_n \pto b \Rightarrow P(|Z_n  -a| > \epsilon / 2) \to 0 $ and $P(|W_n - b|> \epsilon/2)\to 0$ as $n\to \infty$. 
+	Also, $|Z_n + W_n - (a+b)| = |(Z_n - a) + (W_n - b)| \leq |Z_n - a| + |W_n - b|$ . Thus $|Z_n + W_n - (a+b)| > \epsilon \Rightarrow |Z_n - a| + |W_n - b| > \epsilon \Rightarrow |Z_n - a| > \epsilon/2$ or $|W_n - b| > \epsilon/2$. Hence we have
+	\[P(|Z_n + W_n - (a+b)| > \epsilon) \leq P(\{|Z_n - a| > \epsilon/2 \}\cup\{|W_n - b| > \epsilon/2\} ) \leq P(|Z_n - a|> \epsilon/2) + P(|W_n - b| > \epsilon/2)\] 
+	Hence $P(|Z_n + W_n - (a+b)| > \epsilon) \to 0$ as $n\to \infty$, $Z_n + W_n \pto a+b$.
+
+
+	\item 
+	For $p_i = \frac{i}{n}$,
+	\begin{align*}
+	Y_n & = \frac{1}{n}\sum_{i=1}^n (X_i - p_i)\\
+	& = \frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n} \sum_{i=1}^n p_i\\
+	& = \frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n}\sum_{i=1}^n \frac{i}{n}\\
+	& = \frac{1}{n} \sum_{i=1}^n X_i - \frac{1}{n}\frac{n(n-1)}{2n}\\
+	\end{align*}
+
+	Thus $\frac{1}{n}\sum_{i=1}^n X_i = Y_n + \frac{n-1}{2n}$. As $Y_n \pto 0,\, \frac{n-1}{2n}\pto \frac{1}{2}$, then
+	\[\frac{1}{n} \sum_{i=1}^n X_i \pto \frac{1}{2}\]
+	
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item 
+		\[F(x) = \int_{1}^{x} f(t)\mathrm{d}t = \int_{1}^x t^{-2}\mathrm{d}t = 1 - \frac{1}{x},\, x > 1\]
+
+		\item
+		\begin{align*}
+		F_{X_{(n)}}(y) & = P(X_{(n)} \leq y)\\
+		& = \prod_{i=1}^n P(X_i \leq y)\\
+		& = (1 - \frac{1}{y})^n,\, y >1
+		\end{align*}
+
+		If there exists a random variable $Y$ such that $X_{(n)}\to Y$, then for any continuous point $y$ of $F_{Y}$, we have
+		\[F_Y (y) = \lim_{n\to\infty} F_{X_{(n)}} (y) = \lim_{n\to\infty} (1 - \frac{1}{y})^n = 0. \]
+
+		It conflicts with the fact that any random variable $Y$ will always have a continuous point $y$ in its cdf for which $F_Y (y) > 0$. Thus $X_{(n)}$ does not have a limiting distribution.
+
+
+
+		\item 
+		\begin{align*}
+		F_{X_{(n)}/n} (y) & = P(\frac{X_{(n)}}{n} \leq y)\\
+		& = P(X_{(n)} \leq ny)\\
+		& = (1 - \frac{1}{ny})^n\to \mathrm{e}^{-\frac{1}{y}} ,\quad n\to \infty 
+		\end{align*}
+		
+		Hence the liminting distribution is $f(y) = \mathrm{e}^{- \frac{1}{y}},\, y > 0$, $\frac{X_{(n)}}{n} \dto InverseExponential(1)$
+		
+	\end{enumerate}
+
+	\item 
+	Let $Y_n = \sum_{i=1}^n (Z_i + \frac{1}{n})/{\sqrt{n}}$,
+	\begin{align*}
+	M_{Y_n} (t) & = E(\mathrm{e}^{t \sum_{i=1}^n (Z_i + \frac{1}{n})/{\sqrt{n}}})\\
+	& = E(\mathrm{e}^{\frac{t}{\sqrt{n}} \sum_{i=1}^n Z_i + \frac{t}{\sqrt{n}}})\\
+	& = \prod_{i=1}^n E(\mathrm{e}^{\frac{t}{\sqrt{n}}Z_i}) \mathrm{e}^{\frac{t}{\sqrt{n}}}\\
+	& = (\mathrm{e}^{\frac{1}{2} (\frac{t}{\sqrt{n}})^2})^n \mathrm{e}^{\frac{t}{\sqrt{n}}}\\
+	& = \mathrm{e}^{\frac{1}{2} t^2} \mathrm{e}^{\frac{t}{\sqrt{n}}}
+	\end{align*}
+
+	$M_{Y_n}(t) \to \mathrm{e}^{\frac{1}{2}t^2}$, thus $Y_n = \sum_{i=1}^n (Z_i + \frac{1}{n})/{\sqrt{n}} \dto N(0,1)$.
+	
+	
+	\item 
+	From $Y_n \pto c$ we know $Y_n \dto c$. 
+
+	On the other hand, if $Y_n \dto c$, then the limiting distribution cdf will be $F(y) = \begin{cases}
+		1, & y \geq c\\
+		0. & y < c
+	\end{cases} $. Hence for any $\epsilon >0$, $c+\epsilon$ and $c - \epsilon$ are continuous points, and then
+	\begin{align*}
+	P(|Y_n - c|> \epsilon) & = P(\{Y_n < c - \epsilon\} \cup \{ Y_n >  c+ \epsilon\})\\
+	& \leq P(Y_n \leq c- \epsilon) + P(Y_n > c+\epsilon)\\
+	& = F_{Y_n}(c-\epsilon) + 1-  F_{Y_n}(c + \epsilon) \to F(c- \epsilon) + 1- F(c + \epsilon) = 0, \, n\to \infty
+	\end{align*}
+
+	Hence $\lim_{n\to \infty} P(|Y_n - c| > \epsilon) = 0$, thus $Y_n \pto c$.
+	
+	
+	
+	\item 
+	$X_i \sim Beta(1,\beta) \Rightarrow f_{X_1} (x) = \beta (1 - x)^{\beta - 1}, F_{X_1}(x) = 1 - (1 - x)^\beta$
+
+	When $\nu = \frac{1}{\beta}$, 
+	\begin{align*}
+	P(n^\nu (1 - X_{(n)}) > t) &= P(X_{(n)} < 1 - \frac{t}{n^\nu})\\
+	& = (F_{X_1} (1 - \frac{t}{n^\nu}))^n\\
+	& = (1 - (1 - 1 + \frac{t}{n^\nu})^\beta)^n\\
+	& = (1 - \frac{t^\beta}{n^{\nu \beta}})^n\\
+	& = (1 - \frac{t^\beta}{n})^n \to \mathrm{e}^{-t^\beta} 
+	\end{align*}
+
+	Hence
+	\[P(n^\nu (1 - X_{(n)}) \leq t) \to 1 - \mathrm{e}^{-t^\beta}\]
+	
+	
+	\item 
+	We know that $Y_n \overset{d}{=} \sum_{i = 1}^n X_i$ where $X_i \sim \chi_1^2$. $E(X_i) = 1,\, Var(X_i) = 2$.
+
+	Then $\frac{Y_n - n}{\sqrt{2n}} {=} \frac{\sqrt{n} \frac{Y_n}{n} - 1}{\sqrt{2}} \overset{d}{=} \frac{\sqrt{n} (\frac{\sum_{i=1}^n X_i}{n} - 1)}{\sqrt{2}} = \frac{\sqrt{n} (\bar{X}_n - 1)}{\sqrt{2}} \dto N(0,1)$ . (By CLT) Hence $\frac{Y_n - n}{\sqrt{2n}} \dto N(0,1)$
+
+
+	\item 
+	\begin{enumerate}
+		\item 
+		$g(x) = \log x + x^2$ is a continuous function for $x > 1$. By WLLN, $\bar{X}_n \pto \mu$, then by continuous mapping, 
+		\[g(\bar{X}_n) = \log \bar{X}_n + \bar{X}_n^2 \pto \log \mu + \mu^2\] 
+
+		\item 
+		By CLT, $\sqrt{n} (\bar{X}_n - \mu) \dto N(0,\sigma^2)$. $\bar{X}_n + \mu \dto \mu + \mu = 2 \mu$. By Slutsky's theorem, $\sqrt{n}(\bar{X}_n^2 - \mu^2) = \sqrt{n} (\bar{X}_n - \mu) (\bar{X}_n + \mu) \dto N(0, 4 \mu^2 \sigma^2)$.
+
+		\item 
+		$\sqrt{n}(\bar{X}_n^2 - \mu^2) \to N(0, 4 \mu^2 \sigma^2)$, $\log \bar{X}_n \dto \log \mu$. By Slutsky's theorem, $\frac{\sqrt{n}(\bar{X}_n^2 - \mu^2)}{\log \bar{X}_n} \dto N(0, \frac{4 \mu^2 \sigma^2}{(\log \mu)^2})$.
+ 	\end{enumerate}
+	
+	
+ 	\end{enumerate}
+	\end{document}

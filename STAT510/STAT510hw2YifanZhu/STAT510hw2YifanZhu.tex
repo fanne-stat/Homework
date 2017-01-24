@@ -1,0 +1,139 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 510 Homework 2}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	$\bm z \in \mathcal{C}(\bm X) \Rightarrow \bm z = \bm X \bm b$ for some $\bm b $. Hence
+	\begin{align*}
+	& (\bm y - \bm P_{\bm X} \bm y )^T (\bm P_{\bm X} \bm y - \bm z)\\
+	= & (\bm y - \bm P_{\bm X} \bm y )^T (\bm P_{\bm X} \bm y - \bm X \bm b)\\
+	= & \bm y^T (\bm I - \bm P_{\bm X})\bm P_{\bm X}\bm y - \bm y^T (\bm I - \bm P_{\bm X})\bm X \bm b\\
+	=& \bm y^T (\bm P_{\bm X} - \bm P_{\bm X}) \bm y - \bm y^T (\bm X - \bm X)\bm b\\
+	=& \bm 0
+	\end{align*}
+
+	We also have $\bm z \neq \bm P_{\bm X}\bm y \Rightarrow \bm P_{\bm X} \bm y - \bm z \neq 0$. Thus we have
+	\[\|\bm y - \bm z\|^2 = \|\bm y - \bm P_{\bm X} + \bm P_{\bm X} - \bm z\|^2 > \| \bm y - \bm P_{\bm X} \bm y\|^2\]
+
+
+	\item 
+	For projection matrix $\bm P_{\bm X}$ we have $\bm P_{\bm X} \bm X = \bm X$. Let $\bm X = \begin{bmatrix}
+		\bm x_1 & \bm x_2 & \cdots & \bm x_p
+	\end{bmatrix} = [x_{ij}]_{n \times p}$ and $\bm P_{\bm X} = \begin{bmatrix}
+		\bm \epsilon_{1} & \bm \epsilon_2 & \cdots & \bm \epsilon_{n}
+	\end{bmatrix}$. Hence we have
+	\[\begin{bmatrix}
+		\bm \epsilon_{1} & \bm \epsilon_2 & \cdots & \bm \epsilon_{n}
+	\end{bmatrix}  \begin{bmatrix}
+		x_{11} & x_{12} & \cdots & x_{1n}\\
+		x_{21} & x_{22} & \cdots & x_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		x_{n1} & x_{n2} & \cdots & x_{nn}
+	\end{bmatrix} = \begin{bmatrix}
+		\bm x_1 & \bm x_2 & \cdots & \bm x_p
+	\end{bmatrix}\]
+
+	Thus 
+	\[\bm x_{j} = \sum_{i = 1}^n x_{ij} \bm \epsilon_{i} \Rightarrow \mathcal{C}(\bm X) \subset \mathcal{C}(\bm P_{\bm X})\]
+
+	We also have 
+	\[\bm X (\bm X^T \bm X)^- \bm X^T = \bm P_{\bm X}\]
+	Let $(\bm X^T \bm X)^- \bm X^T = [a_{ij}]_{p \times n}$, thus
+	\[\begin{bmatrix}
+		\bm x_1 & \bm x_2 & \cdots & \bm x_p
+	\end{bmatrix}  \begin{bmatrix}
+		a_{11} & a_{12} & \cdots & a_{1n}\\
+		a_{21} & a_{22} & \cdots & a_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{p1} & a_{p2} & \cdots & a_{pn}
+	\end{bmatrix} = \begin{bmatrix}
+		\bm \epsilon_{1} & \bm \epsilon_{2} & \cdots & \bm \epsilon_{n}
+	\end{bmatrix}\]
+	Thus 
+	\[\bm \epsilon_{j} = \sum_{i = 1}^p a_{ij} \bm x_{i} \Rightarrow \mathcal{C}(\bm P_{\bm X}) \subset \mathcal{C}(\bm X)\]
+
+	Hence we have $\mathcal{C}(\bm P_{\bm X}) = \mathcal{C}(\bm X).$
+
+
+	\item 
+	\begin{align*}
+	& \bm X^T \bm X (\bm X^T \bm X)^{-}\bm X^T\bm y \\
+	 =& \bm X^T \bm P_{\bm X}\bm y \\
+	 = &\bm X^T \bm P_{\bm X}^T \bm y\\
+	 = &(\bm P_{\bm X} \bm X)^T \bm y\\
+	 = &\bm X^T \bm y 
+	\end{align*}
+	Hence $\bm (\bm X^T \bm X)^{-} \bm X^T \bm y$ is a solution of $\bm X^T \bm X \bm b = \bm X^T \bm y$.
+
+
+	\item 
+	\begin{enumerate}
+		\item 
+		$\bm C \hat{\bm \beta} = C (\bm X^T \bm X)^- \bm X^T (\bm X \bm \beta + \bm \epsilon) = \bm A \bm X (\bm X^T \bm X)^- \bm X^T \bm X \bm \beta + \bm A \bm X (\bm X^T \bm X)^- \bm X^T \bm \epsilon = \bm A \bm P_{\bm X} \bm X \bm \beta + \bm A \bm P_{\bm X} \bm \epsilon = \bm A \bm X \bm \beta + \bm A \bm P_{\bm X} \bm \epsilon = \bm C \bm \beta + \bm A \bm P_{\bm X} \bm \epsilon$.
+
+		$\bm \epsilon \sim N(\bm 0, \sigma^2 \bm I)$, thus $\bm C \bm \beta \sim N(\bm \mu , \bm \Sigma)$, where
+		\begin{align*}
+		&\bm \mu = \bm C \bm \beta\\
+		&\bm \Sigma = \bm A \bm P_{\bm X} \sigma^2 \bm I \bm P_{\bm X}^T \bm A^T = \bm A \bm P_{\bm X}\bm A^T = \bm A \bm X(\bm X^T \bm X)^- \bm X^T \bm A^T = \bm C (\bm X^T \bm X)^- \bm C^T
+		\end{align*}
+
+
+		\item 
+		Let $\bm G = (\bm X^T \bm X)^-$ be one of the generalized inverse of $\bm X^T \bm X$ and $\bm G^T$ be its transpose. Thus
+		\[Var(\bm C (\bm X^T \bm X)^- \bm X^T \bm y) = \bm C \bm G \bm X^T \sigma^2 \bm I \bm X \bm G^T \bm C^T = \bm C \bm G \bm X^T\bm X \bm G^T \bm C^T\]
+		
+
+	\end{enumerate}
+	
+
+	
+
+	
+	
+
+
+
+
+
+ 	\end{enumerate}
+
+
+	
+	
+	
+	\end{document}

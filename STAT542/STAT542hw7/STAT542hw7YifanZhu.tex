@@ -1,0 +1,210 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 542 Homework 7}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	\begin{enumerate}
+		\item
+	$X \sim \textrm{exponential}(1)$, then 
+	\[P(Y = k) = P( k - 1 \leq X < k) = \int_{k-1}^{k} \mathrm{e}^{-x} \mathrm{d}x = - \mathrm{e}^{-k} + \mathrm{e}^{-(k-1)} = (\mathrm{e}^{-1})^{k-1} (1 - \mathrm{e}^{-1})\]
+	Hence $Y \sim Geometric( 1 - \mathrm{e}^{-1})$.
+
+	\item 
+	$P(X - 4 = x | Y \geq 5) = P(X - 4 = x | \lfloor X \rfloor \geq 4 ) = P(X = x + 4 | X \geq 4) = \frac{\mathrm{e}^{-(x + 4)}}{\mathrm{e}^{-4}} = \mathrm{e}^{-x}$.
+
+	Thus $X - 4 | Y \geq 5 \sim \textrm{exponential}(1)$.
+	\end{enumerate}
+
+
+	\item 
+	\begin{align*}
+	f(y , \lambda) & = f(\lambda) \cdot f(y | \lambda) \\
+	& = \frac{1}{\Gamma(\alpha) \beta^\alpha} \lambda^{\alpha - 1} \mathrm{e}^{- \lambda / \beta} \cdot \frac{\lambda^y}{y!} \mathrm{e}^{-\lambda}\\
+	& = \frac{1}{y! \Gamma(\alpha) \beta^\alpha} \lambda^{y +\alpha -1} \mathrm{e}^{-\lambda (1 + \frac{1}{\beta})} \qquad  \lambda > 0, y = 0,1,2,\cdots
+	\end{align*}
+
+	\begin{align*}
+	f(y) &= \int_0^\infty \frac{1}{y! \Gamma(\alpha) \beta^\alpha} \lambda^{y +\alpha -1} \mathrm{e}^{-\lambda (1 + \frac{1}{\beta})} \mathrm{d}\lambda\\
+	& = \frac{1}{y! \Gamma(\alpha)\beta^\alpha} \int_{0}^\infty \lambda^{y + \alpha -1} \mathrm{e}^{- \lambda (1 + \frac{1}{\beta})} \mathrm{d}\lambda\\
+	& = \frac{\Gamma(y + \alpha)}{y! \Gamma (\alpha) \beta^\alpha} \left(\frac{\beta}{1 + \beta}\right)^{y +\alpha}\\
+	& = \frac{(y + \alpha -1)!}{y! (\alpha -1)! \beta^\alpha}\left(\frac{\beta}{1 + \beta}\right)^{y +\alpha}\\
+	& = \binom{y + \alpha -1}{y} \left(\frac{\beta}{1 + \beta}\right)^y \left(\frac{1}{1 + \beta}\right)^\alpha
+	\end{align*}
+Hence $Y \sim Negative-Binomial(\alpha , 1/(1 + \beta))$.
+
+$E(Y) = \frac{(1 - p) r}{p} = \frac{\beta}{1 + \beta} (\beta + 1) \alpha = \alpha \beta$.
+
+$Var(Y) = \frac{(1- p)r}{p^2} = \frac{\beta}{1 + \beta} (\beta + 1)^2 \alpha = \alpha \beta (1 + \beta)$.
+	
+	
+	\item 
+	\begin{enumerate}
+		\item 
+		$Cov(X , C) = E(CX) - E(X)E(C) = C E(X) - C E(X) = 0$
+
+		\item 
+		$f(y|x) = \frac{f(x,y)}{f_X(x)}$, thus for $f_X (x) > 0$,
+		\[E[g(X)h(Y)|X = x] = \sum_{y} g(x)h(y) f(y|x) = g(x) \sum_{y}h(y) f(y|x) = g(x) E[g(Y)|X = x]\]
+	\end{enumerate}
+	
+	\item 
+	\begin{enumerate}
+		\item 
+		\begin{align*}
+		Var[X] &= E[Var[X | P]] + Var[E[X | P]]\\
+			& = E[nP(1 - P)] + Var[nP]\\
+			& = nE[P] - nE[p^2] + n^2 Var[P]\\
+			& = n E[P] - n(Var[P] + (E[P])^2) + n^2 Var[P]\\
+			& = n E[P] - n (E[P])^2 + (n^2 - n )Var[P]\\
+			& = n \frac{\alpha}{\alpha + \beta} - n \frac{\alpha^2}{(\alpha + \beta)^2} + (n^2 - n ) \frac{\alpha \beta}{(\alpha + \beta) (1 + \alpha + \beta)}\\
+			& = \frac{n \alpha \beta (\alpha + \beta + n)}{(\alpha + \beta)^2 (\alpha + \beta +1)}
+		\end{align*}
+		
+		\item 
+		\begin{align*}
+		E[X] = E[E[X | P]] = E[nP] = \frac{n \alpha}{\alpha + \beta} 
+		\end{align*}
+
+		Thus $E[W] = n \tilde{p} = \frac{n \alpha }{\alpha + \beta} \Rightarrow \tilde{p} = \frac{\alpha}{\alpha + \beta}$.
+
+		\begin{align*}
+		Var[W] = n \tilde{p}(1 - \tilde{p}) = \frac{n \alpha \beta}{(\alpha + \beta)^2}
+		\end{align*}
+
+		Hence we have
+		\[\frac{Var[X]}{Var[W]} = \frac{\alpha + \beta + n}{\alpha + \beta + 1} > 1\]
+		
+		
+		
+	\end{enumerate}
+	
+	\item 
+	\begin{enumerate}
+		\item \begin{align*}
+		f_X (x) & = \int_{0}^{1- x} f(x,y) \mathrm{d}y\\
+		& = \int_{0}^{1 - x} 3(x + y) \mathrm{d}y\\
+		& = 3(x y + \frac{1}{2} y^2)\bigg|_{0}^{1 - x}\\
+		& = \frac{3}{2} (1 -x^2)
+		\end{align*}
+		
+		\item 
+		\[f(y | x) = \frac{f(x,y)}{f_X (x)} = \frac{2(x + y)}{1 - x^2},\, 0 < y < 1-x\]
+
+		\item 
+		\[E[Y | X = x] = \int_{0}^{1- x} y f(y|X)\mathrm{d}y = \int_{0}^{1- x} \frac{2 (x+ y)y}{1 - x^2} \mathrm{d}y = \frac{2}{1 - x^2} (\frac{1}{2} xy^2 + \frac{1}{3} y^3)\bigg|_{0}^{1-x} = \frac{(1 - x)(x + 2)}{3(x+1)}\]
+
+		\item 
+		By symmetry of the support and pdf, $E(X|Y = y) = \frac{(1 - y)(y + 2)}{3(y+1)}$.
+
+		\item 
+		\begin{align*}
+		E[XY - Y | X] & = 2 E[XY | X] - E[Y | X]\\
+		& = 2 X E[Y|X] - E[Y|X]\\
+		& = (2 X - 1) \frac{(1 - X)(X + 2)}{3(X + 1)} 
+		\end{align*}
+
+		\begin{align*}
+		E[E[XY - Y | X]] & = E[\frac{(2 X -1)(1 - X)(X + 2)}{3(X + 1)}]\\
+		& = \int_{0}^1 \frac{(2 x -1)(1 - x)(x + 2)}{3(x + 1)} \frac{3}{2} (1 - x^2) \mathrm{d}x\\
+		& = \frac{1}{2} \int_{0}^1 (2 x -1)(1 - x)^2 (x + 2) \mathrm{d}x\\
+		& = - \frac{7}{40}
+		\end{align*}
+		
+		
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item 
+		\begin{align*}
+		M_{X, Y}(t_1 , t_2) & = E(\mathrm{e}^{t_1 X + t_2 Y} )\\
+		& = \int_{0}^{\infty} \left(\int_{0}^{y} \mathrm{e}^{t_1 x + t_2 y} \mathrm{e}^{-y} \mathrm{d}x\right)\mathrm{d}y\\
+		& = \int_{0}^{\infty} \mathrm{e}^{t_2 y - y} \frac{1}{t_1} (\mathrm{e}^{t_1 y} - 1) \mathrm{d}y\\
+		 & = \frac{1}{t_1} \int_{0}^\infty (\mathrm{e}^{t_1 + t_2 -1}y - \mathrm{e}^{t_2 - 1}y) \mathrm{d}y\\
+		& = \frac{1}{(t_2 -1)(t_1 + t_2 -1)}\qquad t_1 + t_2 < 1,\, t_2 < 1
+		\end{align*}
+
+		\item 
+		\begin{align*}
+		&\frac{\partial}{\partial t_1 }M_{X, Y}(t_1 , t_2) = - \frac{1}{(t_2 - 1)(t_1 + t_2 -1)^2} \Rightarrow E[X] = 1 \\
+		&\frac{\partial}{\partial t_2}M_{X, Y}(t_1 , t_2) = - \frac{1}{(t_2 - 1)(t_1 + t_2 -1)^2} - \frac{1}{(t_1 + t_2 -1)(t_2 - 1)^2} \Rightarrow E[Y] = 2 \\
+		&\frac{\partial^2}{\partial t_1^2} M_{X,Y}(t_1, t_2) = \frac{2}{(t_2 - 1)(t_1 + t_2 -1)^3} \Rightarrow E[X^2] = 2\\
+		&\frac{\partial^2}{\partial t_2^2} M_{X,Y}(t_1, t_2) = \frac{2}{(t_2 - 1)(t_1 + t_2 -1)^3}  + \frac{2}{(t_1 + t_2 - 1)^2 (t_2 - 1)^2} + \frac{2}{(t_2 - 1)^3 (t_1 + t_2 - 1)} \Rightarrow E[Y^2] = 6\\
+		& \frac{\partial^2}{\partial t_2 \partial t_1} M_{X,Y}(t_1 , t_2) = \frac{1}{(t_2 - 1)^2 (t_1 + t_2 -1)^2} + \frac{2}{(t_2 - 1)(t_1 + t_2 - 1)^3} \Rightarrow E[XY] = 3
+		\end{align*}
+
+		Thus,
+		\[\sigma_X^2 = 2 - 1^2 = 1,\, \sigma_Y^2 = 6 - 2^2 = 2,\, \sigma_{XY} = 3 - 1 \cdot 2 = 1\]
+
+		\item 
+		From the joint mgf, the mgf of $X$ and $Y$ are 
+		\begin{align*}
+		& M_X (t) = M_{X,Y}(t, 0) = -\frac{1}{t - 1}\\
+		& M_Y (t) = M_{X,Y}(0, t) = \frac{1}{(t - 1)^2}
+		\end{align*}
+
+		The pdf of $X$ and $Y$ are 
+		\begin{align*}
+		f_X (x) & = \int_{x}^\infty \mathrm{e}^{-y} \mathrm{d}y = \mathrm{e}^{-x}\\
+		f_Y (y) & = \int_{0}^y \mathrm{e}^{-y}\mathrm{d}x = y \mathrm{e}^{-y}
+		\end{align*}
+		Thus the mgf are 
+		\begin{align*}
+		M_X (t) &= \int_{0}^\infty \mathrm{e}^{tx} \mathrm{e}^{-x}\mathrm{d}x\\
+		& = \frac{1}{1 - t} \mathrm{e}^{(1 - t)x}\bigg|_{0}^{\infty} = - \frac{1}{t - 1}\\
+		M_Y (y) & = \int_{0}^\infty y \mathrm{e}^{ty} \mathrm{e}^{-y}\mathrm{d}y\\
+		& = \frac{y}{t - 1}\mathrm{e}^{(t - 1)y}\bigg|_0^\infty - \frac{1}{t - 1} \int_{0}^{\infty} \mathrm{e}^{(t - 1)y}\mathrm{d}y\\
+		& = -\frac{1}{t - 1} \frac{1}{t - 1} \mathrm{e}^{(t - 1)y}\bigg|_{0}^\infty = \frac{1}{(t - 1)^2}
+		\end{align*}
+Same as the mgf's based on the joint mgf.
+		
+		
+		
+		
+		
+	\end{enumerate}
+	
+	
+
+
+ 	\end{enumerate}
+
+
+	
+	
+	
+	\end{document}

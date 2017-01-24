@@ -1,0 +1,123 @@
+---
+title: "STAT 579 Midterm 1"
+author: "Yifan Zhu"
+date: "October 15, 2016"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, tidy = TRUE)
+```
+
+1. read the data
+```{r}
+library(readxl)
+scimagojr <- read_excel(path = "C:/Users/fanne/Desktop/STAT579/STAT579mid1/scimagojr.xlsx")
+```
+
+2. rename "-"
+```{r}
+# replace "-" with NA
+scimagojr$`SJR Best Quartile`[scimagojr$`SJR Best Quartile` == "-"] <- NA
+```
+
+3. 
+```{r}
+# replace "book serie" with "book series"
+scimagojr$Type[scimagojr$Type == "book serie"] <- "book series"
+
+#replace "conference and proceeding" with "conference proceedings"
+scimagojr$Type[scimagojr$Type == "conference and proceeding"] <- "conference proceedings"
+```
+4. 
+```{r}
+# check the first 20 types of periodicals whose "SJR Best Quartile" is not avalaible 
+head(scimagojr$Type[is.na(scimagojr$`SJR Best Quartile`)], 20)
+
+# check the first 20 types of periodicals whose "SJR Best Quartile" is avalaible 
+head(scimagojr$Type[!is.na(scimagojr$`SJR Best Quartile`)], 20)
+```
+
+Comment: from the head part we can see it seems the type of those not assigned SJR Best Quatile are all conference proceeding, and those assigned SJR Best Quatile are all journal.
+
+5.
+```{r}
+# remove the 3 columns: "SJR Best Quartile", "Issn", "Country"
+scimagojr <- scimagojr[, !names(scimagojr) %in% c("SJR Best Quartile", "Issn", "Country")]
+```
+
+6.
+```{r}
+# Calculate the median for all the metrics in the data set for each type
+aggregate(. ~ Type, data = scimagojr[, !names(scimagojr) %in% c("Rank","Title")], FUN = median)
+```
+
+Comment: Among these three types, journals have the highest median value in all fields of metrics, the conference proceedings have the lowest and the book series is in the middle. It seems that the type journal overall has more infuence than others, and the influence of conference proceedings is small.
+
+7.
+```{r}
+# pull out the records whose type is "journal", remove the column "Type"
+scimagojr.journal <- subset(scimagojr, Type == "journal", select = -c(Type))
+```
+
+8.
+```{r}
+# do linear regression of SJR using all the metrics
+journallm <- lm(formula = SJR ~ . , data = scimagojr.journal[, !names(scimagojr.journal) %in% c("Title", "Rank")])
+
+summary(journallm)
+```
+
+Comment: The variable "Total Doc. (2015)" is not significant. It is easy to understand because the total number of articles published in 2015 should not have much impact on the influence of a periodical. The quality rather than the quantity of articles matters.
+
+9. restrict to the statistical journals
+    (a)
+    ```{r}
+    # find all the periodicals that contain "statistic" in the title
+    scimagojr.journal.stat <- scimagojr.journal[grep(pattern = "statistic", x = scimagojr.journal$Title,      ignore.case = T), ]
+    ```
+    (b)
+    ```{r}
+    # rows to be added to the data frame
+    addrow <- scimagojr.journal[scimagojr.journal$Title %in% c("Stat","Biometrika", "Biometrics", "Biometrical Journal"), ]
+
+    # add rows to the data frame
+    scimagojr.journal.stat <- rbind(scimagojr.journal.stat, addrow)
+    
+    # find the index of and remove records with skew result described in the problem
+    droprow.id <- scimagojr.journal.stat$Title %in% c("Vital & health statistics. Series 3, Analytical and epidemiological studies / [U.S. Dept. of Health and Human Services, Public Health Service, National Center for Health Statistics]", "National vital statistics reports : from the Centers for Disease Control and Prevention, National Center for Health Statistics, National Vital Statistics System")
+
+    scimagojr.journal.stat <- scimagojr.journal.stat[!droprow.id, ]
+    ```
+
+
+    (c)
+    ```{r}
+    # find the index of records whose values are all non-zero in a row
+    nozero.id <- as.vector(apply(scimagojr.journal.stat != 0, MARGIN = 1, FUN = prod) == 1)
+    
+    # remove those records
+    scimagojr.journal.stat_nozero <- scimagojr.journal.stat[nozero.id,]
+    ```
+    
+10.
+    (a)
+    ```{r}
+    # plot Impact Factor against H-Index
+    plot(x = scimagojr.journal.stat_nozero$`H index`, y = scimagojr.journal.stat_nozero$`Citable Docs. (3years)`, log = "xy", xlab = "H-Index", ylab = "Impact Factor", main = "Impact Factor against H-Index")
+    ```
+    Comment: we can see the Impact Factor increases as the H-Index increases. It makes sense because the as the number of articles that have received at least H many citations over the whole period increases, the average citations per article in a period of time would almost surely increase.
+    
+    
+    (b)
+    ```{r}
+    # define a function to return the titles with top 5 values of x
+    top5title <- function(x){
+      return(scimagojr.journal.stat_nozero$Title[order(x, decreasing = T)[1:5]])
+    }
+    
+    # apply to each column
+    apply(subset(scimagojr.journal.stat_nozero, select = -c(Rank, Title)), MARGIN = 2, FUN = top5title)
+    ```
+
+
