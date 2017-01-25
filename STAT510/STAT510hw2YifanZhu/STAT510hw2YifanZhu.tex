@@ -48,7 +48,7 @@
 	\end{align*}
 
 	We also have $\bm z \neq \bm P_{\bm X}\bm y \Rightarrow \bm P_{\bm X} \bm y - \bm z \neq 0$. Thus we have
-	\[\|\bm y - \bm z\|^2 = \|\bm y - \bm P_{\bm X} + \bm P_{\bm X} - \bm z\|^2 > \| \bm y - \bm P_{\bm X} \bm y\|^2\]
+	\[\|\bm y - \bm z\|^2 = \|\bm y - \bm P_{\bm X}\bm y + \bm P_{\bm X}\bm y - \bm z\|^2 > \| \bm y - \bm P_{\bm X} \bm y\|^2\]
 
 
 	\item 
@@ -106,7 +106,7 @@
 		\item 
 		$\bm C \hat{\bm \beta} = C (\bm X^T \bm X)^- \bm X^T (\bm X \bm \beta + \bm \epsilon) = \bm A \bm X (\bm X^T \bm X)^- \bm X^T \bm X \bm \beta + \bm A \bm X (\bm X^T \bm X)^- \bm X^T \bm \epsilon = \bm A \bm P_{\bm X} \bm X \bm \beta + \bm A \bm P_{\bm X} \bm \epsilon = \bm A \bm X \bm \beta + \bm A \bm P_{\bm X} \bm \epsilon = \bm C \bm \beta + \bm A \bm P_{\bm X} \bm \epsilon$.
 
-		$\bm \epsilon \sim N(\bm 0, \sigma^2 \bm I)$, thus $\bm C \bm \beta \sim N(\bm \mu , \bm \Sigma)$, where
+		$\bm \epsilon \sim N(\bm 0, \sigma^2 \bm I)$, thus $\bm C \hat{\bm \beta} \sim N(\bm \mu , \bm \Sigma)$, where
 		\begin{align*}
 		&\bm \mu = \bm C \bm \beta\\
 		&\bm \Sigma = \bm A \bm P_{\bm X} \sigma^2 \bm I \bm P_{\bm X}^T \bm A^T = \sigma^2 \bm A \bm P_{\bm X}\bm A^T = \sigma^2 \bm A \bm X(\bm X^T \bm X)^- \bm X^T \bm A^T = \sigma^2 \bm C (\bm X^T \bm X)^- \bm C^T
