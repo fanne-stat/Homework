@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.8.26)  24 JAN 2017 20:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.8.26)  25 JAN 2017 21:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -437,38 +437,32 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 42.
 (c:/texlive/2016/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) (./codes/p1.c
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 5.
-
-(c:/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <9> not available
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 1.
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <9> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
-) (./codes/p1.txt)
-[1
+(./codes/p2.c) [1
 
-{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./STAT580hw1YifanZhu.aux) ) 
+{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./codes/p3.c) 
+(./codes/p4.c) [2] [3] (./STAT580hw1YifanZhu.aux) ) 
 Here is how much of TeX's memory you used:
- 5441 strings out of 493014
- 75085 string characters out of 6137001
- 182710 words of memory out of 5000000
- 8865 multiletter control sequences out of 15000+600000
- 13383 words of font info for 49 fonts, out of 8000000 for 9000
+ 5461 strings out of 493014
+ 75115 string characters out of 6137001
+ 259711 words of memory out of 5000000
+ 8882 multiletter control sequences out of 15000+600000
+ 13505 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,6n,52p,252b,1080s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r
-.enc}<c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/
-texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/20
-16/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2016/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy9.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmti9.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on STAT580hw1YifanZhu.pdf (1 page, 75668 bytes).
+ 38i,6n,52p,252b,850s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2016/texmf-dist/
+fonts/enc/dvips/base/8r.enc}<c:/texlive/2016/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive
+/2016/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb><c:/texlive/2016/texmf-dist
+/fonts/type1/urw/courier/ucrr8a.pfb>
+Output written on STAT580hw1YifanZhu.pdf (3 pages, 69860 bytes).
 PDF statistics:
- 41 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
+ 39 PDF objects out of 1000 (max. 8388607)
+ 27 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

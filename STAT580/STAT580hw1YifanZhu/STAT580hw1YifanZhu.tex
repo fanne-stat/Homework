@@ -14,9 +14,9 @@
 	\usepackage{bm}
 	\lstset{
 	basicstyle = \small\tt,
-	keywordstyle = \bf\color{blue},
+	keywordstyle = \ttfamily\bfseries\color{blue},
 	commentstyle = \it\color[cmyk]{1,0,1,0},
-	stringstyle = \it\color[RGB]{128,0,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
 	%frame = single,
 	backgroundcolor = \color[RGB]{245,245,244},
 	breaklines,
@@ -41,9 +41,57 @@
 	\item 
 	\lstinputlisting[language = C]{./codes/p1.c}
 
-	Output:
+	\item 
+	\lstinputlisting[language = C]{./codes/p2.c}
 
-	\lstinputlisting{./codes/p1.txt}
+	\newpage
+	\item 
+	\lstinputlisting[language = C]{./codes/p3.c}
+
+	\item 
+	\lstinputlisting[language = C]{./codes/p4.c}
+
+	\newpage
+	\item 
+	\begin{enumerate}
+		\item 
+		\begin{verbatim}
+			3/2 + 1
+			 1  2
+		\end{verbatim}
+		value: \verb|2|
+
+		\item 
+		\begin{verbatim}
+			1/2 + 3.0/4.0
+			 1  2    1
+		\end{verbatim}
+		value: \verb|0.75|
+
+		\item 
+		\begin{verbatim}
+			3 < 10 && 2 * 8 < 2
+			  2     3   1   2
+		\end{verbatim}
+
+		value: \verb|0|
+		\item 
+		\begin{verbatim}
+			x=3+2
+			 2 1
+		\end{verbatim}
+		value: \verb|5|
+
+		\item 
+		\begin{verbatim}
+			j+=i++
+			  2  1
+		\end{verbatim}
+		value: \verb|2|
+
+		value of \verb|i|: \verb|1|
+	
+\end{enumerate}
 
  	\end{enumerate}
 
