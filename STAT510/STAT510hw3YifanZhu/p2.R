@@ -1,4 +1,6 @@
-fabric <- read.delim("http://dnett.github.io/S510/FabricLoss.txt") 
+library(curl)
+
+fabric <- read.delim(curl("http://dnett.github.io/S510/FabricLoss.txt"))
 
 fabric$surface <- factor(fabric$surface)
 fabric$filler <- factor(fabric$filler)
