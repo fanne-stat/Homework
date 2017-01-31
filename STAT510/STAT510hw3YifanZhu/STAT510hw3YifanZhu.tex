@@ -209,7 +209,7 @@
 		&  F = \frac{(\bm C \hat{\bm \beta} - d)^T (\bm C (\bm X^T \bm X)^-\bm C^T)^{-1} (\bm C \bm \hat{\bm\beta} - d)/rank(\bm C)}{\hat{\sigma^2}} = 25.3\\
 		& \textrm{p-value} = 0.0003
 		\end{align*}
-		Conclusion : Since p-value is small, we decide to reject the null hypothesis and conclude that there is filler type main effect.
+		Conclusion : Since p-value is small, we decide to reject the null hypothesis and conclude that there is filler type main effect for the fabric loss.
 
 		\item 
 		\begin{align*}
@@ -226,7 +226,25 @@
 		&  F = \frac{(\bm C \hat{\bm \beta} - d)^T (\bm C (\bm X^T \bm X)^-\bm C^T)^{-1} (\bm C \bm \hat{\bm\beta} - d)/rank(\bm C)}{\hat{\sigma^2}} = 0.89\\
 		& \textrm{p-value} = 0.44
 		\end{align*}
-		Conclusion : Since p-value is big, we fail to reject the null hypothesis and conclude that there is no three way interaction.
+		Conclusion : Since p-value is big, we fail to reject the null hypothesis and conclude that there is no three way interaction among the three factors for fabric loss.
+
+		\item 
+		\begin{align*}
+		&H_0 : \textrm{there is no two way interaction between filler type and filler proportion.} \quad (\bm C \bm \beta - \bm d = 0)\\
+		&H_a : \textrm{there is two way interaction between filler type and filler proportion.} \quad (\bm C \bm \beta -\bm d \neq 0)
+		\end{align*}
+		\begin{align*}
+		& \bm C = \begin{bmatrix}
+			1/2&1/2&-1/2&-1/2&-1/2&-1/2&1/2&1/2&0&0&0&0\\
+			1/2&1/2&-1/2&-1/2&0&0&0&0&-1/2&-1/2&1/2&1/2
+		\end{bmatrix},\, \bm d = \begin{bmatrix}
+			0\\0
+		\end{bmatrix}\\
+		&  F = \frac{(\bm C \hat{\bm \beta} - d)^T (\bm C (\bm X^T \bm X)^-\bm C^T)^{-1} (\bm C \bm \hat{\bm\beta} - d)/rank(\bm C)}{\hat{\sigma^2}} = 6.57\\
+		& \textrm{p-value} = 0.01
+		\end{align*}
+		Conclusion : Since p-value is big, we decide to reject the null hypothesis and conclude that there is two way interaction between filler type and filler proportion for fabric loss.
+
 		
 		
 

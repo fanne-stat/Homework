@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1485844028 "STAT510hw3YifanZhu.tex" "STAT510hw3YifanZhu.pdf" "STAT510hw3YifanZhu" 1485844029
-  "STAT510hw3YifanZhu.aux" 1485844029 8 a94a2480d3289e625eea47cd1b285758 ""
-  "STAT510hw3YifanZhu.tex" 1485844027 6944 c5ff881ee5a04cfdd07acaa0a06a9a59 ""
+["pdflatex"] 1485890958 "STAT510hw3YifanZhu.tex" "STAT510hw3YifanZhu.pdf" "STAT510hw3YifanZhu" 1485890959
+  "STAT510hw3YifanZhu.aux" 1485890958 8 a94a2480d3289e625eea47cd1b285758 ""
+  "STAT510hw3YifanZhu.tex" 1485890957 7912 31cf618f7b1066c9b31d89938f47e19f ""
   "boxplot1.eps" 1485810573 11109 fbb559faa791ed4bbd471b939eb0d2f6 ""
   "c:/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1472256687 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "c:/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1472255716 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -102,6 +102,6 @@
   "c:/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1472258339 3869747 5dda454ce312de71efa4b15901e1cb66 ""
   "c:/texlive/2016/texmf.cnf" 1472258269 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   (generated)
-  "STAT510hw3YifanZhu.log"
   "STAT510hw3YifanZhu.aux"
   "STAT510hw3YifanZhu.pdf"
+  "STAT510hw3YifanZhu.log"
