@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.8.26)  31 JAN 2017 13:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.8.26)  31 JAN 2017 15:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -458,7 +458,7 @@ nk\OT1/cmr/m/n/10 (\OML/cmm/b/it/10 AX\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 rank
  []
 
 [2]
-Overfull \hbox (58.16496pt too wide) detected at line 189
+Overfull \hbox (58.16496pt too wide) detected at line 191
 \OML/cmm/b/it/10 C[] \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 ;  [] \OT1/cmr/m/n/1
 0 = \OML/cmm/m/it/10 C[][] \OT1/cmr/m/n/10 = []
  []
@@ -484,7 +484,7 @@ e1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmr7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
 b>
-Output written on STAT510hw3YifanZhu.pdf (3 pages, 134128 bytes).
+Output written on STAT510hw3YifanZhu.pdf (3 pages, 134095 bytes).
 PDF statistics:
  70 PDF objects out of 1000 (max. 8388607)
  49 compressed objects within 1 object stream
