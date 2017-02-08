@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1486538046 "STAT510hw4YifanZhu.tex" "STAT510hw4YifanZhu.pdf" "STAT510hw4YifanZhu" 1486538047
-  "STAT510hw4YifanZhu.aux" 1486538047 8 a94a2480d3289e625eea47cd1b285758 ""
-  "STAT510hw4YifanZhu.tex" 1486538045 10739 daebfa4d0afb8d714341b9119f362be5 ""
+["pdflatex"] 1486570909 "STAT510hw4YifanZhu.tex" "STAT510hw4YifanZhu.pdf" "STAT510hw4YifanZhu" 1486570910
+  "STAT510hw4YifanZhu.aux" 1486570910 8 a94a2480d3289e625eea47cd1b285758 ""
+  "STAT510hw4YifanZhu.tex" 1486570883 10752 586b41301b292dba897616f6b10e3bbd ""
   "c:/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1472256687 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "c:/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1472255716 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "c:/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1472255716 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -105,5 +105,5 @@
   "c:/texlive/2016/texmf.cnf" 1472258269 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   (generated)
   "STAT510hw4YifanZhu.log"
-  "STAT510hw4YifanZhu.aux"
   "STAT510hw4YifanZhu.pdf"
+  "STAT510hw4YifanZhu.aux"

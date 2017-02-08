@@ -311,20 +311,20 @@ It matches (a).
 		\end{bmatrix}\]
 
 		With we can have 
-		\[\hat{\sigma}^2 = (se(\mathrm{Intercept}))^2 = 0.0507\]
+		\[\hat{\sigma}^2 = (10 se(\mathrm{Intercept}))^2 = 0.507\]
 
 		To calculate the variance of main effect of perceived instructor, we use $\bm C = \begin{bmatrix}
 			0 & 0 & 1 & 1/2
 		\end{bmatrix}$
 
 		Hence 
-		\[\hat{\mathrm{Var}}(\textrm{main effect of perceived instructor}) = \hat{\sigma}^2 \bm C (\bm X_{R}^T \bm X_{R})^{-} \bm C^T = 0.0047775\]
-		Thus the standard error is $\sqrt{0.0047775} = 0.0691$.
+		\[\hat{\mathrm{Var}}(\textrm{main effect of perceived instructor}) = \hat{\sigma}^2 \bm C (\bm X_{R}^T \bm X_{R})^{-} \bm C^T = 0.047775\]
+		Thus the standard error is $\sqrt{0.0047775} = 0.2185749$.
 
 		Also, we have the estimate of main effect of perceived instructor to be $\begin{bmatrix}
 			0 & 0 & 1 & 1/2
-		\end{bmatrix} \hat{\bm \beta} = 0.8700 - 0.1831/2 = 0.77845.$ And we know $t_{33 - 4 ,0.975} = t_{29, 0.975} = 2.04523 $. Thus the 95\% confidence interval
-		\[[0.77845 - 0.0691 \times 2.04523, 0.77845 + 0.0691\times 2.04523] = [0.6371, 0.9198]\]
+		\end{bmatrix} \hat{\bm \beta} = 0.8700 - 0.1831/2 = 0.77845.$ And we know $t_{43 - 4 ,0.975} = t_{39, 0.975} = 2.022691 $. Thus the 95\% confidence interval
+		\[[0.77845 - 0.2185749 \times 2.022691, 0.77845 + 0.2185749\times 2.022691] = [0.3363, 1.2206]\]
 
 	\end{enumerate}
 	
