@@ -39,6 +39,297 @@
 	
 	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
 	\item 
+	\begin{enumerate}
+		\item 
+		\[\begin{bmatrix}
+			\hat{\bm y}\\
+			\bm y - \bm y
+		\end{bmatrix} = 
+		\begin{bmatrix}
+			\bm P_{\bm X} \bm y\\
+			(\bm I - \bm P_{\bm X}) \bm y
+		\end{bmatrix} = 
+		\begin{bmatrix}
+			\bm P_{\bm X}\\
+			\bm I - \bm P_{\bm X}
+		\end{bmatrix} \bm y\]
+		We know $\bm y \sim N(\bm X \bm \beta , \sigma^2 \bm I)$, thus $\begin{bmatrix}
+			\hat{\bm y}\\
+			\bm y - \hat{\bm y}
+		\end{bmatrix} \sim N(\bm \mu , \bm \Sigma)$, where
+		\begin{align*}
+		\mu &= \begin{bmatrix}
+			\bm P_{\bm X}\\
+			\bm I - \bm P_{\bm X}
+		\end{bmatrix} \bm X \bm \beta = \begin{bmatrix}
+			\bm P_{\bm X} \bm X \bm \beta\\
+			(\bm I - \bm P_{\bm X}) \bm X \bm \beta
+		\end{bmatrix} = \begin{bmatrix}
+			\bm X \bm \beta\\
+			\bm 0
+		\end{bmatrix}\\
+		\bm \Sigma &= \begin{bmatrix}
+			\bm P_{\bm X}\\
+			\bm I - \bm P_{\bm X}
+		\end{bmatrix} \sigma^2 \bm I \begin{bmatrix}
+			\bm P_{\bm X}^T & (\bm I - \bm P_{\bm X})^T
+		\end{bmatrix}\\
+		& = \begin{bmatrix}
+			\bm P_{\bm X} \bm P_{\bm X}^T & \bm P_{\bm X} (\bm I - \bm P_{\bm X})^T\\
+			(\bm I - \bm P_{\bm X}) \bm P_{\bm X}^T & (\bm I - \bm P_{\bm X})(\bm I - \bm P_{\bm X})^T
+		\end{bmatrix} \\
+		& = \begin{bmatrix}
+			\bm P_{\bm X} & \bm 0\\
+			\bm 0 & \bm I - \bm P_{\bm X}
+		\end{bmatrix}
+		\end{align*}
+
+		Hence 
+		\[\begin{bmatrix}
+			\hat{\bm y}\\
+			\bm y - \hat{\bm y}
+		\end{bmatrix} \sim N\left(\begin{bmatrix}
+			\bm X \bm \beta\\
+			\bm 0
+		\end{bmatrix} , \begin{bmatrix}
+			\bm P_{\bm X} & \bm 0\\
+			\bm 0 & \bm I - \bm P_{\bm X}
+		\end{bmatrix}\right)\]
+
+		\item 
+		We have
+		\[\hat{\bm y}^T \hat{\bm y} = \bm y^T \bm P_{\bm X}^T \bm P_{\bm X}\bm y = \bm y^T \bm P_{\bm X} \bm y\]
+		So let $\bm A = \frac{1}{\sigma^2} \bm P_{\bm X}$, we have $rank(\bm A) = rank(\bm P_{\bm X}) = rank(\bm X) = r$. Also, $\bm \Sigma = \sigma^2 \bm I$ is positive definite, and 
+		\[\bm A \bm \Sigma \bm A \bm \Sigma = \frac{1}{\sigma^2} \bm P_{\bm X} \sigma^2 \bm I \frac{1}{\sigma^2} \bm P_{\bm X} \sigma^2 \bm I = \frac{1}{\sigma^2}\bm P_{\bm X} \sigma^2 \bm I = \bm A \bm \Sigma \]
+
+		From $\bm y \sim N(\bm X \bm \beta , \sigma^2 \bm I)$ we have
+		\[\bm y ^T \bm A \bm y = \frac{1}{\sigma^2} \bm y^T \bm P_{\bm X} \bm y \sim \chi_r^2 \left(\bm \beta^T \bm X^T \frac{1}{\sigma^2} \bm P_{\bm X} \bm X \bm \beta / 2\right) = \chi_r^2 \left(\frac{1}{\sigma^2} \bm \beta^2 \bm X^T \bm X \bm \beta / 2\right)\]
+		Thus
+		\[\hat{\bm y}^T \hat{\bm y} \sim \sigma^2 \chi_r^2 \left(\frac{1}{\sigma^2} \bm \beta^T \bm X^T \bm X \bm \beta / 2\right)\]
+		
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item 
+		\[\bm X = \begin{bmatrix}
+			1 & 0 & 0& 0\\
+			1 & 0 & 0& 0\\
+			1 & 0 & 0& 0\\
+			1 & 1 & 0& 0\\
+			1 & 1 & 0& 0\\
+			1 & 1 & 1& 0\\
+			1 & 1 & 1& 0\\
+			1 & 1 & 1& 1\\
+			1 & 1 & 1& 1\\
+			1 & 1 & 1& 1\\
+			1 & 1 & 1& 1
+		\end{bmatrix}\]
+
+
+		\item 
+		By Gauss-Markov Theorem, BLUE here is OLSE, thus
+		\[\mathrm{BLUE}(\beta_4)  = \mathrm{OLSE}(\beta_4) = \mathrm{OLSE}(\beta_1 + \beta_2 + \beta_3 + \beta_4) - \mathrm{OLSE}(\beta_1 + \beta_2 + \beta_3) = 26.3 - 22.8 = 3.5\]
+
+		\item 
+		\[\hat{\mathrm{Var}}(\beta_4) = \hat{\sigma}^2 \bm C (\bm X^T \bm X)^{-} \bm C^T = \bm A \bm X (\bm X^T \bm X)^{-} \bm X^T \bm A^T = \bm A \bm P_{\bm X} \bm A^T\]
+
+		The matrix $\bm A$ we use here is $\begin{bmatrix}
+			0 & \cdots & 0 & -1 & 0 & 0 & 0 & 1
+		\end{bmatrix}$, which is literally take the last row of a matrix and minus the last 5th row. And in this model, the estimated response variable is just sample means of each treatment. Then we have
+		\[\bm A \bm P_{\bm X} = \begin{bmatrix}
+			0 & \cdots & 0 -1/2 & -1/2 & 1/4 & 1/4 & 1/4 & 1/4
+		\end{bmatrix}\]
+		Then we have $\bm A \bm P_{\bm X} \bm A^T = \frac{1}{4} + \frac{1}{2} = \frac{3}{4}$.
+
+		And 
+		\[\hat{\sigma}^2 = \frac{\sum_{i=1}^4 {s_i^2} (n_i - 1)}{\sum_{i=1}^4 {n_i} - 4} = 3.428571\]
+		Then 
+		\[se(\hat{\beta}_{4}) =  \sqrt{\frac{3}{4} \hat{\sigma}^2} = 1.603576\]
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+	
+	\item
+	\begin{align*}
+	\bm X^T \bm X & = \begin{bmatrix}
+		\bm 1^T \\
+		\bm x^T
+	\end{bmatrix}\begin{bmatrix}
+		\bm 1 & \bm x
+	\end{bmatrix}\\
+	& = 
+	\begin{bmatrix}
+		\bm 1^T \bm 1 & \bm 1^T \bm x\\
+		\bm x^T \bm 1 & \bm x^T \bm x
+	\end{bmatrix}\\
+	& = \begin{bmatrix}
+		n & \sum_{i=1}^n x_i \\
+		\sum_{i=1}^n x_i & \sum_{i=1}^n x_i^2
+	\end{bmatrix}
+	\end{align*}
+
+	Take the inverse, we have 
+	\[(\bm X^T \bm X)^{-1} = \begin{bmatrix}
+		\frac{\sum_{i=1}^n x_i^2}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x_i)^2} & \frac{-\sum_{i=1}^n x_i}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x_i)^2}\\
+		\frac{-\sum_{i=1}^n x_i}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x_i)^2} & \frac{n}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x_i)^2}
+	\end{bmatrix}\]
+
+	And 
+
+	\[\bm X^T \bm y = \begin{bmatrix}
+		\bm 1^T\\
+		\bm x^T
+	\end{bmatrix} \bm y = \begin{bmatrix}
+		\bm 1^T \bm y\\
+		\bm x^T \bm y
+	\end{bmatrix} = \begin{bmatrix}
+		\sum_{i=1}^n y_i\\
+		\sum_{i=1}^n x_i y_i
+	\end{bmatrix}\]
+	Then 
+	\begin{align*}
+	\hat{\bm \beta} & = (\bm X^T \bm X)^{-1}\bm X^T \bm y\\
+	& = \begin{bmatrix}
+		\frac{\sum_{i=1}^n x_i^2}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x_i)^2} & \frac{-\sum_{i=1}^n x_i}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x_i)^2}\\
+		\frac{-\sum_{i=1}^n x_i}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x_i)^2} & \frac{n}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x_i)^2}
+	\end{bmatrix} \begin{bmatrix}
+		\sum_{i=1}^n y_i\\
+		\sum_{i=1}^n x_i y_i
+	\end{bmatrix} \\
+	& = \begin{bmatrix}
+		\frac{(\sum_{i=1}^n x_i^2)(\sum_{i=1}^n y_i) - (\sum_{i=1}^n x_i)(\sum_{i=1}^n x_i y_i)}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x_i)^2}\\
+		\frac{n \sum_{i=1}^n x_i y_i - (\sum_{i=1}^n x_i)(\sum_{i=1}^n y_i)}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x_i)^2}
+	\end{bmatrix}\\
+	& = \begin{bmatrix}
+		\frac{\bar{x^2} \bar{y} - \bar{x}\bar{xy}}{\bar{x^2} - (\bar{x})^2}\\
+		\frac{\bar{xy} - \bar{x}\bar{y}}{\bar{x^2} - (\bar{x})^2}
+	\end{bmatrix}
+	\end{align*}
+
+	\item 
+	$\begin{bmatrix}
+		\bm 1 & \bm x - \bar{x} \bm 1
+	\end{bmatrix} = \begin{bmatrix}
+		\bm 1 & \bm x
+	\end{bmatrix} \begin{bmatrix}
+		1 & - \bar{x}\\
+		0 & 1
+	\end{bmatrix}$.
+	Thus we choose $\bm B^{-1} = \begin{bmatrix}
+		1 & - \bar{x}\\
+		0 & 1
+	\end{bmatrix}$
+	
+		\item 
+		We have
+		\[\bm W^T \bm W = \begin{bmatrix}
+			\bm 1^T\\
+			\bm (\bm x - \bar{x} \bm 1)^T
+		\end{bmatrix} \begin{bmatrix}
+			\bm 1 & \bm x - \bar{x} \bm 1
+		\end{bmatrix} = \begin{bmatrix}
+			n & 0\\
+			0 & \sum_{i=1}^n (x_i - \bar{x})
+		\end{bmatrix}\]
+Also,
+\[\bm W^T \bm y = \begin{bmatrix}
+	\bm 1 ^T \bm y \\
+	(\bm x - \bar{x} \bm 1)^T \bm y
+\end{bmatrix} = \begin{bmatrix}
+	\sum_{i=1}^n y_i\\
+	\sum_{i=1}^n (x_i - \bar{x})y_i
+\end{bmatrix}\]
+Hence 
+\begin{align*}
+\hat{\bm \alpha} &= (\bm W^T \bm W)^{-1}\bm W^T \bm y\\
+& = \begin{bmatrix}
+			1/n & 0\\
+			0 & 1/\sum_{i=1}^n (x_i - \bar{x})
+		\end{bmatrix} \begin{bmatrix}
+	\sum_{i=1}^n y_i\\
+	\sum_{i=1}^n (x_i - \bar{x})y_i
+\end{bmatrix} \\
+& = \begin{bmatrix}
+	\frac{\sum_{i=1}^n y_i}{n}\\
+	\frac{\sum_{i=1}^n (x_i - \bar{x})y_i}{\sum_{i=1}^n (x_i - \bar{x})^2}
+\end{bmatrix}\\
+& = \begin{bmatrix}
+	\bar{y}\\
+	\frac{\bar{xy} - \bar{x} \bar{y}}{\bar{x^2} - (\bar{x})^2}
+\end{bmatrix}
+\end{align*}
+
+\item 
+\begin{align*}
+\hat{\bm \beta} & = \begin{bmatrix}
+	1 & - \bar{x}\\
+	0 & 1
+\end{bmatrix}\begin{bmatrix}
+	\frac{\sum_{i=1}^n y_i}{n}\\
+	\frac{\sum_{i=1}^n (x_i - \bar{x})y_i}{\sum_{i=1}^n (x_i - \bar{x})^2}
+\end{bmatrix} \\
+& = \begin{bmatrix}
+	\frac{\sum_{i=1}^n y_i / n - \bar{x} \sum_{i=1}^n (x_i - \bar{x}) y_i}{\sum_{i=1}^n (x_i - \bar{x})^2}\\
+	\frac{\sum_{i=1}^n (x_i - \bar{x})y_i}{\sum_{i=1}^n (x_i - \bar{x})^2}
+\end{bmatrix}
+\end{align*}
+\item 
+\begin{align*}
+\hat{\bm \beta} & = \begin{bmatrix}
+	1 & -\bar{x}\\
+	0 & 1
+\end{bmatrix} \begin{bmatrix}
+	\bar{y}\\
+	\frac{\bar{xy} - \bar{x}\bar{y}}{\bar{x^2} - (\bar{x})^2}
+\end{bmatrix}\\
+& = \begin{bmatrix}
+	\frac{\bar{x^2} \bar{y} - (\bar{x})^2 \bar{y} - \bar{x} \bar{xy} + (\bar{x})^2 \bar{y}}{\bar{x^2} - (\bar{x})^2}\\
+	\frac{\bar{xy} - \bar{x}\bar{y}}{\bar{x^2} - (\bar{x})^2}
+\end{bmatrix}\\
+& = \begin{bmatrix}
+		\frac{\bar{x^2} \bar{y} - \bar{x}\bar{xy}}{\bar{x^2} - (\bar{x})^2}\\
+		\frac{\bar{xy} - \bar{x}\bar{y}}{\bar{x^2} - (\bar{x})^2}
+	\end{bmatrix}
+\end{align*}
+
+It matches (a).
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item 
+		The null hypothesis tested is the difference in score students gave for different perceived instructor when ruling out any possible impact the actually instructor gave is zero.
+		\item 
+		The matrix $(\bm X_{R}^T \bm X_{R})^-$ we got is  
+		\[\begin{bmatrix}
+			0.1 & -0.1 & -0.1 & 0.1\\
+			-0.1 & 0.2 & 0.1 & -0.2 \\
+			-0.1 & 0.1 & 0.2 & -0.2\\
+			0.1 & -0.2 & -0.2 & 0.377
+		\end{bmatrix}\]
+
+		With we can have 
+		\[\hat{\sigma}^2 = (se(\mathrm{Intercept}))^2 = 0.0507\]
+
+		To calculate the variance of main effect of perceived instructor, we use $\bm C = \begin{bmatrix}
+			0 & 0 & 1 & 1/2
+		\end{bmatrix}$
+
+		Hence 
+		\[\hat{\mathrm{Var}}(\textrm{main effect of perceived instructor}) = \hat{\sigma}^2 \bm C (\bm X_{R}^T \bm X_{R})^{-} \bm C^T = 0.0047775\]
+		Thus the standard error is $\sqrt{0.0047775} = 0.0691$.
+
+		Also, we have the estimate of main effect of perceived instructor to be $\begin{bmatrix}
+			0 & 0 & 1 & 1/2
+		\end{bmatrix} \hat{\bm \beta} = 0.8700 - 0.1831/2 = 0.77845.$ And we know $t_{33 - 4 ,0.975} = t_{29, 0.975} = 2.04523 $. Thus the 95\% confidence interval
+		\[[0.77845 - 0.0691 \times 2.04523, 0.77845 + 0.0691\times 2.04523] = [0.6371, 0.9198]\]
+
+	\end{enumerate}
+	
+	
+	
 	
 
 
