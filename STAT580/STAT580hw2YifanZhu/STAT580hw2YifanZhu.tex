@@ -1,0 +1,74 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\usepackage{algorithmic}
+	\usepackage{algorithm}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \ttfamily\bfseries\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	showstringspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 580 Homework 1}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	\lstinputlisting[language = C]{./codes/p1.c}
+
+	
+	\item 
+	\begin{enumerate}
+		\item 
+		$\int_{1}^{10} f(x) = 1 \Rightarrow c \int_{1}^{10} \frac{1}{x} \mathrm{d}x= c (\log 10 - 0) = 1 \Rightarrow \frac{1}{\log 10}$. Hence
+		\[F(x) = \int_{1}^x f(x) \mathrm{d}x = \int_{1}^x \frac{1}{\log 10} \frac{1}{x} \mathrm{d}x = \frac{\log x}{\log 10} = \log_{10} (x) ,\, 1 < x < 10\]
+
+		Hence the inverse function
+		\[F^{-1}(u) = 10^u,\, 0<u<1\]
+
+		Thus the algorithm would be
+		\begin{algorithm}
+			\caption{Sampling $X$ with cdf $F(x) = \log_{10}(x)$}
+			\begin{algorithmic}
+				\STATE 1. Generate $U \sim Unif(0,1)$;
+				\STATE 2. Set $X = 10^U$;
+			\end{algorithmic}
+		\end{algorithm}
+
+	\end{enumerate}
+	
+
+ 	\end{enumerate}
+
+
+	
+	
+	
+	\end{document}
