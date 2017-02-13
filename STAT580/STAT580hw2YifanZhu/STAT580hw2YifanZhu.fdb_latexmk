@@ -1,11 +1,11 @@
 # Fdb version 3
-["pdflatex"] 1486962654 "STAT580hw2YifanZhu.tex" "STAT580hw2YifanZhu.pdf" "STAT580hw2YifanZhu" 1486962655
+["pdflatex"] 1486962819 "STAT580hw2YifanZhu.tex" "STAT580hw2YifanZhu.pdf" "STAT580hw2YifanZhu" 1486962819
   "Codes/p1.c" 1486846198 1029 68c54f96d234e5ab857046003c0b8129 ""
   "Codes/p2.R" 1486852238 273 9b69bc9da8bfc8ee098980b725db7b05 ""
   "Codes/p2.c" 1486851067 245 4894dee749b540227590956f21611586 ""
   "Codes/p3.R" 1486962558 1024 97ced08eb5331822b63a753a1d525d3d ""
-  "STAT580hw2YifanZhu.aux" 1486962655 581 c64e8a94c84be20457f593cdb5f12450 ""
-  "STAT580hw2YifanZhu.tex" 1486962654 3233 c9de1a173145e931de7ea7449d132c2a ""
+  "STAT580hw2YifanZhu.aux" 1486962819 581 c64e8a94c84be20457f593cdb5f12450 ""
+  "STAT580hw2YifanZhu.tex" 1486962818 3233 ca24b468b394e398deb4b9bbeabc22e8 ""
   "c:/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc" 1472256338 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1472256687 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "c:/texlive/2016/texmf-dist/fonts/tfm/adobe/courier/pcrb7t.tfm" 1472256137 960 4ab65358b8406f30ef5496c8c096d22b ""
@@ -132,6 +132,6 @@
   "p3sample1.eps" 1486937052 22615 7a844c1ab7f095f82f90baa869c6dab9 ""
   "p3sample2.eps" 1486937068 22644 e20b6486bce3b83d9bfb416000a296e7 ""
   (generated)
-  "STAT580hw2YifanZhu.aux"
   "STAT580hw2YifanZhu.log"
   "STAT580hw2YifanZhu.pdf"
+  "STAT580hw2YifanZhu.aux"
