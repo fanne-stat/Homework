@@ -12,8 +12,8 @@
 	\usepackage{multicol}
 	\usepackage{multirow}
 	\usepackage{bm}
-	\usepackage{algorithmic}
 	\usepackage{algorithm}
+	\usepackage{algpseudocode}
 	\lstset{
 	basicstyle = \small\tt,
 	keywordstyle = \ttfamily\bfseries\color{blue},
@@ -41,7 +41,7 @@
 	
 	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
 	\item 
-	\lstinputlisting[language = C]{./codes/p1.c}
+	\lstinputlisting[language = C]{./Codes/p1.c}
 
 	
 	\item 
@@ -56,13 +56,68 @@
 		Thus the algorithm would be
 		\begin{algorithm}
 			\caption{Sampling $X$ with cdf $F(x) = \log_{10}(x)$}
-			\begin{algorithmic}
-				\STATE 1. Generate $U \sim Unif(0,1)$;
-				\STATE 2. Set $X = 10^U$;
+			\begin{algorithmic}[1]
+				\State Generate $U \sim Unif(0,1)$;
+				\State Set $X = 10^U$;
 			\end{algorithmic}
 		\end{algorithm}
 
+		\item 
+
+		\ 
+
+		\lstinputlisting[language = C]{./Codes/p2.c}
+
+		\item 
+
+		\ 
+		
+		\lstinputlisting[language = R]{./Codes/p2.R}
+		\includegraphics[width = 0.8\textwidth]{p2density.eps}
+
 	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item 
+		\lstinputlisting[language = R]{./Codes/p3.R}
+
+		The density when using $g_1 (x) = \mathrm{e}^{-x}$:
+
+		\includegraphics[width = 0.8\textwidth]{p3sample1.eps}
+
+		The density when using $g_2 (x) = \frac{\pi (1 + x^2)}{2}$:
+
+		\includegraphics[width = 0.8\textwidth]{p3sample2.eps}
+
+		\item
+
+		The density we get using $g_1$ and $g_2$ are almost the same. And the time using $g_2$ is longer than the time using $g_1$. 
+
+		The \verb|system.time(sample1(5000))| returns the time when using $g_1$:
+		\begin{verbatim}
+user  system elapsed 
+0.04    0.00    0.04 
+		\end{verbatim}
+
+		The \verb|system.time(sample2(5000))| returns the time when using $g_2$:
+		\begin{verbatim}
+user  system elapsed 
+0.07    0.00    0.08 
+		\end{verbatim}
+	\end{enumerate}
+	
+	\item 
+
+	\
+
+	\begin{algorithm}
+		\caption{Sampling from $f(x,y) \propto x^{\alpha}y$ with support being $x^2 + y^2 \leq 1$ in the first quadrant}
+		\begin{algorithmic}[1]
+			\State  Generate $X \sim Beta(\alpha + 1, 1)$ and $Y \sim Beta(2,1)$ independently;
+			\If {$X^2 + Y^2 > 1$} \Statex {Go to Step 1;} \Else \Statex Return $(X,Y)$;\EndIf
+		\end{algorithmic}
+	\end{algorithm}
 	
 
  	\end{enumerate}

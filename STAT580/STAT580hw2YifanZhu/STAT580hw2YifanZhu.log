@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.8.26)  11 FEB 2017 15:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2016.8.26)  12 FEB 2017 23:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -308,35 +308,44 @@ Package: bm 2016/02/27 v1.2a Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 142.
 LaTeX Info: Redefining \bm on input line 208.
 )
-(c:/texlive/2016/texmf-dist/tex/latex/algorithms/algorithmic.sty
-Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-
-(c:/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
-\c@ALC@unique=\count143
-\c@ALC@line=\count144
-\c@ALC@rem=\count145
-\c@ALC@depth=\count146
-\ALC@tlm=\skip49
-\algorithmicindent=\skip50
-)
 (c:/texlive/2016/texmf-dist/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
 (c:/texlive/2016/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count147
+\c@float@type=\count143
 \float@exts=\toks24
 \float@box=\box57
 \@float@everytoks=\toks25
 \@floatcapt=\box58
 )
-\@float@every@algorithm=\toks26
-\c@algorithm=\count148
+(c:/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(./STAT580hw2YifanZhu.aux)
+\@float@every@algorithm=\toks26
+\c@algorithm=\count144
+)
+(c:/texlive/2016/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(c:/texlive/2016/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count145
+\c@ALG@rem=\count146
+\c@ALG@nested=\count147
+\ALG@tlm=\skip49
+\ALG@thistlm=\skip50
+\c@ALG@Lnr=\count148
+\c@ALG@blocknr=\count149
+\c@ALG@storecount=\count150
+\c@ALG@tmpcounter=\count151
+\ALG@tmplength=\skip51
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (./STAT580hw2YifanZhu.aux)
 \openout1 = `STAT580hw2YifanZhu.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
@@ -354,16 +363,16 @@ LaTeX Font Info:    ... okay on input line 33.
 
 (c:/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count149
+\scratchcounter=\count152
 \scratchdimen=\dimen150
 \scratchbox=\box59
-\nofMPsegments=\count150
-\nofMParguments=\count151
+\nofMPsegments=\count153
+\nofMParguments=\count154
 \everyMPshowfont=\toks27
-\MPscratchCnt=\count152
+\MPscratchCnt=\count155
 \MPscratchDim=\dimen151
-\MPnumerator=\count153
-\makeMPintoPDFobject=\count154
+\MPnumerator=\count156
+\makeMPintoPDFobject=\count157
 \everyMPtoPDFconversion=\toks28
 ) (c:/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
@@ -445,7 +454,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count155
+\c@lstlisting=\count158
 LaTeX Font Info:    Try loading font information for U+msa on input line 40.
 (c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -465,7 +474,7 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 44.
 
 (c:/texlive/2016/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) (./codes/p1.c
+) (./Codes/p1.c
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <9> not available
 (Font)              Font shape `OT1/pcr/b/n' tried instead on input line 1.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 4.
@@ -477,34 +486,97 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
 ) [1
 
-{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./STAT580h
-w2YifanZhu.aux) ) 
+{c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./Codes/p2.c)
+(c:/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(c:/texlive/2016/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2015/06/04 1.6 listings language file
+)
+(c:/texlive/2016/texmf-dist/tex/latex/listings/lstlang3.sty
+File: lstlang3.sty 2015/06/04 1.6 listings language file
+) (./Codes/p2.R)
+Package epstopdf Info: Source file: <p2density.eps>
+(epstopdf)                    date: 2017-02-11 16:30:24
+(epstopdf)                    size: 21772 bytes
+(epstopdf)             Output file: <p2density-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-02-11 16:31:28
+(epstopdf)                    size: 11995 bytes
+(epstopdf)             Command: <repstopdf --outfile=p2density-eps-converted-to
+.pdf p2density.eps>
+(epstopdf)             \includegraphics on input line 76.
+Package epstopdf Info: Output file is already uptodate.
+
+<p2density-eps-converted-to.pdf, id=14, 308.15125pt x 261.97874pt>
+File: p2density-eps-converted-to.pdf Graphic file (type pdf)
+
+<use p2density-eps-converted-to.pdf>
+Package pdftex.def Info: p2density-eps-converted-to.pdf used on input line 76.
+(pdftex.def)             Requested size: 344.005pt x 292.48277pt.
+ [2] (./Codes/p3.R [3 <./p2density-eps-converted-to.pdf>])
+Package epstopdf Info: Source file: <p3sample1.eps>
+(epstopdf)                    date: 2017-02-12 16:04:12
+(epstopdf)                    size: 22615 bytes
+(epstopdf)             Output file: <p3sample1-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-02-12 16:04:36
+(epstopdf)                    size: 12353 bytes
+(epstopdf)             Command: <repstopdf --outfile=p3sample1-eps-converted-to
+.pdf p3sample1.eps>
+(epstopdf)             \includegraphics on input line 87.
+Package epstopdf Info: Output file is already uptodate.
+ <p3sample1-eps-converted-to.pdf, id=35, 552.0625pt x 441.65pt>
+File: p3sample1-eps-converted-to.pdf Graphic file (type pdf)
+
+<use p3sample1-eps-converted-to.pdf>
+Package pdftex.def Info: p3sample1-eps-converted-to.pdf used on input line 87.
+(pdftex.def)             Requested size: 344.005pt x 275.21513pt.
+Package epstopdf Info: Source file: <p3sample2.eps>
+(epstopdf)                    date: 2017-02-12 16:04:28
+(epstopdf)                    size: 22644 bytes
+(epstopdf)             Output file: <p3sample2-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-02-12 16:04:39
+(epstopdf)                    size: 12364 bytes
+(epstopdf)             Command: <repstopdf --outfile=p3sample2-eps-converted-to
+.pdf p3sample2.eps>
+(epstopdf)             \includegraphics on input line 91.
+Package epstopdf Info: Output file is already uptodate.
+
+<p3sample2-eps-converted-to.pdf, id=36, 552.0625pt x 441.65pt>
+File: p3sample2-eps-converted-to.pdf Graphic file (type pdf)
+
+<use p3sample2-eps-converted-to.pdf>
+Package pdftex.def Info: p3sample2-eps-converted-to.pdf used on input line 91.
+(pdftex.def)             Requested size: 344.005pt x 275.21513pt.
+ [4 <./p3sample1-eps-converted-to.pdf>]
+[5 <./p3sample2-eps-converted-to.pdf>] (./STAT580hw2YifanZhu.aux) ) 
 Here is how much of TeX's memory you used:
- 5766 strings out of 493014
- 78907 string characters out of 6137001
- 296102 words of memory out of 5000000
- 9170 multiletter control sequences out of 15000+600000
- 17738 words of font info for 66 fonts, out of 8000000 for 9000
+ 6951 strings out of 493014
+ 94033 string characters out of 6137001
+ 321989 words of memory out of 5000000
+ 10329 multiletter control sequences out of 15000+600000
+ 18253 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,6n,52p,252b,1085s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/te
-xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/201
-6/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/20
-16/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2016/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/
-courier/ucrb8a.pfb><c:/texlive/2016/texmf-dist/fonts/type1/urw/courier/ucrr8a.p
-fb>
-Output written on STAT580hw2YifanZhu.pdf (2 pages, 136982 bytes).
+ 38i,6n,52p,275b,1569s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/
+2016/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2016/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmex10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2
+016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2016/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2016/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
+pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/te
+xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2016
+/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb><c:/texlive/2016/texmf-dist/font
+s/type1/urw/courier/ucrr8a.pfb>
+Output written on STAT580hw2YifanZhu.pdf (5 pages, 199268 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 109 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
