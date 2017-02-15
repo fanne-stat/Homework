@@ -1,0 +1,287 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	\setcounter{MaxMatrixCols}{20}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 510 Homework 5}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	\begin{enumerate}
+		\item
+	$\mu_1 = \verb|Intercept| \Rightarrow \mathrm{BLUE}(\mu_1) = \mathrm{BLUE}(\verb|Intercept|) = 351$
+
+	\item 
+	$\mu_2 = \verb|Intercept| + \verb|dose2| \Rightarrow \mathrm{BLUE}(\mu_2) = \mathrm{BLUE}(\verb|Intercept|) + \mathrm{BLUE}(\verb|dose2|) = 351 - 10 = 341$
+
+	\item 
+	$\widehat{Var}(\hat{\mu}_2) = \frac{\hat{\sigma}^2}{2}, \widehat{Var}(\verb|Intercept|) = \widehat{Var}(\hat{\mu}_1) = \frac{\hat{\sigma}^2}{2} = \widehat{Var}(\hat{\mu}_2),$ then $se(\hat{\mu}_2) = se(\verb|Intercept|) = 6.576$.
+
+	\item 
+	$t = \frac{\hat{\mu}_1 - \hat{\mu}_2} {se(\hat{\mu}_1 - \hat{\mu}_2)} = \frac{\hat{\mu}_1 - \hat{\mu}_2}{\sqrt{\hat{\sigma}^2}} = \frac{-\verb|dose2}{se(\verb|dose2)} = \frac{10}{9.301} = 1.075$. 
+
+	Distribution is $t_{5}(\mu_1 - \mu_2)$.
+
+	p-value is $0.331406$. Since p-value is large, there is no significant evidence that $\mu_1 = \mu_2$.
+
+	\item 
+	$F = \left(\frac{\hat{\mu}_3 - \hat{\mu_4}}{se(\hat{\mu}_3 - \hat{\mu}_4)}\right)^2 = \left(\frac{-6 + 17}{9.301}\right)^2 = 1.399$.
+
+	\item 
+	$F = \frac{(1038.5 - 432.5)/3}{432.5/5} = 2.3353$. The degrees of freedom is $(3,5)$.
+
+	The p-value is $0.1907591$, thus there is no siginificant evidence that full model can fit better than simple regression model. Thus a simple regression model is adequate here.
+
+	\item 
+	\begin{align*}
+	\mu_1 = \beta_0 + 0 \beta_1\\
+	\mu_2 = \beta_0 + 2 \beta_1\\
+	\mu_3 = \beta_0 + 4 \beta_1\\
+	\mu_4 = \beta_0 + 8 \beta_1\\
+	\mu_5 = \beta_0 + 16 \beta_1
+	\end{align*}
+	$\iff$
+	\begin{align*}
+	\mu_1 - \mu_2 = 2 \beta_1\\
+	\mu_3 - \mu_2 = 2 \beta_1\\
+	\mu_4 - \mu_3 = 4 \beta_1\\
+	\mu_5 - \mu_4 = 8 \beta_1
+	\end{align*}
+	$\iff$
+	\begin{align*}
+	\mu_1 - \mu_2 = \mu_3 - \mu_2\\
+	2(\mu_3 - \mu_2) = \mu_4 - \mu_3\\
+	2 (\mu_4 - \mu_3) = \mu_5 - \mu_4
+	\end{align*}
+	$\iff$
+	\begin{align*}
+	\mu_1 - 2 \mu_2 - \mu_3 = 0\\
+	2 \mu_2 - 3 \mu_2 + \mu_4 = 0\\
+	2 \mu_3 - 3 \mu_4 + \mu_5 = 0
+	\end{align*}
+	$\iff$
+	\begin{align*}
+	\begin{bmatrix}
+		1 & -2 & -1 & 0 & 0 \\
+		0 & 2 & -3 & 1 & 0 \\
+		0 & 0 & 2 & -3 & 1
+	\end{bmatrix}\begin{bmatrix}
+		\mu_1 \\
+		\mu_2 \\
+		\mu_3 \\
+		\mu_4 \\
+		\mu_5
+	\end{bmatrix} = \bm 0
+	\end{align*}
+	Thus 
+	\[\bm C = \begin{bmatrix}
+		1 & -2 & -1 & 0 & 0 \\
+		0 & 2 & -3 & 1 & 0 \\
+		0 & 0 & 2 & -3 & 1
+	\end{bmatrix}, \bm d = \bm 0\]
+
+	\item 
+
+	\ 
+
+	\begin{center}
+	\begin{tabular}{llllll}
+		\toprule
+		& Df & Sum Sq & Mean Sq & F Value & Pr($>$F)\\
+		\midrule
+	  d & 1 & 5899.6 & 5899.6 & 67.4 & 0.0004245\\
+	  dose & 3 & 607 & 202.3 & 2.3 & 0.1907591\\
+	  Residuals & 5 & 432.5 & 87.5 & & \\
+	  \bottomrule
+	\end{tabular}
+	\end{center}
+
+	\end{enumerate}
+
+	\item 
+	$\bm X = \bm X \bm B^{-1} \bm B \Rightarrow$ Every column of $\bm X$ is linear combination of columns of $\bm X \bm B^{-1} \Rightarrow \mathcal{C}(\bm X) \subset \mathcal{C}(\bm X \bm B^{-1})$.
+
+	$\bm X\bm B^{-1} = \bm X \bm B^{-1} \Rightarrow$ Every column of $\bm X \bm B^{-1}$ is linear combination of columns of $\bm X  \Rightarrow \mathcal{C}(\bm X\bm B^{-1}) \subset \mathcal{C}(\bm X )$.
+
+	Thus $\mathcal{C}(\bm X) = \mathcal{C}(\bm X \bm B^{-1})$.
+
+	\item 
+	\[\bm P_{\bm X} = \bm P_{\bm W} \iff \bm P_{\bm X} - \bm P_{\bm W} = \bm 0 \iff (\bm P_{\bm X} - \bm P_{\bm W})^T (\bm P_{\bm X} - \bm P_{\bm W}) \]
+	\begin{align*}
+	(\bm P_{\bm X} - \bm P_{\bm W})^T (\bm P_{\bm X} - \bm P_{\bm W}) & = (\bm P_{\bm X}^T - \bm P_{\bm W}^T)(\bm P_{\bm X} - \bm P_{\bm W})\\
+	& = \bm P_{\bm X} \bm P_{\bm X} - \bm P_{\bm X} \bm P_{\bm W} - \bm P_{\bm W} \bm P_{\bm X} + \bm P_{\bm W}\bm P_{\bm W}\\
+	& = \bm P_{\bm X} - \bm P_{\bm X} \bm P_{\bm W} - \bm P_{\bm W} \bm P_{\bm X} + \bm P_{\bm W}
+	\end{align*}
+	As $\mathcal{C}(\bm X) = \mathcal{C}(W)$, we have $\bm W = \bm X \bm B$. Then $\bm P_{\bm X} \bm P_{\bm W} = \bm P_{\bm X} \bm W (\bm W^T \bm W)^{-} \bm W^T = \bm P_{\bm X} \bm X \bm B (\bm W^T \bm W)^- \bm W^T = \bm X \bm B (\bm W^T \bm W)^T\bm W^T = \bm W(\bm W^T\bm W)^- \bm W^T = \bm P_{\bm W}$. In the same way we can prove $\bm P_{\bm W}\bm P_{\bm X} = \bm P_{\bm X}$. Then
+	\[(\bm P_{\bm X} - \bm P_{\bm W})^T (\bm P_{\bm X} - \bm P_{\bm W}) = \bm P_{\bm X} - \bm P_{\bm W} - \bm P_{\bm X} + \bm P_{\bm W} = \bm 0\]
+	Thus $\bm P_{\bm X} = \bm P_{\bm W}$.
+
+	\item 
+	\begin{enumerate}
+		\item 
+	
+	\[\bm X = \begin{bmatrix}
+		1 & 1 & 0 & 1 & 0\\
+		1 & 1 & 0 & 1 & 0\\
+		1 & 1 & 0 & 0 & 1\\
+		1 & 1 & 0 & 0 & 1\\
+		1 & 0 & 1 & 1 & 0\\
+		1 & 0 & 1 & 1 & 0\\
+		1 & 0 & 1 & 0 & 1\\
+		1 & 0 & 1 & 0 & 1\\
+	\end{bmatrix}\]
+
+	\item 
+	Let $\bm A = \begin{bmatrix}
+		0 & 0 & 0 & 0 & 1 & 0 & -1 & 0
+	\end{bmatrix}$, then $\bm A \bm X = \begin{bmatrix}
+		0 & 0 & 0 & 1 & -1
+	\end{bmatrix}$. $\bm A \bm X \bm \beta = \tau_1 - \tau_2$, hence it is estimable.
+	
+	\item 
+	\[\bm X^* = \begin{bmatrix}
+		1 & 0 & 1\\
+		1 & 0 & 1\\
+		1 & 0 & -1\\
+		1 & 0 & -1\\
+		0 & 1 & 1\\
+		0 & 1 & 1\\
+		0 & 1 & -1\\
+		0 & 1 & -1\\
+	\end{bmatrix}\]
+
+	Each column of $\bm X^*$ is linear combination of columns of $\bm X$. We can also get every column of $\bm X$ with linear combination of columns of $\bm X^*$. Thus $\mathcal{C}(\bm X) = \mathcal{C}(\bm X^*)$. Also, columns of $\bm X^*$ are orthogonal.
+
+	\item 
+	\[\bm \beta^* = \begin{bmatrix}
+		\mu + \lambda_1 + \frac{\tau_1 + \tau_2}{2}\\
+		\mu + \lambda_1 + \frac{\tau_1 + \tau_2}{2}\\
+		\frac{\tau_1 - \tau_2}{2}
+	\end{bmatrix}\]
+
+	\item 
+	$\bm X^* = \begin{bmatrix}
+		\bm x_1 & \bm x_2 & \bm x_3
+	\end{bmatrix}$, then 
+	\[\bm (X^*)^T \bm X = \begin{bmatrix}
+		\bm x_1^T \\
+		\bm x_2^T \\
+		\bm x_3^T
+	\end{bmatrix}\begin{bmatrix}
+		\bm x_1 & \bm x_2 & \bm x_3
+	\end{bmatrix} = \begin{bmatrix}
+		\bm x_1^T \bm x_1 & 0 & 0\\
+		0 & \bm x_2^T \bm x_2 & 0 \\
+		0 & 0 & \bm x_3^T \bm x_3
+	\end{bmatrix} = \begin{bmatrix}
+		4 & 0 & 0\\
+		0 & 4 & 0 \\
+		0 & 0 & 8
+	\end{bmatrix}\]
+
+	\[(\bm X^*)^T \bm X^* = \begin{bmatrix}
+		1/4 & 0 & 0\\
+		0 & 1/4 & 0\\
+		0 & 0 & 1/8
+	\end{bmatrix}\]
+
+	\begin{align*}
+	\bm P_{\bm X} &= \bm P_{\bm X^*} = \begin{bmatrix}
+		\bm x_1 & \bm x_2 & \bm x_3
+	\end{bmatrix} \begin{bmatrix}
+		1/4 & 0 & 0\\
+		0 & 1/4 & 0\\
+		0 & 0 & 1/8
+	\end{bmatrix}\begin{bmatrix}
+		\bm x_1^T\\
+		\bm x_2^T\\
+		\bm x_3^T
+	\end{bmatrix} \\
+	&= \frac{1}{4} \bm x_1 \bm x_1^T + \frac{1}{4}\bm x_2 \bm x_2^T + \frac{1}{8} \bm x_3 \bm x_3^T\\
+	& = \frac{1}{4}\begin{bmatrix}
+		1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+		1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+		1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+		1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+		0  & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0  & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0  & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0  & 0 & 0 & 0 & 0 & 0 & 0 & 0
+	\end{bmatrix} 
+	+ \frac{1}{4}\begin{bmatrix}
+		0  & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0  & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0  & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0  & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+		0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+		0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+		0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 
+	\end{bmatrix}\\
+	&+ \frac{1}{8} \begin{bmatrix}
+		1 & 1 & -1 & -1 & 1 & 1 & -1 & -1\\
+		1 & 1 & -1 & -1 & 1 & 1 & -1 & -1\\
+		-1 & -1 & 1 & 1 & -1 & -1 & 1 & 1\\
+		-1 & -1 & 1 & 1 & -1 & -1 & 1 & 1\\
+		1 & 1 & -1 & -1 & 1 & 1 & -1 & -1\\
+		1 & 1 & -1 & -1 & 1 & 1 & -1 & -1\\
+		-1 & -1 & 1 & 1 & -1 & -1 & 1 & 1\\
+		-1 & -1 & 1 & 1 & -1 & -1 & 1 & 1\\
+	\end{bmatrix}\\
+	& = \begin{bmatrix}
+		3/8 & 3/8 & 1/8 & 1/8 & 1/8 & 1/8 & -1/8 & -1/8\\
+		3/8 & 3/8 & 1/8 & 1/8 & 1/8 & 1/8 & -1/8 & -1/8\\
+		1/8 & 1/8 & 3/8 & 3/8 & -1/8 & -1/8 & 1/8 & 1/8\\
+		1/8 & 1/8 & 3/8 & 3/8 & -1/8 & -1/8 & 1/8 & 1/8\\
+		1/8 & 1/8 & -1/8 & -1/8 & 3/8 & 3/8 & 1/8 & 1/8\\
+		1/8 & 1/8 & -1/8 & -1/8 & 3/8 & 3/8 & 1/8 & 1/8\\
+		-1/8 & -1/8 & 1/8 & 1/8 & 1/8 & 1/8 & 3/8 & 3/8\\
+		-1/8 & -1/8 & 1/8 & 1/8 & 1/8 & 1/8 & 3/8 & 3/8\\
+	\end{bmatrix}
+	\end{align*}
+
+	\[\bm A \bm P_{\bm X} = \begin{bmatrix}
+		1/4 & 1/4 & -1/4 & -1/4 & 1/4 & 1/4 & -1/4 & -1/4 
+	\end{bmatrix}\]
+	Then
+	\[\mathrm{OLSE}(\tau_1 - \tau_2) = \bm A \bm P_{\bm X}\bm y = \frac{1}{4} y_{111} + \frac{1}{4}y_{112} - \frac{1}{4} y_{121} - \frac{1}{4} y_{122} + \frac{1}{4} y_{211} + \frac{1}{4} y_{212} - \frac{1}{4} y_{221} - \frac{1}{4} y_{222}\]
+	
+ 	\end{enumerate}
+
+\end{enumerate}
+	
+	
+	
+	\end{document}
