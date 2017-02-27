@@ -5,7 +5,7 @@
 
 
 
-void dgels_(char *TRANS, int *M, int *N, int *NRHS, double *A, int *LDA, double *B, int *LDB, double *WORK, int *LWORK, int *INFO);
+void dgels_(char *TRANS, int *m, int *n, int *NRHS, double *A, int *LDA, double *B, int *LDB, double *WORK, int *LWORK, int *INFO);
 
 int main()
 {
@@ -37,9 +37,9 @@ int main()
 
     char trans = 'N';
     int m = N;
-    int n = P;
+    int n = P+1;
     int nrhs = 1;
-    int lwork = 2 * N * P;
+    int lwork = 2 * m*n;
     double work[lwork];
     int info;
     int i, j;
@@ -47,11 +47,15 @@ int main()
     double A[m * n];
     double B[m];
 
+	for (i=0; i<m; i++){
+   A[i]=1; 
+}
+
     for (i = 0; i < m; i++)
     {
-        for (j = 0; j < n; j++)
+        for (j = 1; j < n+1; j++)
         {
-            A[j * m + i] = X[i][j];
+            A[j * m + i] = X[i][j-1];
         }
     }
 
@@ -68,14 +72,14 @@ int main()
     }
     else
     {
-        printf("The regression coefficirnts: ");
+        printf("The regression coefficients: ");
         for (i = 0; i < n; i++)
         {
-            printf("%d\t", B[i]);
+            printf("%.6f\t", B[i]);
         }
         printf("\n");
     }
-
+return 0;
 
 }
 
