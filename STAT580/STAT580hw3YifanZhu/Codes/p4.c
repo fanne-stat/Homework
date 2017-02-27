@@ -10,15 +10,15 @@ void dgesvd_(char *JOBU, char *JOBVT, int *m, int *n, double *A, int *LDA, doubl
 int main()
 {
     char jobu = 'S';
-    char jobvt = 'A'
-                 int m = N;
+    char jobvt = 'A';
+    int m = N;
     int n = P;
     double A[m * n];
     double s[n];
     double u[m * n];
     double vt[n * n];
     double *work;
-    int lwork = = -1;
+    int lwork =-1;
     double lworkopt;
     int i, j, info;
 
@@ -44,21 +44,21 @@ int main()
     };
 
     double Xbar[P];
-    for (i = 0; i < P; i++)
+    for (j = 0; j < P; j++)
     {
-        Xbar[i] = 0;
-        for (j = 0; j < N; j++)
+        Xbar[j] = 0;
+        for (i = 0; i < N; i++)
         {
-            Xbar[i] = Xbar[i] + X[i][j];
+            Xbar[j] = Xbar[j] + X[i][j];
         }
-        Xbar[i] = Xbar[i] / (double) N ;
+        Xbar[j] = Xbar[j] / (double) N ;
     }
 
     for (i = 0; i < m; i++)
     {
         for (j = 0; j < n; j++)
         {
-            A[j * m + i] = X[i][j] - Xbar[i];
+            A[j * m + i] = X[i][j] - Xbar[j];
         }
     }
 
@@ -71,10 +71,10 @@ int main()
     else
     {
         lwork = (int) lworkopt;
-        work = (double *) malloc(lwork * sizeof(double));
+        work = (double*) malloc(lwork * sizeof(double));
         assert(work != NULL);
 
-        dgesvd_((&jobu, &jobvt, &m, &n, A, &m, s, u, &m, vt, &n, work, &lwork, &info);
+        dgesvd_(&jobu, &jobvt, &m, &n, A, &m, s, u, &m, vt, &n, work, &lwork, &info);
 
                 if (info != 0)
     {
@@ -82,11 +82,12 @@ int main()
         }
         else
         {
+            printf("The principal component scores:\n");
             for (i = 0; i < m; i++)
             {
-                for (j = 0; i < n; j++)
+                for (j = 0; j < n; j++)
                 {
-                    printf("%f\t", U[j * m + i] * S[j]);
+                    printf("%.6f\t", u[j * m + i] * s[j]);
                 }
                 printf("\n");
             }
