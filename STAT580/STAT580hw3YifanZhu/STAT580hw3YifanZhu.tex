@@ -41,22 +41,120 @@
 	
 	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
 	\item 
+	\begin{enumerate}
+		\item 
+		The joint density of $(X,U)$ is 
+		\[f(x,u) = f(x)f(u) = g(x)\]
+		Then
+		\begin{align*}
+		P(U\leq r(X)) & = P\left(U\leq \frac{q(X)}{\alpha g(X)}\right)\\
+		& = \int_{\mathcal{X}} \int_{0}^{\frac{q(x)}{\alpha g(x)}} f(x,u) \mathrm{d}u \mathrm{d}x\\
+		& = \int_{\mathcal{X}} \int_{0}^{\frac{q(x)}{\alpha g(x)}} g(x) \mathrm{d}u \mathrm{d}x\\
+		& = \int_{\mathcal{X}} g(x) \frac{q(x)}{\alpha g(x)} \mathrm{d}x\\
+		& = \frac{1}{\alpha} \int_{\mathcal{X}} q(x) \mathrm{d}x
+		\end{align*}
+
+
+		\item 
+		In the same way, we have 
+		\begin{align*}
+		P(X \in A, U\leq r(X)) & = P\left(X\in A, U\leq \frac{q(X)}{\alpha g(X)}\right)\\
+		& = \int_{A} \int_{0}^{\frac{q(x)}{\alpha g(x)}} f(x,u) \mathrm{d}u \mathrm{d}x\\
+		& = \int_{A} \int_{0}^{\frac{q(x)}{\alpha g(x)}} g(x) \mathrm{d}u \mathrm{d}x\\
+		& = \int_{A} g(x) \frac{q(x)}{\alpha g(x)} \mathrm{d}x\\
+		& = \frac{1}{\alpha} \int_{A} q(x) \mathrm{d}x
+		\end{align*}
+
+	\end{enumerate}
+
+	We know that 
+	\[P(Y \in A) = P(X\in A|U\leq r(X))\]
+	Then
+	\[P(Y\in A) = \frac{P(X \in A, U \leq r(X))}{P(U \leq r(X))} = \frac{\frac{1}{\alpha}\int_{A}  q(x) \mathrm{d}x}{\frac{1}{\alpha} \int_{\mathcal{X}} q(x) \mathrm{d}x} = \int_{A} \left(q(x)\left/\int_{\mathcal{X}} q(x) \mathrm{d}x\right.\right)\mathrm{d}x = \int_{A} f(x) \mathrm{d}x\]
+
+
+
 	
 
 	\item 
+	\begin{enumerate}
+		\item 
+		\begin{align*}
+		\frac{1}{C} &= \int_{0}^{\infty} (2 x ^{\theta - 1} + x^{\theta - 1/2}) \mathrm{e}^{-x} \mathrm{d}x\\
+		& = 2 \int_{0}^{\infty} x^{\theta - 1} \mathrm{e}^{-x} \mathrm{d}x + \int_{0}^{\infty} x^{\theta - 1/2} \mathrm{e}^{-x} \mathrm{d}x\\
+		& = 2 \Gamma(\theta) + \Gamma(\theta + 1/2) 
+		\end{align*}
+		Thus the normalizing constant 
+		\[C = \frac{1}{2 \Gamma(\theta) + \Gamma(\theta + 1/2)}\]
 
+		\item 
+		\begin{align*}
+		g(x) & = \frac{1}{2 \Gamma (\theta) + \Gamma(\theta + 1/2)} \left(2 x^{\theta - 1}  \mathrm{e}^{-x} + x^{\theta - 1/2} \mathrm{e}^{-x}\right)\\
+		& = \frac{2 \Gamma (\theta)}{ 2 \Gamma (\theta)	+ \Gamma(\theta + 1/2)} \frac{1}{\Gamma(\theta)}x^{\theta - 1} \mathrm{e}^{-x} + \frac{\Gamma(\theta + 1/2)}{2 \Gamma(\theta) + \Gamma(\theta + 1/2)} \frac{1}{\Gamma(\theta + 1/2)}x^{\theta - 1/2} \mathrm{e}^{-x}\\
+		& = w_1 g_1 (x) + w_2 g_2(x)
+		\end{align*}
+		$w_1 + w_2 = 1$ amd $g_1$ is from $\Gamma(\theta)$ and $g_2$ is from $\Gamma(\theta + 1/2)$.
+		\item 
+
+		For $X_1 \sim \Gamma(\theta), X_2 \sim \Gamma(\theta + 1/2), U \sim \mathrm{Unif}(0,1)$,
+		Let 
+		\[Z_= \begin{cases}
+			X_1 , U \leq \frac{2 \Gamma(\theta)}{2 \Gamma(\theta) + \Gamma(\theta + 1/2)}\\
+			X_2 , U > \frac{2 \Gamma(\theta)}{2 \Gamma(\theta) + \Gamma(\theta + 1/2)}
+		\end{cases}\]
+		Then 
+		\begin{align*}
+		P(Z \in A) &= P\left(Z \in A | U \leq \frac{2 \Gamma(\theta)}{2 \Gamma(\theta) + \Gamma(\theta + 1/2)}\right) P\left(U \leq \frac{2 \Gamma(\theta)}{2 \Gamma(\theta) + \Gamma(\theta + 1/2)}\right)\\
+		&  + P\left(Z \in A | U > \frac{2 \Gamma(\theta)}{2 \Gamma(\theta) + \Gamma(\theta + 1/2)}\right) P\left(U > \frac{2 \Gamma(\theta)}{2 \Gamma(\theta) + \Gamma(\theta + 1/2)}\right)\\
+		& = \frac{2 \Gamma(\theta)}{2 \Gamma(\theta) + \Gamma(\theta + 1/2)}P(X_1 \in A) + \frac{\Gamma(\theta + 1/2)}{2 \Gamma(\theta) + \Gamma(\theta + 1/2)} P(X_2 \in A)\\
+		& = w_1 \int_{A} g_1 (x) \mathrm{d}x + w_2 \int_{A} g_2 (x) \mathrm{d}x\\
+		& = \int_{A} g(x)\mathrm{d}x
+		\end{align*}
+	Hence, $Z$ has the desired mixture gamma distribution. Then we can generate it like this
+	\begin{algorithm}
+		\caption{Procedure to sample from $g(x)$}
+		\begin{algorithmic}[1]
+			\State generate $U \sim \mathrm{Unif}(0,1)$;
+			\If {$U \leq \frac{2\Gamma(\theta)}{2 \Gamma(\theta) + \Gamma(\theta + 1/2)}$} 
+			\State {generate $X \sim \Gamma(\theta)$;}
+			\Else
+			
+			{generate $X \sim \Gamma(\theta + 1/2)$;}
+			\EndIf
+		\end{algorithmic}
+	\end{algorithm}
+
+	\item 
+	$\frac{q(x)}{\alpha g(x)} \leq 1 \Rightarrow \alpha \geq \frac{q(x)}{g(x)}$. 
+	\[\frac{q(x)}{g(x)} = \frac{C\sqrt{x + 4}}{\sqrt{x} + 2}\]
+	Thus $\alpha = \sup\{\frac{C\sqrt{x + 4}}{\sqrt{x} + 2} : x > 0\} = C.$ Then
+	\[r(x) = \frac{q(x)}{\alpha g(x)} = \frac{\sqrt{x + 4}}{\sqrt{x} + 2}\]
+
+	The rejection procedure is 
+	\begin{algorithm}
+		\caption{Rejection sampling using $g(x)$ as proposal distribution}
+		\begin{algorithmic}[1]
+			\State generate $U \sim \mathrm{Unif}(0,1)$ and $X \sim g(x)$ independently;
+			\If 
+			{$U > r(X) = \frac{\sqrt{X + 4}}{\sqrt{X} + 2}$} \Statex {return to Step 1;}
+			\Else \State return $X$;
+			\EndIf
+		\end{algorithmic}
+	\end{algorithm}
+	\end{enumerate}
+	\newpage
 	\item 
 
 	\ 
 
 	\lstinputlisting[language = C]{./Codes/p3.c}
-
+	\newpage
 	\item 
 
 	\ 
 
 	\lstinputlisting[language = C]{./Codes/p4.c}
-
+	\newpage
 	\item 
 
 	\ 
@@ -64,8 +162,5 @@
 	\lstinputlisting[language = C]{./Codes/p5.c}
  	\end{enumerate}
 
-
-	
-	
 	
 	\end{document}
