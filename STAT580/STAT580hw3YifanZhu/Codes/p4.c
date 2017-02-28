@@ -18,7 +18,7 @@ int main()
     double u[m * n];
     double vt[n * n];
     double *work;
-    int lwork =-1;
+    int lwork = -1;
     double lworkopt;
     int i, j, info;
 
@@ -71,14 +71,14 @@ int main()
     else
     {
         lwork = (int) lworkopt;
-        work = (double*) malloc(lwork * sizeof(double));
+        work = (double *) malloc(lwork * sizeof(double));
         assert(work != NULL);
 
         dgesvd_(&jobu, &jobvt, &m, &n, A, &m, s, u, &m, vt, &n, work, &lwork, &info);
 
-                if (info != 0)
-    {
-        printf("The dgesvd error %d\n", info);
+        if (info != 0)
+        {
+            printf("The dgesvd error %d\n", info);
         }
         else
         {
