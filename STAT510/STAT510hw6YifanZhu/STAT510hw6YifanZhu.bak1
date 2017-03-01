@@ -1,0 +1,197 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+\setcounter{MaxMatrixCols}{20}
+
+% \newfontfamily\courier{Courier New}
+
+
+\title{STAT 510 Homework 6}
+\author{Yifan Zhu}
+\maketitle
+
+\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item
+	      \begin{enumerate}
+		      \item
+				\[\bm c_i^T \bm \beta = \bm 0 \iff (\bm P_{i+1} - \bm P_{i}) \bm X \bm \beta = \bm 0\]
+				As $\mathrm{rank}{(\bm P_{j+1} - \bm P_{j})} = 1$ in this case, we can just pick one row of the matrix $(\bm P_{j+1} - \bm P_{j}) \bm X$ as our vector $\bm c_{i}^T$.
+				Then
+				\begin{align*}
+				&\bm c_1^T = \begin{bmatrix}
+					2 & 1 & 0 & -1 & 0
+				\end{bmatrix}\\
+				&\bm c_2^T = \begin{bmatrix}
+					2 & -1 & -2 & -1 & 2
+				\end{bmatrix}\\
+				& \bm c_3^T = \begin{bmatrix}
+					1 & -2 & 0 & 2 & -1
+				\end{bmatrix}\\
+				& \bm c_{4}^T = \begin{bmatrix}
+					1 & -4 & 6 & -4 & 1
+				\end{bmatrix}
+				\end{align*}
+				
+
+		      \item
+		      As for all $\bm c_i^T$, we have $\bm c_i^T\bm 1 = 0$, then $\bm c_i^T \bm \beta$ are contrast.
+
+		      \item
+		      In this case, $(\bm X^T \bm X)^- = \frac{1}{3} \bm I_{5}$, then $\bm C (\bm X^T \bm X)^- \bm C^T = \frac{1}{3} \bm C \bm C^T $, where $\bm C^T = \begin{bmatrix}
+		      	\bm c_1 & \bm c_2 & \bm c_3 & \bm c_4
+		      \end{bmatrix}$. We also have $\bm c_i^T \bm c_j = 0$ for all $i \neq j$, thus $\bm c_i^T \bm \beta$ are orthogonal.
+
+	      \end{enumerate}
+
+
+	      \item 
+	      $\bm H$ is symmetric, then it can be decomposed as $\bm H = \bm P \bm \Lambda \bm P^T$, where $\bm P = \begin{bmatrix}
+	      	\bm p_1 & \bm p_2 & \ldots & \bm p_n
+	      \end{bmatrix}$ is an orthogonal matrix and $\bm \Lambda = \mathrm{diag}(\{\lambda_i\}_{i=1}^n)$. 
+
+	      If $\bm H$ is non-negative definite, then for all $\bm x \in \mathbb{R}^n$, we have 
+	      \[\bm x^T \bm H \bm x = \bm x^T \bm P \bm \Lambda \bm P^T \bm x \geq 0\]
+	      Let $\bm x = \bm p_i$, then $\bm P^T \bm p_i = \begin{bmatrix}
+	      	\bm p_1^T\\
+	      	\bm p_2^T\\
+	      	\vdots
+	      	\bm p_n^T
+	      \end{bmatrix} \bm p_i = \begin{bmatrix}
+	      	0\\
+	      	\vdots\\
+	      	0\\
+	      	1\\
+	      	0\\
+	      	\vdots\\
+	      	0
+	      \end{bmatrix}$. It is a vector with all 0 except for the $i$-th index. Hence
+	      \[\bm p_i^T \bm P \bm \Lambda \bm P^T \bm p_i = \lambda_i \geq 0\]
+
+	      If all $\lambda_i \geq 0$, then for all $\bm x \in \mathbb{R}^n$, we have
+	      \[\bm x^T \bm H \bm x = \bm x^T \bm P \bm \Lambda \bm P^T \bm x = \bm y^T \bm \Lambda \bm y = \sum_{i=1}^n \lambda_i y_i^2 \geq 0\]
+	      Here $\bm y = \bm P^T \bm x$.
+
+
+	      \item 
+	      $y_i = \mu + |x_i| \epsilon_i \Rightarrow \frac{y_i}{|x_i|} = \frac{1}{|x_i|}\frac{\mu} + \epsilon_i$. Let $\bm z = \left[\frac{y_i}{|x_i|}\right],\, \bm X = \left[\frac{1}{|x_i|}\right] ,\, \epsilon = \left[\epsilon_i\right]$, then
+	      \[\bm z = \bm X \mu + \epsilon\]
+	      And it is a Gauss-Markov Model. Hence 
+	      \[\mathrm{BLUE}(\mu) = (\bm X^T \bm X)^- \bm X^T \bm z = \left(\sum_{i=1}^n \frac{1}{x_i^2}\right)^{-1} \sum_{i=1}^n \frac{1}{|x_i|} \frac{y_i}{|x_i|} = \frac{\sum_{i=1}^n \frac{y_i}{x_i^2}}{\sum_{i=1}^n{\frac{1}{x_i^2}}}\]
+
+	      \item 
+	      \begin{enumerate}
+	      	\item 
+	      	$\bm \alpha = \bm B \bm \beta = \begin{bmatrix}
+	      		\bm A \bm \beta \\
+	      		\bm B \bm \beta
+	      	\end{bmatrix} = \begin{bmatrix}
+	      		\bm \alpha_1\\
+	      		\bm \alpha_2
+	      	\end{bmatrix}$. Thus 
+	      	\[H_0 : \bm \alpha_2 = \bm 0,\, H_{A} = \bm \alpha_2 \neq \bm 0\]
+
+	      	\item 
+	      	When null hypothesis is true, we have $\bm \alpha = \bm 0$. Then $\bm W \bm \alpha = \bm W _1 \bm \alpha_1 + \bm W_2 \bm \alpha_2 = \bm W_1 \bm \alpha_1$. Then the model matrix I will use is $\bm W_1$.
+
+	      	\item 
+	      	$\bm C = \begin{bmatrix}
+	      		1/2 & 1/2 & -1/2 & -1/2
+	      	\end{bmatrix}$.
+
+	      	\item 
+	      	Let 
+	      	\[\bm A = \begin{bmatrix}
+	      	    1 & 0 & 0 & 0\\
+	      		0 & 1 & 0 & 0
+	      	\end{bmatrix}\]
+	      	We have 
+	      	\[\bm B = \begin{bmatrix}
+	      		1 & 0 & 0 & 0\\
+	      		0 & 1 & 0 & 0\\
+	      		0 & 0 & 1 & 0\\
+	      		1/2 & 1/2 & -1/2 & -1/2
+	      	\end{bmatrix}\]
+	      	be a non-singular matrix. 
+
+	      	\item 
+
+	      	\[\bm B^{-1} = \begin{bmatrix}
+	      		1 & 0 & 0 & 0\\
+	      		0 & 1 & 0 & 0\\
+	      		0 & 0 & 1 & 0\\
+	      		1 & 1 & -1 & -2
+	      	\end{bmatrix}\]
+	      	Then 
+	      	\[\bm W_1 = \begin{bmatrix}
+	      		1 & 0 & 0 & 0\\
+	      		1 & 0 & 0 & 0\\
+	      		0 & 1 & 0 & 0\\
+	      		0 & 1 & 0 & 0\\
+	      		0 & 1 & 0 & 0\\
+	      		0 & 0 & 1 & 0\\
+	      		0 & 0 & 1 & 0\\
+	      		0 & 0 & 1 & 0\\
+	      		0 & 0 & 1 & 0\\
+	      		0 & 0 & 0 & 1\\
+	      	\end{bmatrix}\begin{bmatrix}
+	      		1 & 0 & 0\\
+	      		0 & 1 & 0\\
+	      		0 & 0 & 1\\
+	      		1 & 1 & -1
+	      	\end{bmatrix} = \begin{bmatrix}
+	      		1 & 0 & 0 \\
+	      		1 & 0 & 0\\
+	      		0 & 1 & 0 \\
+	      		0 & 1 & 0 \\
+	      		0 & 1 & 0 \\
+	      		0 & 0 & 1 \\
+	      		0 & 0 & 1 \\
+	      		0 & 0 & 1 \\
+	      		0 & 0 & 1 \\
+	      		1 & 1 & -1 \\
+	      	\end{bmatrix}\]
+	      	$\bm W_1$ here is a reduced model.
+
+	      	\item 
+	      	\begin{align*}
+	      	&\mathrm{SSE}_{\mathrm{reduced}} = \bm y^T (\bm I - \bm P_{\bm W_1}) \bm y = 12\\
+	      	&\mathrm{SSE}_{\mathrm{full}} = \bm y^T (\bm I - \bm P_{\bm X}) \bm y = 24
+	      	\end{align*}
+	      	
+	      	\item 
+	      	$\mathrm{DFSSE}_{\mathrm{reduced}} = 10 - 3 = 7,\, \mathrm{DFSSE}_{\mathrm{full}} = 10 - 4 = 6$
+
+	      	\item 
+	      	\[F = \frac{(\mathrm{SSE}_{\mathrm{reduced}} - \mathrm{SSE}_{\mathrm{full}})/(\mathrm{DFSSE_{\mathrm{reduced}} - \mathrm{DFSSE}_{\mathrm{full}}})}{\mathrm{SSE}_{\mathrm{full}}/\mathrm{DFSSE}_{\mathrm{full}}} = \frac{24 - 12}{12/6} = 6\]
+	      \end{enumerate}
+	      
+\end{enumerate}
+
+\end{document}
