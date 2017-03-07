@@ -1,0 +1,91 @@
+
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage[inline]{enumitem}
+\usepackage{blindtext}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{bm}
+\lstset{
+basicstyle = \small\tt,
+keywordstyle = \tt\color{blue},
+commentstyle = \it\color[cmyk]{1,0,1,0},
+stringstyle = \tt\color[RGB]{128,0,0},
+%frame = single,
+backgroundcolor = \color[RGB]{245,245,244},
+breaklines,
+extendedchars = false,
+xleftmargin = 2em,
+xrightmargin = 2em,
+aboveskip = 1em,
+tabsize = 4,
+showspaces = false
+}
+\begin{document}
+\setcounter{MaxMatrixCols}{20}
+
+% \newfontfamily\courier{Courier New}
+
+
+\title{STAT 510 Homework 7}
+\author{Yifan Zhu}
+\maketitle
+
+\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item
+	      \begin{enumerate}
+	      	\item 
+	      	\begin{align*}
+	      	 E(MS_{ou(trt,xu)}) & = E \left(\frac{1}{tn(m-1)} \sum_{i=1}^t \sum_{j=1}^n \sum_{k = 1}^m (y_{ijk} - \bar{y}_{ij \cdot })^2 \right)\\
+	      	 & = \frac{1}{tn(m-1)} E \left( \sum_{i=1}^t \sum_{j=1}^n \sum_{k=1}^m (\mu + \tau_i + u_{ij} + e_{ijk} - \mu - \tau_i - u_{ij} - \bar{e}_{ij \cdot})^2 \right) \\
+	      	 & = \frac{1}{tn(m-1)} E \left( \sum_{i = 1}^t \sum_{j = 1}^n \sum_{k = 1}^m (e_{ijk} - \bar{e}_{ij \cdot} )^2 \right) \\
+	      	 \end{align*}
+	      	 As $e_ijk \sim N(0, \sigma_e^2)$, then
+	      	 \begin{align*}
+	      	 E \left( MS_{ou(trt, xu)} \right) & = \frac{1}{tn(m-1)} \sum_{i = 1}^r \sum_{j = 1}^n (m-1) \sigma_{e}^2\\
+	      	 & = \frac{1}{tn (m-1)} tn (m-1) \sigma_e^2 \\
+	      	 & = \sigma_e^2
+	      	 \end{align*}
+	      	 
+	      	 \item 
+	      	 Let $\bm A = (\bm I - \bm P_{3})$, where $\bm P_3 = \frac{1}{m} \bm I_{tn \times tn} \otimes \bm 1 \bm 1^T _{m \times m}$ is a projection matrix. Then $\bm y^T \bm A \bm y = \sum_{i=1}^t \sum_{j = 1}^n \sum_{k = 1}^m (y_{ijk} - \bar{y}_{ij \cdot})^2$. We also have 
+	      	 \[ \Sigma = \sigma_u^2 \bm I_{tn \times tn} \otimes \bm 1 \bm 1^T_{m \times m} + \sigma_e^2 \bm I_{tnm \times tnm} = \sigma_{u}^2 m \bm P_{3} + \sigma_e^2 \bm I\]
+	      	 Then
+
+	      	 \begin{align*}
+	      	 &\bm A \bm \Sigma = (\bm I - \bm P_3) (\sigma_u^2 m \bm P_3 + \sigma_e^2 \bm I) = \sigma_e^2 (\bm I - \bm P_3) = \sigma_e^2 (\bm I - \frac{1}{m} \bm I_{tn \times tn} \otimes \bm I_{m\times m})\\
+	      	  \Rightarrow & \mathrm{tr}(\bm A \bm \Sigma) = tnm \sigma_e^2 (1 - \frac{1}{m}) = \sigma_e^2 tn (m-1)
+	      	 \end{align*}
+
+	      	 We know that $E(\bm y) \subset \mathcal{C}(\bm P_{2}) \subset \mathcal{C}(\bm P_{3})$. Thus $(\bm I - \bm P_{3}) E(\bm y) = \bm 0 \Rightarrow E(\bm y)^T \bm A E(\bm y) = 0$.
+	      	 Hence,
+	      	 \[E (\bm y^T \bm A \bm y) = tn(m-1) \sigma_e^2 \Rightarrow E(MS_{ou(trt, xu)}) = \frac{1}{tn(m-1)} tn (m-1) \sigma_e^2 = \sigma_e^2\]
+	      	 
+
+
+			  \end{enumerate}
+
+			  \item 
+			  \begin{enumerate}
+			  	\item 
+			  	$d_j = y_{1j} - y_{2j} = (\mu_1 + u _j + e_{1j}) - (\mu_2 + u_j + e_{2j}) = (\mu_1 - \mu_2) + (e_{1j} - e_{2j})$. We have $e_{ij} \overset{iid}{\sim} N(0, \sigma_{e}^2)$, then $d_j \overset{iid}{\sim} N(\mu_1 - \mu_2 , 2 \sigma_{e}^2)$.
+
+			  	 \item 
+			  	 \[T = \frac{\bar{d}}{\sqrt{\frac{1}{380} \sum_{j = 1}^{20} (d_j - \bar{d})^2}},\, \mathrm{where \ } \bar{d} = \frac{1}{20} \sum_{j = 1}^{20} d_j \] 
+
+
+			  	 \item 
+			  	 \[T \sim t_{19}(\mu_1 - \mu_2)\]
+			  \end{enumerate}
+			  
+			   
+	      \end{enumerate}
+	      
+
+\end{document}
