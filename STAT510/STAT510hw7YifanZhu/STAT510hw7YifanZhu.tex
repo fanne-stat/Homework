@@ -82,7 +82,81 @@ showspaces = false
 
 			  	 \item 
 			  	 \[T \sim t_{19}(\mu_1 - \mu_2)\]
+
+			  	 \item 
+			  	 \[CI = \left[\bar{a} - \bar{b} - t_{38,0.975 }\sqrt{\frac{\sum_{j=1}^{20} (a_j - \bar{a})^2 + \sum_{j= 1}^2 (b_j - \bar{b})^2}{380}}, \bar{a} - \bar{b} + t_{38,0.975 }\sqrt{\frac{\sum_{j=1}^{20} (a_j - \bar{a})^2 + \sum_{j= 1}^2 (b_j - \bar{b})^2}{380}}\right]\]
+
+			  	 \item 
+			  	 \begin{align*}
+			  	 & \hat{\sigma}_e^2 = \frac{\sum_{j = 1}^{20} (d_j - \bar{d})^2}{38}\\
+			  	 & \hat{\sigma}_e^2 + \hat{\sigma}_u^2 = \frac{\sum_{j=1}^{20} (a_j - \bar{a})^2 + \sum_{j=1}^{20} (b_j - \bar{b})^2}{38} \Rightarrow \hat{\sigma}_u^2 = \frac{\sum_{j=1}^{20} (a_j - \bar{a})^2 + \sum_{j=1}^{20} (b_j - \bar{b})^2 - \sum_{j = 1}^{20} (d_j - \bar{d})^2}{38}
+			  	 \end{align*}
+			  	 
+			  	 \item 
+			  	 \begin{align*}
+			  	 & \bm X = \begin{bmatrix}
+			  	 	1 & -1\\
+			  	 	\vdots & \vdots\\
+			  	 	1 & -1\\
+			  	 	1 & 0\\
+			  	 	\vdots & \vdots\\
+			  	 	1 & 0\\
+			  	 	0 & 1\\
+			  	 	\vdots & \vdots \\
+			  	 	0 &１
+			  	 \end{bmatrix}\\
+			  	 & \bm \Sigma = \begin{bmatrix}
+			  	 	2 \sigma_e^2  \\
+			  	 	& \ddots\\
+			  	 	&& \sigma_e^2 \\
+			  	 	&&& \sigma_e^2 + \sigma_u^2 \\
+			  	 	&&&& \ddots \\
+			  	 	&&&&& \sigma_e^2 + \sigma_u^2
+			  	 \end{bmatrix}
+			  	 \end{align*}
+			  	 Then
+			  	 \begin{align*}
+			  	 \hat{\mu_1} - \hat{\mu_2} & = \begin{bmatrix}
+			  	 	1 & -1
+			  	 \end{bmatrix}
+			  	 \bm (\bm X^T \bm \Sigma^{-1} \bm X)^- \bm X^T \bm \Sigma^{-1} \bm y \\
+			  	 & = \frac{1}{\frac{1}{\sigma_e^2 + \sigma_u^2} + \frac{1}{\sigma_e^2}}\left(\frac{1}{\sigma_e^2} \bar{d} + \frac{1}{\sigma_u^2 + \sigma_e^2} (\bar{a} - \bar{b})\right)\\
+			  	 & = \frac{1}{\sigma_{u}^2 + 2 \sigma_e^2} \left( (\sigma_u^2 + \sigma_e^2) \bar{d} + \sigma_e^2 (\bar{a} - \bar{b})\right)
+			  	 \end{align*}
+			  	 
+			  	 
 			  \end{enumerate}
+
+			  \item 
+			  \begin{align*}
+			  & \bm X = \begin{bmatrix}
+			  	\bm 1_{20 \times 1} \otimes \bm I_{2\times 2}\\
+			  	\begin{bmatrix}
+			  		\bm 1_{20 \times 1} & \bm 0_{20 \times 1}
+			  	\end{bmatrix}\\
+			  	\begin{bmatrix}
+			  		\bm 0_{20 \times 1} & \bm 1_{20 \times 1}
+			  	\end{bmatrix}
+			  \end{bmatrix}\\
+			  & \bm Z = \begin{bmatrix}
+			  	\bm I_{20\times 20} \otimes \bm 1_{2\times 1} & \bm 0_{40\times 40}\\
+			  	\bm 0_{40\times 20} & \bm I_{40\times 40}
+			  \end{bmatrix}
+			  \end{align*}
+
+			  \item 
+			  \begin{align*}
+			  & \mathrm{BLUE}_1 (\mu) = \frac{y_1 + y_2 + y_3 + y_4}{4}\\
+			  & \mathrm{Var}(\mathrm{BLUE}_1(\mu)) = \frac{1}{16} \mathrm{Var}(y_1 + y_2 + y_3 + y_4)\\
+			  = & \frac{1}{16} \left(\sum_{i=1}^4 \mathrm{Var}(y_i) + \sum_{i \neq j} \mathrm{Cov}(y_i, y_j)\right)\\
+			  =& \frac{1}{16}(5 \times 4 + 1 \times 4 \times 3) = 2 \\
+			  & \mathrm{BLUE}_2(\mu) = y_5 \\
+			  & \mathrm{Var}(\mathrm{BLUE}_2(\mu)) = \mathrm{Var}(y_5) = 4 
+			  \end{align*}
+			  We know $\mathrm{BLUE}_1(\mu)$ and $\mathrm{BLUE}_2 (\mu)$ are independent, then 
+			  \[\mathrm{BLUE}(\mu) = \frac{\frac{1}{2}}{\frac{1}{2} + \frac{1}{4}} \mathrm{BLUE}_1(\mu) + \frac{\frac{1}{4}}{\frac{1}{2} + \frac{1}{4}} \mathrm{BLUE}_2 (\mu) = \frac{2}{3} \frac{y_1 + y_2 + y_3 + y_4}{4} + \frac{1}{3} y_5 = \frac{1}{6} (y_1 + y_2 + y_3 + y_4) + \frac{1}{3} y_5\]
+			  
+			  
 			  
 			   
 	      \end{enumerate}
