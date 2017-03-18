@@ -6,7 +6,7 @@ void dgesv_(int *n, int *nrhs, double *a, int *lda, int *ipiv, double *b, int *l
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
+    if (argc != 3)
     {
         printf("This program performs a linear regression and returns the regression coefficients.\n");
         printf("Arguments: data intercept\n");
@@ -34,20 +34,22 @@ int main(int argc, char *argv[])
 
     printf("Sample size and number of predictors are %d and %d respectively.\n", N, P);
 
-    double data[N * (P + 1)]
+    double data[N * (P + 1)];
 
     for (i = 0; i < N * (P + 1); i++)
     {
-        fscanf(f, "%lf", &data[i])
+        fscanf(f, "%lf", &data[i]);
     }
 
+    fclose(f);
+  
     double Y[N];
     for (i = 0; i < N; i++)
     {
-        Y[i] = data[i * (P + 1)]
+        Y[i] = data[i * (P + 1)];
     }
 
-    if (argv[2] == '1')
+    if (atoi(argv[2]) == 1)
     {
         double X[N][(P + 1)];
         int n1 = P + 1, n2 = 1, ipiv[P + 1], info;
@@ -58,7 +60,7 @@ int main(int argc, char *argv[])
             X[i][0] = 1;
             for (j = 1; j < n1; j++)
             {
-                X[i][j] = data[i * (P + 1) + j]
+                X[i][j] = data[i * (P + 1) + j];
             }
         }
 
@@ -97,7 +99,7 @@ int main(int argc, char *argv[])
 
 
     }
-    else if (argv[2] == '0')
+    else if (atoi(argv[2]) == 0)
     {
         double X[N][P];
         int n1 = P, n2 = 1, ipiv[P], info;
@@ -107,7 +109,7 @@ int main(int argc, char *argv[])
         {
             for (j = 0; j < n1; j++)
             {
-                X[i][j] = data[i * (P + 1) + j + 1]
+                X[i][j] = data[i * (P + 1)+ j+1];
             }
         }
 
