@@ -40,7 +40,75 @@
 	\maketitle
 	
 	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item \ 
+
+	\lstinputlisting[language = C]{./Codes/p1.c}
+
 	\item 
+	\begin{enumerate}
+		\item 
+		Let $X \sim \mathrm{Exponential(1)}$, 
+		\[\int_{0}^\infty (x^2 + 5) x \mathrm{e}^{-x}\mathrm{d}x = E\left( (X^2 + 5) X\right) \approx 10.61867\]
+		\lstinputlisting[language = R]{./Codes/p2a.R}
+
+		\item 
+		Let $X \sim N(0,1/2),\, Y \sim \mathrm{Unif}(0,1)$ be independent. Then
+		\[\int_{0}^1 \int_{-\infty}^\infty \mathrm{e}^{-x^2} \cos (xy) \mathrm{d}x \mathrm{d}y = \int_0^1 \int_{-\infty}^\infty \sqrt{\pi} \cos (xy) \frac{1}{\sqrt{\pi}} \mathrm{e}^{-x^2} \mathrm{d}x \mathrm{d}y = E\left( \sqrt{\pi} \cos (X Y)\right)\approx 1.698413\]
+
+		\lstinputlisting[language = R]{./Codes/p2b.R}
+
+		\item 
+		Let $X \sim \mathrm{Weibull}(3, \sqrt[3]{4})$, then
+		\[\int_{0}^\infty \frac{3}{4} x^4 \mathrm{e}^{-x^3/4} = \int_{0}^\infty x^2 \frac{3}{\sqrt[3]{4}}\left( \frac{x}{\sqrt[3]{4}}\right)^2 \mathrm{e}^{- \left( \frac{x}{\sqrt[3]{4}}\right)^3} \mathrm{d}x = E(X^2) \approx 2.253528\]
+
+		\lstinputlisting[language = R]{./Codes/p2c.R}
+	\end{enumerate}
+\newpage
+	\item 
+	\[I = \int_{1}^2 \frac{1}{\sqrt{2 \pi}} \mathrm{e}^{-x^2/2} \mathrm{d}x = \int_{-\infty}^\infty h(x) f(x) \mathrm{d}x\]
+	Here
+	\[h(x) = \begin{cases}
+		1 & , x \in (0,1)\\
+		0 & , \mathrm{otherwise}
+	\end{cases}\]
+
+	\[f(x) = \frac{1}{2 \pi} \mathrm{e}^{-x^2/2}\]
+
+	$g(x) = \frac{1}{\sqrt{2 \pi} \nu} \mathrm{e}^{-(x - 1.5)^2/(2 \nu^2)}  $, then
+	\[h(x)w^*(x) = h(x) \frac{f(x)}{g(x)} = \begin{cases}
+		\nu \mathrm{e}^{-\frac{x^2}{2} + \frac{(x - 1.5)^2}{2 \nu^2}} & , x \in (0,1)\\
+		0 &, \mathrm{otherwise}
+	\end{cases}\]
+
+	Thus let $X \sim N( 1.5, \nu^2)$
+	\[\frac{1}{2 \pi}\int_{1}^2 \mathrm{e}^{-x^2/2} = E\left( h(X) w^* (X)\right) \approx \begin{cases}
+		0.1235178 & , \nu = 0.1\\
+		0.1354527 & , \nu = 1\\
+		0.1339445 & , \nu = 10
+	\end{cases}\]
+
+	\lstinputlisting[language = R]{./Codes/p3.R}
+	
+	
+	\item 
+	\begin{enumerate}
+		\item 
+		$\hat{I}_{\mathrm{MC}} = 0.6918192$
+
+		\item 
+		$E(c(U)) = E(1 + U) = 1.5$, $\hat{b} = \frac{\widehat{Cov}(h(U), c(U))}{{Var}(c(U))} = 12 \widehat{Cov}(1/(1+U), 1 + U).$
+		\[\hat{I}_{\mathrm{CV}} = 0.692778\]
+
+		\item 
+		\[\widehat{Var}(\hat{I}_{\mathrm{MC}}) = 1.289725 \times 10^{-5},\, \widehat{Var}({\hat{I}_{\mathrm{CV}}}) = 4.309791 \times 10^{-7} \]
+		Hence $\widehat{Var}({\hat{I}_{\mathrm{CV}}}) < \widehat{Var}(\hat{I}_{\mathrm{MC}})$.
+
+		\item 
+		Let $c_1(U) = \mathrm{e}^{-U}$, then $E(c_1(U)) = 1 - \frac{1}{\mathrm{e}}$. $\hat{b}_{1} = \widehat{Cov}(h(U), c_1(U))/\widehat{Var}(c_1(U))$. Then
+		\[\hat{I}_{\mathrm{CV}_1} = 0.6931038,\, \widehat{Var}(\hat{I}_{\mathrm{CV}_1}) = 3.678175 \times 10^{-8} < \widehat{Var}(\hat{I}_{\mathrm{CV}})\]
+
+	\end{enumerate}	
+	\lstinputlisting[language = R]{./Codes/p4b.R}
 	
  	\end{enumerate}
 

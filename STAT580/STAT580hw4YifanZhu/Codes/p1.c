@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     }
 
     fclose(f);
-  
+
     double Y[N];
     for (i = 0; i < N; i++)
     {
@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
         {
             for (j = 0; j < n1; j++)
             {
-                X[i][j] = data[i * (P + 1)+ j+1];
+                X[i][j] = data[i * (P + 1) + j + 1];
             }
         }
 
