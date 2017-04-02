@@ -93,13 +93,41 @@ showspaces = false
 	
 
 	\item 
+	\begin{enumerate}
+		\item 
+		\[\frac{MS_{\mathrm{WL}}}{MS_{\mathrm{GH:WL}}} = \frac{160.9}{19.4} = 8.29\]
 
+		\item 
+		\[\frac{MS_{\mathrm{GENO}}}{MS_{\mathrm{Error}}} = \frac{MS_{\mathrm{GENO}}}{\frac{SS_{\mathrm{GH:GENO}} + SS_{\mathrm{GENO : WL : GENO}}} {3+6}} = \frac{2.5}{\frac{11.7 + 14.5}{3+6}} = \frac{2.5}{2.92} = 0.856\]
+
+		\item
+		\[\frac{MS_{\mathrm{WL:GENO}}}{MS_{\mathrm{Error}}} = \frac{37.5}{2.92} = 12.84\] 
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item 
+		$avg_{ik} = a_{ik} = \bar{\mu}_{i \cdot} + p_k + \bar{e}_{i \cdot k}$, then $\bar{a}_{1 \cdot} = \bar{\mu}_{1 \cdot} + \frac{1}{6} \sum_{k=1}^6 p_k + \frac{1}{6} \sum_{k=1}^6 \bar{e}_{1 \cdot k},\, \bar{a}_{2 \cdot} = \bar{\mu}_{2 \cdot} + \frac{1}{12} \sum_{k=7}^{18} p_k + \frac{1}{12} \sum_{k=7}^{18} \bar{e}_{2 \cdot k}$. Hence we have 
+		\[Var\left(\bar{a}_{1 \cdot}\right) = \frac{1}{6} \sigma_p^2 + \frac{1}{6} \frac{1}{2} \sigma_e^2 = \frac{\sigma_p^2}{6} + \frac{\sigma_e^2}{12},\, Var(\bar{a}_{2 \cdot}) = \frac{1}{12} \sigma_p^2 + \frac{1}{12} \frac{1}{2} \sigma_e^2 = \frac{1}{2} Var(\bar{a}_{1 \cdot})\]
+		Note that $\bar{a}_{1 \cdot} - \bar{a}_{2 \cdot} = \bar{\mu}_{1 \cdot} - \bar{\mu}_{2 \cdot} + \frac{1}{6} \sum_{k=1}^6 \left(  p_k + \bar{e}_{1 \cdot k}\right) + \frac{1}{12}  \sum_{k=7}^{18}\left( p_k + \bar{e}_{2 \cdot k} \right)$, and $Var(\bar{a}_{1 \cdot} - \bar{a}_{2 \cdot}) = \frac{1}{6} \sigma_p^2 + \frac{1}{12} \sigma_p^2 + \frac{1}{12} \sigma_e^2 + \frac{1}{24} \sigma_e^2 = \frac{1}{4} \sigma_p^2 + \frac{1}{8} \sigma_e^2$. Thus test statistic is 
+		\[T = \frac{84.892 - 80.454}{\sqrt{2.169^2 + 1.534^2}} = 1.6705\]
+
+		\item 
+		$diff_{ik} = d_{ik} = \mu_{i1} - \mu_{i2} + e_{i1k} - e_{i2k}$, then $Var(\bar{d}_{1 \cdot}) = Var\left(\mu_{11} - \mu_{12} + \frac{1}{6} \sum_{k=1}^6 (e_{11k} - e_{12k})\right) = \frac{1}{6} 2 \sigma_e^2 = \frac{1}{3} \sigma_{e}^2, \,Var(\bar{d}_{2 \cdot}) = Var\left(\mu_{21} - \mu_{22} + \frac{1}{12} \sum_{k=7}^{18} (e_{21k} - e_{22k})\right) = \frac{1}{12} 2 \sigma_e^2 = \frac{1}{6} \sigma_{e}^2 = \frac{1}{2} Var(\bar{d}_{1 \cdot}).$ 
+
+		Note that $\frac{1}{2} (\bar{d}_{1 \cdot} + \bar{d}_{2 \cdot}) = \bar{\mu}_{ \cdot 1} - \bar{\mu}_{ \cdot 2} + \frac{1}{12} \sum_{k=1}^6 (e_{11k} - e_{12k}) + \frac{1}{24} \sum_{k=7}^{18}(e_{21k} - e_{22k}) $ and $Var(\frac{1}{2}(\bar{d}_{1 \cdot} + \bar{d}_{2 \cdot})) = \frac{1}{8} \sigma_e^2$. Hence the test statistic
+		\[T = \frac{ \frac{1}{2} (8.25 + 1.492)}{\sqrt{\frac{1}{4} (2.439^2 + 1.724^2)}} = 3.262\]
+
+		\item 
+		$\bar{y}_{11 \cdot} - \bar{y}_{12 \cdot} - \bar{y}_{21 \cdot} + \bar{y}_{22 \cdot} = \mu_{11} - \mu_{12} - \mu_{21} + \mu_{22} + \frac{1}{6} \sum_{k=1}^6 p_k + \frac{1}{6}\sum_{k=1}^6 e_{11k} - \frac{1}{6} \sum_{k=1}^6 p_k - \frac{1}{6} \sum_{k=1}^6 e_{12k} - \frac{1}{12} \sum_{k=7}^{18} p_k - \frac{1}{12} e_{21k} + \frac{1}{12} \sum_{k=7}^18 p_k + \frac{1}{12} \sum_{k=7}^{18} e_{22k} = \mu_{11} - \mu_{12} - \mu_{21} + \mu_{22} + \bar{e}_{11 \cdot} - \bar{e}_{12 \cdot} - \bar{e}_{21 \cdot} + \bar{e}_{22 \cdot}$. And $Var(\bar{y}_{11 \cdot} - \bar{y}_{12 \cdot} - \bar{y}_{21 \cdot} + \bar{y}_{22 \cdot}) = \frac{1}{6} \sigma_e^2 + \frac{1}{6} \sigma_e^2 + \frac{1}{12} \sigma_{e}^2 + \frac{1}{12} \sigma_e^2 = \frac{1}{2} \sigma_e^2$. We also know that $(\bar{y}_{11 \cdot} - \bar{y}_{12 \cdot} - \bar{y}_{21 \cdot} + \bar{y}_{22 \cdot})^2/(1/6 + 1/6 + 1/12 + 1/12) = MS_{\mathrm{geno:infection}} \Rightarrow \bar{y}_{11 \cdot} - \bar{y}_{12 \cdot} - \bar{y}_{21 \cdot} + \bar{y}_{22 \cdot} = \sqrt{91.35/2} = 6.758$. Then test statistic
+		\[T = \frac{6.758}{\sqrt{2.439^2 + 1.724^2}} = 2.263\]
+
+		\item 
+		$\hat{\sigma}_e^2 = {(2.439^2 + 1.724^2)\times 2} = 17.84$
+		\item 
+		$\hat{\sigma}_p^2 = (2.169^2 + 1.534^2) \times 4 - 17.84/2 = 19.31$.
+	\end{enumerate}
 	
-	
-
-	
-
-
 	     
 \end{enumerate}
 	      
