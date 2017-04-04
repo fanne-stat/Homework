@@ -1,0 +1,78 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\usepackage{algorithm}
+	\usepackage{algpseudocode}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \ttfamily\bfseries\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	showstringspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 580 Homework 5}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	\begin{enumerate}
+		\item 
+		See part (c).
+		\item 
+
+		\item \ 
+
+		\lstinputlisting[language = R]{./Codes/p1.R} 
+
+		CI for $\lambda$ is $(1.495806, 2.579958) \owns 2$. 
+		CI for $p$ is $(0.2636606, 0.4808380) \owns 0.3$. 
+
+	\end{enumerate}
+	
+
+	\item \ 
+
+	\lstinputlisting[language = R]{./Codes/p2.R}
+
+	True values: $E \left( Z \right)_{\mathrm{true}} = 1.154701 $ and $E \left( \frac{1}{Z} \right)_{\mathrm{true}} = 1.116025 $.
+
+	Estimated values: $E \left( Z \right)_{\mathrm{estimate}} = 1.103276$ and $E \left( \frac{1}{Z} \right)_{\mathrm{estimate}} = 1.162151 $
+
+
+	\item Call from R:
+	\lstinputlisting[language = R]{./Codes/p3.R}
+
+	Gibbs Sampling function in C:
+	\lstinputlisting[language = C]{./Codes/Gibbs.c}
+	CI for $\lambda$ is $(1.566422, 2.690176) \owns 2$. 
+	CI for $p$ is $(0.2198559, 0.4139339) \owns 0.3$. 
+	
+ 	\end{enumerate}
+	
+	\end{document}
