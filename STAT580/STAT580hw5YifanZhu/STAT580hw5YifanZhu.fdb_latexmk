@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1491347273 "STAT580hw5YifanZhu.tex" "STAT580hw5YifanZhu.pdf" "STAT580hw5YifanZhu" 1491347275
+["pdflatex"] 1491513107 "STAT580hw5YifanZhu.tex" "STAT580hw5YifanZhu.pdf" "STAT580hw5YifanZhu" 1491513108
   "./Codes/Gibbs.c" 1491337315 1367 8e1cef13a44a9f80718e11c79ee95dfd ""
   "./Codes/p1.R" 1491267695 839 c4e58918b536a76db5ca606516fd9e65 ""
   "./Codes/p2.R" 1491276331 663 b9a12b2e689da374232fdbd07dbfab8d ""
@@ -136,8 +136,8 @@
   "Codes/p1.R" 1491267695 839 c4e58918b536a76db5ca606516fd9e65 ""
   "Codes/p2.R" 1491276331 663 b9a12b2e689da374232fdbd07dbfab8d ""
   "Codes/p3.R" 1491337289 364 428794ce417bfad01b5de1f1fb6f4ad3 ""
-  "STAT580hw5YifanZhu.aux" 1491347274 259 2485549984ba7f809d9e0b364d268eb1 ""
-  "STAT580hw5YifanZhu.tex" 1491347272 2918 a9ba0b09d3b83e8f5968bf3bc7378d1c ""
+  "STAT580hw5YifanZhu.aux" 1491513108 259 2485549984ba7f809d9e0b364d268eb1 ""
+  "STAT580hw5YifanZhu.tex" 1491512518 2907 8be96551a26f1b6c6974b34a98c175a3 ""
   (generated)
   "STAT580hw5YifanZhu.aux"
   "STAT580hw5YifanZhu.pdf"

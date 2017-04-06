@@ -31,20 +31,20 @@
 	showstringspaces = false
 	}
 	\begin{document}
-	
+
 	% \newfontfamily\courier{Courier New}
 
-	
+
 	\title{STAT 580 Homework 5}
 	\author{Yifan Zhu}
 	\maketitle
-	
+
 	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
-	\item 
+	\item
 	\begin{enumerate}
-		\item 
+		\item
 		See part (c).
-		\item 
+		\item
 		$f(\lambda | p, \bm r, \bm x) \propto \lambda^{a-1} \mathrm{e}^{-b \lambda} \prod_{i=1}^n \mathrm{e}^{-\lambda r_i} \lambda^{x_i} = \lambda^{a + \sum_{i=1}^n x_i - 1} \mathrm{e}^{- \lambda (\sum_{i=1}^n r_i + b)}$. Hence $$(\lambda | p, \bm r, \bm x) \sim \mathrm{Gamma}(a + \sum_{i=1}^n x_i , b + \sum_{i=1}^n r_i)$$.
 
 		$f(p|\lambda, \bm r, \bm x) \propto \prod_{i=1}^n p^{r_i} (1 - p)^{1 - r_i} = p^{1 + \sum_{i=1}^n r_i - 1} (1 - p)^{n + 1 - \sum_{i=1}^n r_i} -1$. Hence $$(p | \lambda, \bm r, \bm x) \sim \mathrm{Beta}(1 + \sum_{i=1}^n r_i , n + 1 - \sum_{i=1}^n r_i)$$.
@@ -52,17 +52,21 @@
 		$f(r_i | \lambda, p, \bm x) = C \mathrm{e}^{- \lambda r_i} {r_i}^{x_i} p^{r_i} (1 - p)^{1 - r_i}$. When $x_i = 0$, $f(1|\lambda, p, \bm x) = C p \mathrm{e}^{- \lambda},\, f(0| \lambda, p, \bm x) = C(1 - p)$; when $x_i \neq 0$, $f(1|\lambda, p, \bm x) = C p \mathrm{e}^{- \lambda}, f(0|\lambda, \pi, \bm x) = 0$. Hence
 		$$(r_i | \lambda, p, \bm x) \sim \mathrm{Bernoulli}(\frac{p \mathrm{e}^{- \lambda}}{p \mathrm{e}^{- \lambda} + (1 - p) I(x_i = 0)})$$.
 
-		\item \ 
+		\item \
 
-		\lstinputlisting[language = R]{./Codes/p1.R} 
+		\lstinputlisting[language = R]{./Codes/p1.R}
 
-		CI for $\lambda$ is $(1.495806, 2.579958) \owns 2$. 
-		CI for $p$ is $(0.2636606, 0.4808380) \owns 0.3$. 
+		CI for $\lambda$ is $(1.495806, 2.579958) \owns 2$.
+		CI for $p$ is $(0.2636606, 0.4808380) \owns 0.3$.
 
 	\end{enumerate}
-	
+
+
 	\newpage
-	\item \ 
+	\item \
+
+
+
 
 	\lstinputlisting[language = R]{./Codes/p2.R}
 
@@ -70,15 +74,15 @@
 
 	Estimated values: $E \left( Z \right)_{\mathrm{estimate}} = 1.103276$ and $E \left( \frac{1}{Z} \right)_{\mathrm{estimate}} = 1.162151 $
 
-
 	\item Call from R:
 	\lstinputlisting[language = R]{./Codes/p3.R}
 
 	Gibbs Sampling function in C:
 	\lstinputlisting[language = C]{./Codes/Gibbs.c}
-	CI for $\lambda$ is $(1.566422, 2.690176) \owns 2$. 
-	CI for $p$ is $(0.2198559, 0.4139339) \owns 0.3$. 
-	
+	CI for $\lambda$ is $(1.566422, 2.690176) \owns 2$.
+	CI for $p$ is $(0.2198559, 0.4139339) \owns 0.3$.
+	$ $
+
  	\end{enumerate}
-	
+
 	\end{document}
