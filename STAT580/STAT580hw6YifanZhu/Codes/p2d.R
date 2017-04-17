@@ -1,49 +1,38 @@
-dltheta <- function(theta){
-  x <- c(-13.87, -2.53, -2.44, -2.40, -1.75, -1.34, -1.05, -0.23, -0.07, 0.27, 1.77, 2.76, 3.29, 3.47, 3.71, 3.80, 4.24, 4.53, 43.21, 56.75)
-  return(-2 * sum((theta - x)/(1 + (theta - x)^2)))
+library(MASS)
+
+y <- c(47, 76, 97, 107, 123, 139, 152, 159, 191, 201, 200, 207)
+x <- rep(c(0.02, 0.06, 0.11, 0.22, 0.56, 1.10), each = 2)
+
+f <- function(theta,x){
+  return(theta[1]*x/(x + theta[2]))
 }
 
-ddltheta <- function(theta){
-  x <- c(-13.87, -2.53, -2.44, -2.40, -1.75, -1.34, -1.05, -0.23, -0.07, 0.27, 1.77, 2.76, 3.29, 3.47, 3.71, 3.80, 4.24, 4.53, 43.21, 56.75)
-  return(-2 * sum((1 - (theta - x)^2)/(1 + (theta - x)^2)^2))
+A <- function(theta, x){
+  df1 <- x/(x + theta[2])
+  df2 <- - theta[1]*x/(x + theta[2])^2
+  return(matrix(c(df1, df2), ncol = 2))
 }
 
+Z <- function(theta, y, x){
+  return(y - f(theta,x))
+}
 
-Newton <- function(thetat){
-  thetat_new <- thetat - dltheta(thetat)/ddltheta(thetat)
-  condition <- (abs((thetat_new - thetat)/(thetat + 0.00005)) > 0.0001)
+GN <- function(thetat, y, x){
+  At <- A(thetat, x)
+  Zt <- Z(thetat, y, x)
+  thetat_new <- thetat + ginv(t(At)%*%At)%*%t(At)%*%Zt
+  condition <- (sqrt(sum((thetat_new - thetat)^2)/(sum((thetat)^2) + 0.00005)) > 0.000001)
   while (condition){
     thetat <- thetat_new
-    thetat_new <- thetat - dltheta(thetat)/ddltheta(thetat)
-    condition <- (abs((thetat_new - thetat)/(thetat + 0.00005)) > 0.0001)
+    At <- A(thetat, x)
+    Zt <- Z(thetat, y, x)
+    thetat_new <- thetat + ginv(t(At)%*%At)%*%t(At)%*%Zt
+    condition <- (sqrt(sum((thetat_new - thetat)^2)/(sum((thetat)^2) + 0.00005)) > 0.000001)
     if (is.na(condition))
       return("Not Converge")
   }
   return(thetat)
 }
 
-FisherS <- function(thetat){
-  x <- c(-13.87, -2.53, -2.44, -2.40, -1.75, -1.34, -1.05, -0.23, -0.07, 0.27, 1.77, 2.76, 3.29, 3.47, 3.71, 3.80, 4.24, 4.53, 43.21, 56.75)
-  I <- length(x)/2
-  thetat_new <- thetat + dltheta(thetat)/I
-  while (abs((thetat_new - thetat)/(thetat + 0.00005)) > 0.0001){
-    thetat <- thetat_new
-    thetat_new <- thetat + dltheta(thetat)/I
-  }
-  return(thetat)
-}
 
-start <- c(-11, -1, 0, 1.4, 4.1, 4.8, 7, 8, 38)
 
-# Newton Method
-for (thetat in start){
-  thetahat <- Newton(thetat)
-  print(thetahat)
-}
-
-# First use Fisher Scoring and then refinr using Newton
-for (thetat in start){
-  thetahat <- FisherS(thetat)
-  thetahat <- Newton(thetahat)
-  print(thetahat)
-}
