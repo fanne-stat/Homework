@@ -328,7 +328,19 @@ showspaces = false
 			e_{11} \\e_{12} \\ e_{21} \\ e_{31}
 		\end{bmatrix}\]
 
-		$\hat{\mu}_1 = \bar{y}_{\cdot 1} = (51 + 48 + 52) / 3 = 50.33,\, \hat{\mu}_2 = \bar{y}_{\cdot 2} = 54$.
+		$ \bm \Sigma = \begin{bmatrix}
+		 	4 & 2 & 0 & 0\\
+		 	2 & 4 & 0 & 0\\
+		 	0 & 0 & 4 & 0\\
+		 	0 & 0 & 0 & 4
+		 \end{bmatrix} \Rightarrow \bm \Sigma^{-1} = \begin{bmatrix}
+		 	1/3 & -1/6 & 0 & 0\\
+		 	-1/6 & 1/3 & 0 & 0\\
+		 	0 & 0 & 1/4 & 0\\
+		 	0 & 0 & 0 & 1/4
+		 \end{bmatrix}\, ,\bm \beta = (\bm X^T \bm \Sigma^{-1} \bm X)^{-} \bm X^T \bm \Sigma^{-1} \bm y = \begin{bmatrix}
+		 	50.33\\ 53.67
+		 \end{bmatrix} \Rightarrow \hat{\mu}_{1} + \hat{\mu}_{2} = 50.33 + 53.67 = 104$.
 
 		 \item 
 		 From $Var(y_{i1}) = Var(y_{i2}) = 4$ and $Corr(y_{i1}, y_{i2}) = 0.5 \Rightarrow \sigma_u^2 = 2, \sigma_e^2 = 2$. 
@@ -342,25 +354,15 @@ showspaces = false
 		 	1 & 1 & 0 & 0\\
 		 	0 & 0 & 1 & 0\\
 		 	0 & 0 & 0 & 1
-		 \end{bmatrix},\, \bm \Sigma = \begin{bmatrix}
-		 	4 & 2 & 0 & 0\\
-		 	2 & 4 & 0 & 0\\
-		 	0 & 0 & 4 & 0\\
-		 	0 & 0 & 0 & 4
-		 \end{bmatrix} \Rightarrow \bm \Sigma^{-1} = \begin{bmatrix}
-		 	1/3 & -1/6 & 0 & 0\\
-		 	-1/6 & 1/3 & 0 & 0\\
-		 	0 & 0 & 1/4 & 0\\
-		 	0 & 0 & 0 & 1/4
-		 \end{bmatrix},\, \\
+		 \end{bmatrix},\, 
 		 \bm y - \bm X \bm \beta = \begin{bmatrix}
-		 	0.67 \\ 0 \\ -2.33 \\ 1.67
+		 	0.67 \\ 0.33 \\ -2.33 \\ 1.67
 		 \end{bmatrix}$. Hence 
 		 \[BLUP(\bm u) = \bm G \bm Z^T \bm \Sigma^{-1} (\bm y - \bm X \bm \beta) = \begin{bmatrix}
-		 	2/9 \\ -7/6 \\ 5/6
+		 	0.333 \\ -1.167 \\ 0.833
 		 \end{bmatrix}\]
 
-		 Hence $y_{22} = 54 - 7/6 = 52.83,\, y_{23} = 54 + 5/6 = 54.83$. 
+		 Hence $y_{22} = 53.67 - 1.167 = 52.5,\, y_{23} = 53.67 + 0.833 = 54.5$. 
 
 	\end{enumerate}
 	
