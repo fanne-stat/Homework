@@ -39,6 +39,335 @@ showspaces = false
 
 \begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
 	\item
+	\begin{enumerate}
+		\item 
+
+	For this model, we have the model matrix 
+	\[\bm X = \begin{bmatrix}
+		\bm 1_{n_{11} + n_{12} + n_{21} +n_{22}}, \begin{bmatrix}
+			\bm 1_{n_{11} + n_{12}}\\
+			\bm 0_{n_{21} + n_{22}}
+		\end{bmatrix},\begin{bmatrix}
+			\bm 0_{n_{11} + n_{12}}\\
+			\bm 1_{n_{21} + n_{22}}
+		\end{bmatrix}, \begin{bmatrix}
+			\bm 1_{n_{11}}\\ \bm 0_{n_{12}} \\ \bm 1_{n_{21}} \\ \bm 0_{n_{22}}
+		\end{bmatrix}, \begin{bmatrix}
+			\bm 0_{n_{11}}\\ \bm 1_{n_{12}} \\ \bm 0_{n_{21}} \\ \bm 1_{n_{22}}
+		\end{bmatrix}
+	\end{bmatrix}\]
+
+	To make it full column rank with the same column space, then 
+	\[\bm X = \begin{bmatrix}
+		\bm x_1 , \bm x_2, \bm x_3
+	\end{bmatrix},\, \textrm{where $\bm x_1 = \begin{bmatrix}
+		\bm 1_{n_{11} + n_{12}}\\ \bm 0_{n_{21} + n_{22}}
+	\end{bmatrix},\, \bm x_2 =\begin{bmatrix}
+		\bm 0_{n_{11} + n_{12}}\\ \bm 1_{n_{21} + n_{22}}
+	\end{bmatrix} ,\, \bm x_3 = \begin{bmatrix}
+		\bm 1_{n_{11}} \\ \bm 0_{n_{12}} \\ \bm 1_{n_{21}} \\ \bm 0_{n_{22}}
+	\end{bmatrix}$}\]
+	\item 
+
+	We already have $\bm x_1 \perp \bm x_2$, thus let $\bm w_1 = \bm x_1,\, \bm w_2 = \bm x_2$. For $\bm w_2$, first we know
+	\[\bm P_{[\bm w_1 , \bm w_2]} = \bm P_{[\bm x_1, \bm x_2]} = \begin{bmatrix}
+		\frac{1}{n_{11} + n_{12}} \bm 1 \bm 1^T_{n_{11} + n_{12}}& \bm 0\\
+		\bm 0 & \frac{1}{n_{21} + n_{22}} \bm 1 \bm 1^T_{n_{21} + n_{22}}
+	\end{bmatrix}\]
+	Thus we have
+	\[\bm w_3 = (\bm I - \bm P_{[\bm x_1 , \bm x_2]}) \bm x_3 = \begin{bmatrix}
+		\bm 1_{n_{11}}\\ \bm 0_{n_{12}} \\ \bm 1_{n_{21}} \\ \bm 0_{n_{22}}
+	\end{bmatrix} - \begin{bmatrix}
+		\frac{n_{11}}{n_{11} + n_{12}} \bm 1_{n_{11} + n_{12}}\\
+		\frac{n_{21}}{n_{21} + n_{22}} \bm 1_{n_{21} + n_{22}}
+	\end{bmatrix} = \begin{bmatrix}
+		\frac{n_{12}}{n_{11} + n_{12}} \bm 1_{n_{11}}\\
+		-\frac{n_{11}}{n_{11} + n_{12}} \bm 1_{n_{12}}\\
+		\frac{n_{22}}{n_{21} + n_{22}} \bm 1_{n_{21}}\\
+		-\frac{n_{21}}{n_{21} + n_{22}} \bm 1_{n_{22}}
+	\end{bmatrix} = \begin{bmatrix}
+		\frac{4}{5} \bm 1_{2}\\
+		-\frac{1}{5} \bm 1_{8}\\
+		\frac{2}{5} \bm 1_{6}\\
+		-\frac{3}{5} \bm 1_{4}
+	\end{bmatrix}\] 
+
+	\begin{align*}
+	&\bm W^T\bm W = \begin{bmatrix}
+		\bm w_1^T\\ \bm w_2^T \\ \bm w_3^T
+	\end{bmatrix} \begin{bmatrix}
+		\bm w_1 & \bm w_2  & \bm w_3
+	\end{bmatrix} = \begin{bmatrix}
+		\bm w_1^T \bm w_1 & 0 & 0 \\
+		0 & \bm w_2^T \bm w_2 & 0\\
+		0 & 0 & \bm w_3^T \bm w_3
+	\end{bmatrix}\\
+	& \bm w_1^T \bm w_1 = n_{11} + n_{12} = 10\\
+	& \bm w_2^T \bm w_2 = n_{21} + n_{22} = 10\\
+	& \bm w_3^T \bm w_3 = \left( \frac{n_{12}}{n_{11} + n_{12}} \right)^2 n_{11} +  \left( \frac{n_{11}}{n_{11} + n_{12}} \right)^2 n_{12} + \left( \frac{n_{22}}{n_{21} + n_{22}} \right)^2 n_{21} + \left( \frac{n_{21}}{n_{21} + n_{22}} \right)^2 n_{22}\\
+	& = \left( \frac{4}{5} \right)^2 \times 2 + \left( \frac{1}{5} \right)^2 \times 8 + \left( \frac{2}{5} \right)^2 \times 6 + \left( \frac{3}{5} \right)^2 \times 4 = 4    
+	\end{align*}
+
+	\begin{align*}
+	& \bm W^T \bm y = \begin{bmatrix}
+		\bm w_1^T \\ \bm w_2^T \\ \bm w_3^T
+	\end{bmatrix} \bm y =  \begin{bmatrix}
+		\bm w_1^T \bm y \\ \bm w_2^T \bm y \\ \bm w_3^T \bm y
+	\end{bmatrix}\\
+	& \bm w_1^T \bm y = n_{11} \bar{y}_{11 \cdot} + n_{12} \bar{y}_{12 \cdot} = 2 \cdot 3 + 8 \cdot 5 = 46\\
+	& \bm w_2^T \bm y = n_{21} \bar{y}_{21 \cdot} + n_{22} \bar{y}_{22 \cdot} = 6 \cdot 7 + 4 \cdot 3 = 54 \\
+	& \bm w_2^T \bm y = \frac{n_{12} n_{11}}{n_{11} + n_{12}} \bar{y}_{11 \cdot} - \frac{n_{11} n_{12}}{n_{11} + n_{12}} \bar{y}_{12 \cdot} + \frac{n_{22} n_{21}}{n_{21} + n_{22}} \bar{y}_{21 \cdot} - \frac{n_{21} n_{22}}{n_{21} + n_{22}} \bar{y}_{22 \cdot} = 6.4 
+ 	\end{align*}
+
+ 	Then
+ 	\[(\bm W^T \bm W)^- \bm W^T \bm y = \begin{bmatrix}
+ 		1/\bm w_1^T \bm w & 0 \bm 0\\
+ 		0 & 1/ \bm w_{2}^T \bm w_2 & 0 \\
+ 		0 & 0 & 1 / \bm w_3^T \bm w_3
+ 	\end{bmatrix} \begin{bmatrix}
+ 		\bm w_1^T \bm y\\
+ 		\bm w_2^T \bm y\\
+ 		\bm w_3^T \bm y
+ 	\end{bmatrix} = \begin{bmatrix}
+ 		\frac{\bm w_1^T \bm y}{\bm w_1^T \bm w_1}\\
+ 		\frac{\bm w_2^T \bm y}{\bm w_2^T \bm w_2}\\
+ 		\frac{\bm w_3^T \bm y}{\bm w_3^T \bm w_3}
+ 	\end{bmatrix} = \begin{bmatrix}
+ 		4.6 \\ 5.4 \\ 1.6
+ 	\end{bmatrix}\]
+
+ 	\begin{align*}
+ 	\bm W (\bm W^T \bm W)^- \bm W^T \bm y & = \begin{bmatrix}
+ 		\bm w_1 & \bm w_2 & \bm w_3
+ 	\end{bmatrix} \begin{bmatrix}
+ 		\frac{\bm w_1^T \bm y}{\bm w_1^T \bm w_1}\\
+ 		\frac{\bm w_2^T \bm y}{\bm w_2^T \bm w_2}\\
+ 		\frac{\bm w_3^T \bm y}{\bm w_3^T \bm w_3}
+ 	\end{bmatrix} \\
+ 	& = \frac{\bm w_1^T \bm y}{\bm w_1^T \bm w_1} \bm w_1 + \frac{\bm w_2^T \bm y}{\bm w_2^T \bm w_2} \bm w_2 + \frac{\bm w_3^T \bm y}{\bm w_3^T \bm w_3} \bm w_3\\
+ 	& = \begin{bmatrix}
+ 		\left( \frac{\bm w_1^T \bm y}{\bm w_1^T \bm w_1} + \frac{n_{12}}{n_{11} + n_{12}} \frac{\bm w_3^T \bm y}{\bm w_3^T \bm w_3}  \right) \bm 1_{n_{11}}\\
+ 		\left( \frac{\bm w_1^T \bm y}{\bm w_1^T \bm w_1} - \frac{n_{11}}{n_{11} - n_{12}} \frac{\bm w_3^T \bm y}{\bm w_3^T \bm w_3}  \right) \bm 1_{n_{12}}\\
+ 		\left( \frac{\bm w_2^T \bm y}{\bm w_2^T \bm w_2} + \frac{n_{22}}{n_{21} + n_{22}} \frac{\bm w_3^T \bm y}{\bm w_3^T \bm w_3}  \right) \bm 1_{n_{21}}\\
+ 		\left( \frac{\bm w_2^T \bm y}{\bm w_2^T \bm w_2} - \frac{n_{21}}{n_{21} - n_{22}} \frac{\bm w_3^T \bm y}{\bm w_3^T \bm w_3}  \right) \bm 1_{n_{22}}\\
+ 	\end{bmatrix}\\
+ 	& = \begin{bmatrix}
+ 			(4.6 + 0.8 \times 1.6) \bm 1_{2}\\
+ 			(4.6 - 0.2 \times 1.6) \bm 1_{8}\\
+ 			(5.4 + 0.4 \times 1.6) \bm 1_{6}\\
+ 			(5.4 - 0.6 \times 1.6) \bm 1_{4}
+ 		\end{bmatrix}\\
+ 		& = \begin{bmatrix}
+ 			5.88 \bm 1_{2}\\
+ 			4.28 \bm 1_{8}\\
+ 			6.04 \bm 1_{6}\\
+ 			4.44 \bm 1_{4}
+ 		\end{bmatrix} = \bm P_{\bm W} \bm y = \bm P_{\bm X} \bm y
+ 	\end{align*}
+
+ 	\item 
+ 	\[\bm P_{[\bm x_1 , \bm x_3]} \bm y = \begin{bmatrix}
+ 		\frac{n_{11} + \bar{y}_{11 \cdot} + n_{12} \bar{y}_{12 \cdot}}{n_{11} + n_{12}} \bm 1_{n_{11} + n_{12}}\\
+ 		\frac{n_{21} + \bar{y}_{21 \cdot} + n_{22} \bar{y}_{22 \cdot}}{n_{21} + n_{22}} \bm 1_{n_{21} + n_{22}}
+ 	\end{bmatrix} = \begin{bmatrix}
+ 		4.6 \bm 1_{10} \\ 5.4 \bm 1_{10}
+ 	\end{bmatrix}\]
+
+ 	Then 
+	\begin{align*}
+	 	SS(B|\bm 1, A) & = \bm y^T (\bm P_{\bm X} - \bm P_{[\bm x_1, \bm x_2]}) \bm y\\
+	 	& = \bm y^T \bm P_{\bm X} \bm y - \bm y^T \bm P_{[\bm x_1, \bm x_2]} \bm y\\
+	 	& = (\bm P_{\bm X} \bm y)^T(\bm P_{\bm X} \bm y) - (\bm P_{[\bm x_1, \bm x_2]} \bm y)^T (\bm P_{[\bm x_1 \bm x_2]}\bm y)\\
+	 	& = (5.88^2 \times 2 + 4.28^2 \times 8 + 6.04^2 \times 6 + 4.44^2 \times 4) - (4.6^2 \times 10 + 5.4^2 \times 10)\\
+	 	& = 10.24
+	 	\end{align*}
+
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item 
+		$\bm \mu = [\mu_{ik}],\, i = 1,2, 3,\, k = 1,\ldots, 4. \, \bm w = [w_{ij}]\,\, i = 1,2,3,\, j = 1, \ldots, 5.\, bm e = [e_{ijk}],\, i = 1,2,3,\, j = 1,\ldots, 5,\, k = 1, \ldots , 4$. Then
+		\[\bm y = (\bm I_{3 \times 3} \otimes \bm 1_{5} \otimes \bm I_{4 \times 4}) \bm \mu + (\bm I_{15 \times 15} \otimes \bm 1_{4}) \bm w + \bm I_{60 \times 60} \bm e\]
+
+		Then
+		\[Var(\bm y) = (\bm I_{15 \times 15} \otimes \bm 1_{4}) Var(\bm w) (\bm I_{15 \times 15} \otimes \bm 1_{4})^T + Var(\bm e) = \sigma_w^2(\bm I_{15 \times 15} \otimes \bm 1_{4}\bm 1_4^T)  + \sigma_e^2 \bm I_{60 \times 60} \]
+
+		\item 
+		Test statistic $F = 7.1152$. 
+
+		Degree of freedom are $(6, 36)$.
+
+		p-value $< 0.0001$.
+
+		Since p$< 0.0001$ is a very small number less than $0.05$. We reject the null hypothesis anc conclude that there is significant evidence that there is drug-by-time interactions. 
+
+		\item 
+		$H_0 : \mu_{24} - \mu_{14} = \mu_{34} - \mu_{14} = 0$
+
+		We have
+		\[\bm C \hat{\bm \beta} = \begin{bmatrix}
+			\hat{\mu}_{24} - \hat{\mu}_{14} \\
+			\hat{\mu}_{34} - \hat{\mu}_{14}
+		\end{bmatrix}  =\begin{bmatrix}
+			\hat{\alpha}_2 + \hat{\gamma}_{24}\\
+			\hat{\alpha}_3 + \hat{\gamma}_{14}
+		\end{bmatrix} = \begin{bmatrix}
+			5.6 \\ 1.6
+		\end{bmatrix}\]
+
+		Also
+
+		\begin{align*}
+		Var \left( \bm C \hat{\bm \beta}\right) & = Var \left(  \begin{bmatrix}
+			\bar{y}_{2 \cdot 4} - \bar{y}_{1 \cdot 4}\\
+			\bar{y}_{3 \cdot 4} - \bar{y}_{1 \cdot 4}
+		\end{bmatrix} \right)  \\
+		& = \begin{bmatrix}
+			Var(\bar{y}_{2 \cdot 4}) + Var(\bar{y}_{1 \cdot 4}) & Var(\bar{y}_{1 \cdot 4})\\
+			Var(\bar{y}_{1 \cdot 4}) & Var(\bar{y}_{3 \cdot 4}) + Var(\bar{y}_{1 \cdot 4})
+		\end{bmatrix}\\
+		& = \begin{bmatrix}
+			\frac{2}{5} \sigma_w^2 + \frac{2}{5} \sigma_e^2 & \frac{1}{5} \sigma_w^2 + \frac{1}{5} \sigma_e^2\\
+			\frac{1}{5} \sigma_w^2 + \frac{1}{5} \sigma_e^2 & \frac{2}{5} \sigma_w^2 + \frac{2}{5} \sigma_e^2 
+		\end{bmatrix}\\
+		& = \frac{1}{5} (\sigma_w^2 + \sigma_e^2) \begin{bmatrix}
+			2 & 1 \\
+			1 & 2
+		\end{bmatrix}
+		\end{align*}
+
+		Hence 
+		\[(\widehat{Var}(\bm C \hat{\bm \beta}))^{-1} = \frac{5}{\hat{\sigma}_w^2 + \hat{\sigma}_e^2} \begin{bmatrix}
+			\frac{2}{3} & -\frac{1}{3}\\
+			-\frac{1}{3} & \frac{2}{3}
+ 		\end{bmatrix}\]
+
+ 		Then the test statistic
+ 		\[F = \frac{(\bm C \hat{\bm \beta})^T (\widehat{Var}(\bm C \hat{\bm \beta}))^{-1}(\bm C \hat{\bm \beta})}{q} = \frac{5}{2 (\hat{\sigma}_e^2 + \hat{\sigma}_w^2)} \begin{bmatrix}
+ 			5.6 & 1.6
+ 		\end{bmatrix} \begin{bmatrix}
+ 			2/3 & -1/3\\
+ 			-1/3 & 2/3
+ 		\end{bmatrix} \begin{bmatrix}
+ 			5.6 \\ 1.6
+ 		\end{bmatrix} = 1.109\]
+
+ 		For degrees of freedom, because
+ 		\[\hat{\sigma}_w^2 + \hat{\sigma}_e^2 = \frac{1}{4} (4 \hat{\sigma}_w^2 + \hat{\sigma}_e^2) + \frac{3}{4} \hat{\sigma}_e^2 = \frac{1}{4} MS_{woman(drug)} + \frac{3}{4} MS_{error}\]
+ 		Thus
+ 		\[df = \frac{(\frac{1}{4} MS_{woman(drug)} + \frac{3}{4} MS_{error})^2}{\frac{(\frac{1}{4})^2 MS_{woman(drug)}^2}{12} + \frac{(\frac{3}{4})^2 MS_{error}^2}{36}} = 17.06\]
+
+ 		Then p-value
+ 		\[p = P(F_{2, 17.06} > 1.109) = 0.35\]
+
+ 		The p-value $ > 0.05$. We fail to reject the null hypothesis and conclude that there is no significant evidence that the mean heart rate 15 minutes after treatment are not the same for all three drugs.
+
+ 		\item 
+ 		We know
+ 		\begin{align*}
+ 		&\hat{\mu}_{14} - \hat{\mu}_{24} = -5.6\\
+ 		& SE(\hat{\mu}_{14} - \hat{\mu}_{24}) = \sqrt{\frac{2}{5} (\hat{\sigma}_e^2 + \hat{\sigma}_w^2)} = 3.87
+ 		\end{align*}
+
+ 		Then
+ 		\[CI = \left( \hat{\mu}_{14} - \hat{\mu}_{24} - t_{17.06, 0.975} \cdot SE ,  \hat{\mu}_{14} + \hat{\mu}_{24} - t_{17.06, 0.975} \cdot SE \right) = (-13.766, 2.566)\]
+ 		
+		
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item 
+		$\sigma = 6.12,\, \rho = 0.7769$.
+
+		\item 
+		$AIC = 317.92,\, BIC = 344.12$.
+
+		\item 
+		$\sigma = 6.00,\, \rho = 0.8278$.
+
+
+		\item 
+		$AIC =  313.94,\, BIC = 340.14$
+
+		\item 
+		$\sigma = 6.10,\, \delta_{2} = 1.085, \delta_3 = 0.995,\, \delta_{4} = 0.928,\, \rho_{12} = 0.850. \rho_{13} = 0.889,\, \rho_{14} = 0.625,\, \rho_{23} = 0.870,\, \rho_{24} = 0.631,\, \rho_{34} = 0.794$.
+
+		\item 
+		$AIC = 322.85,\, BIC = 364.01$
+
+		\item 
+		AR1 is prefered. The model has smaller AIC and BIC.
+		\item 
+		$\hat{\mu}_{14} - \hat{\mu}_{24} = -5.6,\, SE(\hat{\mu}_{14} - \hat{\mu}_{24}) = \sqrt{\frac{2}{5} 6^2} = 3.79$.
+
+		\[CI = (-5.6 - z_{0.975} \times 3.79, - 5.6 + z_{0.975} \times 3.79) = (-13.03, 1.83)\]
+
+	\end{enumerate}
+
+
+	\item 
+	\begin{enumerate}
+		\item 
+		\[\bm y = \begin{bmatrix}
+			1 & 0\\
+			0 & 1\\
+			1 & 0\\
+			1 & 0
+		\end{bmatrix} \begin{bmatrix}
+			\mu_{1}\\ \mu_2
+		\end{bmatrix} + \begin{bmatrix}
+			1 & 0 & 0\\
+			1 & 0 & 0\\
+			0 & 1 & 0\\
+			0 & 0 & 1
+		\end{bmatrix} \begin{bmatrix}
+			u_1 \\ u_2 \\ u_3
+		\end{bmatrix} + \begin{bmatrix}
+			e_{11} \\e_{12} \\ e_{21} \\ e_{31}
+		\end{bmatrix}\]
+
+		$\hat{\mu}_1 = \bar{y}_{\cdot 1} = (51 + 48 + 52) / 3 = 50.33,\, \hat{\mu}_2 = \bar{y}_{\cdot 2} = 54$.
+
+		 \item 
+		 From $Var(y_{i1}) = Var(y_{i2}) = 4$ and $Corr(y_{i1}, y_{i2}) = 0.5 \Rightarrow \sigma_u^2 = 2, \sigma_e^2 = 2$. 
+
+		 Thus
+		 $\bm G = \begin{bmatrix}
+		 	2 & 0 & 0\\
+		 	0 & 2 & 0\\
+		 	0 & 0 & 2
+		 \end{bmatrix},\, \bm Z^T = \begin{bmatrix}
+		 	1 & 1 & 0 & 0\\
+		 	0 & 0 & 1 & 0\\
+		 	0 & 0 & 0 & 1
+		 \end{bmatrix},\, \bm \Sigma = \begin{bmatrix}
+		 	4 & 2 & 0 & 0\\
+		 	2 & 4 & 0 & 0\\
+		 	0 & 0 & 4 & 0\\
+		 	0 & 0 & 0 & 4
+		 \end{bmatrix} \Rightarrow \bm \Sigma^{-1} = \begin{bmatrix}
+		 	1/3 & -1/6 & 0 & 0\\
+		 	-1/6 & 1/3 & 0 & 0\\
+		 	0 & 0 & 1/4 & 0\\
+		 	0 & 0 & 0 & 1/4
+		 \end{bmatrix},\, \\
+		 \bm y - \bm X \bm \beta = \begin{bmatrix}
+		 	0.67 \\ 0 \\ -2.33 \\ 1.67
+		 \end{bmatrix}$. Hence 
+		 \[BLUP(\bm u) = \bm G \bm Z^T \bm \Sigma^{-1} (\bm y - \bm X \bm \beta) = \begin{bmatrix}
+		 	2/9 \\ -7/6 \\ 5/6
+		 \end{bmatrix}\]
+
+		 Hence $y_{22} = 54 - 7/6 = 52.83,\, y_{23} = 54 + 5/6 = 54.83$. 
+
+	\end{enumerate}
+	
+	
+	
+	
+	
 	
 	     
 \end{enumerate}
