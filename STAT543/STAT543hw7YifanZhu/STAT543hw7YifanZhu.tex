@@ -1,0 +1,185 @@
+
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage[inline]{enumitem}
+\usepackage{blindtext}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{bm}
+\lstset{
+basicstyle = \small\tt,
+keywordstyle = \tt\color{blue},
+commentstyle = \it\color[cmyk]{1,0,1,0},
+stringstyle = \tt\color[RGB]{128,0,0},
+%frame = single,
+backgroundcolor = \color[RGB]{245,245,244},
+breaklines,
+extendedchars = false,
+xleftmargin = 2em,
+xrightmargin = 2em,
+aboveskip = 1em,
+tabsize = 4,
+showspaces = false
+}
+\begin{document}
+\setcounter{MaxMatrixCols}{20}
+
+% \newfontfamily\courier{Courier New}
+
+
+\title{STAT 543 Homework 7}
+\author{Yifan Zhu}
+\maketitle
+
+\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item
+	\begin{enumerate}
+		\item 
+	$\theta_1 = \sigma_X^2, \theta_2 = \sigma_Y^2$, then $\Theta_0 = \{(\theta_1, \theta_2): \theta_2 / \theta_1 = \lambda_0\},\, \Theta = (0, \infty) \times (0, \infty)$.
+
+	\begin{align*}
+	L(\bm \theta) & = f(\bm x, \bm y | \bm \theta)\\
+	& = \prod_{i=1}^n \frac{1}{\sqrt{2 \pi \theta_1}} \mathrm{e}^{-\frac{x_i^2}{2 \theta_1}} \prod_{i=1}^m \frac{1}{\sqrt{2 \pi \theta_2}} \mathrm{e}^{-\frac{y_i^2}{2 \theta_2}}\\
+	& = (2 \pi)^{-\frac{(n+m)}{2}} \theta_1^{-n/2} \theta_2^{-m/2} \mathrm{e}^{-\sum_{i=1}^n \frac{x_i^2}{2 \theta_1} - \sum_{i=1}^m \frac{y_i^2}{2 \theta_2}}\\
+	\\
+	\ell (\bm \theta) &= \log L(\bm \theta) \\
+	& = - \frac{n+m}{2} \log (2 \pi) - \frac{n}{2} \log \theta_1 - \frac{m}{2} \log \theta_2 - \sum_{i=1}^n \frac{x_i^2}{2 \theta_1} - \sum_{i=1}^m \frac{y_i^2}{2 \theta_2}\\
+	\\
+	\frac{\partial \ell}{\partial \theta_1} & = - \frac{n}{2} \frac{1}{\theta_1} + \frac{\sum_{i=1}^n x_i^2}{2 \theta_1^2}\\
+	\frac{\partial \ell}{\partial \theta_2} & = - \frac{m}{2} \frac{1}{\theta_2} + \frac{\sum_{i=1}^m y_i^2}{2 \theta_2^2}\\
+	\end{align*}
+
+	Let $\frac{\partial \ell}{\partial \bm \theta} = \bm 0 $, we have
+	\[\hat{\theta}_1 = \frac{\sum_{i=1}^n x_i^2}{n},\, \hat{\theta_2} = \frac{\sum_{i=1}^m y_i^2}{m}\]
+
+	Also we have
+	\begin{align*}
+	&\frac{\partial^2 \ell}{\partial \theta_1^2} \bigg |_{\hat{\bm \theta}} = \frac{n}{2 \hat{\theta}_1^2} - \frac{\sum_{i=1}^n x_i^2}{\hat{\theta}_1^3} = - \frac{n}{\hat{\theta}_1^2}\\
+	 &\frac{\partial^2 \ell}{\partial \theta_2^2} \bigg |_{\hat{\bm \theta}} = \frac{m}{2 \hat{\theta}_2^2} - \frac{\sum_{i=1}^m y_i^2}{\hat{\theta}_2^3} = - \frac{m}{\hat{\theta}_2^2}\\
+	 &\frac{\partial^2 \ell}{\partial \theta_1 \partial \theta_2} = 0
+	\end{align*}
+
+	Thus $H = \frac{\partial^2 \ell}{\partial\bm \theta \partial \bm \theta^T }$ is negetive definite, then 
+	\[\max_{\bm \theta \in \Theta} L(\bm \theta) = L(\hat{\bm \theta}) = (2 \pi)^{-\frac{n+m}{2}} \hat{\theta}_1^{-n/2} \hat{\theta}_2^{-m/2} \mathrm{e}^{-\frac{n+m}{2}}\]
+
+	In $\Theta_0$,
+	\begin{align*}
+	\ell (\bm \theta) &= -\frac{n+m}{2} \log (2 \pi) - \frac{m}{2} \log \lambda_0 - \frac{n}{2} \log \theta_1 - \frac{m}{2} \log \theta_1 - \sum_{i=1}^n \frac{x_i^2}{2} \frac{1}{\theta_1} - \sum_{i=1}^n \frac{y_i^2}{2 \lambda_0} \frac{1}{\theta_1}\\
+	\\
+	\frac{\partial \ell}{\partial \theta_1} & = -\frac{n+m}{2} \frac{1}{\theta_1} + \left( \sum_{i=1}^n \frac{x_i^2}{2} + \sum_{i=1}^m \frac{y_i^2}{2 \lambda_0} \right) \frac{1}{\theta_1^2}
+	\end{align*}
+
+	Let $\frac{\partial \ell}{\partial \theta_1} = 0$, we have
+	\[\tilde{\theta}_1 = \frac{\sum_{i=1}^n x_i^2 + \sum_{i=1}^n y_i^2/\lambda_0}{n+m}\]
+
+	Also
+	\[\frac{\partial^2 \ell}{\partial \theta_1^2} = \frac{n+m}{2} \frac{1}{\theta_1^2} - \left( \sum_{i=1}^n x_i^2 + \sum_{i=1}^m y_i^2/\lambda_0 \right) \frac{1}{\theta_1^3} = - \frac{n+m}{2} \frac{1}{\tilde{\theta}_1^2} < 0 \]
+
+	Thus
+	\[\max_{\bm \theta \in \Theta_0} L(\bm \theta) = L((\tilde{\theta}_1, \lambda_0 \tilde{\theta}_1)) = (2 \pi)^{-\frac{n+m}{2}} \tilde{\theta}_1^{-\frac{n+m}{2}} \lambda_0^{- \frac{m}{2}} \mathrm{e}^{-\frac{n+m}{2}}\]
+
+	Hence we have
+	\[\lambda = \frac{\max_{\bm \theta \in \Theta_0} L(\bm \theta)}{\max_{\bm \theta \in \Theta} L(\bm \theta)} = \frac{\lambda_0^{- m /2} \tilde{\theta}_1^{- (n+m)/2}}{\hat{\theta}_1^{ - n/2} \hat{\theta}_2^{-m/2}} = \frac{\hat{\theta}_{1}^{n/2} \hat{\theta}_{2}^{m/2}}{\lambda_0^{m/2} \tilde{\theta}_1^{(m+n)/2}}\]
+
+	Then 
+	\begin{align*}
+	& \lambda < k\\
+	\iff & \frac{\hat{\theta}_{1}^{n} \hat{\theta}_{2}^{m}}{\lambda_0^{m} \tilde{\theta}_1^{(m+n)}} < k^2 \\
+	\iff & \frac{\left( \sum_{i=1}^n X_i^2 + \sum_{i=1}^m Y_i^2 / \lambda_0 \right)^{n + m}}{\left( \sum_{i=1}^n X_i^2 \right)^{n} \left( \sum_{i=1}^m Y_i^2 / \lambda_0 \right)^m  } > k_1 \\
+	\iff & \left(  1 + \frac{\sum_{i=1}^m Y_i^2 / \lambda_0}{\sum_{i=1}^n X_i^2} \right)^n \left( 1 + \frac{\sum_{i=1}^n X_i^2}{\sum_{i=1}^m Y_i^m / \lambda_0 } \right)^m > k_2  
+		\end{align*}
+
+		Let $T = \frac{\sum_{i=1}^n X_i^2 }{\sum_{i=1}^m Y_i^2 / \lambda_0}$.
+
+		Then 
+		\[\lambda < k \iff (1 + T^{-1})^n (1 + T)^m > k_2\]
+
+		Under $H_0$, $T = \frac{n}{m} \cdot \frac{\frac{1}{n} \sum_{i=1}^n X_i^2 / \sigma_X^2}{\frac{1}{m} \sum_{i=1}^m Y_i^2/(\lambda_0 \sigma_X^2)} = \frac{n}{m} F \sim \frac{n}{m} F_{n, m}$. Then 
+		\[P_{H_0}(\lambda < k) = P_{H_0} ((1 + \frac{m}{n} F^{-1})^n ( 1 + \frac{n}{m} F)^{m} > k_2) = \alpha \Rightarrow k_2 = c_{n,m,\alpha}\]
+
+		Thus the LRT is 
+		\[\Phi (\bm X , \bm Y) = \begin{cases}
+			1  &, (1 + T^{-1})^n (1 + T)^m  > c_{m,n,\alpha}\\
+			0 & , (1 + T^{-1})^n (1 + T)^m < c_{m,n,\alpha} 
+		\end{cases}\]
+
+		\item 
+		Rejection region in terms of $F$ is derived in part (a). We have
+		\[\left\{(x,y): \left( 1 + \frac{m}{n} F^{-1} \right)^n \left( 1 + \frac{n}{m} F \right)^m > c_{n,m,\alpha}  \right\}\]
+
+		\item 
+		The accept region is 
+		\[\left\{(x,y): \left( 1 + T^{-1} \right)^n \left( 1 + T \right)^m \leq c_{n,m,\alpha}  \right\}\]
+		And for function $g(t) = (1 + t^{-1})^n (1 + t)^m$, we have $g'(t) = \frac{(1 + t^{-1})^n (1 + t)^{m-1} (mt - n)}{t}$. Hence $g$ first decreases then increases as t increases. The turning point is $n/m$. Then
+
+		\begin{align*}
+		&\left( 1 + T^{-1} \right)^n \left( 1 + T \right)^m \leq c_{n,m,\alpha}\\
+		\iff & l_{n,m, \alpha\alpha}\leq T \leq u_{n,m,\alpha}\\
+		\iff & l_{n,m,\alpha} \leq \frac{\sum_{i=1}^n X_i^2}{\sum_{i=1}^m Y_i^2 / \lambda_0} \leq u_{n,m,\alpha} \\
+		\iff & l_{n,m,\alpha} \frac{\sum_{i=1}^m Y_i^2}{\sum_{i=1}^n X_i^2} \leq \lambda_0 \leq u_{n,m,\alpha} \frac{\sum_{i=1}^m Y_i^2}{\sum_{i=1}^n X_i^2} 
+		\end{align*}
+
+		Hence the $1 - \alpha$ CI is 
+		\[\left[ \frac{l_{n,m,\alpha} \sum_{i=1}^m Y_i^2}{\sum_{i=1}^n X_i^2}, \frac{u_{n,m,\alpha} \sum_{i=1}^m Y_i^2}{\sum_{i=1}^n X_i^2} \right] \]
+		
+	\end{enumerate}
+
+	\item 
+	$\frac{\partial}{\partial t} F_{\theta}(t) = f(t|\theta) \geq 0$, then
+	\[g(Q(t, \theta)) \left|\frac{\partial}{\partial t} Q(t, \theta)\right| = 1 \cdot \left|f(t|\theta)\right| = f(t | \theta)\]
+	
+	\item 
+	We have $F_T(T|\theta) = U \sim Unif(0,1)$,then
+	\begin{align*}
+	E_{\theta_0} \Phi (T) &= P_{\theta_0}(T \notin A_{\theta_0}) \\
+	&= 1 - P_{\theta_0}(\alpha_1 \leq F_T(T|\theta_0) \leq 1 - \alpha_2) \\
+	& = 1 - P(\alpha_1 \leq U \leq 1 - \alpha_2)\\
+	&= 1 - (1 - \alpha_2 - \alpha_1) \\
+	& = 1 - (1 - \alpha) = \alpha
+	\end{align*}
+
+	Hence it is a simple test with level $\alpha$.
+
+	By inverting the test, we have the $1 - \alpha$ confidence region
+	\[\{\theta : \alpha_1 \leq F_T(t|\theta) \leq 1 - \alpha_2\}\]
+
+	\item 
+	\begin{enumerate}
+		\item
+		$X \sim Beta(\theta , 1)$, then $f_X (x) = \theta x^{\theta - 1}$ and $F_X (x) = x^{\theta}$.
+
+		
+	$P_\theta (\theta \in [Y/2, Y]) = P_\theta (-\frac{1}{2 \log X} \leq \theta \leq - \frac{1}{\log X}) = P_{\theta} (\mathrm{e}^{-1/\theta} \leq X \leq \mathrm{e}^{-1/(2 \theta)}) = F_X(\mathrm{e}^{-\frac{1}{2 \theta}}) - F_X (\mathrm{e}^{-\frac{1}{\theta}}) = (\mathrm{e}^{-\frac{1}{2 \theta}})^{\theta} - (\mathrm{e}^{-\frac{1}{\theta}})^\theta = \mathrm{e}^{-1/2} - \mathrm{e}^{-1} = 0.236$.
+
+	\item 
+	Use $Q(X, \theta) = X^\theta$ as a pivot quantity. Then the $1 - \alpha$ confidece interval is
+	\[\left\{\theta : \frac{\alpha}{2} \leq X^{\theta} \leq 1 - \frac{\alpha}{2}\right\} = \left\{\theta : \log{\frac{\alpha}{2}} \leq \theta \log X \leq \log (1 - \frac{\alpha}{2})\right\} = \left\{\theta : \frac{\log (1 - \alpha/2)}{\log X} \leq \theta \leq \frac{\log(\alpha / 2)}{\log X}\right\}\]
+
+	\item 
+	They are both of the form $[\frac{a}{\log X}, \frac{b}{\log X}]$.
+	\end{enumerate}
+	\item 
+	\begin{enumerate}
+		\item 
+		\[A_{\theta_0} = \left\{\bm x : \theta_0 - z_{1 - \alpha/2} \frac{\sigma}{\sqrt{n}} \leq \bar{x} \leq \theta_0 + z_{1 - \alpha/2} \frac{\sigma}{\sqrt{n}}\right\}\]
+		\[ CI = \left\{\theta: \bar{x} - z_{1 - \alpha/2} \frac{\sigma}{\sqrt{n}} \leq \theta \leq \bar{x} + z_{1 - \alpha/2} \frac{\sigma}{\sqrt{n}}\right\} \]
+		\item 
+		\[A_{\theta_0} = \left\{\bm x : \bar{x} \geq \theta_0 + z_{\alpha} \frac{\sigma}{\sqrt{n}}\right\}\]
+		\[ CI = \left\{\theta:  \theta \leq \bar{x} - z_{\alpha} \frac{\sigma}{\sqrt{n}}\right\} \]
+		\item 
+		\[A_{\theta_0} = \left\{\bm x : \bar{x} \leq \theta_0 + z_{1 - \alpha} \frac{\sigma}{\sqrt{n}}\right\}\]
+		\[ CI = \left\{\theta:  \theta \geq \bar{x} - z_{1 - \alpha} \frac{\sigma}{\sqrt{n}}\right\} \]
+	\end{enumerate}
+	
+
+
+
+\end{enumerate}
+
+\end{document}
