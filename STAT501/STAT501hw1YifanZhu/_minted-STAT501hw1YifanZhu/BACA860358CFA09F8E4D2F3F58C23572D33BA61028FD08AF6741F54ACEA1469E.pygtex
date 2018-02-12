@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+senators.names\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kp}{names}\PYG{p}{(}senators\PYG{p}{)[}\PYG{o}{\PYGZhy{}}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{)]}
+rev.party.state.names\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kp}{lapply}\PYG{p}{(}X\PYG{o}{=}\PYG{k+kp}{strsplit}\PYG{p}{(}\PYG{k+kp}{gsub}\PYG{p}{(}patterns \PYG{o}{=} \PYG{l+s}{\PYGZdq{}[.]\PYGZdq{}}\PYG{p}{,} replacement \PYG{o}{=} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{,}x\PYG{o}{=}senators.names\PYG{p}{),} strsplit \PYG{o}{=} \PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{),}FUN \PYG{o}{=} \PYG{k+kp}{rev}\PYG{p}{)}
+
+senators.party \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{lapply}\PYG{p}{(}X \PYG{o}{=} rev.party.state.names\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{)(}\PYG{k+kp}{unlist}\PYG{p}{(}x\PYG{p}{)[}\PYG{l+m}{1}\PYG{p}{]))}
+senators.party \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{unlist}\PYG{p}{(}senators.party\PYG{p}{)}
+
+senators.last.names \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{lapply}\PYG{p}{(}X \PYG{o}{=} rev.party.state.names\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{)(}\PYG{k+kp}{unlist}\PYG{p}{(}x\PYG{p}{)[}\PYG{l+m}{4}\PYG{p}{]))}
+senators.last.names \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{unlist}\PYG{p}{(}senators.last.names\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{}Create new data.frame for plotting}
+senators\PYGZus{}new \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.data.frame}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{(}senators\PYG{p}{[,}\PYG{o}{\PYGZhy{}}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{)]))}
+
+\PYG{k+kp}{colnames}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{)} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kc}{NULL}
+\PYG{k+kp}{rownames}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{)} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kc}{NULL}
+
+senators\PYGZus{}new \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{data.frame}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{,} party \PYG{o}{=} senators.party\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Use the codes from Canvas}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}ggandrews.R\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Display the Andrews\PYGZsq{} curves}
+ggandrews\PYG{p}{(}senators\PYGZus{}new\PYG{p}{,} type \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} clr \PYG{o}{=} \PYG{l+m}{543}\PYG{p}{,} linecol \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}blue\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}purple\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{))}
+\end{Verbatim}

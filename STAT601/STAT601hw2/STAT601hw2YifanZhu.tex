@@ -1,0 +1,69 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 601 Homework 2}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	These two models have nested parameter spaces. Since the reduced model is nested in the full model, so with $Y_1 \sim \mathrm{Binom}(p_1, n_1),\, Y_2 \sim \mathrm{Binom}(P_2, n_2)$ independent, we have
+	\[Y_1 + Y_2 \sim \mathrm{Binom}(p, n_1 + n_2) \iff Y_1 \sim \mathrm{Binom}(p, n_1),\, Y_2 \sim \mathrm{Binom}(p, n_2)\]
+	``$\Leftarrow$'' is easy to show. The MGF of $Y_1$ and $Y_2$ are $(1 - p + p \mathrm{e}^t)^{n_1}$ and $(1 - p + p \mathrm{e}^t)^{n_2}$ now. So MGF of $Y_1 + Y_2$ is $(1 - p + p \mathrm{e}^t)^{n_1 + n_2}$, which is MGF of $\mathrm{Binom}(p, n_1 + n_2)$.
+
+	For ``$\Rightarrow$'', since $Y_1$ and $Y_2$ are independent random variables from $\mathrm{Binom}(p_1, n_1)$ and $\mathrm{Binom}(p_2, n_2)$ based on the full model, then MGF of $Y_1 + Y_2$ is $(1 - p_1 + p_1 \mathrm{e}^t)^{n_1} (1 - p_2 + p_2 \mathrm{e}^t)^{n_2}$. And with $Y_1 + Y_2 \sim \mathrm{Binom}(p, n_1 + n_2)$, the MGF is $(1 - p + p \mathrm{e}^{t})^{n_1 + n_2}$, so
+	\[(1 - p_1 + p_1 \mathrm{e}^t)^n_1 (1 - p_2 + p_2 \mathrm{e}^t)^{n_2} = (1 - p + p \mathrm{e}^t)^{n_1 + n_2}, \forall t\in \mathbb{R}, \Rightarrow p_1 = p_2 = p\] 	
+
+	Hence the reduced model is corresponding to the parameter space $\{(p_1, p_2): p_1 = p_2\, \&\,  p_1,  p_2 \in (0,1)\}$, which is nested in the parameter space with respect to the full model $\{(p_1, p_2): p_1, p_2 \in (0,1)\}$.
+
+	Suppose we have $(y_{1, i}, y_{2, i}), \, i = 1,2,\ldots, m$ from the joint distribution, then the loglikelihood for the full model is
+	\[\ell_{\mathrm{full}} =  \sum_{i=1}^m y_{1, i} \log\left(\frac{p_1}{1 - p_1}\right) + \sum_{i=1}^m y_{2, i} \log\left(\frac{p_2}{1 - p_2}\right) + m (n_1 \log (1 - p_1) + n_2 \log (1 - p_2)) + \sum_{i=1}^m \left(\log\binom{n_1}{n_2} + \log \binom{n_1}{n_2}\right)\]
+
+	And the loglikelihood for the reduced model is 
+	\[\ell_{\mathrm{reduced}} = \sum_{i = 1}^m (y_{1,i} + y_{2,i})\log\left(\frac{p}{1 - p}\right) + m(n_1 + n_2) (1 - p) + \sum_{i=1}^m \log \binom{n_1 + n_2}{y_{i, 1} + y_{i_2}}\]
+
+	The estimation of parameters will be correct for eitehr dropping the constant or keeping the constant in both loglikelihoods. However, while testing will still be correct if we drop the constant in both loglikelihoods, it will not be correct if we keep the constant. As the constant cannot be canceled out in the LRT statistic $-2 (\ell_{\mathrm{reduced}} - \ell_{\mathrm{full}})$, so the statistic is not correct.
+
+	The problem here is that we are using the loglikehood corresponding to the distribution of $Y_1 + Y_2$ in the reduced model. And when comparing the two log likelihoods in LRT, we should use the loglikehood from the joint distribuion. In this case, loglikelihood of the joint distribution $(Y_1, Y_2)$ should be used for both $\ell_{\mathrm{full}}$ and $\ell_{\mathrm{reduced}}$.   
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	\end{document}

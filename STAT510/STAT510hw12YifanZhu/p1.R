@@ -32,9 +32,10 @@ ggplot(d[d$ResearchStation == 7,], aes(x = Dose, y = LeafArea)) + geom_point() +
 
 AIC(oo)
 
-oo_red2 <- lmer(LeafArea ~ 0 + Dose + (1 + Dose | ResearchStation), data = d)
+oo_i <- lmer(LeafArea ~ Dose + (1| ResearchStation), data = d)
+oo_k <- lm(LeafArea ~ Dose, data = d)
 
-AIC(oo_red2)
+AIC(oo_i)
 
-AIC(oo_red)
+AIC(oo_k)
 

@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{library}\PYG{p}{(}TeachingDemos\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} Compute the mean for three groups}
+Means\PYG{o}{\PYGZlt{}\PYGZhy{}}aggregate\PYG{p}{(}x \PYG{o}{=} Tornado\PYG{p}{[}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{,}\PYG{l+m}{2}\PYG{o}{:}\PYG{l+m}{13}\PYG{p}{],}by\PYG{o}{=}\PYG{k+kt}{list}\PYG{p}{(}Tornado\PYG{o}{\PYGZdl{}}Period\PYG{p}{[}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{]),}FUN \PYG{o}{=} \PYG{k+kp}{mean}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}Create chernoff face for the means}
+faces\PYG{p}{(}xy \PYG{o}{=} Means\PYG{p}{[,}\PYG{l+m}{2}\PYG{o}{:}\PYG{l+m}{13}\PYG{p}{])}
+\PYG{c+c1}{\PYGZsh{}Create stars for the group means}
+stars\PYG{p}{(}x \PYG{o}{=} Means\PYG{p}{[,}\PYG{l+m}{2}\PYG{o}{:}\PYG{l+m}{13}\PYG{p}{],}labels \PYG{o}{=} \PYG{k+kp}{as.character}\PYG{p}{(}Means\PYG{o}{\PYGZdl{}}Group.1\PYG{p}{),}scale \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{,}full \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{,}radius \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+\end{Verbatim}

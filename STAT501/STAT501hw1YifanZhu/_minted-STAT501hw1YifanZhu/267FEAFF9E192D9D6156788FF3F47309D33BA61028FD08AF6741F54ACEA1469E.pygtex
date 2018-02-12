@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}surveyplot.R\PYGZdq{}}\PYG{p}{)}
+\PYG{k+kr}{for} \PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{12}\PYG{p}{)\PYGZob{}}
+  surveyplot\PYG{p}{(}\PYG{k+kp}{cbind}\PYG{p}{(}Tornado\PYG{p}{[,}\PYG{l+m}{2}\PYG{o}{:}\PYG{l+m}{13}\PYG{p}{],} \PYG{k+kp}{as.numeric}\PYG{p}{(}\PYG{k+kp}{as.factor}\PYG{p}{(}Tornado\PYG{p}{[,}\PYG{l+m}{14}\PYG{p}{]))),} order \PYG{o}{=} i\PYG{p}{)\PYGZcb{}}
+\end{Verbatim}

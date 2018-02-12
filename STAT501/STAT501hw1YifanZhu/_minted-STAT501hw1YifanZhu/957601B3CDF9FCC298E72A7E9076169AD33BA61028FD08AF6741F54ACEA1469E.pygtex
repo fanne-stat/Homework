@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+senators\PYG{o}{\PYGZlt{}\PYGZhy{}}read\PYGZus{}xls\PYG{p}{(}\PYG{l+s}{\PYGZdq{}senate\PYGZus{}voting\PYGZus{}data.xls\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

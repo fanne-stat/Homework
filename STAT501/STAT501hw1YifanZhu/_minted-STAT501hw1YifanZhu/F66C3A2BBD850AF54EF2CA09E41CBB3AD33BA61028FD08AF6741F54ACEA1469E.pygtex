@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+normal\PYGZus{}mean\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kp}{colMeans}\PYG{p}{(}sclerosis\PYG{p}{[}sclerosis\PYG{p}{[,}p\PYG{p}{]}\PYG{o}{==}\PYG{l+s}{\PYGZdq{}normal\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}p\PYG{p}{])}
+normal\PYGZus{}mean
+
+sclerosis\PYGZus{}mean\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kp}{colMeans}\PYG{p}{(}sclerosis\PYG{p}{[}sclerosis\PYG{p}{[,}p\PYG{p}{]}\PYG{o}{==}\PYG{l+s}{\PYGZdq{}sclerosis\PYGZdq{}}\PYG{p}{,}\PYG{o}{\PYGZhy{}}p\PYG{p}{])}
+sclerosis\PYGZus{}mean
+\end{Verbatim}

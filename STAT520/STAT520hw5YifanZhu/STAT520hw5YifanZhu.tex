@@ -1,0 +1,213 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\usepackage{subcaption}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 520 Homework 5}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+
+	\item 
+	They are different. The gls estimator is the minimizer of 
+	\[\sum_{i=1}^2 \frac{[y_i - g(\bm x_i, \bm \beta)]^2}{g_2^2 (\bm x_i, \bm \beta, \theta)}\]
+	while the mle is the maximizer of log likelihood function $\ell(\bm \beta)$, where
+	\[\ell (\bm \beta) = -\frac{1}{2} \sum_{i=1}^n \left(\log (2 \pi g_2^2 (\bm x_i, \bm \beta, \theta)\sigma^2) + \frac{1}{\sigma^2} \frac{[y_i - g(\bm x_i, \bm \beta)]^2}{g_2^2 (\bm x_i, \bm \beta, \theta)}\right)\]
+
+	We can not guarantee that the minimizer is the same as maximizer because of the difference in the term $\log (2 \pi g_2^2 (\bm x_i, \bm \beta, \theta)\sigma^2)$. 
+
+
+	\item 
+	We obtain 
+	\[\hat{\sigma}^2 = \frac{1}{n-p} \sum_{i=1}^n \left[\frac{Y_i - g_1 (\bm x_i , \hat{\bm \beta})}{g_2 (\bm x_i, \hat{\bm \beta}, \theta)}\right]^2\]
+
+	Then estimate using \verb|nonlin| as if $\sigma$ is known. The 95\% confidence interval is obtain by
+	\[\hat{\beta}_k \pm 1.96 (\widehat{cov}(\hat{\bm \beta})_{kk})^{1/2}\]
+	where $\widehat{cov}{\hat{\bm \beta}_{kk}}$ is the $(k,k)$ element of matrix $\widehat{cov}(\hat{\bm \beta})$ obtained from 
+	\[\widehat{cov}(\hat{\bm \beta}) = \hat \sigma^2 \left(\sum_{i=1}^n \bm v(\bm x_i, \hat{\bm \beta})\bm v^T(\bm x_i, \hat{\bm \beta})/g_2^2(\bm x_i, \hat{\bm \beta}, \theta)\right)^{-1}\]
+	in which $\bm v(\bm x_i, \hat{\bm \beta})$ is a column vector and 
+	\[v_j (\bm x_i, \hat{\bm \beta}) = \frac{\partial}{\partial \beta_j} g_1 (\bm x_i, \bm \beta)\bigg|_{\bm \beta = \hat{\bm \beta}}\]
+
+	Results are shown in the table below.
+
+	\begin{center}
+	\begin{tabular}{lll}
+		 \toprule
+		 Parameter & Estimate & 95\% CI\\
+		 \midrule
+		 $\beta_1$ & 20.062 & (19.364, 20.760)\\
+		 $\beta_2$ & 3.224 & (2.921, 3.527)\\
+		 $\beta_3$ & 0.539 & (0.480, 0.598)\\
+		 $\sigma^2$ & 0.210 & \\
+		 \bottomrule
+		\end{tabular}
+	\end{center}
+
+	Next we estimate $u = \beta_2/\beta_3$. The estimated value $\hat{u} = \frac{\hat{\beta}_2}{\hat{\beta}_3} = 5.985$. In order to get the 95\% confidence interval, we obtain its variance by Delta Method. 
+	\begin{align*}
+	&\frac{\partial u}{\partial \beta_1} = 0\\
+	&\frac{\partial u}{\partial \beta_2} = \frac{1}{\beta_3}\\
+	&\frac{\partial u}{\partial \beta_3} = -\frac{\beta_2}{\beta_3^2}
+	\end{align*}
+	Then let
+	\[D = \begin{bmatrix}
+		0 & \frac{1}{\beta_3} & -\frac{\beta_2}{\beta_3^2}
+	\end{bmatrix}\]
+	Then $\hat{D} = D|_{\bm \beta = \hat{\bm \beta}}$, and 
+	\[\widehat{Var}(\hat{\beta_2}/\hat{\beta_3}) = \hat{D} \widehat{cov}(\hat{\bm \beta})\hat{D}^T \Rightarrow SE = \sqrt{\widehat{Var}({\hat{\beta}_2 / \hat{\beta}_3})} = 0.0957\]
+	Thus the 95\% confidence interval is
+	\[(5.797, 6.172)\]
+	
+
+	\item 
+	Using the Wald confidence interval as in \textbf{2}. Results are shown in the table below.
+
+	\begin{center}
+	\begin{tabular}{lll}
+		 \toprule
+		 Parameter & Estimate & 95\% CI\\
+		 \midrule
+		 $\beta_1$ & 20.064 & (19.589, 20.539)\\
+		 $\beta_2$ & 3.259 & (3.082, 3.436)\\
+		 $\beta_3$ & 0.544 & (0.508, 0.579)\\
+		 $\sigma^2$ & 0.202 & \\
+		 \bottomrule
+		\end{tabular}
+	\end{center}
+
+	Next we estimate $u = \beta_2/\beta_3$ like what we did in \textbf{1}. The estimated value $\hat{u} = \frac{\hat{\beta}_2}{\hat{\beta}_3} = 5.995$. The 95\% confidence interval by Delta Method is
+	\[(5.868, 6.123)\]
+
+	\item 
+	Let 
+	\[\mu_i = \beta_1 \exp[-\exp(\beta_2 - \beta_3 x_i)], v_i = \sigma^2 \{\mu_i\}^{2 \theta}\]
+	Then the density of $Y_i$ is
+	\[f_i(y_i|\mu_i, v_i) = \frac{1}{(2 \pi v_i)^{1/2}} \exp\left[-\frac{1}{2v_i} (y_i - \mu_i)^2\right]\]
+	and the log likelihood function is
+	\[\ell_i = -\frac{1}{2} \log (2 \pi v_i) - \frac{1}{2 v_i} (y_i - \mu_i)^2\]
+	Because $Y_i$'s are independent, then
+	\[\ell(\bm \beta, \sigma^2) = \sum_{i=1}^n \ell_i (\bm \beta, \sigma^2)\]
+
+	By chain rule, the first derivatives are
+	\[\frac{\partial \ell_i}{\partial \beta_j} = \frac{\partial \ell_i}{\partial \mu_i} \frac{\partial \mu_i}{\partial \beta_j} + \frac{\partial \ell_i}{\partial v_i} \frac{\partial v_i}{\partial \mu_i} \frac{\partial \mu_i}{\partial \beta_j}\]
+    and 
+    \[\frac{\partial \ell_i}{\partial \sigma^2} = \frac{\partial \ell_i}{\partial v_i} \frac{\partial v_i}{\partial \sigma^2}\]
+
+    Then the second derivatives,
+    \begin{align*}
+    \frac{\partial^2 \ell_i}{\partial \beta_j \partial \beta_k} &= \frac{\partial^2 \ell_i}{\partial \mu_i^2} \frac{\partial \mu_i}{\partial \beta_j} \frac{\partial \mu_i}{\partial \beta_k} + \frac{\partial^2 \ell}{\partial \mu_i \partial v_i} \frac{\partial v_i}{\partial \mu_i} \frac{\partial \mu_i}{\partial \beta_j} \frac{\partial \mu_i}{\partial \beta_k} + \frac{\partial \ell_i}{\partial \mu_i} \frac{\partial^2 \mu_i}{\partial \beta_j \partial \beta_k}\\
+    & + \frac{\partial^2 \ell_{i}}{\partial \mu_i \partial v_i} \frac{\partial v_i}{\partial \mu_i} \frac{\partial \mu_i}{\partial \beta_j} \frac{\partial \mu_i}{\partial \beta_k} + \frac{\partial^2 \ell_{i}}{\partial v_i^2} \left(\frac{\partial v_i}{\partial \mu_i}\right)^2 \frac{\partial \mu_i}{\partial \beta_j} \frac{\partial \mu_i}{\partial \beta_k} + \frac{\partial \ell_i}{\partial v_i} \frac{\partial^2 v_i}{\partial \mu_i^2} \frac{\partial \mu_i}{\partial \beta_j} \frac{\partial \mu_i}{\partial \beta_k}\\
+    & + \frac{\partial \ell_i}{\partial \mu_i} \frac{\partial v_i}{\partial \mu_i} \frac{\partial^2 \mu_i}{\partial \beta_j \partial \beta_k} 
+    \end{align*}
+
+    \[\frac{\partial^2 \ell_i}{\partial (\sigma^2)^2} = \frac{\partial^2 \ell_i}{\partial v_i^2} \left(\frac{\partial v_i}{\partial \sigma^2}\right)^2 + \frac{\partial \ell_i}{\partial v_i} \frac{\partial^2 v_i}{\partial (\sigma^2)^2}\]
+    \[\frac{\partial^2 \ell_i}{\partial \sigma^2 \partial \beta_j} = \frac{\partial^2 \ell}{\partial \mu_i \partial v_i} \frac{\partial \mu_i}{\partial \beta_j}\frac{\partial v_i}{\partial \sigma^2} + \frac{\partial^2 \ell}{\partial v_i^2} \frac{\partial v_i}{\partial \mu_i}\frac{\partial \mu_i}{\partial \beta_j} \frac{\partial v_i}{\partial \sigma^2} + \frac{\partial \ell_i}{\partial v_i} \frac{\partial^2 v_i}{\partial \sigma^2 \partial \mu_i} \frac{\partial \mu_i}{\partial \beta_j}\]
+
+    Each term in the chain rule is as below,
+    \begin{align*}
+    \frac{\partial \ell_i}{\partial \mu_i} &= \frac{1}{v_i} (y_i - \mu_i)\\
+    \frac{\partial \ell_i}{\partial v_i} &= \frac{1}{2 v_i} \left[ \frac{1}{v_i} (y_i - \mu_i)^2 - 1\right]\\
+    \frac{\partial^2 \ell}{\partial \mu_i^2} & = -\frac{1}{v_i}\\
+    \frac{\partial^2 \ell}{\partial v_i^2} & = \frac{1}{v_i^2} \left[\frac{1}{2} - \frac{1}{v_i} (y_i - \mu_i)^2\right]\\
+    \frac{\partial^2 \ell}{\partial \mu_i \partial v_i} & = -\frac{1}{v_i^2} (y_i - \mu_i)\\
+    \frac{\partial v_i}{\partial \mu_i} &= 2 \theta \sigma^2 \mu_i^{2 \theta - 1	}\\
+    \frac{\partial v_i}{\partial \sigma^2} & = \mu_i^{2 \theta}\\
+    \frac{\partial^2 v_i}{\partial \mu_i^2} & = 2 \theta \sigma^2 (2 \theta - 1) \mu_{i}^{2 \theta - 2}\\
+    \frac{\partial^2 v_i}{\partial (\sigma^2)^2} & = 0\\
+    \frac{\partial^2 v_i}{\partial \mu_i \partial \sigma^2} & = 2 \theta \mu_i^{2 \theta - 1}
+    \end{align*}
+
+    For derivatives of $\mu_i$, for the simplicity of the expression, denote
+    \begin{align*}
+    T_1 & = \exp[-\exp(\beta_2 - \beta_3 x_i)]\\
+    T_2 & = \exp(\beta_2 - \beta_3 x_i)
+    \end{align*}
+    then
+    \begin{align*}
+    \frac{\partial \mu_i}{\partial \beta_1} & = T_1\\
+    \frac{\partial \mu_i}{\partial \beta_2} & = - \beta_1 T_1 T_2\\
+    \frac{\partial \mu_i}{\partial \beta_3} & = \beta_1 x_i T_1 T_2\\
+    \frac{\partial^2 \mu_i}{\partial \beta_1^2} &= 0\\
+    \frac{\partial^2 \mu_i}{\partial \beta_1 \partial \beta_2} &= - T_1 T_2\\
+    \frac{\partial^2 \mu_i}{\partial \beta_1 \partial \beta_3} &= x_i T_1 T_2\\
+    \frac{\partial^2 \mu_i}{\partial \beta_2^2} &= \beta_1 T_1 T_2 (T_2 - 1)\\
+    \frac{\partial^2 \mu_i}{\partial \beta_2 \partial \beta_3} &= \beta_1 x_i T_1 T_2 (1 -T_2)\\
+    \frac{\partial^2 \mu_i}{\partial \beta_3^2} &= \beta_1 x_i^2 T_1 T_2 (T_2 - 1)
+    \end{align*}
+    
+    
+    
+    
+	\item 
+	Evaluate $\nabla \ell = (\frac{\partial\ell}{\partial \beta_1}, \frac{\partial\ell}{\partial \beta_2}, \frac{\partial\ell}{\partial \beta_3}, \frac{\partial\ell}{\partial \sigma^2})$ by chain rule and formulas we obtained in \textbf{4} at gls estimates, we have
+	\[\nabla \ell = (-0.07476674,8.76568528,-34.43197118,149.15362379)\]
+
+	Evaluate $\nabla \ell$ at mle, we have
+	\[\nabla \ell = (-1.324440\times 10^{-6}  ,1.726760 \times 10^{-6} ,-3.365130\times 10^{-5} ,-6.110668\times 10^{-6})\]
+
+
+	\item Incorporate $\theta$ as a parameter and do mle again, we obtain the estimates and 95\% confidence for $\bm \beta$ as shown in the table below.
+		\begin{center}
+	\begin{tabular}{lll}
+		 \toprule
+		 Parameter & Estimate & 95\% CI\\
+		 \midrule
+		 $\beta_1$ & 20.147 & (19.640, 20.654)\\
+		 $\beta_2$ & 3.141 & (2.978, 3.304)\\
+		 $\beta_3$ & 0.523 & (0.489, 0.557)\\
+		 $\sigma^2$ & 0.107 & \\
+		 $\theta$ & 0.624 & \\
+		 \bottomrule
+		\end{tabular}
+	\end{center}
+
+	\item Let 
+	\[\ell_p(\theta) = \max_{\bm \beta, \sigma^2} \ell(\bm \beta, \sigma^2, \theta)\]
+	Then the 95\% confidence interval is obtained from
+	\[\{\theta: -2(\ell_p(\theta) - \ell_p(\hat{\theta})) \leq \chi_{1, 0.95}^2\}\]
+	Pick the endpoints when the equality holds, then the confidence interval for $\theta$ is
+	\[(0.497, 0.730)\]
+
+
+ 	\end{enumerate}
+
+
+
+ 	
+
+
+	
+	
+	
+	\end{document}

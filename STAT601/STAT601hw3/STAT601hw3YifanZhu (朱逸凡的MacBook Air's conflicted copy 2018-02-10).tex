@@ -1,0 +1,76 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\usepackage{subcaption}
+	\usepackage[cache = false]{minted}
+	\definecolor{bg}{rgb}{0.1,0.1,0.1}
+	\newminted{r}{mathescape, breaklines, linenos = true, bgcolor = bg, formatcom=\color{white}}
+	\usemintedstyle{monokai}
+	% \lstset{
+	% basicstyle = \small\tt,
+	% keywordstyle = \tt\color{blue},
+	% commentstyle = \it\color[cmyk]{1,0,1,0},
+	% stringstyle = \tt\color[RGB]{128,0,0},
+	% %frame = single,
+	% backgroundcolor = \color[RGB]{245,245,244},
+	% breaklines,
+	% extendedchars = false,
+	% xleftmargin = 2em,
+	% xrightmargin = 2em,
+	% aboveskip = 1em,
+	% tabsize = 4,
+	% showspaces = false
+	% }
+	\newcommand\inner[2]{\left\langle{#1},{#2}\right\rangle}
+	\DeclareMathOperator{\Corr}{Corr}
+	\DeclareMathOperator{\Cov}{Cov}
+	\DeclareMathOperator{\Var}{Var}
+	\DeclareMathOperator{\E}{E}
+
+
+
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 601 Homework 3}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item Code
+
+
+	\begin{rcode}
+a <- c(1,2)
+senators.names<-names(senators)[-c(1,2)]
+senators.names<-names(senators)[-c(1,2)]
+rev.party.state.names<-lapply(X=strsplit(gsub(patterns = "[.]", replacement = "",x=senators.names), strsplit = " "),FUN = rev)
+	\end{rcode}
+
+		
+
+
+ 	\end{enumerate}
+
+
+
+
+
+
+	
+	
+	
+	\end{document}

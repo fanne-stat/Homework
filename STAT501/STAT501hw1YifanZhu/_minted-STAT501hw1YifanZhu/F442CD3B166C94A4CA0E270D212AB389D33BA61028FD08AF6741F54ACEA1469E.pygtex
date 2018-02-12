@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+sclerosis\PYGZus{}mean\PYGZus{}data \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.matrix}\PYG{p}{(}\PYG{k+kp}{rbind}\PYG{p}{(}normal\PYGZus{}mean\PYG{p}{,} sclerosis\PYGZus{}mean\PYG{p}{))}
+\PYG{k+kn}{library}\PYG{p}{(}TeachingDemos\PYG{p}{)}
+faces\PYG{p}{(}sclerosis\PYGZus{}mean\PYGZus{}data\PYG{p}{,} labels \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}normal\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}sclerosis\PYGZdq{}}\PYG{p}{))}
+\end{Verbatim}

@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{library}\PYG{p}{(}lattice\PYG{p}{)}
+\PYG{k+kn}{require}\PYG{p}{(}dprep\PYG{p}{)}
+sclerosis \PYG{o}{\PYGZlt{}\PYGZhy{}} read.table\PYG{p}{(}\PYG{l+s}{\PYGZdq{}sclerosis.dat\PYGZdq{}}\PYG{p}{,} header\PYG{o}{=}\PYG{n+nb+bp}{F}\PYG{p}{)}
+
+p \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{dim}\PYG{p}{(}sclerosis\PYG{p}{)[}\PYG{l+m}{2}\PYG{p}{]}
+sclerosis\PYG{p}{[,} p\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.factor}\PYG{p}{(}\PYG{k+kp}{ifelse}\PYG{p}{(}sclerosis\PYG{p}{[,}p\PYG{p}{]} \PYG{o}{==} \PYG{l+m}{0}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}normal\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}sclerosis\PYGZdq{}}\PYG{p}{))}
+
+\PYG{k+kp}{colnames}\PYG{p}{(}sclerosis\PYG{p}{)} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Age\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}TS1\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}DS1\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}TS2\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}DS2\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Disease\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Use codes from Canvas}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}radviz2d.R\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Display the radial visualization plot}
+radviz2d\PYG{p}{(}dataset \PYG{o}{=} sclerosis\PYG{p}{,} name \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Sclerosis\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Use the codes from Canvas}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}starcoord.R\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}Display the star coordinates}
+starcoord\PYG{p}{(}data \PYG{o}{=} sclerosis\PYG{p}{,} class \PYG{o}{=} \PYG{k+kc}{TRUE}\PYG{p}{)}
+\end{Verbatim}

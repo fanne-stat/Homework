@@ -1,0 +1,5 @@
+PWD C:/Users/fanne/Dropbox/Homework/STAT520/STAT520hw4YifanZhu
+INPUT c:/texlive/2016/texmf.cnf
+INPUT c:/texlive/2016/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT ./STAT520hw4YifanZhu.tex

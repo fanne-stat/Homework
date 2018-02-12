@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}Create 3 group and a column of group in the dataframe}
+Tornado\PYG{o}{\PYGZdl{}}Period\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kp}{cut}\PYG{p}{(}x \PYG{o}{=} Tornado\PYG{o}{\PYGZdl{}}year\PYG{p}{,}breaks\PYG{o}{=}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{1954}\PYG{p}{,}\PYG{l+m}{1974}\PYG{p}{,}\PYG{l+m}{1994}\PYG{p}{,}\PYG{l+m}{2014}\PYG{p}{),}labels \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}I\PYGZdq{}}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}II\PYGZdq{}}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}III\PYGZdq{}}\PYG{p}{),}include.lowest \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}Create parallel plot with colour by the group}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}parcoordplot.R\PYGZdq{}}\PYG{p}{)}
+parcoordplot\PYG{p}{(}xx \PYG{o}{=}Tornado\PYG{p}{[}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{,}\PYG{l+m}{2}\PYG{o}{:}\PYG{l+m}{13}\PYG{p}{],}cl \PYG{o}{=} \PYG{k+kp}{as.factor}\PYG{p}{(}Tornado\PYG{o}{\PYGZdl{}}Period\PYG{p}{[}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{]),}FUN\PYG{o}{=}\PYG{k+kp}{mean}\PYG{p}{,}alpha \PYG{o}{=} \PYG{l+m}{0.2}\PYG{p}{)}
+\end{Verbatim}

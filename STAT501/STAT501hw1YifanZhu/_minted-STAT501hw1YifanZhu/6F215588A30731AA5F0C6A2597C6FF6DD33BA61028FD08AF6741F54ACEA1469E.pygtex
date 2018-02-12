@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}Read the dataset}
+Tornado\PYG{o}{\PYGZlt{}\PYGZhy{}}read.table\PYG{p}{(}file \PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://www.nssl.noaa.gov//users/brooks//public\PYGZus{}html//}
+\PYG{l+s}{feda//datasets//tornf1p.txt\PYGZdq{}}\PYG{p}{,} col.names \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}year\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}jan\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}feb\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}mar\PYGZdq{}}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}apr\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}may\PYGZdq{}}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}jun\PYGZdq{}}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}jul\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}aug\PYGZdq{}}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}sep\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}oct\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}nov\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}dec\PYGZdq{}}\PYG{p}{))}
+\PYG{c+c1}{\PYGZsh{}Create correlation plot}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}plotcorr.R\PYGZdq{}}\PYG{p}{)}
+plot.corr\PYG{p}{(}Tornado\PYG{p}{[}\PYG{l+m}{2}\PYG{o}{:}\PYG{l+m}{13}\PYG{p}{])}
+\end{Verbatim}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}plotcorr.R\PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} normal}
+plot.corr\PYG{p}{(}xx \PYG{o}{=} sclerosis\PYG{p}{[}sclerosis\PYG{p}{[,}p\PYG{p}{]}\PYG{o}{==}\PYG{l+s}{\PYGZdq{}normal\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}p\PYG{p}{])}
+
+\PYG{c+c1}{\PYGZsh{} sclerosis}
+plot.corr\PYG{p}{(}xx \PYG{o}{=} sclerosis\PYG{p}{[}sclerosis\PYG{p}{[,}p\PYG{p}{]}\PYG{o}{==}\PYG{l+s}{\PYGZdq{}sclerosis\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}p\PYG{p}{])}
+\end{Verbatim}

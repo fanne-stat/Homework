@@ -1,0 +1,203 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\usepackage{subcaption}
+	\usepackage{minted}
+	% \definecolor{bg}{rgb}{0.1,0.1,0.1}
+	% \newminted{r}{mathescape, breaklines, linenos = true, bgcolor = bg, formatcom=\color{white}}
+	% \usemintedstyle{monokai}
+	\definecolor{bg}{rgb}{0.95,0.95,0.95}
+	\newminted{r}{mathescape, breaklines, linenos = false, bgcolor = bg}
+	\newmintedfile{r}{mathescape, breaklines, linenos = false, bgcolor = bg}
+	\usemintedstyle{tango}
+	% \lstset{
+	% basicstyle = \small\tt,
+	% keywordstyle = \tt\color{blue},
+	% commentstyle = \it\color[cmyk]{1,0,1,0},
+	% stringstyle = \tt\color[RGB]{128,0,0},
+	% %frame = single,
+	% backgroundcolor = \color[RGB]{245,245,244},
+	% breaklines,
+	% extendedchars = false,
+	% xleftmargin = 2em,
+	% xrightmargin = 2em,
+	% aboveskip = 1em,
+	% tabsize = 4,
+	% showspaces = false
+	% }
+	\newcommand\inner[2]{\left\langle{#1},{#2}\right\rangle}
+	\DeclareMathOperator{\Corr}{Corr}
+	\DeclareMathOperator{\Cov}{Cov}
+	\DeclareMathOperator{\Var}{Var}
+	\DeclareMathOperator{\E}{E}
+
+
+
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 601 Homework 3}
+	\author{Yifan Zhu}
+	\maketitle
+	
+
+	For each $ M \in \{100, 200, \ldots, 1000, 2000\}$, we simulated $x_m , y_m, \, m = 1,2,\ldots, M$ iid from $N(0,1)$ for $N$ times. Each time we compute $P_{1,M} = \frac{1}{M} \sum_{m=1}^M I(x_m \leq y_m)$ and $P_{2, M} = \frac{1}{M^2} \sum_{j=1}^M \sum_{m=1}^M I(x_m \leq y_j)$. Then for each $M$, we have $P_{1,M,i}, P_{2, M, i},\, i = 1,2,\ldots , N .$ Hence for each $M$, the approxtimated $\E(P_{t,M})$ and $\Var(P_{t,M})$ are 
+	\[\widehat{\E}(P_{t,M}) = \sum_{i=1}^N P_{t,M,i}\]
+	and 
+	\[\widehat{\Var}(P_{t,M}) = \frac{1}{N-1}\sum_{i=1}^N \left(P_{t,M,i} - \widehat{\E}(P_{t,M})\right)^2,\]
+	where $t = 1,2$.
+	Because $x_m , y_m$ are iid from $N(0,1)$, then the true value is $\E(X \leq Y) = 1/2$. And the results we got are shown below.
+
+	For $t = 1$, $\widehat{\E}(P_{1,M})$ for each $M$ are
+	\begin{rcode}
+0.5024250 0.5005275 0.5010450 0.4994500 0.4998200 0.5001033 0.4995036 0.5006388 0.4997372 0.5002655 0.5000510 
+	\end{rcode}
+	and $\widehat{\Var}(P_{1,M})$ for each $M$ are
+	\begin{rcode}
+0.0025018203 0.0012156671 0.0007939994 0.0006500538 0.0005076214 0.0004035550 0.0003632505 0.0003204710 
+	\end{rcode}
+
+		For $t = 2$, $\widehat{\E}(P_{2,M})$ for each $M$ are
+	\begin{rcode}
+0.5017982 0.5005340 0.5008111 0.4996622 0.4997396 0.4999114 0.4997565 0.5003425 0.4998615 0.5002281 0.4998734 
+	\end{rcode}
+	and $\widehat{\Var}(P_{2,M})$ for each $M$ are
+	\begin{rcode}
+1.697511e-03 8.190077e-04 5.306455e-04 4.245553e-04 3.452576e-04 2.816254e-04 2.580459e-04 2.180506e-04 1.805410e-04 1.697915e-04 8.446357e-05 
+	\end{rcode}
+
+	And the ratio of approximated variances $\widehat{\Var}(P_{1,M})\big/ \widehat{\Var}(P_{2,M})$ for each $M$ are
+	\begin{rcode}
+1.473817 1.484317 1.496290 1.531140 1.470269 1.432950 1.407697 1.469709 1.502976 1.572620 1.459541 
+	 \end{rcode} 
+
+So we can see both methods gives an estimator of $\E(X \leq Y)$ with expected value around the true one (1/2). But the precition of $P_{2,M}$ seems to be higher,  With smaller variance relative to $P_{1,M}$, since the ratio of variances is around $1.5$.
+
+Next we consider $P_M(1 - P_M)/M$. Since 
+\[\widehat{\Var}(P_{t,M}) = \frac{1}{N-1}\sum_{i=1}^N \left(P_{t,M,i} - \widehat{\E}(P_{t,M})\right)^2 = \frac{N}{N-1} \left(\frac{\sum_{i=1}^N P_{t, M i}^2}{N} - \left(\frac{\sum_{i=1}^N P_{t, M, i}}{N}\right)^2\right),\]
+which approximates $\E(P_{t,M}^2) - \left(\E(P_{t,M})\right)^2 = \Var(P_{t, M})$ as $N\to \infty$. So we want to compare $\Var(P_{t, M}) = \E(P_{t, M}^2) - \left(\E(P_{t,M})\right)^2$ and $\E\left(\frac{P_{t,M}(1 - P_{t,M})}{M}\right) = \frac{1}{M} \left( \E(P_{t,M}) - \E(P_{t,M}^2)\right)$.
+
+Let $p = P(X \leq Y)$. Then $E(I(x_i \leq y_j)) = p$. When $t = 1$,
+\[\E(P_{1,M}) = \E\left(\frac{1}{M}\sum_{m=1}^M I(x_m \leq y_m)\right) = \frac{1}{M}\sum_{m=1}^M \E(I(x_m \leq y_m)) = \frac{1}{M} Mp = p\]
+and we note that $M P_{1,M} = \sum_{m= 1}^M I(x_m \leq y_m)$ is sum of iid Bernolli r.v's, so $MP_{1,M} \sim \mathrm{Binomial}(M, p)$. Hence
+\[\E(P_{1,M}^2) = \frac{1}{M^2}\E\left(M^2 P_{1,M}^2\right) = \frac{1}{M^2} (\Var(MP_{1,M}) + (\E(M P_{1,M}))^2) = \frac{1}{M^2}(Mp(1 - p) + M^2 p^2) = \frac{p(1-p)}{M} + p^2\] 
+
+Then 
+\[\Var(P_{1.M}) = \frac{p(1-p)}{M} + p^2 - p^2 = \frac{p(1-p)}{M}\]
+and
+\[\E\left(\frac{P_{1,M}(1 - P_{1,M})}{M}\right) = \frac{1}{M} \left(p - \frac{p(1-p)}{M} - p^2\right) = \frac{p(1-p)}{M} - \frac{p(1-p)}{M^2}\]
+So the difference is in $p(1-p)/M^2$ and when $M$ is large they are close.
+
+\ 
+
+When $t = 2$, $P_{2,M} = \frac{1}{M^2}  \sum_{i,j = 1}^M I(x_i \leq y_j)$, so
+\[\E(P_{2,M}) = \frac{1}{M^2} \sum_{i,j=1}^M \E(I(x_i \leq y_j)) = \frac{1}{M^2} M^2 p = p\]
+
+and
+\begin{align*}
+\E(P_{2,M}^2) &= \E\left(\frac{1}{M^4} \left(\sum_{i,j}I(x_i \leq y_j)\right)^2\right) \\
+&= \frac{1}{M^4}\E(\sum_{i,j,k,l}I(x_i \leq y_j)I(x_k \leq y_l)) \\
+&= \frac{1}{M^4}\sum_{i,j,k,l} \E(I(x_i \leq y_j) I(x_k \leq y_l))
+\end{align*}
+
+If $i = k,\, j = l$,
+\begin{align*}
+\E(I(x_i \leq y_j) I(x_k \leq y_l)) = \E\left( (I(x_i \leq y_j))^2\right) = \E(I(x_i \leq y_j)) = p
+\end{align*}
+If $i = k,\, j \neq l$,
+\begin{align*}
+&\E(I(x_i \leq y_j) I(x_k \leq y_l))\\
+= & \E(I(x_i \leq y_j) I(x_i \leq y_l))\\
+= & \E\left[\E\left[I(y_j \geq x_i)I(y_l \geq x_i)|x_i\right]\right]\\
+= & \E\left[\E[I(y_j \geq x_i)|x_i] \E[I(y_l \geq x_i)|x_i]\right]\\
+= & \E[(1 - F_Y(x_i))^2] \\
+= & C_1
+\end{align*}
+
+If $i \neq k,\, j = l$,
+\begin{align*}
+&\E(I(x_i \leq y_j) I(x_k \leq y_l))\\
+= & \E(I(x_i \leq y_j) I(x_k \leq y_j))\\
+= & \E\left[\E\left[I(x_i \leq y_j)I(x_k \leq y_j)|y_j\right]\right]\\
+= & \E\left[\E[I(x_i \leq y_j)|y_j] \E[I(x_k \leq y_j)|y_j]\right]\\
+= & \E[(F_X(y_j))^2] \\
+= & C_2
+\end{align*}
+
+If $i \neq k,\, j \neq l$,
+\[\E(I(x_i \leq y_j)I(x_k \leq y_l) = \E(x_i \leq y_j) \E(x_k \leq y_l) = p^2\]
+
+Hence
+\begin{align*}
+& \sum_{i,j,k,l} \E(I(x_i \leq y_j) I(x_k \leq y_l))\\
+=& M(M-1)\cdot M(M-1) \cdot p^2 + M \cdot M \cdot p + M(M-1) \cdot M \cdot C_1 + M \cdot M(M-1) \cdot C_2\\
+=& M^2(M-1)^2 p^2 + M^2 p + M^2 (M-1) (C_1 + C_2)
+\end{align*}
+Thus
+\[\E(P_{2,M}^2) = \left(\frac{M-1}{M}\right)^2 p^2 + \frac{p}{M^2} + \frac{M-1}{M^2}(C_1 + C_2)\]
+Then
+\[\Var(P_{2,M}) = \left(\frac{M-1}{M}\right)^2 p^2 + \frac{p}{M^2} + \frac{M-1}{M^2}(C_1 + C_2) - p^2 = \frac{p}{M^2} - \frac{2M - 1}{M^2}p^2 + \frac{M-1}{M^2}(C_1 + C_2)\]
+and
+\begin{align*}
+&\E\left(\frac{P_{2,M}(1 - P_{2,M})}{M}\right)\\
+ = &\frac{1}{M}\left\{p - \left(\frac{M-1}{M}\right)^2 p^2 - \frac{p}{M^2} - \frac{M-1}{M^2}(C_1 + C_2)\right\} \\
+ = &\frac{M^2 - 1}{M^3}p - \frac{(M-1)^2}{M^3}p^2 - \frac{M-1}{M^3}(C_1 + C_2)\end{align*}
+
+ So they are different.
+
+ And we can also show when $X$ and $Y$ are from the same continuous distribution, $F_X = F_y$, $F_X(y_i) = F_Y(x_i)$ and $1 - F_Y(x_i) = 1 - F_X(x_i)$ are $\mathrm{Uniform}(0,1)$. Thus $C_1 = C_2 = 1/3$, and $p = \E(X \leq Y) = 1/2$. Then
+ \[\Var(P_{1,M}) = \frac{1}{4M}\]
+ \[\Var(P_{2,M}) = \frac{1}{2M^2} - \frac{2M - 1}{4M^2} + \frac{2(M-1)}{3M^2} = \frac{2M+1}{12M^2}\]
+ The ratio is then
+ \[\frac{\Var(P_{1,M})}{\Var(P_{2,M})} = \frac{1}{4M}\frac{12M^2}{2M + 1} = \frac{3M}{2M + 1}\]
+ This ratio is about $1.5$ when $M$ is large, which jusutifies the simulation results we got.
+
+\newpage
+ \section*{R Code}
+ \rfile{hw3.R}
+ 
+
+
+
+
+
+
+
+
+	
+
+
+% 	\begin{rcode}
+% a <- c(1,2)
+% senators.names<-names(senators)[-c(1,2)]
+% senators.names<-names(senators)[-c(1,2)]
+% rev.party.state.names<-lapply(X=strsplit(gsub(patterns = "[.]", replacement = "",x=senators.names), strsplit = " "),FUN = rev)
+% 	\end{rcode}
+
+		
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	\end{document}

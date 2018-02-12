@@ -1,0 +1,206 @@
+
+	% !TEX options=--shell-escape
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\usepackage{subcaption}
+	\usepackage{minted}
+	\usepackage{fvextra}
+	\definecolor{bg}{rgb}{0.95,0.95,0.95}
+	\newminted{r}{mathescape, breaklines, linenos = true, bgcolor = bg, breaksymbolleft=\carriagereturn}
+	\usemintedstyle{tango}
+	% \lstset{
+	% basicstyle = \small\tt,
+	% keywordstyle = \tt\color{blue},
+	% commentstyle = \it\color[cmyk]{1,0,1,0},
+	% stringstyle = \tt\color[RGB]{128,0,0},
+	% %frame = single,
+	% backgroundcolor = \color[RGB]{245,245,244},
+	% breaklines,
+	% extendedchars = false,
+	% xleftmargin = 2em,
+	% xrightmargin = 2em,
+	% aboveskip = 1em,
+	% tabsize = 4,
+	% showspaces = false
+	% }
+	\newcommand\inner[2]{\left\langle{#1},{#2}\right\rangle}
+	\DeclareMathOperator{\Corr}{Corr}
+	\DeclareMathOperator{\Cov}{Cov}
+	\DeclareMathOperator{\Var}{Var}
+	\DeclareMathOperator{\E}{E}
+
+
+
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 501 Homework 2}
+	\author{Multinomial}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	\begin{enumerate}
+		\item The conditional density of $\bm X_1|\bm X_2$ is
+		$\bm X \sim N_{p} (\bm \mu, \bm \Sigma)$, so $A \bm X$ is also a Multinormal random variable. Then we set $A = \begin{bmatrix}
+			\bm 1_{1 \times q} & \bm 0_{1 \times (p - q)}
+		\end{bmatrix}$ 
+		, we have $A \bm X = \begin{bmatrix}
+			\bm 1_{1\times q} & \bm 0_{1 \times (p-q)}
+		\end{bmatrix} \begin{bmatrix}
+			\bm X_1\\
+			\bm X_2
+		\end{bmatrix} = \bm X_1$. So $\bm X_1 \sim N_{q}$, and 
+		\[\E(\bm X_1) = \E(A \bm X) = A \E(\bm X) = A \bm \mu = \begin{bmatrix}
+			\bm 1_{1 \times q} & \bm 0_{1 \times (p-q)}
+		\end{bmatrix} \begin{bmatrix}
+			\bm \mu_1\\ \bm \mu_2
+		\end{bmatrix} =  \bm \mu_{1}\]
+		and
+		\[\Var(\bm X_1) = \Var(A \bm X) = A \Var(\bm X) A^T = A \bm \Sigma A^T = \begin{bmatrix}
+			\bm 1_{1 \times q} & \bm 0_{1\times (p-q)} 
+		\end{bmatrix} \begin{bmatrix}
+			\bm \Sigma_{11} & \bm \Sigma_{12}\\
+			\bm \Sigma_{21} & \bm \Sigma_{22}
+		\end{bmatrix} \begin{bmatrix}
+			\bm 1_{q \times 1}\\
+			\bm 0_{(p-q)\times 1}
+		\end{bmatrix} = \bm \Sigma_{11}\]
+		Hence $\bm X_1 \sim N_q (\bm \mu_1, \bm \Sigma_{11})$
+
+	\item The density of $\bm X_1$ conditioning on $\bm X_2$ is
+	\[f(\bm x_1 | \bm x_2) = \frac{f(\bm x_1, \bm x_2)}{f(\bm x_2)} = \frac{f(\bm x)}{f(\bm x_2)}\]
+	We know 
+	\[f(\bm x) = \left(\frac{1}{(2 \pi)^{p} \det (\bm \Sigma)}\right)^{1/2} \exp\left(-\frac{1}{2}\left(\bm x - \bm \mu)^{T} \bm \Sigma^{-1} (\bm x - \bm \mu\right)\right) \]
+	And from (a) we know
+	\[f(\bm x_2) = \left(\frac{1}{(2 \pi)^{p} \det (\bm \Sigma_{22})}\right)^{1/2} \exp\left(-\frac{1}{2}\left(\bm x_2 - \bm \mu_2)^{T} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2\right)\right) \]
+	So
+	\begin{align*}
+	f(\bm x_1|\bm x_2) &= \frac{f(\bm x)}{f(\bm x_2)} \\
+	& = \left(\frac{1}{(2 \pi)^{p} \{\det(\bm \Sigma)/\det (\bm \Sigma_{22})\}}\right)^{1/2} \exp\left(-\frac{1}{2}\left\{\left(\bm x - \bm \mu)^{T} \bm \Sigma^{-1} (\bm x - \bm \mu\right) - \left(\bm x_2 - \bm \mu_2)^{T} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2\right)\right\}\right)
+	\end{align*}
+	Let $\bm V = \bm \Sigma_{11} - \bm \Sigma_{12} \bm \Sigma_{22}^{-1} \bm \Sigma_{21}$, then
+	\[\begin{bmatrix}
+		\bm \Sigma_{11} & \bm \Sigma_{12}\\
+		\bm \Sigma_{21} & \bm \Sigma_{22}
+	\end{bmatrix} \begin{bmatrix}
+		\bm I & \bm 0\\
+		- \bm \Sigma_{22}^{-1} \bm \Sigma_{21} & \bm I
+	\end{bmatrix} = \begin{bmatrix}
+		\bm \Sigma_{11} - \bm \Sigma_{12} \bm \Sigma_{22}^{-1} \bm \Sigma_{21} & \bm \Sigma_{21}\\
+		\bm 0 & \bm \Sigma_{22}
+	\end{bmatrix} = \begin{bmatrix}
+	\bm V & \bm \Sigma_{12}\\
+	\bm 0 & \bm \Sigma_{22}
+	\end{bmatrix}\]
+	Taking determinant on both sides, we have
+	\[\det(\bm \Sigma) = \det(\bm V) \det(\bm \Sigma_{22}) \Rightarrow \det(\bm \Sigma)/\det(\bm \Sigma_{22}) = \det(\bm V)\]
+	Also we have
+	\[\bm \Sigma^{-1} = \begin{bmatrix}
+		\bm V^{-1} & - \bm V^{-1} \bm \Sigma_{12} \bm \Sigma_{22}^{-1}\\
+		- \bm \Sigma_{22}^{-1} \bm \Sigma_{21} \bm V^{-1} & \bm \Sigma_{22}^{-1} + \bm \Sigma_{22}^{-1} \bm \Sigma_{21} \bm V^{-1} \bm \Sigma_{12} \bm \Sigma_{22}^{-1}
+	\end{bmatrix}\]
+	So
+	\begin{align*}
+	(\bm x - \bm \mu)^{T} \bm \Sigma^{-1} (\bm x - \bm \mu) & = \begin{bmatrix}
+		\bm (x_1 - \bm \mu_1)^{T} & (\bm x_2 - \bm \mu_2)^T
+	\end{bmatrix} \begin{bmatrix}
+		\bm V^{-1} & - \bm V^{-1} \bm \Sigma_{12} \bm \Sigma_{22}^{-1}\\
+		- \bm \Sigma_{22}^{-1} \bm \Sigma_{21} \bm V^{-1} & \bm \Sigma_{22}^{-1} + \bm \Sigma_{22}^{-1} \bm \Sigma_{21} \bm V^{-1} \bm \Sigma_{12} \bm \Sigma_{22}^{-1}
+	\end{bmatrix} \begin{bmatrix}
+		\bm x_1 - \bm \mu_1 \\ \bm x_2 - \bm \mu_2
+	\end{bmatrix}\\
+	& = (\bm x_1 - \bm \mu_1)^T \bm V^{-1} (\bm x_1 - \bm \mu_1) + (\bm x_2 - \bm \mu_2)^T \bm \Sigma_{22}^{-1} \bm \Sigma_{21} \bm V^{-1} \bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2) \\
+	& - (\bm x_1 - \bm \mu_1)^T \bm V^{-1} \bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2)- (\bm x_2 - \bm \mu_2)^T \Sigma_{22}^{-1} \bm \Sigma_{21} \bm V^{-1} (\bm x_1 - \bm \mu_1) \\
+	\intertext{As $\bm \Sigma$ is symmetric, $\bm \Sigma_{12} = \bm \Sigma_{21} = \bm \Sigma_{21}^T$, and $\bm \Sigma_{22}^{-1} = (\bm \Sigma_{22}^{-1})^{T}$, so}
+	\mathrm{Above}& = (\bm x_1 - \bm \mu_1)^T \bm V^{-1} (\bm x_1 - \bm \mu_1) + \left(\bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2)\right)^{T} \bm V^{-1} \bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2) \\
+	& - (\bm x_1 - \bm \mu_1)^T \bm V^{-1} \bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2)- \left(\bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2)\right)^{T} \bm V^{-1} (\bm x_1 - \bm \mu_1) \\
+	& = (\bm x_1 - \bm \mu_1 - \bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2))^T \bm V^{-1} (\bm x_1 - \bm \mu_1 - \bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2))
+	\end{align*}
+	Hence
+	\[f(\bm x_1 | \bm x_2) = \left(\frac{1}{(2 \pi)^{p} \det (\bm V)}\right)^{1/2} \exp\left(-\frac{1}{2}(\bm x_1 - \bm \mu_1 - \bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2))^T \bm V^{-1} (\bm x_1 - \bm \mu_1 - \bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm x_2 - \bm \mu_2))\right)\]
+	So the distribution of $\bm X_1$ given $\bm X_2$ is multinormal. The expected value is $\bm \mu_1 + \bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm X_2 - \bm \mu_2)$ and the variance covariance matrix is $\bm V = \bm \Sigma_{11} - \bm \Sigma_{12} \bm \Sigma_{22}^{-1} \bm \Sigma_{21}$, i.e.
+	\[ \bm X_1 | \bm X_2 \sim N_q(\bm \mu_1 + \bm \Sigma_{12} \bm \Sigma_{22}^{-1} (\bm X_2 - \bm \mu_2), \bm \Sigma_{11} - \bm \Sigma_{12} \bm \Sigma_{22}^{-1} \bm \Sigma_{21})\]
+
+	\item 
+	For all $\bm t \in \mathbb{R}^p$, $\bm X \sim N_p(\bm \mu, \bm \Sigma) \Rightarrow \bm t^T\bm X \sim N_1(\bm t^T \bm \mu, \bm t^T \bm \Sigma \bm t)$. Thus
+	\[M_{\bm X}(\bm t) = \E[\exp(\bm t^T \bm X)] = M_{\bm t^T \bm X}(1) = \exp(\bm 1 \cdot t^T\bm \mu - \frac{1}{2} \bm t^T \bm \Sigma \bm t \cdot 1^2) = \exp(\bm t^T\bm \mu - \bm t^T \bm \Sigma \bm t/2)\]
+ 	\end{enumerate}
+
+ 	\item 
+	$\bm Z \sim N_{p}(\bm 0, \bm I_p)$, then $\bm \Gamma \bm Z \sim N_p$. And
+	\[\E(\bm \Gamma \bm Z) = \bm \Gamma \E(\bm Z) = \bm \Gamma \bm 0 = \bm 0\]
+ \[\Var(\bm \Gamma \bm Z) = \bm \Gamma \Var(\bm Z) \bm \Gamma^T = \bm \Gamma \bm I_p \bm \Gamma^T = \bm \Gamma \bm \Gamma^T = \bm I_p\]	
+Thus 
+\[\bm \Gamma \bm Z \sim N_p(\bm 0, \bm I_p)\]
+
+\item 
+\begin{enumerate}
+	\item 
+	Sicne $\bm B$ is positive definite, we have $\bm B = \bm P \bm \Lambda \bm P^T$, where $\bm \Lambda = \mathrm{diag}(\lambda_i)_{i=1}^p$,\, $\lambda_i > 0$, and $\bm P \bm P^T = \bm I_p$. Thus 
+	\[|\bm B| = |\bm P \bm \Lambda \bm P^T| = |\bm P| |\bm \Lambda| |\bm P^T| = |\bm \Lambda| |\bm P \bm P^T| = |\bm \Lambda| = \prod_{i=1}^p \lambda_i\]
+	and 
+	\[\mathrm{trace}(\bm B) = \sum_{i=1}^p \lambda_i\]
+
+	Thus 
+	\[f(\bm B) = n^{n/2} \left(\prod_{i=1}^p \lambda_i\right)^{n/2} \exp\left\{-\frac{n}{2} \left(\sum_{i=1}^p \lambda_i\right)\right\}\]
+	Taking the log of $f$, we have
+	\[\log(f(\bm B)) = \frac{n}{2} \log n + \frac{n}{2} \sum_{i=1}^p\log(\lambda_i) - \frac{n}{2} \sum_{i=1}^p \lambda_i\]
+
+	So
+	\[\frac{\partial f}{\partial \lambda_i} = \frac{n}{2} \frac{1}{\lambda_i} - \frac{n}{2}\]
+	Let $\frac{\partial f}{\partial \lambda_i} = 0$, we have $\lambda_i = 1$. And
+	\[\frac{\partial^2 f}{\partial \lambda_i^2}\bigg|_{{\lambda_i} = 1} = - \frac{n}{2} \frac{1}{\lambda_i^2}\bigg|_{\lambda_i = 1}= -\frac{n}{2} < 0,\, \frac{\partial^2 f}{\partial \lambda_i \partial \lambda_j} = 0 \]
+	So the Hessian matrix 
+	\[\frac{\partial^2 f}{\partial \bm \lambda \bm \lambda^T}\bigg |_{\bm \lambda = \bm 1} = -\frac{n}{2} \bm I_p\]
+	is negative definite. So $\lambda_i = 1$ gives the maximum of $f$. Thus
+	\[\bm B = \bm P \bm \Lambda \bm P^T = \bm P \bm I_p \bm P^T = \bm P \bm P^T = \bm I_p\]
+	\begin{enumerate}
+		\item 
+		We know the log likelihood is
+		\[\ell(\bm \mu, \bm \Sigma ; \bm x_1 , \bm x_2, \ldots , \bm x_n )= -\frac{n}{2} \log |\bm \Sigma| - \frac{np}{2} \log (2 \pi) - \frac{1}{2} \sum_{i=1}^n (\bm x_i - \bm \mu)^T \bm \Sigma^{-1} (\bm x_i - \mu) \]
+		So
+		\[\frac{\partial \ell}{\partial \bm \mu} = - \frac{1}{2} \sum_{i=1}^n \left( - (\bm \Sigma^{-1} + \bm \Sigma^{-T})(\bm x_i - \bm \mu)\right) = \bm \Sigma^{-1} \sum_{i=1}^n (\bm x_i - \bm \mu) = n \bm \Sigma^{-1} (\bar{\bm x} - \bm \mu)\] 
+		And
+		\[\frac{\partial \ell}{\partial \bm \Sigma} = - \frac{n}{2} \bm \Sigma^{-1} + \frac{1}{2} \sum_{i=1}^n \bm \Sigma^{-1} (\bm x_i - \bm \mu) (\bm x_i - \bm \mu)^T \bm \Sigma^{-1}\]
+
+		Set $\frac{\partial \ell}{\partial \bm \mu} = \bm 0$, since $\bm \Sigma^{-1}$ is full rank, then 
+		\[\bm \mu = \bar{\bm x}\]
+		Then plug in $\bm \mu = \bar{\bm x}$ into $\frac{\partial \ell}{\partial \bm \Sigma}$ and set it to be $\bm 0$. We have
+				\begin{align*}
+				&\frac{\partial \ell}{\partial \bm \Sigma} = - \frac{n}{2} \bm \Sigma^{-1} + \frac{1}{2} \sum_{i=1}^n \bm \Sigma^{-1} (\bm x_i - \bar{\bm \mu}) (\bm x_i - \bar{\bm x})^T \bm \Sigma^{-1} = \bm 0 \\
+				\Rightarrow &-n + \sum_{i=1}^n (\bm x_i - \bar{x})(\bm x_i - \bar{x})^T \bm \Sigma^{-1} = \bm 0 \\
+				\Rightarrow &n \bm \Sigma = \sum_{i=1}^p (\bm x_i - \bar{\bm x})(\bm x_i - \bar{\bm x})^T \\
+				\Rightarrow & \bm \Sigma = \frac{\sum_{i=1}^n (\bm x_i - \bar{\bm x})(\bm x_i - \bar{\bm x})^T}{n}\end{align*}
+	\end{enumerate}
+	
+\end{enumerate}
+
+		\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	\end{document}

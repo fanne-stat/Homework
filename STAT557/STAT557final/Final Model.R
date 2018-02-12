@@ -1,0 +1,25 @@
+# final model for problem 2: model3
+rhsd <- read.csv("./rhcdata.csv", header = T)
+rhsd <- rhsd[,-1]
+rhsd$y <- as.factor(rhsd$y)
+rhsd$sex <- as.factor(rhsd$sex)
+rhsd$race <- as.factor(rhsd$race)
+rhsd$insur <- as.factor(rhsd$insur)
+rhsd$disease <- as.factor(rhsd$disease)
+rhsd$dnr <- as.factor(rhsd$dnr)
+rhsd$cancer <- as.factor(rhsd$cancer)
+rhsd$resp <- as.factor(rhsd$resp)
+rhsd$card <- as.factor(rhsd$card)
+rhsd$neuro <- as.factor(rhsd$neuro)
+rhsd$gastr <- as.factor(rhsd$gastr)
+rhsd$renal <- as.factor(rhsd$renal)
+rhsd$meta <- as.factor(rhsd$meta)
+rhsd$hema <- as.factor(rhsd$hema)
+rhsd$seps <- as.factor(rhsd$seps)
+rhsd$trauma <- as.factor(rhsd$trauma)
+rhsd$ortho <- as.factor(rhsd$ortho)
+
+
+model3 <- glm(y ~ edu + insur + disease + dnr + cancer + aps + rrate + pafi + paco2 + pH + hemat + pot + resp + card + neuro + hema + seps + trauma, data = rhsd, family = "binomial")
+summary(model3)
+anova(model3, test = "Chisq")

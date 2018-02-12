@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+Ms \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{100}\PYG{o}{*}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{,} \PYG{l+m}{2000}\PYG{p}{)}
+N \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{2000}
+
+P1Ms \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rep}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,} N\PYG{p}{)}
+P2Ms \PYG{o}{\PYGZlt{}\PYGZhy{}} P1Ms
+
+P1M \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{,}y\PYG{p}{)\PYGZob{}}
+  M \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{length}\PYG{p}{(}x\PYG{p}{)}
+  \PYG{k+kr}{return}\PYG{p}{(}\PYG{k+kp}{sum}\PYG{p}{(}x\PYG{o}{\PYGZlt{}}y\PYG{p}{)}\PYG{o}{/}M\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+P2M \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{,}y\PYG{p}{)\PYGZob{}}
+  M \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{length}\PYG{p}{(}x\PYG{p}{)}
+  x1 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rep}\PYG{p}{(}x\PYG{p}{,} times \PYG{o}{=} M\PYG{p}{)}
+  y1 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rep}\PYG{p}{(}y\PYG{p}{,} each \PYG{o}{=} M\PYG{p}{)}
+  \PYG{k+kr}{return}\PYG{p}{(}\PYG{k+kp}{sum}\PYG{p}{(}x1 \PYG{o}{\PYGZlt{}} y1\PYG{p}{)}\PYG{o}{/}M\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+P1Mss \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kc}{NULL}
+P2Mss \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kc}{NULL}
+\PYG{k+kr}{for} \PYG{p}{(}M \PYG{k+kr}{in} Ms\PYG{p}{)\PYGZob{}}
+  xs \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{matrix}\PYG{p}{(}rnorm\PYG{p}{(}M\PYG{o}{*}N\PYG{p}{),} ncol \PYG{o}{=} N\PYG{p}{)}
+  ys \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{matrix}\PYG{p}{(}rnorm\PYG{p}{(}M\PYG{o}{*}N\PYG{p}{),} ncol \PYG{o}{=} N\PYG{p}{)}
+  \PYG{k+kr}{for} \PYG{p}{(}n \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}N\PYG{p}{)\PYGZob{}}
+    P1Ms\PYG{p}{[}n\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZhy{}} P1M\PYG{p}{(}xs\PYG{p}{[,}n\PYG{p}{],}ys\PYG{p}{[,}n\PYG{p}{])}
+    P2Ms\PYG{p}{[}n\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZhy{}} P2M\PYG{p}{(}xs\PYG{p}{[,}n\PYG{p}{],}ys\PYG{p}{[,}n\PYG{p}{])}
+  \PYG{p}{\PYGZcb{}}
+  P1Mss \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{cbind}\PYG{p}{(}P1Mss\PYG{p}{,} P1Ms\PYG{p}{)}
+  P2Mss \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{cbind}\PYG{p}{(}P2Mss\PYG{p}{,} P2Ms\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+ep1m \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}P1Mss\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kp}{mean}\PYG{p}{)}
+ep2m \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}P2Mss\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kp}{mean}\PYG{p}{)}
+varp1m \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}P1Mss\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} FUN \PYG{o}{=} var\PYG{p}{)}
+varp2m \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}P2Mss\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} FUN \PYG{o}{=} var\PYG{p}{)}
+
+result \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{list}\PYG{p}{(}ep1m \PYG{o}{=} ep1m\PYG{p}{,} ep2m \PYG{o}{=} ep2m\PYG{p}{,} varp1m \PYG{o}{=} varp1m\PYG{p}{,} varp2m \PYG{o}{=} varp2m\PYG{p}{)}
+
+\PYG{k+kp}{save}\PYG{p}{(}P1Mss\PYG{p}{,} P2Mss\PYG{p}{,} result\PYG{p}{,} file \PYG{o}{=} \PYG{l+s}{\PYGZdq{}./results.Rda\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}
