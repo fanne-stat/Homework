@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} correlation plot}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}plotcorr.R\PYGZdq{}}\PYG{p}{)}
+plot.corr\PYG{p}{(}xx \PYG{o}{=} skulls\PYG{p}{[}skulls\PYG{o}{\PYGZdl{}}period \PYG{o}{==} \PYG{l+m}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}} \PYG{k+kp}{ncol}\PYG{p}{(}skulls\PYG{p}{)])}
+plot.corr\PYG{p}{(}xx \PYG{o}{=} skulls\PYG{p}{[}skulls\PYG{o}{\PYGZdl{}}period \PYG{o}{==} \PYG{l+m}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}} \PYG{k+kp}{ncol}\PYG{p}{(}skulls\PYG{p}{)])}
+plot.corr\PYG{p}{(}xx \PYG{o}{=} skulls\PYG{p}{[}skulls\PYG{o}{\PYGZdl{}}period \PYG{o}{==} \PYG{l+m}{3}\PYG{p}{,} \PYG{o}{\PYGZhy{}} \PYG{k+kp}{ncol}\PYG{p}{(}skulls\PYG{p}{)])}
+\end{Verbatim}

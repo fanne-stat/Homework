@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+   crabs.type \PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kp}{as.factor}\PYG{p}{(}\PYG{k+kp}{paste}\PYG{p}{(}crabs\PYG{p}{[,}\PYG{l+m}{1}\PYG{p}{],} crabs\PYG{p}{[,}\PYG{l+m}{2}\PYG{p}{],} sep \PYG{o}{=} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{))}
+    plot\PYG{p}{(}crabs.pc\PYG{o}{\PYGZdl{}}x\PYG{p}{[,}\PYG{l+m}{1}\PYG{p}{],}crabs.pc\PYG{o}{\PYGZdl{}}x\PYG{p}{[,}\PYG{l+m}{2}\PYG{p}{],}
+          xlab\PYG{o}{=}\PYG{l+s}{\PYGZdq{}PC1\PYGZdq{}}\PYG{p}{,}
+          ylab\PYG{o}{=}\PYG{l+s}{\PYGZdq{}PC2\PYGZdq{}}\PYG{p}{,}type\PYG{o}{=}\PYG{l+s}{\PYGZdq{}n\PYGZdq{}}\PYG{p}{)}
+    text\PYG{p}{(}crabs.pc\PYG{o}{\PYGZdl{}}x\PYG{p}{[,}\PYG{l+m}{1}\PYG{p}{],}crabs.pc\PYG{o}{\PYGZdl{}}x\PYG{p}{[,}\PYG{l+m}{2}\PYG{p}{],}labels\PYG{o}{=}crabs.type\PYG{p}{,} col \PYG{o}{=} rainbow\PYG{p}{(}\PYG{l+m}{4}\PYG{p}{)[}\PYG{k+kp}{as.numeric}\PYG{p}{(}crabs.type\PYG{p}{)])}
+\end{Verbatim}

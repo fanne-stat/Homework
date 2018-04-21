@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}	Hotelling\PYGZsq{}s two sample T2\PYGZhy{}test}
+
+data\PYG{o}{:}  skulls\PYG{p}{[}skulls\PYG{o}{\PYGZdl{}}period \PYG{o}{==} \PYG{l+m}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}skulls\PYG{p}{)]} and skulls\PYG{p}{[}skulls\PYG{o}{\PYGZdl{}}period \PYG{o}{==} \PYG{l+m}{3}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}skulls\PYG{p}{)]}
+\PYG{n+nb+bp}{T}\PYG{l+m}{.2} \PYG{o}{=} \PYG{l+m}{3.1744}\PYG{p}{,} df1 \PYG{o}{=} \PYG{l+m}{4}\PYG{p}{,} df2 \PYG{o}{=} \PYG{l+m}{55}\PYG{p}{,} p\PYG{o}{\PYGZhy{}}value \PYG{o}{=} \PYG{l+m}{0.02035}
+alternative hypothesis\PYG{o}{:} true location difference is not equal to \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{)}
+\end{Verbatim}

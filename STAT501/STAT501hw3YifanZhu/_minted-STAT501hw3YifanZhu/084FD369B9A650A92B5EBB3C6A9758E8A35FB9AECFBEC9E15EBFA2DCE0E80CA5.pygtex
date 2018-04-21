@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+    Min.  \PYG{l+m}{1}st Qu.   Median     Mean  \PYG{l+m}{3}rd Qu.     Max.
+  \PYG{l+m}{0.3134}   \PYG{l+m}{1.1572}   \PYG{l+m}{1.6339}   \PYG{l+m}{3.0627}   \PYG{l+m}{2.6455} \PYG{l+m}{263.2504}
+\end{Verbatim}

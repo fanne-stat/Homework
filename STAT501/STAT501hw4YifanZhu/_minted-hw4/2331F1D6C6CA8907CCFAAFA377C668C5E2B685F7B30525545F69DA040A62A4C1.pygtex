@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+	\PYG{c+c1}{\PYGZsh{}Hotelling\PYGZsq{}s two sample T2\PYGZhy{}test}
+
+data\PYG{o}{:}  olive\PYGZus{}R2\PYG{p}{[}olive\PYGZus{}R2\PYG{o}{\PYGZdl{}}Regions \PYG{o}{==} \PYG{l+m}{5}\PYG{p}{,} \PYG{l+m}{\PYGZhy{}1}\PYG{p}{]} and olive\PYGZus{}R2\PYG{p}{[}olive\PYGZus{}R2\PYG{o}{\PYGZdl{}}Regions \PYG{o}{==} \PYG{l+m}{6}\PYG{p}{,} \PYG{l+m}{\PYGZhy{}1}\PYG{p}{]}
+\PYG{n+nb+bp}{T}\PYG{l+m}{.2} \PYG{o}{=} \PYG{l+m}{112.41}\PYG{p}{,} df1 \PYG{o}{=} \PYG{l+m}{8}\PYG{p}{,} df2 \PYG{o}{=} \PYG{l+m}{89}\PYG{p}{,} p\PYG{o}{\PYGZhy{}}value \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.2e\PYGZhy{}16}
+alternative hypothesis\PYG{o}{:} true location difference is not equal to \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{)}
+\end{Verbatim}

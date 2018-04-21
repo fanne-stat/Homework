@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}iv) Test for normality}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}testnormality.R\PYGZdq{}}\PYG{p}{)}
+
+ testnormality\PYG{p}{(}X\PYG{o}{=}olive\PYGZus{}R2\PYG{p}{[}olive\PYGZus{}R2\PYG{o}{\PYGZdl{}}Regions \PYG{o}{==} \PYG{l+m}{5}\PYG{p}{,} \PYG{l+m}{\PYGZhy{}1}\PYG{p}{])}
+ testnormality\PYG{p}{(}X\PYG{o}{=}olive\PYGZus{}R2\PYG{p}{[}olive\PYGZus{}R2\PYG{o}{\PYGZdl{}}Regions \PYG{o}{==} \PYG{l+m}{6}\PYG{p}{,} \PYG{l+m}{\PYGZhy{}1}\PYG{p}{])}
+\end{Verbatim}

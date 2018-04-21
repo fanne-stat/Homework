@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}b) Refit the model without test scores of writing and science.}
+fit.lm1 \PYG{o}{\PYGZlt{}\PYGZhy{}} lm\PYG{p}{(}\PYG{k+kp}{cbind}\PYG{p}{(}LOCUS\PYGZus{}OF\PYGZus{}CONTROL\PYG{p}{,}SELF\PYGZus{}CONCEPT\PYG{p}{,}MOTIVATION\PYG{p}{)}\PYG{o}{\PYGZti{}} READ \PYG{o}{+} PROG\PYG{p}{,} data \PYG{o}{=} psych\PYG{p}{)}
+\PYG{k+kp}{summary}\PYG{p}{(}fit.lm1\PYG{p}{)}
+fit.manova1 \PYG{o}{\PYGZlt{}\PYGZhy{}} Manova\PYG{p}{(}fit.lm1\PYG{p}{)}
+\PYG{k+kp}{summary}\PYG{p}{(}fit.manova1\PYG{p}{)}
+\end{Verbatim}

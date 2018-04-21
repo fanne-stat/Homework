@@ -1,0 +1,70 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}Problem 1}
+colleges \PYG{o}{\PYGZlt{}\PYGZhy{}} read.table\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Colleges.txt\PYGZdq{}}\PYG{p}{,} head \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{,} sep \PYG{o}{=} \PYG{l+s}{\PYGZdq{}\PYGZbs{}t\PYGZdq{}}\PYG{p}{)}
+
+phi \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}omega\PYG{p}{,} lambda\PYG{p}{)\PYGZob{}}
+  \PYG{k+kr}{if}\PYG{p}{(}lambda \PYG{o}{==} \PYG{l+m}{0}\PYG{p}{)}
+    \PYG{k+kr}{return}\PYG{p}{(}\PYG{k+kp}{log}\PYG{p}{(}omega\PYG{p}{))}
+  \PYG{k+kp}{else}
+    \PYG{k+kr}{return}\PYG{p}{((}omega\PYG{o}{\PYGZca{}}lambda \PYG{o}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{)}\PYG{o}{/}lambda\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+Phi \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}Omega\PYG{p}{,} Lambda\PYG{p}{)\PYGZob{}}
+  p \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{length}\PYG{p}{(}Omega\PYG{p}{)}
+  res \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rep}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,} p\PYG{p}{)}
+  \PYG{k+kr}{for}\PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}p\PYG{p}{)}
+    res\PYG{p}{[}i\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZhy{}} phi\PYG{p}{(}Omega\PYG{p}{[}i\PYG{p}{],} Lambda\PYG{p}{[}i\PYG{p}{])}
+  \PYG{k+kr}{return}\PYG{p}{(}res\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+X \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.matrix}\PYG{p}{(}colleges\PYG{p}{[}colleges\PYG{o}{\PYGZdl{}}School\PYGZus{}Type \PYG{o}{==} \PYG{l+s}{\PYGZdq{}Lib Arts\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{)])}
+Y \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.matrix}\PYG{p}{(}colleges\PYG{p}{[}colleges\PYG{o}{\PYGZdl{}}School\PYGZus{}Type \PYG{o}{==} \PYG{l+s}{\PYGZdq{}Univ\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{)])}
+
+Phi\PYGZus{}X \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}X\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} Phi\PYG{p}{,} Lambda \PYG{o}{=} lambdas.grid\PYG{p}{[}\PYG{l+m}{400}\PYG{p}{,])}
+mu \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}Phi\PYGZus{}X\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{k+kp}{mean}\PYG{p}{)}
+Phi\PYGZus{}Y \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}Y\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} Phi\PYG{p}{,} Lambda \PYG{o}{=} lambdas.grid\PYG{p}{[}\PYG{l+m}{400}\PYG{p}{,])}
+nu \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{k+kp}{mean}\PYG{p}{)}
+Sigma \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{array}\PYG{p}{(}\PYG{k+kp}{rep}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,} \PYG{k+kp}{length}\PYG{p}{(}mu\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{),} dim \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{k+kp}{length}\PYG{p}{(}mu\PYG{p}{),} \PYG{k+kp}{length}\PYG{p}{(}mu\PYG{p}{)))}
+\PYG{k+kr}{for} \PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}X\PYG{p}{))\PYGZob{}}
+  Sigma \PYG{o}{\PYGZlt{}\PYGZhy{}} Sigma \PYG{o}{+} \PYG{p}{(}Phi\PYGZus{}X\PYG{p}{[,}i\PYG{p}{]} \PYG{o}{\PYGZhy{}} mu\PYG{p}{)} \PYG{o}{\PYGZpc{}*\PYGZpc{}} \PYG{k+kp}{t}\PYG{p}{(}Phi\PYGZus{}X\PYG{p}{[,}i\PYG{p}{]} \PYG{o}{\PYGZhy{}} mu\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kr}{for} \PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{))\PYGZob{}}
+  Sigma \PYG{o}{\PYGZlt{}\PYGZhy{}} Sigma \PYG{o}{+} \PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{[,}i\PYG{p}{]} \PYG{o}{\PYGZhy{}} nu\PYG{p}{)} \PYG{o}{\PYGZpc{}*\PYGZpc{}} \PYG{k+kp}{t}\PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{[,}i\PYG{p}{]} \PYG{o}{\PYGZhy{}} nu\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+Sigma \PYG{o}{\PYGZlt{}\PYGZhy{}} Sigma\PYG{o}{/}\PYG{p}{(}\PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}X\PYG{p}{)} \PYG{o}{+} \PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{))}
+
+logXsum \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}\PYG{k+kp}{log}\PYG{p}{(}X\PYG{p}{),} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} \PYG{k+kp}{sum}\PYG{p}{)}
+logYsum \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}\PYG{k+kp}{log}\PYG{p}{(}Y\PYG{p}{),} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} \PYG{k+kp}{sum}\PYG{p}{)}
+
+mloglik \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{/}\PYG{l+m}{2}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}X\PYG{p}{)} \PYG{o}{+} \PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{))} \PYG{o}{*} \PYG{k+kp}{log}\PYG{p}{(}\PYG{k+kp}{abs}\PYG{p}{(}\PYG{k+kp}{det}\PYG{p}{(}Sigma\PYG{p}{)))} \PYG{o}{+} \PYG{k+kp}{t}\PYG{p}{(}lambdas.grid\PYG{p}{[}\PYG{l+m}{400}\PYG{p}{,]}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{)}\PYG{o}{\PYGZpc{}*\PYGZpc{}}\PYG{p}{(}logXsum \PYG{o}{+} logYsum\PYG{p}{)}
+
+maxloglik \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}lambda\PYG{p}{,} X\PYG{p}{,} Y\PYG{p}{)\PYGZob{}}
+  Phi\PYGZus{}X \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}X\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} Phi\PYG{p}{,} Lambda \PYG{o}{=} lambda\PYG{p}{)}
+  mu \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}Phi\PYGZus{}X\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{k+kp}{mean}\PYG{p}{)}
+  Phi\PYGZus{}Y \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}Y\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} Phi\PYG{p}{,} Lambda \PYG{o}{=} lambda\PYG{p}{)}
+  nu \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} \PYG{k+kp}{mean}\PYG{p}{)}
+  Sigma \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{array}\PYG{p}{(}\PYG{k+kp}{rep}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,} \PYG{k+kp}{length}\PYG{p}{(}mu\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{),} dim \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{k+kp}{length}\PYG{p}{(}mu\PYG{p}{),} \PYG{k+kp}{length}\PYG{p}{(}mu\PYG{p}{)))}
+  \PYG{k+kr}{for} \PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}X\PYG{p}{))\PYGZob{}}
+    Sigma \PYG{o}{\PYGZlt{}\PYGZhy{}} Sigma \PYG{o}{+} \PYG{p}{(}Phi\PYGZus{}X\PYG{p}{[,}i\PYG{p}{]} \PYG{o}{\PYGZhy{}} mu\PYG{p}{)} \PYG{o}{\PYGZpc{}*\PYGZpc{}} \PYG{k+kp}{t}\PYG{p}{(}Phi\PYGZus{}X\PYG{p}{[,}i\PYG{p}{]} \PYG{o}{\PYGZhy{}} mu\PYG{p}{)}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k+kr}{for} \PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{))\PYGZob{}}
+    Sigma \PYG{o}{\PYGZlt{}\PYGZhy{}} Sigma \PYG{o}{+} \PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{[,}i\PYG{p}{]} \PYG{o}{\PYGZhy{}} nu\PYG{p}{)} \PYG{o}{\PYGZpc{}*\PYGZpc{}} \PYG{k+kp}{t}\PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{[,}i\PYG{p}{]} \PYG{o}{\PYGZhy{}} nu\PYG{p}{)}
+  \PYG{p}{\PYGZcb{}}
+  Sigma \PYG{o}{\PYGZlt{}\PYGZhy{}} Sigma\PYG{o}{/}\PYG{p}{(}\PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}X\PYG{p}{)} \PYG{o}{+} \PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{))}
+
+  logXsum \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}\PYG{k+kp}{log}\PYG{p}{(}X\PYG{p}{),} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} \PYG{k+kp}{sum}\PYG{p}{)}
+  logYsum \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}\PYG{k+kp}{log}\PYG{p}{(}Y\PYG{p}{),} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} \PYG{k+kp}{sum}\PYG{p}{)}
+
+  mloglik \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{/}\PYG{l+m}{2}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}X\PYG{p}{)} \PYG{o}{+} \PYG{k+kp}{ncol}\PYG{p}{(}Phi\PYGZus{}Y\PYG{p}{))} \PYG{o}{*} \PYG{k+kp}{log}\PYG{p}{(}\PYG{k+kp}{abs}\PYG{p}{(}\PYG{k+kp}{det}\PYG{p}{(}Sigma\PYG{p}{)))} \PYG{o}{+} \PYG{k+kp}{t}\PYG{p}{(}lambda \PYG{o}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{)}\PYG{o}{\PYGZpc{}*\PYGZpc{}}\PYG{p}{(}logXsum \PYG{o}{+} logYsum\PYG{p}{)}
+
+  \PYG{k+kr}{return}\PYG{p}{(}mloglik\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kn}{library}\PYG{p}{(}gtools\PYG{p}{)}
+lambdas \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,} \PYG{l+m}{1}\PYG{o}{/}\PYG{l+m}{4}\PYG{p}{,} \PYG{l+m}{1}\PYG{o}{/}\PYG{l+m}{3}\PYG{p}{,} \PYG{l+m}{1}\PYG{o}{/}\PYG{l+m}{2}\PYG{p}{,} \PYG{l+m}{1}\PYG{p}{,} \PYG{l+m}{2}\PYG{p}{,} \PYG{l+m}{3}\PYG{p}{,} \PYG{l+m}{4}\PYG{p}{)}
+lambdas.grid \PYG{o}{\PYGZlt{}\PYGZhy{}} permutations\PYG{p}{(}n \PYG{o}{=} \PYG{k+kp}{length}\PYG{p}{(}lambdas\PYG{p}{),} r \PYG{o}{=} \PYG{l+m}{6}\PYG{p}{,} v \PYG{o}{=} lambdas\PYG{p}{,} repeats.allowed \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+
+maxlogliks \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}X \PYG{o}{=} lambdas.grid\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kr}{function}\PYG{p}{(}lambda\PYG{p}{)} maxloglik\PYG{p}{(}lambda\PYG{p}{,} X \PYG{o}{=} X\PYG{p}{,} Y \PYG{o}{=} Y\PYG{p}{))}
+
+max.lambda \PYG{o}{\PYGZlt{}\PYGZhy{}} lambdas.grid\PYG{p}{[}\PYG{k+kp}{which.max}\PYG{p}{(}maxlogliks\PYG{p}{),} \PYG{p}{]}
+\end{Verbatim}

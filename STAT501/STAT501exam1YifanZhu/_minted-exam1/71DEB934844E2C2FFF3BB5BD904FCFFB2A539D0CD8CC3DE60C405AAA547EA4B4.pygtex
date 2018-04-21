@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                     max breadth basibregmatic height basialveolar length nasal height
+max breadth                 \PYG{l+m}{15.0}               \PYG{l+m}{\PYGZhy{}13.50}               \PYG{l+m}{\PYGZhy{}1.50}        \PYG{l+m}{\PYGZhy{}4.50}
+basibregmatic height       \PYG{l+m}{\PYGZhy{}13.5}                \PYG{l+m}{12.15}                \PYG{l+m}{1.35}         \PYG{l+m}{4.05}
+basialveolar length         \PYG{l+m}{\PYGZhy{}1.5}                 \PYG{l+m}{1.35}                \PYG{l+m}{0.15}         \PYG{l+m}{0.45}
+nasal height                \PYG{l+m}{\PYGZhy{}4.5}                 \PYG{l+m}{4.05}                \PYG{l+m}{0.45}         \PYG{l+m}{1.35}
+
+Sum of squares and products \PYG{k+kr}{for} error\PYG{o}{:}
+                     max breadth basibregmatic height basialveolar length nasal height
+max breadth            \PYG{l+m}{1785.4000}                \PYG{l+m}{172.5}            \PYG{l+m}{128.9667}     \PYG{l+m}{289.6333}
+basibregmatic height    \PYG{l+m}{172.5000}               \PYG{l+m}{1924.3}            \PYG{l+m}{178.8000}     \PYG{l+m}{171.9000}
+basialveolar length     \PYG{l+m}{128.9667}                \PYG{l+m}{178.8}           \PYG{l+m}{2153.0000}      \PYG{l+m}{\PYGZhy{}1.7000}
+nasal height            \PYG{l+m}{289.6333}                \PYG{l+m}{171.9}             \PYG{l+m}{\PYGZhy{}1.7000}     \PYG{l+m}{840.2000}
+
+Multivariate Tests\PYG{o}{:}
+                 Df test stat  approx \PYG{n+nb+bp}{F} num Df den Df  Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{1} \PYG{l+m}{0.0187978} \PYG{l+m}{0.4023169}      \PYG{l+m}{4}     \PYG{l+m}{84} \PYG{l+m}{0.80648}
+Wilks             \PYG{l+m}{1} \PYG{l+m}{0.9812022} \PYG{l+m}{0.4023169}      \PYG{l+m}{4}     \PYG{l+m}{84} \PYG{l+m}{0.80648}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{1} \PYG{l+m}{0.0191579} \PYG{l+m}{0.4023169}      \PYG{l+m}{4}     \PYG{l+m}{84} \PYG{l+m}{0.80648}
+Roy               \PYG{l+m}{1} \PYG{l+m}{0.0191579} \PYG{l+m}{0.4023169}      \PYG{l+m}{4}     \PYG{l+m}{84} \PYG{l+m}{0.80648}
+\end{Verbatim}

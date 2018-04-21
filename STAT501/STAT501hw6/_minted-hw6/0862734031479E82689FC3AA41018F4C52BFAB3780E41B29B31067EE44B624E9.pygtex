@@ -1,0 +1,20 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}2(a)}
+\PYG{c+c1}{\PYGZsh{}i}
+ziptrain \PYG{o}{\PYGZlt{}\PYGZhy{}} read.table\PYG{p}{(}\PYG{l+s}{\PYGZdq{}ziptrain.dat\PYGZdq{}}\PYG{p}{)}
+zipdigit \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.factor}\PYG{p}{(}read.table\PYG{p}{(}\PYG{l+s}{\PYGZdq{}zipdigit.dat\PYGZdq{}}\PYG{p}{)[,}\PYG{l+m}{1}\PYG{p}{])}
+pval\PYGZus{}equal\PYGZus{}mean\PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{,} cl\PYG{p}{)\PYGZob{}}
+  fit \PYG{o}{\PYGZlt{}\PYGZhy{}} lm\PYG{p}{(}x\PYG{o}{\PYGZti{}}cl\PYG{p}{)}
+  \PYG{k+kr}{return}\PYG{p}{(}anova\PYG{p}{(}fit\PYG{p}{)[[}\PYG{l+m}{5}\PYG{p}{]][}\PYG{l+m}{1}\PYG{p}{])}
+\PYG{p}{\PYGZcb{}}
+pvals \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}ziptrain\PYG{p}{,} FUN \PYG{o}{=} pval\PYGZus{}equal\PYGZus{}mean\PYG{p}{,} cl \PYG{o}{=} zipdigit\PYG{p}{)}
+pval.bonf \PYG{o}{\PYGZlt{}\PYGZhy{}} p.adjust\PYG{p}{(}pvals\PYG{p}{,} \PYG{l+s}{\PYGZdq{}bonferroni\PYGZdq{}}\PYG{p}{)}
+\PYG{k+kp}{which}\PYG{p}{(}pval.bonf \PYG{o}{\PYGZgt{}} \PYG{l+m}{0.05}\PYG{p}{)}
+pval.fdr \PYG{o}{\PYGZlt{}\PYGZhy{}} p.adjust\PYG{p}{(}pvals\PYG{p}{,} \PYG{l+s}{\PYGZdq{}fdr\PYGZdq{}}\PYG{p}{)}
+\PYG{k+kp}{which}\PYG{p}{(}pval.fdr \PYG{o}{\PYGZgt{}} \PYG{l+m}{0.05}\PYG{p}{)}
+
+id \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{order}\PYG{p}{(}pvals\PYG{p}{,} decreasing \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{)}
+id100 \PYG{o}{\PYGZlt{}\PYGZhy{}} id\PYG{p}{[}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{100}\PYG{p}{]}
+
+ziptrain100 \PYG{o}{\PYGZlt{}\PYGZhy{}} ziptrain\PYG{p}{[,}id100\PYG{p}{]}
+\end{Verbatim}

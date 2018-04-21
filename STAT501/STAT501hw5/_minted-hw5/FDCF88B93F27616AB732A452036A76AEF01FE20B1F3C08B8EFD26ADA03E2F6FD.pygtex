@@ -1,0 +1,189 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+Type II MANOVA Tests\PYG{o}{:}
+
+Sum of squares and products \PYG{k+kr}{for} error\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL        \PYG{l+m}{217.28769}     \PYG{l+m}{34.06881}   \PYG{l+m}{35.58755}
+SELF\PYGZus{}CONCEPT             \PYG{l+m}{34.06881}    \PYG{l+m}{275.58839}   \PYG{l+m}{77.13713}
+MOTIVATION               \PYG{l+m}{35.58755}     \PYG{l+m}{77.13713}  \PYG{l+m}{339.25955}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} READ
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL        \PYG{l+m}{3.9376254}   \PYG{l+m}{0.36706969}  \PYG{l+m}{3.2137190}
+SELF\PYGZus{}CONCEPT            \PYG{l+m}{0.3670697}   \PYG{l+m}{0.03421863}  \PYG{l+m}{0.2995864}
+MOTIVATION              \PYG{l+m}{3.2137190}   \PYG{l+m}{0.29958635}  \PYG{l+m}{2.6228980}
+
+Multivariate Tests\PYG{o}{:} READ
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df    Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{1} \PYG{l+m}{0.0232352} \PYG{l+m}{4.622794}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.0033157} \PYG{o}{**}
+Wilks             \PYG{l+m}{1} \PYG{l+m}{0.9767648} \PYG{l+m}{4.622794}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.0033157} \PYG{o}{**}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{1} \PYG{l+m}{0.0237880} \PYG{l+m}{4.622794}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.0033157} \PYG{o}{**}
+Roy               \PYG{l+m}{1} \PYG{l+m}{0.0237880} \PYG{l+m}{4.622794}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.0033157} \PYG{o}{**}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} WRITE
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL         \PYG{l+m}{4.716743}   \PYG{l+m}{\PYGZhy{}1.6622303}   \PYG{l+m}{6.745989}
+SELF\PYGZus{}CONCEPT            \PYG{l+m}{\PYGZhy{}1.662230}    \PYG{l+m}{0.5857876}  \PYG{l+m}{\PYGZhy{}2.377358}
+MOTIVATION               \PYG{l+m}{6.745989}   \PYG{l+m}{\PYGZhy{}2.3773581}   \PYG{l+m}{9.648261}
+
+Multivariate Tests\PYG{o}{:} WRITE
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df     Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{1} \PYG{l+m}{0.0527459} \PYG{l+m}{10.82106}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{6.2976e\PYGZhy{}07} \PYG{o}{***}
+Wilks             \PYG{l+m}{1} \PYG{l+m}{0.9472541} \PYG{l+m}{10.82106}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{6.2976e\PYGZhy{}07} \PYG{o}{***}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{1} \PYG{l+m}{0.0556830} \PYG{l+m}{10.82106}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{6.2976e\PYGZhy{}07} \PYG{o}{***}
+Roy               \PYG{l+m}{1} \PYG{l+m}{0.0556830} \PYG{l+m}{10.82106}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{6.2976e\PYGZhy{}07} \PYG{o}{***}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} SCIENCE
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL        \PYG{l+m}{0.8271414}    \PYG{l+m}{0.8191007}  \PYG{l+m}{\PYGZhy{}1.455988}
+SELF\PYGZus{}CONCEPT            \PYG{l+m}{0.8191007}    \PYG{l+m}{0.8111381}  \PYG{l+m}{\PYGZhy{}1.441834}
+MOTIVATION             \PYG{l+m}{\PYGZhy{}1.4559877}   \PYG{l+m}{\PYGZhy{}1.4418339}   \PYG{l+m}{2.562923}
+
+Multivariate Tests\PYG{o}{:} SCIENCE
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df  Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{1} \PYG{l+m}{0.0177120} \PYG{l+m}{3.504106}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.01526} \PYG{o}{*}
+Wilks             \PYG{l+m}{1} \PYG{l+m}{0.9822880} \PYG{l+m}{3.504106}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.01526} \PYG{o}{*}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{1} \PYG{l+m}{0.0180314} \PYG{l+m}{3.504106}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.01526} \PYG{o}{*}
+Roy               \PYG{l+m}{1} \PYG{l+m}{0.0180314} \PYG{l+m}{3.504106}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.01526} \PYG{o}{*}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} PROG
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL         \PYG{l+m}{5.080791}     \PYG{l+m}{8.304686}   \PYG{l+m}{12.23561}
+SELF\PYGZus{}CONCEPT             \PYG{l+m}{8.304686}    \PYG{l+m}{14.009223}   \PYG{l+m}{20.37723}
+MOTIVATION              \PYG{l+m}{12.235609}    \PYG{l+m}{20.377226}   \PYG{l+m}{29.79404}
+
+Multivariate Tests\PYG{o}{:} PROG
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df     Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{2} \PYG{l+m}{0.1088848} \PYG{l+m}{11.20832}      \PYG{l+m}{6}   \PYG{l+m}{1168} \PYG{l+m}{3.4156e\PYGZhy{}12} \PYG{o}{***}
+Wilks             \PYG{l+m}{2} \PYG{l+m}{0.8911807} \PYG{l+m}{11.52309}      \PYG{l+m}{6}   \PYG{l+m}{1166} \PYG{l+m}{1.4745e\PYGZhy{}12} \PYG{o}{***}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{2} \PYG{l+m}{0.1220335} \PYG{l+m}{11.83724}      \PYG{l+m}{6}   \PYG{l+m}{1164} \PYG{l+m}{6.3763e\PYGZhy{}13} \PYG{o}{***}
+Roy               \PYG{l+m}{2} \PYG{l+m}{0.1214286} \PYG{l+m}{23.63811}      \PYG{l+m}{3}    \PYG{l+m}{584} \PYG{l+m}{1.8864e\PYGZhy{}14} \PYG{o}{***}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} READ\PYG{o}{:}WRITE
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT  MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL       \PYG{l+m}{0.01725478}  \PYG{l+m}{\PYGZhy{}0.04206559} \PYG{l+m}{\PYGZhy{}0.03162317}
+SELF\PYGZus{}CONCEPT          \PYG{l+m}{\PYGZhy{}0.04206559}   \PYG{l+m}{0.10255213}  \PYG{l+m}{0.07709445}
+MOTIVATION            \PYG{l+m}{\PYGZhy{}0.03162317}   \PYG{l+m}{0.07709445}  \PYG{l+m}{0.05795642}
+
+Multivariate Tests\PYG{o}{:} READ\PYG{o}{:}WRITE
+                 Df test stat  approx \PYG{n+nb+bp}{F} num Df den Df  Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{1} \PYG{l+m}{0.0006030} \PYG{l+m}{0.1172503}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.94998}
+Wilks             \PYG{l+m}{1} \PYG{l+m}{0.9993970} \PYG{l+m}{0.1172503}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.94998}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{1} \PYG{l+m}{0.0006033} \PYG{l+m}{0.1172503}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.94998}
+Roy               \PYG{l+m}{1} \PYG{l+m}{0.0006033} \PYG{l+m}{0.1172503}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.94998}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} READ\PYG{o}{:}SCIENCE
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL        \PYG{l+m}{0.1519441}   \PYG{l+m}{\PYGZhy{}0.3510590}  \PYG{l+m}{0.3579416}
+SELF\PYGZus{}CONCEPT           \PYG{l+m}{\PYGZhy{}0.3510590}    \PYG{l+m}{0.8111035} \PYG{l+m}{\PYGZhy{}0.8270054}
+MOTIVATION              \PYG{l+m}{0.3579416}   \PYG{l+m}{\PYGZhy{}0.8270054}  \PYG{l+m}{0.8432190}
+
+Multivariate Tests\PYG{o}{:} READ\PYG{o}{:}SCIENCE
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df  Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{1} \PYG{l+m}{0.0079691} \PYG{l+m}{1.561109}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.19773}
+Wilks             \PYG{l+m}{1} \PYG{l+m}{0.9920309} \PYG{l+m}{1.561109}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.19773}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{1} \PYG{l+m}{0.0080332} \PYG{l+m}{1.561109}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.19773}
+Roy               \PYG{l+m}{1} \PYG{l+m}{0.0080332} \PYG{l+m}{1.561109}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.19773}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} READ\PYG{o}{:}PROG
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL        \PYG{l+m}{0.1125807}   \PYG{l+m}{\PYGZhy{}0.3979259} \PYG{l+m}{\PYGZhy{}0.1448465}
+SELF\PYGZus{}CONCEPT           \PYG{l+m}{\PYGZhy{}0.3979259}    \PYG{l+m}{1.4982214}  \PYG{l+m}{0.9837472}
+MOTIVATION             \PYG{l+m}{\PYGZhy{}0.1448465}    \PYG{l+m}{0.9837472}  \PYG{l+m}{2.6130464}
+
+Multivariate Tests\PYG{o}{:} READ\PYG{o}{:}PROG
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df  Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{2} \PYG{l+m}{0.0134558} \PYG{l+m}{1.318570}      \PYG{l+m}{6}   \PYG{l+m}{1168} \PYG{l+m}{0.24565}
+Wilks             \PYG{l+m}{2} \PYG{l+m}{0.9865848} \PYG{l+m}{1.316776}      \PYG{l+m}{6}   \PYG{l+m}{1166} \PYG{l+m}{0.24646}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{2} \PYG{l+m}{0.0135565} \PYG{l+m}{1.314981}      \PYG{l+m}{6}   \PYG{l+m}{1164} \PYG{l+m}{0.24727}
+Roy               \PYG{l+m}{2} \PYG{l+m}{0.0089705} \PYG{l+m}{1.746253}      \PYG{l+m}{3}    \PYG{l+m}{584} \PYG{l+m}{0.15639}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} WRITE\PYG{o}{:}SCIENCE
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT   MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL       \PYG{l+m}{0.32377319}  \PYG{l+m}{\PYGZhy{}0.47237106}  \PYG{l+m}{0.018537551}
+SELF\PYGZus{}CONCEPT          \PYG{l+m}{\PYGZhy{}0.47237106}   \PYG{l+m}{0.68916891} \PYG{l+m}{\PYGZhy{}0.027045483}
+MOTIVATION             \PYG{l+m}{0.01853755}  \PYG{l+m}{\PYGZhy{}0.02704548}  \PYG{l+m}{0.001061363}
+
+Multivariate Tests\PYG{o}{:} WRITE\PYG{o}{:}SCIENCE
+                 Df test stat  approx \PYG{n+nb+bp}{F} num Df den Df Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{1} \PYG{l+m}{0.0047019} \PYG{l+m}{0.9180441}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.4318}
+Wilks             \PYG{l+m}{1} \PYG{l+m}{0.9952981} \PYG{l+m}{0.9180441}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.4318}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{1} \PYG{l+m}{0.0047241} \PYG{l+m}{0.9180441}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.4318}
+Roy               \PYG{l+m}{1} \PYG{l+m}{0.0047241} \PYG{l+m}{0.9180441}      \PYG{l+m}{3}    \PYG{l+m}{583} \PYG{l+m}{0.4318}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} WRITE\PYG{o}{:}PROG
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL        \PYG{l+m}{0.1965790}    \PYG{l+m}{\PYGZhy{}0.715953}  \PYG{l+m}{0.1789287}
+SELF\PYGZus{}CONCEPT           \PYG{l+m}{\PYGZhy{}0.7159530}     \PYG{l+m}{3.246022} \PYG{l+m}{\PYGZhy{}0.5810130}
+MOTIVATION              \PYG{l+m}{0.1789287}    \PYG{l+m}{\PYGZhy{}0.581013}  \PYG{l+m}{0.1706823}
+
+Multivariate Tests\PYG{o}{:} WRITE\PYG{o}{:}PROG
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df   Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{2} \PYG{l+m}{0.0154968} \PYG{l+m}{1.520133}      \PYG{l+m}{6}   \PYG{l+m}{1168} \PYG{l+m}{0.167982}
+Wilks             \PYG{l+m}{2} \PYG{l+m}{0.9845073} \PYG{l+m}{1.523092}      \PYG{l+m}{6}   \PYG{l+m}{1166} \PYG{l+m}{0.167022}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{2} \PYG{l+m}{0.0157323} \PYG{l+m}{1.526031}      \PYG{l+m}{6}   \PYG{l+m}{1164} \PYG{l+m}{0.166072}
+Roy               \PYG{l+m}{2} \PYG{l+m}{0.0154612} \PYG{l+m}{3.009774}      \PYG{l+m}{3}    \PYG{l+m}{584} \PYG{l+m}{0.029721} \PYG{o}{*}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} SCIENCE\PYG{o}{:}PROG
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL       \PYG{l+m}{0.68533271}   \PYG{l+m}{0.03975242} \PYG{l+m}{\PYGZhy{}0.8735216}
+SELF\PYGZus{}CONCEPT           \PYG{l+m}{0.03975242}   \PYG{l+m}{0.08316743} \PYG{l+m}{\PYGZhy{}0.2812081}
+MOTIVATION            \PYG{l+m}{\PYGZhy{}0.87352158}  \PYG{l+m}{\PYGZhy{}0.28120805}  \PYG{l+m}{1.7706648}
+
+Multivariate Tests\PYG{o}{:} SCIENCE\PYG{o}{:}PROG
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df  Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{2} \PYG{l+m}{0.0102362} \PYG{l+m}{1.001447}      \PYG{l+m}{6}   \PYG{l+m}{1168} \PYG{l+m}{0.42279}
+Wilks             \PYG{l+m}{2} \PYG{l+m}{0.9897745} \PYG{l+m}{1.001267}      \PYG{l+m}{6}   \PYG{l+m}{1166} \PYG{l+m}{0.42292}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{2} \PYG{l+m}{0.0103204} \PYG{l+m}{1.001082}      \PYG{l+m}{6}   \PYG{l+m}{1164} \PYG{l+m}{0.42304}
+Roy               \PYG{l+m}{2} \PYG{l+m}{0.0091454} \PYG{l+m}{1.780306}      \PYG{l+m}{3}    \PYG{l+m}{584} \PYG{l+m}{0.14973}
+\end{Verbatim}

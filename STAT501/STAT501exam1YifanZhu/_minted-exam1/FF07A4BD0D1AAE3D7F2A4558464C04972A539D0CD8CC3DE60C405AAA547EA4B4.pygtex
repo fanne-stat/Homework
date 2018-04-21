@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} simutanous tests confidence interval: period 1 to period 2 ((4 out of 8 simutaneous pairs))}
+alpha1 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{0.05}
+m \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{8}
+
+margin12 \PYG{o}{\PYGZlt{}\PYGZhy{}} qt\PYG{p}{(}\PYG{l+m}{1} \PYG{o}{\PYGZhy{}} alpha1\PYG{o}{/}\PYG{p}{(}\PYG{l+m}{2}\PYG{o}{*}m\PYG{p}{),} df \PYG{o}{=} fit.manova\PYG{o}{\PYGZdl{}}error.df\PYG{p}{)}\PYG{o}{*}\PYG{k+kp}{sqrt}\PYG{p}{(((}\PYG{l+m}{1}\PYG{o}{/}n\PYG{p}{[}\PYG{l+m}{1}\PYG{p}{])} \PYG{o}{+} \PYG{p}{(}\PYG{l+m}{1}\PYG{o}{/}n\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{]))}\PYG{o}{*}S\PYGZus{}pool\PYGZus{}ii\PYG{p}{)}
+conf.int12 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rbind}\PYG{p}{(}mean\PYGZus{}diff\PYGZus{}12 \PYG{o}{\PYGZhy{}} margin12\PYG{p}{,} mean\PYGZus{}diff\PYGZus{}12 \PYG{o}{+} margin12\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} simutanous tests confidence interval: period 2 to period 3 (4 out of 8 simutaneous pairs)}
+margin23 \PYG{o}{\PYGZlt{}\PYGZhy{}} qt\PYG{p}{(}\PYG{l+m}{1} \PYG{o}{\PYGZhy{}} alpha1\PYG{o}{/}\PYG{p}{(}\PYG{l+m}{2}\PYG{o}{*}m\PYG{p}{),} df \PYG{o}{=} fit.manova\PYG{o}{\PYGZdl{}}error.df\PYG{p}{)}\PYG{o}{*}\PYG{k+kp}{sqrt}\PYG{p}{(((}\PYG{l+m}{1}\PYG{o}{/}n\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{])} \PYG{o}{+} \PYG{p}{(}\PYG{l+m}{1}\PYG{o}{/}n\PYG{p}{[}\PYG{l+m}{3}\PYG{p}{]))}\PYG{o}{*}S\PYGZus{}pool\PYGZus{}ii\PYG{p}{)}
+conf.int23 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rbind}\PYG{p}{(}mean\PYGZus{}diff\PYGZus{}23 \PYG{o}{\PYGZhy{}} margin23\PYG{p}{,} mean\PYGZus{}diff\PYGZus{}23 \PYG{o}{+} margin23\PYG{p}{)}
+\end{Verbatim}

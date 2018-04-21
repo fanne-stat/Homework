@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}c) Three main regions}
+\PYG{c+c1}{\PYGZsh{}i)Display the Chernoff faces}
+ \PYG{k+kn}{library}\PYG{p}{(}TeachingDemos\PYG{p}{)}
+ mean\PYGZus{}R1 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}olive\PYGZus{}R1\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{],} \PYG{k+kp}{mean}\PYG{p}{)}
+ mean\PYGZus{}R2 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}olive\PYGZus{}R2\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{],} \PYG{k+kp}{mean}\PYG{p}{)}
+ mean\PYGZus{}R3 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}olive\PYGZus{}R3\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{],} \PYG{k+kp}{mean}\PYG{p}{)}
+ mean\PYGZus{}Rs \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{cbind}\PYG{p}{(}\PYG{k+kp}{rbind}\PYG{p}{(}mean\PYGZus{}R1\PYG{p}{,} mean\PYGZus{}R2\PYG{p}{,} mean\PYGZus{}R3\PYG{p}{))}
+
+faces\PYG{p}{(}mean\PYGZus{}Rs\PYG{p}{,} labels \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}R1\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}R2\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}R3\PYGZdq{}}\PYG{p}{))}
+\end{Verbatim}

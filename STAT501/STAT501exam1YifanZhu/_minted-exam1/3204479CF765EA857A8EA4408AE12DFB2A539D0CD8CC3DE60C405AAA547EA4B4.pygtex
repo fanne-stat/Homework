@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} read the data}
+skulls \PYG{o}{\PYGZlt{}\PYGZhy{}} read.table\PYG{p}{(}\PYG{l+s}{\PYGZdq{}./Egyptian\PYGZhy{}skulls.dat\PYGZdq{}}\PYG{p}{)}
+\PYG{k+kp}{names}\PYG{p}{(}skulls\PYG{p}{)} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}max breadth\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}basibregmatic height\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}basialveolar length\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}nasal height\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}period\PYGZdq{}}\PYG{p}{)}
+skulls\PYG{o}{\PYGZdl{}}period \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.factor}\PYG{p}{(}skulls\PYG{o}{\PYGZdl{}}period\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} visualization}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} radial visualization}
+\PYG{k+kn}{library}\PYG{p}{(}dprep\PYG{p}{)}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}radviz2d.R\PYGZdq{}}\PYG{p}{)}
+radviz2d\PYG{p}{(}skulls\PYG{p}{,} name \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Skulls\PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} star plot}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}starcoord.R\PYGZdq{}}\PYG{p}{)}
+starcoord\PYG{p}{(}data \PYG{o}{=} skulls\PYG{p}{,} class \PYG{o}{=} \PYG{k+kc}{TRUE}\PYG{p}{,} main \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Star coordinate plot for Skulls\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

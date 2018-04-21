@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} test for homogeneouity of dispersions among 3 periods}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}BoxMTest\PYGZhy{}2.R\PYGZdq{}}\PYG{p}{)}
+BoxMTest\PYG{p}{(}X \PYG{o}{=} skulls\PYG{p}{[,} \PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}skulls\PYG{p}{)],} cl \PYG{o}{=} skulls\PYG{o}{\PYGZdl{}}period\PYG{p}{)}
+\end{Verbatim}

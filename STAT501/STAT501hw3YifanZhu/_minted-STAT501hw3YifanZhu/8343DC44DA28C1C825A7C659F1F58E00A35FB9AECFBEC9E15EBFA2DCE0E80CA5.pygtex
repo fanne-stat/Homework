@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} remove the potential outlier}
+danish1 \PYG{o}{\PYGZlt{}\PYGZhy{}} danish\PYG{p}{[}\PYG{o}{!}danish \PYG{o}{\PYGZpc{}in\PYGZpc{}} boxplot.stats\PYG{p}{(}danish\PYG{p}{)}\PYG{o}{\PYGZdl{}}out\PYG{p}{]}
+hist\PYG{p}{(}danish1\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{library}\PYG{p}{(}kernlab\PYG{p}{)}
+\PYG{k+kr}{for}\PYG{p}{(}sigma \PYG{k+kr}{in} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{0.2}\PYG{p}{,} \PYG{l+m}{0.4}\PYG{p}{,} \PYG{l+m}{0.8}\PYG{p}{,} \PYG{l+m}{1}\PYG{p}{,} \PYG{l+m}{1.5}\PYG{p}{,} \PYG{l+m}{3}\PYG{p}{))\PYGZob{}}
+  crabs.kpc \PYG{o}{\PYGZlt{}\PYGZhy{}} kpca\PYG{p}{(}x \PYG{o}{=} \PYG{k+kp}{as.matrix}\PYG{p}{(}crabs.data\PYG{p}{),}kernel \PYG{o}{=} \PYG{l+s}{\PYGZdq{}rbfdot\PYGZdq{}}\PYG{p}{,} kpar \PYG{o}{=} \PYG{k+kt}{list}\PYG{p}{(}sigma \PYG{o}{=} sigma\PYG{p}{),} features \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{)}
+  plot\PYG{p}{(}crabs.kpc\PYG{o}{@}rotated\PYG{p}{[,}\PYG{l+m}{1}\PYG{p}{],}crabs.kpc\PYG{o}{@}rotated\PYG{p}{[,}\PYG{l+m}{2}\PYG{p}{],}
+       xlab\PYG{o}{=}\PYG{l+s}{\PYGZdq{}PC1\PYGZdq{}}\PYG{p}{,}
+       ylab\PYG{o}{=}\PYG{l+s}{\PYGZdq{}PC2\PYGZdq{}}\PYG{p}{,}type\PYG{o}{=}\PYG{l+s}{\PYGZdq{}n\PYGZdq{}}\PYG{p}{)}
+  text\PYG{p}{(}crabs.kpc\PYG{o}{@}rotated\PYG{p}{[,}\PYG{l+m}{1}\PYG{p}{],}crabs.kpc\PYG{o}{@}rotated\PYG{p}{[,}\PYG{l+m}{2}\PYG{p}{],}labels\PYG{o}{=}crabs.type\PYG{p}{,} col \PYG{o}{=} rainbow\PYG{p}{(}\PYG{l+m}{4}\PYG{p}{)[}\PYG{k+kp}{as.numeric}\PYG{p}{(}crabs.type\PYG{p}{)])}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,31 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} 2 (b) ii.}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{} define g function}
+g \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{,} theta\PYG{p}{)\PYGZob{}}
+  \PYG{k+kr}{if}\PYG{p}{(}theta \PYG{o}{==} \PYG{l+m}{0}\PYG{p}{)}
+    \PYG{k+kr}{return}\PYG{p}{(}x\PYG{p}{)}
+  \PYG{k+kp}{else}
+    \PYG{k+kr}{return}\PYG{p}{(}\PYG{k+kp}{asinh}\PYG{p}{(}theta\PYG{o}{*}x\PYG{p}{)}\PYG{o}{/}theta\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{} define the maximized log likelihood}
+ell \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{,} theta\PYG{p}{)\PYGZob{}}
+  n \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{length}\PYG{p}{(}x\PYG{p}{)}
+  y \PYG{o}{\PYGZlt{}\PYGZhy{}} g\PYG{p}{(}x\PYG{p}{,} theta\PYG{p}{)}
+  muhat \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sum}\PYG{p}{(}y\PYG{p}{)}\PYG{o}{/}n
+  sigmahat2 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sum}\PYG{p}{((}y \PYG{o}{\PYGZhy{}} muhat\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{)}\PYG{o}{/}n
+  \PYG{k+kr}{return}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{p}{(}n\PYG{o}{/}\PYG{l+m}{2}\PYG{p}{)}\PYG{o}{*}\PYG{k+kp}{log}\PYG{p}{(}\PYG{l+m}{2}\PYG{o}{*}\PYG{k+kc}{pi}\PYG{o}{*} sigmahat2\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{p}{(}n\PYG{o}{/}\PYG{l+m}{2}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{k+kp}{sum}\PYG{p}{(}\PYG{k+kp}{log}\PYG{p}{(}\PYG{l+m}{1} \PYG{o}{+} theta\PYG{o}{\PYGZca{}}\PYG{l+m}{2} \PYG{o}{*} x\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{))}\PYG{o}{/}\PYG{l+m}{2}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{} find maxmized log likelihood for each theta and plot the curve}
+thetas \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{seq}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,} \PYG{l+m}{4}\PYG{p}{,} \PYG{l+m}{0.1}\PYG{p}{)}
+ells \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}thetas\PYG{p}{,} ell\PYG{p}{,} x \PYG{o}{=} danish\PYG{p}{)}
+plot\PYG{p}{(}x \PYG{o}{=} thetas\PYG{p}{,} y \PYG{o}{=} ells\PYG{p}{,} \PYG{l+s}{\PYGZsq{}n\PYGZsq{}}\PYG{p}{,}xlab \PYG{o}{=} \PYG{l+s}{\PYGZdq{}theta\PYGZdq{}}\PYG{p}{,} ylab \PYG{o}{=} \PYG{l+s}{\PYGZdq{}maximized logLik\PYGZdq{}}\PYG{p}{)}
+lines\PYG{p}{(}x \PYG{o}{=} thetas\PYG{p}{,} y \PYG{o}{=} ells\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{} plot between theta from 3 to 4}
+thetas1 \PYG{o}{\PYGZlt{}\PYGZhy{}} thetas\PYG{p}{[}thetas \PYG{o}{\PYGZgt{}=} \PYG{l+m}{3}\PYG{p}{]}
+ells1 \PYG{o}{\PYGZlt{}\PYGZhy{}} ells\PYG{p}{[}thetas \PYG{o}{\PYGZgt{}=} \PYG{l+m}{3}\PYG{p}{]}
+plot\PYG{p}{(}x \PYG{o}{=} thetas1\PYG{p}{,} y \PYG{o}{=} ells1\PYG{p}{,} \PYG{l+s}{\PYGZsq{}n\PYGZsq{}}\PYG{p}{,}xlab \PYG{o}{=} \PYG{l+s}{\PYGZdq{}theta\PYGZdq{}}\PYG{p}{,} ylab \PYG{o}{=} \PYG{l+s}{\PYGZdq{}maximized logLik\PYGZdq{}}\PYG{p}{)}
+lines\PYG{p}{(}x \PYG{o}{=} thetas1\PYG{p}{,} y \PYG{o}{=} ells1\PYG{p}{)}
+\end{Verbatim}

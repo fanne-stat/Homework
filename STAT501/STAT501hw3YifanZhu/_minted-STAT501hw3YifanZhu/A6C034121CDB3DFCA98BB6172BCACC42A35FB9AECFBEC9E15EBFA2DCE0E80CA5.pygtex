@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{} shapiro\PYGZhy{}wilk\PYGZsq{}s test}
+shapiro.test\PYG{p}{(}transformed\PYGZus{}danish\PYG{p}{)}
+\end{Verbatim}

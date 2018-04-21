@@ -1,0 +1,30 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+Type II MANOVA Tests\PYG{o}{:}
+
+Sum of squares and products \PYG{k+kr}{for} error\PYG{o}{:}
+                     max breadth basibregmatic height basialveolar length nasal height
+max breadth            \PYG{l+m}{1785.4000}                \PYG{l+m}{172.5}            \PYG{l+m}{128.9667}     \PYG{l+m}{289.6333}
+basibregmatic height    \PYG{l+m}{172.5000}               \PYG{l+m}{1924.3}            \PYG{l+m}{178.8000}     \PYG{l+m}{171.9000}
+basialveolar length     \PYG{l+m}{128.9667}                \PYG{l+m}{178.8}           \PYG{l+m}{2153.0000}      \PYG{l+m}{\PYGZhy{}1.7000}
+nasal height            \PYG{l+m}{289.6333}                \PYG{l+m}{171.9}             \PYG{l+m}{\PYGZhy{}1.7000}     \PYG{l+m}{840.2000}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} period
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                     max breadth basibregmatic height basialveolar length nasal height
+max breadth           \PYG{l+m}{150.200000}            \PYG{l+m}{20.300000}          \PYG{l+m}{\PYGZhy{}161.83333}     \PYG{l+m}{5.033333}
+basibregmatic height   \PYG{l+m}{20.300000}            \PYG{l+m}{20.600000}           \PYG{l+m}{\PYGZhy{}38.73333}     \PYG{l+m}{6.433333}
+basialveolar length  \PYG{l+m}{\PYGZhy{}161.833333}           \PYG{l+m}{\PYGZhy{}38.733333}           \PYG{l+m}{190.28889}   \PYG{l+m}{\PYGZhy{}10.855556}
+nasal height            \PYG{l+m}{5.033333}             \PYG{l+m}{6.433333}           \PYG{l+m}{\PYGZhy{}10.85556}     \PYG{l+m}{2.022222}
+
+Multivariate Tests\PYG{o}{:} period
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df    Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{2} \PYG{l+m}{0.1722118} \PYG{l+m}{2.002148}      \PYG{l+m}{8}    \PYG{l+m}{170} \PYG{l+m}{0.0489045} \PYG{o}{*}
+Wilks             \PYG{l+m}{2} \PYG{l+m}{0.8301027} \PYG{l+m}{2.049069}      \PYG{l+m}{8}    \PYG{l+m}{168} \PYG{l+m}{0.0435825} \PYG{o}{*}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{2} \PYG{l+m}{0.2018820} \PYG{l+m}{2.094526}      \PYG{l+m}{8}    \PYG{l+m}{166} \PYG{l+m}{0.0389623} \PYG{o}{*}
+Roy               \PYG{l+m}{2} \PYG{l+m}{0.1869691} \PYG{l+m}{3.973094}      \PYG{l+m}{4}     \PYG{l+m}{85} \PYG{l+m}{0.0052784} \PYG{o}{**}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+\end{Verbatim}

@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+U \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}X\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} Phi\PYG{p}{,} Lambda \PYG{o}{=} max.lambda\PYG{p}{)}
+V \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}Y\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} Phi\PYG{p}{,} Lambda \PYG{o}{=} max.lambda\PYG{p}{)}
+
+colleges.tranformed \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{cbind}\PYG{p}{(}colleges\PYG{o}{\PYGZdl{}}School\PYGZus{}Type\PYG{p}{,} \PYG{k+kp}{as.data.frame}\PYG{p}{(}\PYG{k+kp}{rbind}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{(}U\PYG{p}{),} \PYG{k+kp}{t}\PYG{p}{(}V\PYG{p}{))))}
+\PYG{k+kp}{names}\PYG{p}{(}colleges.tranformed\PYG{p}{)} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{names}\PYG{p}{(}colleges\PYG{p}{)[}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{]}
+
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}testnormality.R\PYGZdq{}}\PYG{p}{)}
+testnormality\PYG{p}{(}X \PYG{o}{=} colleges.tranformed\PYG{p}{[}colleges.tranformed\PYG{o}{\PYGZdl{}}School\PYGZus{}Type \PYG{o}{==} \PYG{l+s}{\PYGZdq{}Lib Arts\PYGZdq{}}\PYG{p}{,} \PYG{l+m}{\PYGZhy{}1}\PYG{p}{])}
+testnormality\PYG{p}{(}X \PYG{o}{=} colleges.tranformed\PYG{p}{[}colleges.tranformed\PYG{o}{\PYGZdl{}}School\PYGZus{}Type \PYG{o}{==} \PYG{l+s}{\PYGZdq{}Univ\PYGZdq{}}\PYG{p}{,} \PYG{l+m}{\PYGZhy{}1}\PYG{p}{])}
+\end{Verbatim}

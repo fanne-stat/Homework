@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} star plots and cheroff faces}
+skull\PYGZus{}means \PYG{o}{\PYGZlt{}\PYGZhy{}} aggregate\PYG{p}{(} \PYG{l+m}{.}\PYG{o}{\PYGZti{}} period\PYG{p}{,} data \PYG{o}{=} skulls\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kp}{mean}\PYG{p}{)}
+\PYG{k+kn}{library}\PYG{p}{(}aplpack\PYG{p}{)}
+stars\PYG{p}{(}skull\PYGZus{}means\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{],} labels \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}period 1\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}period 2\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}period 3\PYGZdq{}}\PYG{p}{),} draw.segments \PYG{o}{=} \PYG{k+kc}{TRUE}\PYG{p}{,} key.loc \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{4.5}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{))}
+faces\PYG{p}{(}skull\PYGZus{}means\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{])}
+\end{Verbatim}

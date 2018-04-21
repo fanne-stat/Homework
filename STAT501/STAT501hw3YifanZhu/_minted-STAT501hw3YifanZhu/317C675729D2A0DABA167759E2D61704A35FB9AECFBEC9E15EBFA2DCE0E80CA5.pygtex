@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} 2.}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} 2 (b) i.}
+\PYG{k+kn}{library}\PYG{p}{(}SMPracticals\PYG{p}{)}
+\PYG{k+kp}{summary}\PYG{p}{(}danish\PYG{p}{)}
+hist\PYG{p}{(}danish\PYG{p}{)}
+\end{Verbatim}

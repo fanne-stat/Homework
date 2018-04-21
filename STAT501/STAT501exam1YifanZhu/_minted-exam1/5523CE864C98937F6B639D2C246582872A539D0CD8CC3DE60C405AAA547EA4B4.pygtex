@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} simutanous tests: 4 measurements and 1\PYGZhy{}2, 2\PYGZhy{}3 periods. (8 pairs)}
+n \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{table}\PYG{p}{(}skulls\PYG{o}{\PYGZdl{}}period\PYG{p}{)}
+S\PYGZus{}pool \PYG{o}{\PYGZlt{}\PYGZhy{}} fit.manova\PYG{o}{\PYGZdl{}}SSPE\PYG{o}{/}fit.manova\PYG{o}{\PYGZdl{}}error.df
+mean\PYGZus{}diff\PYGZus{}12 \PYG{o}{\PYGZlt{}\PYGZhy{}} fit.lm\PYG{o}{\PYGZdl{}}coefficients\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{,]} \PYG{o}{\PYGZhy{}} fit.lm\PYG{o}{\PYGZdl{}}coefficients\PYG{p}{[}\PYG{l+m}{3}\PYG{p}{,]}
+mean\PYGZus{}diff\PYGZus{}23 \PYG{o}{\PYGZlt{}\PYGZhy{}} fit.lm\PYG{o}{\PYGZdl{}}coefficients\PYG{p}{[}\PYG{l+m}{3}\PYG{p}{,]}
+S\PYGZus{}pool\PYGZus{}ii \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{diag}\PYG{p}{(}S\PYGZus{}pool\PYG{p}{)}
+t\PYGZus{}12 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{abs}\PYG{p}{(}mean\PYGZus{}diff\PYGZus{}12\PYG{p}{)}\PYG{o}{/}\PYG{k+kp}{sqrt}\PYG{p}{(((}\PYG{l+m}{1}\PYG{o}{/}n\PYG{p}{[}\PYG{l+m}{1}\PYG{p}{])} \PYG{o}{+} \PYG{p}{(}\PYG{l+m}{1}\PYG{o}{/}n\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{]))}\PYG{o}{*}S\PYGZus{}pool\PYGZus{}ii\PYG{p}{)}
+t\PYGZus{}23 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{abs}\PYG{p}{(}mean\PYGZus{}diff\PYGZus{}23\PYG{p}{)}\PYG{o}{/}\PYG{k+kp}{sqrt}\PYG{p}{(((}\PYG{l+m}{1}\PYG{o}{/}n\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{])} \PYG{o}{+} \PYG{p}{(}\PYG{l+m}{1}\PYG{o}{/}n\PYG{p}{[}\PYG{l+m}{3}\PYG{p}{]))}\PYG{o}{*}S\PYGZus{}pool\PYGZus{}ii\PYG{p}{)}
+Tstat \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rbind}\PYG{p}{(}t\PYGZus{}12\PYG{p}{,} t\PYGZus{}23\PYG{p}{)}
+\PYG{k+kp}{row.names}\PYG{p}{(}Tstat\PYG{p}{)} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}12\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}23\PYGZdq{}}\PYG{p}{)}
+
+p\PYGZus{}vals \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{2}\PYG{o}{*}pt\PYG{p}{(}Tstat\PYG{p}{,} df \PYG{o}{=} fit.manova\PYG{o}{\PYGZdl{}}error.df\PYG{p}{,} lower.tail \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{)}
+p.adjust\PYG{p}{(}p\PYGZus{}vals\PYG{p}{,} \PYG{l+s}{\PYGZdq{}bonferroni\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

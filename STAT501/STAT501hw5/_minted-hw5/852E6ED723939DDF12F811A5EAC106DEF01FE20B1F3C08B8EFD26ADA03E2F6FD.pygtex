@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}g)}
+fit.lm2\PYG{o}{\PYGZlt{}\PYGZhy{}} lm\PYG{p}{(}\PYG{k+kp}{cbind}\PYG{p}{(}LOCUS\PYGZus{}OF\PYGZus{}CONTROL\PYG{p}{,}SELF\PYGZus{}CONCEPT\PYG{p}{,}MOTIVATION\PYG{p}{)}\PYG{o}{\PYGZti{}} \PYG{l+m}{.}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{,} data \PYG{o}{=} psych\PYG{p}{)}
+\PYG{k+kp}{summary}\PYG{p}{(}fit.lm2\PYG{p}{)}
+fit.manova12 \PYG{o}{\PYGZlt{}\PYGZhy{}} Manova\PYG{p}{(}fit.lm2\PYG{p}{)}
+\PYG{k+kp}{summary}\PYG{p}{(}fit.manova12\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+             CH1         CH2         CH3        CH4         CH5          CH6         CH7         CH8
+CH1  \PYG{l+m}{1.000000000}  \PYG{l+m}{0.11900039}  \PYG{l+m}{0.08786970} \PYG{l+m}{\PYGZhy{}0.7994401}  \PYG{l+m}{0.42188660} \PYG{l+m}{\PYGZhy{}0.007466556}  \PYG{l+m}{0.33270138}  \PYG{l+m}{0.40508513}
+CH2  \PYG{l+m}{0.119000387}  \PYG{l+m}{1.00000000}  \PYG{l+m}{0.40954913} \PYG{l+m}{\PYGZhy{}0.1868781} \PYG{l+m}{\PYGZhy{}0.17723037} \PYG{l+m}{\PYGZhy{}0.049145339}  \PYG{l+m}{0.12964611} \PYG{l+m}{\PYGZhy{}0.03710676}
+CH3  \PYG{l+m}{0.087869701}  \PYG{l+m}{0.40954913}  \PYG{l+m}{1.00000000} \PYG{l+m}{\PYGZhy{}0.2811107} \PYG{l+m}{\PYGZhy{}0.01414057} \PYG{l+m}{\PYGZhy{}0.399135258}  \PYG{l+m}{0.14357073}  \PYG{l+m}{0.19619085}
+CH4 \PYG{l+m}{\PYGZhy{}0.799440133} \PYG{l+m}{\PYGZhy{}0.18687810} \PYG{l+m}{\PYGZhy{}0.28111067}  \PYG{l+m}{1.0000000} \PYG{l+m}{\PYGZhy{}0.79232090}  \PYG{l+m}{0.151300451} \PYG{l+m}{\PYGZhy{}0.60573225} \PYG{l+m}{\PYGZhy{}0.36134336}
+CH5  \PYG{l+m}{0.421886601} \PYG{l+m}{\PYGZhy{}0.17723037} \PYG{l+m}{\PYGZhy{}0.01414057} \PYG{l+m}{\PYGZhy{}0.7923209}  \PYG{l+m}{1.00000000} \PYG{l+m}{\PYGZhy{}0.182269052}  \PYG{l+m}{0.53905745}  \PYG{l+m}{0.22800013}
+CH6 \PYG{l+m}{\PYGZhy{}0.007466556} \PYG{l+m}{\PYGZhy{}0.04914534} \PYG{l+m}{\PYGZhy{}0.39913526}  \PYG{l+m}{0.1513005} \PYG{l+m}{\PYGZhy{}0.18226905}  \PYG{l+m}{1.000000000}  \PYG{l+m}{0.06465175}  \PYG{l+m}{0.04913952}
+CH7  \PYG{l+m}{0.332701378}  \PYG{l+m}{0.12964611}  \PYG{l+m}{0.14357073} \PYG{l+m}{\PYGZhy{}0.6057323}  \PYG{l+m}{0.53905745}  \PYG{l+m}{0.064651746}  \PYG{l+m}{1.00000000}  \PYG{l+m}{0.24163350}
+CH8  \PYG{l+m}{0.405085132} \PYG{l+m}{\PYGZhy{}0.03710676}  \PYG{l+m}{0.19619085} \PYG{l+m}{\PYGZhy{}0.3613434}  \PYG{l+m}{0.22800013}  \PYG{l+m}{0.049139516}  \PYG{l+m}{0.24163350}  \PYG{l+m}{1.00000000}
+\end{Verbatim}

@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+			\PYG{c+c1}{\PYGZsh{}ii}
+n \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.vector}\PYG{p}{(}\PYG{k+kp}{table}\PYG{p}{(}zipdigit\PYG{p}{))}
+means \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{list}\PYG{p}{()}
+\PYG{k+kr}{for}\PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{)\PYGZob{}}
+  means\PYG{p}{[[}i\PYG{p}{]]} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}ziptrain100\PYG{p}{[}zipdigit \PYG{o}{==} i\PYG{l+m}{\PYGZhy{}1}\PYG{p}{,],} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kp}{mean}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+vars \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{list}\PYG{p}{()}
+\PYG{k+kr}{for}\PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{)\PYGZob{}}
+  vars\PYG{p}{[[}i\PYG{p}{]]} \PYG{o}{\PYGZlt{}\PYGZhy{}} cov\PYG{p}{(}ziptrain100\PYG{p}{[}zipdigit \PYG{o}{==} i\PYG{l+m}{\PYGZhy{}1}\PYG{p}{,])}
+\PYG{p}{\PYGZcb{}}
+
+quard \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{,} A\PYG{p}{)\PYGZob{}}
+  x \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.vector}\PYG{p}{(}x\PYG{p}{)}
+  \PYG{k+kr}{return}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{(}x\PYG{p}{)}\PYG{o}{\PYGZpc{}*\PYGZpc{}}A\PYG{o}{\PYGZpc{}*\PYGZpc{}}x\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+lambda \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{0}
+
+
+r \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{0}
+l \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{0}
+\PYG{k+kr}{for}\PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{)\PYGZob{}}
+  r \PYG{o}{\PYGZlt{}\PYGZhy{}} r \PYG{o}{+} n\PYG{p}{[}i\PYG{p}{]}\PYG{o}{*}ginv\PYG{p}{(}vars\PYG{p}{[[}i\PYG{p}{]])} \PYG{o}{\PYGZpc{}*\PYGZpc{}} means\PYG{p}{[[}i\PYG{p}{]]}
+  l \PYG{o}{\PYGZlt{}\PYGZhy{}} l \PYG{o}{+} n\PYG{p}{[}i\PYG{p}{]}\PYG{o}{*}ginv\PYG{p}{(}vars\PYG{p}{[[}i\PYG{p}{]])}
+\PYG{p}{\PYGZcb{}}
+muhat \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.vector}\PYG{p}{(}ginv\PYG{p}{(}l\PYG{p}{)}\PYG{o}{\PYGZpc{}*\PYGZpc{}}r\PYG{p}{)}
+
+\PYG{k+kr}{for}\PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{)\PYGZob{}}
+  Xi \PYG{o}{\PYGZlt{}\PYGZhy{}} ziptrain100\PYG{p}{[}zipdigit \PYG{o}{==} i\PYG{l+m}{\PYGZhy{}1}\PYG{p}{,]}
+  Xicentered \PYG{o}{\PYGZlt{}\PYGZhy{}} Xi \PYG{o}{\PYGZhy{}} \PYG{k+kt}{matrix}\PYG{p}{(}\PYG{k+kp}{rep}\PYG{p}{(}means\PYG{p}{[[}i\PYG{p}{]],} n\PYG{p}{[}i\PYG{p}{]),} ncol \PYG{o}{=} \PYG{l+m}{100}\PYG{p}{,} byrow \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+  Xim \PYG{o}{\PYGZlt{}\PYGZhy{}} Xi \PYG{o}{\PYGZhy{}} \PYG{k+kt}{matrix}\PYG{p}{(}\PYG{k+kp}{rep}\PYG{p}{(}muhat\PYG{p}{,} n\PYG{p}{[}i\PYG{p}{]),} ncol \PYG{o}{=} \PYG{l+m}{100}\PYG{p}{,} byrow \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+  fulli \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sum}\PYG{p}{(}\PYG{k+kp}{apply}\PYG{p}{(}Xicentered\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} FUN \PYG{o}{=} quard\PYG{p}{,} A \PYG{o}{=} ginv\PYG{p}{(}vars\PYG{p}{[[}i\PYG{p}{]])))}
+  reducedi \PYG{o}{\PYGZlt{}\PYGZhy{}}  \PYG{k+kp}{sum}\PYG{p}{(}\PYG{k+kp}{apply}\PYG{p}{(}Xim\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} FUN \PYG{o}{=} quard\PYG{p}{,} A \PYG{o}{=} ginv\PYG{p}{(}vars\PYG{p}{[[}i\PYG{p}{]])))}
+  lambda \PYG{o}{\PYGZlt{}\PYGZhy{}} reducedi \PYG{o}{\PYGZhy{}} fulli
+\PYG{p}{\PYGZcb{}}
+
+pchisq\PYG{p}{(}lambda\PYG{p}{,} df \PYG{o}{=} \PYG{l+m}{9}\PYG{p}{,} lower.tail \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{)}
+\end{Verbatim}

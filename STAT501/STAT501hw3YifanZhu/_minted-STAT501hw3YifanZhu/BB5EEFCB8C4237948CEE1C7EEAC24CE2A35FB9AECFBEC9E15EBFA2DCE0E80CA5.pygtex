@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZsh{} transform the data with theta = 4}
+transformed\PYGZus{}danish \PYG{o}{\PYGZlt{}\PYGZhy{}} g\PYG{p}{(}danish\PYG{p}{,} \PYG{l+m}{4}\PYG{p}{)}
+
+hist\PYG{p}{(}transformed\PYGZus{}danish\PYG{p}{,} main \PYG{o}{=} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+qqnorm\PYG{p}{(}transformed\PYGZus{}danish\PYG{p}{,} main \PYG{o}{=} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

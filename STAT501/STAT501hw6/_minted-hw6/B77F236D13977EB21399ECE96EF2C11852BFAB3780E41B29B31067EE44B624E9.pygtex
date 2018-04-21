@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}BoxMTest\PYGZhy{}2.R\PYGZdq{}}\PYG{p}{)}
+BoxMTest\PYG{p}{(}X \PYG{o}{=} ziptrain100\PYG{p}{,} cl \PYG{o}{=} zipdigit\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} 1(b) generate random vector X given X\PYGZhy{}bar.}
+\PYG{k+kn}{library}\PYG{p}{(}MASS\PYG{p}{)}
+X.gen \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}xbar\PYG{p}{,} n\PYG{p}{,} sigma\PYG{p}{)\PYGZob{}}
+  mu \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rep}\PYG{p}{(}xbar\PYG{p}{,} n\PYG{l+m}{\PYGZhy{}1}\PYG{p}{)}
+  Sigma \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{diag}\PYG{p}{(}\PYG{k+kp}{rep}\PYG{p}{(}sigma\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{,} n\PYG{l+m}{\PYGZhy{}1}\PYG{p}{))} \PYG{o}{\PYGZhy{}} \PYG{k+kt}{matrix}\PYG{p}{(}\PYG{k+kp}{rep}\PYG{p}{((}sigma\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{o}{/}n\PYG{p}{),} \PYG{p}{(}n\PYG{l+m}{\PYGZhy{}1}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}n\PYG{l+m}{\PYGZhy{}1}\PYG{p}{)),} nrow \PYG{o}{=} n\PYG{l+m}{\PYGZhy{}1}\PYG{p}{)}
+  Y1 \PYG{o}{\PYGZlt{}\PYGZhy{}} mvrnorm\PYG{p}{(}mu \PYG{o}{=} mu\PYG{p}{,} Sigma \PYG{o}{=} Sigma\PYG{p}{)}
+  X \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{c}\PYG{p}{(}Y1\PYG{p}{,} n\PYG{o}{*}xbar \PYG{o}{\PYGZhy{}} \PYG{k+kp}{sum}\PYG{p}{(}Y1\PYG{p}{))}
+  \PYG{k+kr}{return}\PYG{p}{(}X\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

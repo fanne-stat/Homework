@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}c)}
+anova\PYG{p}{(}fit.lm\PYG{p}{,} fit.lm1\PYG{p}{,} test \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Wilks\PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}d)Test simultaneously}
+p\PYGZus{}values \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{)}
+
+fit.lm.P12 \PYG{o}{\PYGZlt{}\PYGZhy{}} lm\PYG{p}{(}\PYG{k+kp}{cbind}\PYG{p}{(}LOCUS\PYGZus{}OF\PYGZus{}CONTROL\PYG{p}{,}SELF\PYGZus{}CONCEPT\PYG{p}{,}MOTIVATION\PYG{p}{)} \PYG{o}{\PYGZti{}} READ \PYG{o}{+} WRITE \PYG{o}{+} SCIENCE \PYG{o}{+} PROG\PYG{p}{,} data \PYG{o}{=} psych\PYG{p}{[}psych\PYG{o}{\PYGZdl{}}PROG \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{),])}
+fit.lm.P12\PYGZus{}reduced \PYG{o}{\PYGZlt{}\PYGZhy{}} lm\PYG{p}{(}\PYG{k+kp}{cbind}\PYG{p}{(}LOCUS\PYGZus{}OF\PYGZus{}CONTROL\PYG{p}{,}SELF\PYGZus{}CONCEPT\PYG{p}{,}MOTIVATION\PYG{p}{)} \PYG{o}{\PYGZti{}} READ \PYG{o}{+} WRITE \PYG{o}{+} SCIENCE\PYG{p}{,} data \PYG{o}{=} psych\PYG{p}{[}psych\PYG{o}{\PYGZdl{}}PROG \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{),])}
+test\PYGZus{}P12 \PYG{o}{\PYGZlt{}\PYGZhy{}} anova\PYG{p}{(}fit.lm.P12\PYG{p}{,} fit.lm.P12\PYGZus{}reduced\PYG{p}{,} test \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Wilks\PYGZdq{}}\PYG{p}{)}
+p\PYGZus{}vals\PYG{p}{[}\PYG{l+m}{1}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZhy{}} test\PYGZus{}P12\PYG{o}{\PYGZdl{}}\PYG{l+s+sb}{`Pr(\PYGZgt{}F)`}\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{]}
+
+fit.lm.P23 \PYG{o}{\PYGZlt{}\PYGZhy{}} lm\PYG{p}{(}\PYG{k+kp}{cbind}\PYG{p}{(}LOCUS\PYGZus{}OF\PYGZus{}CONTROL\PYG{p}{,}SELF\PYGZus{}CONCEPT\PYG{p}{,}MOTIVATION\PYG{p}{)} \PYG{o}{\PYGZti{}} READ \PYG{o}{+} WRITE \PYG{o}{+} SCIENCE \PYG{o}{+} PROG\PYG{p}{,} data \PYG{o}{=} psych\PYG{p}{[}psych\PYG{o}{\PYGZdl{}}PROG \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{2}\PYG{p}{,}\PYG{l+m}{3}\PYG{p}{),])}
+fit.lm.P23\PYGZus{}reduced \PYG{o}{\PYGZlt{}\PYGZhy{}} lm\PYG{p}{(}\PYG{k+kp}{cbind}\PYG{p}{(}LOCUS\PYGZus{}OF\PYGZus{}CONTROL\PYG{p}{,}SELF\PYGZus{}CONCEPT\PYG{p}{,}MOTIVATION\PYG{p}{)} \PYG{o}{\PYGZti{}} READ \PYG{o}{+} WRITE \PYG{o}{+} SCIENCE\PYG{p}{,} data \PYG{o}{=} psych\PYG{p}{[}psych\PYG{o}{\PYGZdl{}}PROG \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{2}\PYG{p}{,}\PYG{l+m}{3}\PYG{p}{),])}
+test\PYGZus{}P23 \PYG{o}{\PYGZlt{}\PYGZhy{}} anova\PYG{p}{(}fit.lm.P23\PYG{p}{,} fit.lm.P23\PYGZus{}reduced\PYG{p}{,} test \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Wilks\PYGZdq{}}\PYG{p}{)}
+p\PYGZus{}values\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZhy{}} test\PYGZus{}P23\PYG{o}{\PYGZdl{}}\PYG{l+s+sb}{`Pr(\PYGZgt{}F)`}\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{]}
+
+bon\PYGZus{}adj\PYG{o}{\PYGZlt{}\PYGZhy{}}p.adjust\PYG{p}{(}p\PYGZus{}values\PYG{p}{,}method\PYG{o}{=}\PYG{l+s}{\PYGZdq{}bonferroni\PYGZdq{}}\PYG{p}{)}
+bon\PYGZus{}adj
+fdr\PYGZus{}adj\PYG{o}{\PYGZlt{}\PYGZhy{}}p.adjust\PYG{p}{(}p\PYGZus{}values\PYG{p}{,}method\PYG{o}{=}\PYG{l+s}{\PYGZdq{}fdr\PYGZdq{}}\PYG{p}{)}
+fdr\PYGZus{}adj
+\end{Verbatim}

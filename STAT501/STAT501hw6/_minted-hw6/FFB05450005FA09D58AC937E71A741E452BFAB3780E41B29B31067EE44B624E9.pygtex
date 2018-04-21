@@ -1,0 +1,37 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}(b)}
+ziptrain.centered \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kc}{NULL}
+\PYG{k+kr}{for}\PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{)\PYGZob{}}
+  mean \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}ziptrain\PYG{p}{[}zipdigit \PYG{o}{==} i\PYG{l+m}{\PYGZhy{}1}\PYG{p}{,],} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kp}{mean}\PYG{p}{)}
+  ziptrain.centered \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rbind}\PYG{p}{(}ziptrain.centered\PYG{p}{,} ziptrain\PYG{p}{[}zipdigit \PYG{o}{==} i\PYG{l+m}{\PYGZhy{}1}\PYG{p}{,]} \PYG{o}{\PYGZhy{}} \PYG{k+kt}{matrix}\PYG{p}{(}\PYG{k+kp}{rep}\PYG{p}{(}\PYG{k+kp}{mean}\PYG{p}{,} n\PYG{p}{[}i\PYG{p}{]),} ncol \PYG{o}{=} \PYG{l+m}{256}\PYG{p}{,} byrow \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{))}
+\PYG{p}{\PYGZcb{}}
+
+ziptrain.pc \PYG{o}{\PYGZlt{}\PYGZhy{}} prcomp\PYG{p}{(}ziptrain.centered\PYG{p}{)}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}PCs.proportion.variation.enuff.R\PYGZdq{}}\PYG{p}{)}
+p \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rep}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,} \PYG{l+m}{256}\PYG{p}{)}
+\PYG{k+kr}{for}\PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{256}\PYG{p}{)\PYGZob{}}
+  p\PYG{p}{[}i\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZhy{}} PCs.proportion.variation.enuff\PYG{p}{(}lambda \PYG{o}{=} ziptrain.pc\PYG{o}{\PYGZdl{}}sdev\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{,} q \PYG{o}{=} i\PYG{p}{,} propn \PYG{o}{=} \PYG{l+m}{0.8}\PYG{p}{,} nobs \PYG{o}{=} \PYG{k+kp}{nrow}\PYG{p}{(}ziptrain.centered\PYG{p}{))}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kp}{min}\PYG{p}{(}\PYG{k+kp}{which}\PYG{p}{(}p \PYG{o}{\PYGZgt{}} \PYG{l+m}{0.05}\PYG{p}{))}
+
+zipmean \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kc}{NULL}
+\PYG{k+kr}{for}\PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{)\PYGZob{}}
+  mean \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}ziptrain\PYG{p}{[}zipdigit \PYG{o}{==} i\PYG{l+m}{\PYGZhy{}1}\PYG{p}{,],} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kp}{mean}\PYG{p}{)}
+  zipmean \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rbind}\PYG{p}{(}zipmean\PYG{p}{,}  \PYG{k+kt}{matrix}\PYG{p}{(}\PYG{k+kp}{rep}\PYG{p}{(}\PYG{k+kp}{mean}\PYG{p}{,} n\PYG{p}{[}i\PYG{p}{]),} ncol \PYG{o}{=} \PYG{l+m}{256}\PYG{p}{,} byrow \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{))}
+\PYG{p}{\PYGZcb{}}
+
+zipproj\PYGZus{}full \PYG{o}{\PYGZlt{}\PYGZhy{}} ziptrain.pc\PYG{o}{\PYGZdl{}}x \PYG{o}{+} zipmean\PYG{o}{\PYGZpc{}*\PYGZpc{}}ziptrain.pc\PYG{o}{\PYGZdl{}}rotation
+zipproj \PYG{o}{\PYGZlt{}\PYGZhy{}} ziptrain.pc\PYG{o}{\PYGZdl{}}x\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{40}\PYG{p}{]} \PYG{o}{+} zipmean\PYG{o}{\PYGZpc{}*\PYGZpc{}}ziptrain.pc\PYG{o}{\PYGZdl{}}rotation\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{40}\PYG{p}{]}
+
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}radviz2d.R\PYGZdq{}}\PYG{p}{)}
+class \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kc}{NULL}
+\PYG{k+kr}{for}\PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{0}\PYG{o}{:}\PYG{l+m}{9}\PYG{p}{)\PYGZob{}}
+  class \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{c}\PYG{p}{(}\PYG{k+kp}{class}\PYG{p}{,} \PYG{k+kp}{rep}\PYG{p}{(}i\PYG{p}{,} n\PYG{p}{[}i\PYG{l+m}{+1}\PYG{p}{]))}
+\PYG{p}{\PYGZcb{}}
+
+class \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.factor}\PYG{p}{(}\PYG{k+kp}{class}\PYG{p}{)}
+
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}starcoord.R\PYGZdq{}}\PYG{p}{)}
+starcoord\PYG{p}{(}data \PYG{o}{=} \PYG{k+kp}{cbind}\PYG{p}{(}zipproj\PYGZus{}full\PYG{p}{,}\PYG{k+kp}{class}\PYG{p}{),} class \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{,} main \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Full dimension\PYGZdq{}}\PYG{p}{)}
+starcoord\PYG{p}{(}data \PYG{o}{=} \PYG{k+kp}{cbind}\PYG{p}{(}zipproj\PYG{p}{,}\PYG{k+kp}{class}\PYG{p}{),} class \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{,} main \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Reduced dimension\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

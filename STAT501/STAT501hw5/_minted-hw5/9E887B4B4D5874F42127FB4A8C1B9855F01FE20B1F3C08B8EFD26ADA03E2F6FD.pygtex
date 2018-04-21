@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{library}\PYG{p}{(}sas7bdat\PYG{p}{)}
+psych \PYG{o}{\PYGZlt{}\PYGZhy{}} read.sas7bdat\PYG{p}{(}\PYG{l+s}{\PYGZdq{}psych.sas7bdat\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}a) Fit the linear model}
+\PYG{k+kn}{library}\PYG{p}{(}car\PYG{p}{)}
+psych\PYG{o}{\PYGZdl{}}PROG \PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kp}{as.factor}\PYG{p}{(}psych\PYG{o}{\PYGZdl{}}PROG\PYG{p}{)}
+\PYG{k+kp}{levels}\PYG{p}{(}psych\PYG{o}{\PYGZdl{}}PROG\PYG{p}{)}
+fit.lm \PYG{o}{\PYGZlt{}\PYGZhy{}} lm\PYG{p}{(}\PYG{k+kp}{cbind}\PYG{p}{(}LOCUS\PYGZus{}OF\PYGZus{}CONTROL\PYG{p}{,}SELF\PYGZus{}CONCEPT\PYG{p}{,}MOTIVATION\PYG{p}{)} \PYG{o}{\PYGZti{}} READ \PYG{o}{+} WRITE \PYG{o}{+} SCIENCE \PYG{o}{+} PROG\PYG{p}{,} data \PYG{o}{=} psych\PYG{p}{)}
+\PYG{k+kp}{summary}\PYG{p}{(}fit.lm\PYG{p}{)}
+fit.manova \PYG{o}{\PYGZlt{}\PYGZhy{}} Manova\PYG{p}{(}fit.lm\PYG{p}{)}
+\PYG{k+kp}{summary}\PYG{p}{(}fit.manova\PYG{p}{)}
+\end{Verbatim}

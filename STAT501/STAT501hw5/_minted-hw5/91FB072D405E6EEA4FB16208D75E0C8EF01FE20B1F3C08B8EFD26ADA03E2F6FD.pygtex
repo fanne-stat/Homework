@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+p.adjust\PYG{p}{(}p\PYGZus{}vals\PYG{p}{[}\PYG{k+kp}{order}\PYG{p}{(}p\PYGZus{}vals\PYG{p}{)],} method \PYG{o}{=} \PYG{l+s}{\PYGZdq{}fdr\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

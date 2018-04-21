@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{library}\PYG{p}{(}ICSNP\PYG{p}{)}
+ T2test \PYG{o}{\PYGZlt{}\PYGZhy{}} HotellingsT2\PYG{p}{(}X \PYG{o}{=} olive\PYGZus{}R2\PYG{p}{[}olive\PYGZus{}R2\PYG{o}{\PYGZdl{}}Regions \PYG{o}{==} \PYG{l+m}{5}\PYG{p}{,} \PYG{l+m}{\PYGZhy{}1}\PYG{p}{],} Y \PYG{o}{=} olive\PYGZus{}R2\PYG{p}{[}olive\PYGZus{}R2\PYG{o}{\PYGZdl{}}Regions \PYG{o}{==} \PYG{l+m}{6}\PYG{p}{,} \PYG{l+m}{\PYGZhy{}1}\PYG{p}{])}
+ T2test
+ df1 \PYG{o}{\PYGZlt{}\PYGZhy{}} T2test\PYG{o}{\PYGZdl{}}parameter\PYG{p}{[}\PYG{l+s}{\PYGZsq{}df1\PYGZsq{}}\PYG{p}{]}
+ df2 \PYG{o}{\PYGZlt{}\PYGZhy{}} T2test\PYG{o}{\PYGZdl{}}parameter\PYG{p}{[}\PYG{l+s}{\PYGZsq{}df2\PYGZsq{}}\PYG{p}{]}
+ T2stat \PYG{o}{\PYGZlt{}\PYGZhy{}} T2test\PYG{o}{\PYGZdl{}}statistic\PYG{o}{/}df2\PYG{o}{*}\PYG{p}{(}df1 \PYG{o}{+} df2 \PYG{o}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{)}\PYG{o}{*}df1
+ T2stat
+\end{Verbatim}

@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} test mean vector changes from period 1 to period 2}
+C12 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{matrix}\PYG{p}{(}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{1}\PYG{p}{,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{),}nrow \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} byrow \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+test12 \PYG{o}{\PYGZlt{}\PYGZhy{}} linearHypothesis\PYG{p}{(}model \PYG{o}{=} fit.lm\PYG{p}{,} hypothesis.matrix \PYG{o}{=} C12\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} test mean vector changes from period 2 to period 3}
+C23 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{matrix}\PYG{p}{(}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{1}\PYG{p}{),}nrow \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} byrow \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+test23 \PYG{o}{\PYGZlt{}\PYGZhy{}} linearHypothesis\PYG{p}{(}model \PYG{o}{=} fit.lm\PYG{p}{,} hypothesis.matrix \PYG{o}{=} C23\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+ \PYG{c+c1}{\PYGZsh{}vii) Draw 95\PYGZpc{} Confidence ellipses}
+ \PYG{k+kn}{library}\PYG{p}{(}car\PYG{p}{)}
+ dataEllipse\PYG{p}{(}olive\PYGZus{}R2\PYG{o}{\PYGZdl{}}CH5\PYG{p}{,} olive\PYGZus{}R2\PYG{o}{\PYGZdl{}}CH6\PYG{p}{,} groups \PYG{o}{=} \PYG{k+kp}{as.factor}\PYG{p}{(}olive\PYGZus{}R2\PYG{o}{\PYGZdl{}}Regions\PYG{p}{),} levels\PYG{o}{=}\PYG{l+m}{0.95}\PYG{p}{,} xlab \PYG{o}{=} \PYG{l+s}{\PYGZdq{}CH5\PYGZdq{}}\PYG{p}{,} ylab \PYG{o}{=} \PYG{l+s}{\PYGZdq{}CH6\PYGZdq{}}\PYG{p}{,} col \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}blue\PYGZdq{}}\PYG{p}{),} ylim \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{10}\PYG{p}{,} \PYG{l+m}{45}\PYG{p}{),} group.labels \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}A5\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}A6\PYGZdq{}}\PYG{p}{))}
+\end{Verbatim}

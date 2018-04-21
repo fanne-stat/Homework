@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} one\PYGZhy{}way MANOVA of skulls}
+\PYG{k+kn}{library}\PYG{p}{(}car\PYG{p}{)}
+fit.lm \PYG{o}{\PYGZlt{}\PYGZhy{}} lm\PYG{p}{(}\PYG{k+kp}{cbind}\PYG{p}{(}\PYG{l+s+sb}{`max breadth`}\PYG{p}{,} \PYG{l+s+sb}{`basibregmatic height`}\PYG{p}{,} \PYG{l+s+sb}{`basialveolar length`}\PYG{p}{,} \PYG{l+s+sb}{`nasal height`}\PYG{p}{)} \PYG{o}{\PYGZti{}} period\PYG{p}{,} data \PYG{o}{=} skulls\PYG{p}{,} contrasts \PYG{o}{=} \PYG{k+kt}{list}\PYG{p}{(}period \PYG{o}{=} contr.SAS\PYG{p}{))}
+fit.manova \PYG{o}{\PYGZlt{}\PYGZhy{}} Manova\PYG{p}{(}fit.lm\PYG{p}{)}
+
+\PYG{k+kp}{summary}\PYG{p}{(}fit.manova\PYG{p}{)}
+\end{Verbatim}

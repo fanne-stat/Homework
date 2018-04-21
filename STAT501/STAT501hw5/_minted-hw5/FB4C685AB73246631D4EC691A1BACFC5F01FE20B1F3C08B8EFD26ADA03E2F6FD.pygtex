@@ -1,0 +1,69 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+Response LOCUS\PYGZus{}OF\PYGZus{}CONTROL \PYG{o}{:}
+
+Call\PYG{o}{:}
+lm\PYG{p}{(}formula \PYG{o}{=} LOCUS\PYGZus{}OF\PYGZus{}CONTROL \PYG{o}{\PYGZti{}} READ \PYG{o}{+} PROG\PYG{p}{,} data \PYG{o}{=} psych\PYG{p}{)}
+
+Residuals\PYG{o}{:}
+     Min       \PYG{l+m}{1}Q   Median       \PYG{l+m}{3}Q      Max
+\PYG{l+m}{\PYGZhy{}2.16592} \PYG{l+m}{\PYGZhy{}0.40135} \PYG{l+m}{\PYGZhy{}0.03684}  \PYG{l+m}{0.38493}  \PYG{l+m}{1.90217}
+
+Coefficients\PYG{o}{:}
+             Estimate Std. Error t value Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}|}\PYG{k+kp}{t}\PYG{o}{|}\PYG{p}{)}
+\PYG{p}{(}Intercept\PYG{p}{)} \PYG{l+m}{\PYGZhy{}1.268584}   \PYG{l+m}{0.134844}  \PYG{l+m}{\PYGZhy{}9.408}  \PYG{o}{\PYGZlt{}} \PYG{l+m}{2e\PYGZhy{}16} \PYG{o}{***}
+READ         \PYG{l+m}{0.023665}   \PYG{l+m}{0.002513}   \PYG{l+m}{9.418}  \PYG{o}{\PYGZlt{}} \PYG{l+m}{2e\PYGZhy{}16} \PYG{o}{***}
+PROG2        \PYG{l+m}{0.117619}   \PYG{l+m}{0.064820}   \PYG{l+m}{1.815} \PYG{l+m}{0.070098} \PYG{l+m}{.}
+PROG3        \PYG{l+m}{0.263111}   \PYG{l+m}{0.069339}   \PYG{l+m}{3.795} \PYG{l+m}{0.000163} \PYG{o}{***}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+
+Residual standard error\PYG{o}{:} \PYG{l+m}{0.6157} on \PYG{l+m}{596} degrees of freedom
+Multiple R\PYG{o}{\PYGZhy{}}squared\PYG{o}{:}  \PYG{l+m}{0.1606}\PYG{p}{,}	Adjusted R\PYG{o}{\PYGZhy{}}squared\PYG{o}{:}  \PYG{l+m}{0.1563}
+\PYG{n+nb+bp}{F}\PYG{o}{\PYGZhy{}}statistic\PYG{o}{:}    \PYG{l+m}{38} on \PYG{l+m}{3} and \PYG{l+m}{596} DF\PYG{p}{,}  p\PYG{o}{\PYGZhy{}}value\PYG{o}{:} \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.2e\PYGZhy{}16}
+
+
+Response SELF\PYGZus{}CONCEPT \PYG{o}{:}
+
+Call\PYG{o}{:}
+lm\PYG{p}{(}formula \PYG{o}{=} SELF\PYGZus{}CONCEPT \PYG{o}{\PYGZti{}} READ \PYG{o}{+} PROG\PYG{p}{,} data \PYG{o}{=} psych\PYG{p}{)}
+
+Residuals\PYG{o}{:}
+     Min       \PYG{l+m}{1}Q   Median       \PYG{l+m}{3}Q      Max
+\PYG{l+m}{\PYGZhy{}2.39289} \PYG{l+m}{\PYGZhy{}0.48196}  \PYG{l+m}{0.00952}  \PYG{l+m}{0.46987}  \PYG{l+m}{2.35663}
+
+Coefficients\PYG{o}{:}
+             Estimate Std. Error t value Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}|}\PYG{k+kp}{t}\PYG{o}{|}\PYG{p}{)}
+\PYG{p}{(}Intercept\PYG{p}{)} \PYG{l+m}{\PYGZhy{}0.369454}   \PYG{l+m}{0.150964}  \PYG{l+m}{\PYGZhy{}2.447} \PYG{l+m}{0.014681} \PYG{o}{*}
+READ         \PYG{l+m}{0.002250}   \PYG{l+m}{0.002813}   \PYG{l+m}{0.800} \PYG{l+m}{0.424230}
+PROG2        \PYG{l+m}{0.275973}   \PYG{l+m}{0.072570}   \PYG{l+m}{3.803} \PYG{l+m}{0.000158} \PYG{o}{***}
+PROG3        \PYG{l+m}{0.417687}   \PYG{l+m}{0.077628}   \PYG{l+m}{5.381} \PYG{l+m}{1.07e\PYGZhy{}07} \PYG{o}{***}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+
+Residual standard error\PYG{o}{:} \PYG{l+m}{0.6893} on \PYG{l+m}{596} degrees of freedom
+Multiple R\PYG{o}{\PYGZhy{}}squared\PYG{o}{:}  \PYG{l+m}{0.05031}\PYG{p}{,}	Adjusted R\PYG{o}{\PYGZhy{}}squared\PYG{o}{:}  \PYG{l+m}{0.04553}
+\PYG{n+nb+bp}{F}\PYG{o}{\PYGZhy{}}statistic\PYG{o}{:} \PYG{l+m}{10.52} on \PYG{l+m}{3} and \PYG{l+m}{596} DF\PYG{p}{,}  p\PYG{o}{\PYGZhy{}}value\PYG{o}{:} \PYG{l+m}{9.411e\PYGZhy{}07}
+
+
+Response MOTIVATION \PYG{o}{:}
+
+Call\PYG{o}{:}
+lm\PYG{p}{(}formula \PYG{o}{=} MOTIVATION \PYG{o}{\PYGZti{}} READ \PYG{o}{+} PROG\PYG{p}{,} data \PYG{o}{=} psych\PYG{p}{)}
+
+Residuals\PYG{o}{:}
+     Min       \PYG{l+m}{1}Q   Median       \PYG{l+m}{3}Q      Max
+\PYG{l+m}{\PYGZhy{}2.29569} \PYG{l+m}{\PYGZhy{}0.50487} \PYG{l+m}{\PYGZhy{}0.01792}  \PYG{l+m}{0.52213}  \PYG{l+m}{2.37701}
+
+Coefficients\PYG{o}{:}
+             Estimate Std. Error t value Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}|}\PYG{k+kp}{t}\PYG{o}{|}\PYG{p}{)}
+\PYG{p}{(}Intercept\PYG{p}{)} \PYG{l+m}{\PYGZhy{}1.100395}   \PYG{l+m}{0.168990}  \PYG{l+m}{\PYGZhy{}6.512} \PYG{l+m}{1.58e\PYGZhy{}10} \PYG{o}{***}
+READ         \PYG{l+m}{0.014259}   \PYG{l+m}{0.003149}   \PYG{l+m}{4.528} \PYG{l+m}{7.20e\PYGZhy{}06} \PYG{o}{***}
+PROG2        \PYG{l+m}{0.355326}   \PYG{l+m}{0.081235}   \PYG{l+m}{4.374} \PYG{l+m}{1.44e\PYGZhy{}05} \PYG{o}{***}
+PROG3        \PYG{l+m}{0.640053}   \PYG{l+m}{0.086898}   \PYG{l+m}{7.366} \PYG{l+m}{5.90e\PYGZhy{}13} \PYG{o}{***}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+
+Residual standard error\PYG{o}{:} \PYG{l+m}{0.7716} on \PYG{l+m}{596} degrees of freedom
+Multiple R\PYG{o}{\PYGZhy{}}squared\PYG{o}{:}  \PYG{l+m}{0.1242}\PYG{p}{,}	Adjusted R\PYG{o}{\PYGZhy{}}squared\PYG{o}{:}  \PYG{l+m}{0.1198}
+\PYG{n+nb+bp}{F}\PYG{o}{\PYGZhy{}}statistic\PYG{o}{:} \PYG{l+m}{28.18} on \PYG{l+m}{3} and \PYG{l+m}{596} DF\PYG{p}{,}  p\PYG{o}{\PYGZhy{}}value\PYG{o}{:} \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.2e\PYGZhy{}16}
+\end{Verbatim}

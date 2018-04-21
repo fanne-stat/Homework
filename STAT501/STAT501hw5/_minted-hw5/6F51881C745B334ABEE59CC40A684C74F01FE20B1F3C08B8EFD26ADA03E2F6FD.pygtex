@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+tp\PYGZus{}value\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kr}{function}\PYG{p}{(}X\PYG{p}{,} cl\PYG{p}{)\PYGZob{}}
+  class \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{levels}\PYG{p}{(}cl\PYG{p}{)}
+  \PYG{k+kr}{return}\PYG{p}{(}t.test\PYG{p}{(}X\PYG{p}{[}cl \PYG{o}{==} \PYG{k+kp}{class}\PYG{p}{[}\PYG{l+m}{1}\PYG{p}{]],} X\PYG{p}{[}cl \PYG{o}{==} \PYG{k+kp}{class}\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{]],} var.equal \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}\PYG{o}{\PYGZdl{}}p.value\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+p\PYGZus{}vals \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}colleges.tranformed\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{],} tp\PYGZus{}value\PYG{p}{,} cl \PYG{o}{=} \PYG{k+kp}{as.factor}\PYG{p}{(}colleges.tranformed\PYG{o}{\PYGZdl{}}School\PYGZus{}Type\PYG{p}{))}
+\end{Verbatim}

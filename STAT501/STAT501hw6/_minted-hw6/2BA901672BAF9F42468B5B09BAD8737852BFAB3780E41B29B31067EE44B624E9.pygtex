@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+fit.lm \PYG{o}{\PYGZlt{}\PYGZhy{}} lm\PYG{p}{(}crabs.pc\PYG{o}{\PYGZdl{}}x\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{2}\PYG{p}{]}\PYG{o}{\PYGZti{}}\PYG{k+kp}{as.factor}\PYG{p}{(}crabs.type\PYG{p}{))}
+\PYG{k+kn}{library}\PYG{p}{(}car\PYG{p}{)}
+fit.manova \PYG{o}{\PYGZlt{}\PYGZhy{}} Manova\PYG{p}{(}fit.lm\PYG{p}{)}
+\PYG{k+kp}{summary}\PYG{p}{(}fit.manova\PYG{p}{)}
+\end{Verbatim}

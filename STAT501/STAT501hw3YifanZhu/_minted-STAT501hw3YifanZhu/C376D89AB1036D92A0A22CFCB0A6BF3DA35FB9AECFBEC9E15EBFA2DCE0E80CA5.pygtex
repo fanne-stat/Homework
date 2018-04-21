@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+	Shapiro\PYG{o}{\PYGZhy{}}Wilk normality test
+
+data\PYG{o}{:}  transformed\PYGZus{}danish
+W \PYG{o}{=} \PYG{l+m}{0.85989}\PYG{p}{,} p\PYG{o}{\PYGZhy{}}value \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.2e\PYGZhy{}16}
+\end{Verbatim}

@@ -1,0 +1,56 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+Type II MANOVA Tests\PYG{o}{:}
+
+Sum of squares and products \PYG{k+kr}{for} error\PYG{o}{:}
+             CH1         CH2         CH3         CH4         CH5         CH6         CH7
+CH1   \PYG{l+m}{8712198.47}  \PYG{l+m}{2068166.15} \PYG{l+m}{\PYGZhy{}591367.187} \PYG{l+m}{\PYGZhy{}16398164.0}   \PYG{l+m}{6354230.6}  \PYG{l+m}{\PYGZhy{}67379.527}   \PYG{l+m}{74669.446}
+CH2   \PYG{l+m}{2068166.15}   \PYG{l+m}{951933.35} \PYG{l+m}{\PYGZhy{}239198.820}  \PYG{l+m}{\PYGZhy{}5452822.8}   \PYG{l+m}{3032723.5}  \PYG{l+m}{\PYGZhy{}99478.020}  \PYG{l+m}{\PYGZhy{}78000.087}
+CH3   \PYG{l+m}{\PYGZhy{}591367.19}  \PYG{l+m}{\PYGZhy{}239198.82}  \PYG{l+m}{769685.235}    \PYG{l+m}{808789.9}   \PYG{l+m}{\PYGZhy{}875296.2}    \PYG{l+m}{7021.735}   \PYG{l+m}{\PYGZhy{}8832.249}
+CH4 \PYG{l+m}{\PYGZhy{}16398163.97} \PYG{l+m}{\PYGZhy{}5452822.78}  \PYG{l+m}{808789.900}  \PYG{l+m}{44385022.5} \PYG{l+m}{\PYGZhy{}24868011.8}  \PYG{l+m}{480314.317}  \PYG{l+m}{266028.691}
+CH5   \PYG{l+m}{6354230.60}  \PYG{l+m}{3032723.49} \PYG{l+m}{\PYGZhy{}875296.171} \PYG{l+m}{\PYGZhy{}24868011.8}  \PYG{l+m}{18479382.0} \PYG{l+m}{\PYGZhy{}494033.183} \PYG{l+m}{\PYGZhy{}546173.842}
+CH6    \PYG{l+m}{\PYGZhy{}67379.53}   \PYG{l+m}{\PYGZhy{}99478.02}    \PYG{l+m}{7021.735}    \PYG{l+m}{480314.3}   \PYG{l+m}{\PYGZhy{}494033.2}   \PYG{l+m}{66053.027}   \PYG{l+m}{66956.405}
+CH7     \PYG{l+m}{74669.45}   \PYG{l+m}{\PYGZhy{}78000.09}   \PYG{l+m}{\PYGZhy{}8832.249}    \PYG{l+m}{266028.7}   \PYG{l+m}{\PYGZhy{}546173.8}   \PYG{l+m}{66956.405}  \PYG{l+m}{183120.455}
+CH8   \PYG{l+m}{\PYGZhy{}143122.66}   \PYG{l+m}{\PYGZhy{}59386.98}   \PYG{l+m}{42218.812}    \PYG{l+m}{349340.4}   \PYG{l+m}{\PYGZhy{}259104.5}    \PYG{l+m}{9721.942}   \PYG{l+m}{17177.110}
+             CH8
+CH1  \PYG{l+m}{\PYGZhy{}143122.657}
+CH2   \PYG{l+m}{\PYGZhy{}59386.983}
+CH3    \PYG{l+m}{42218.812}
+CH4   \PYG{l+m}{349340.368}
+CH5  \PYG{l+m}{\PYGZhy{}259104.523}
+CH6     \PYG{l+m}{9721.942}
+CH7    \PYG{l+m}{17177.110}
+CH8    \PYG{l+m}{22808.041}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} BigRegions
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+             CH1          CH2          CH3         CH4         CH5          CH6         CH7
+CH1   \PYG{l+m}{7517535.24}  \PYG{l+m}{2154506.818}  \PYG{l+m}{\PYGZhy{}11358.7365} \PYG{l+m}{\PYGZhy{}16313012.3}   \PYG{l+m}{4413510.5}   \PYG{l+m}{466041.967}   \PYG{l+m}{409500.04}
+CH2   \PYG{l+m}{2154506.82}   \PYG{l+m}{621547.557}   \PYG{l+m}{\PYGZhy{}5516.9112}  \PYG{l+m}{\PYGZhy{}4916126.6}   \PYG{l+m}{1491309.0}   \PYG{l+m}{135673.062}   \PYG{l+m}{134446.80}
+CH3    \PYG{l+m}{\PYGZhy{}11358.74}    \PYG{l+m}{\PYGZhy{}5516.911}    \PYG{l+m}{1273.3995}    \PYG{l+m}{158440.7}   \PYG{l+m}{\PYGZhy{}132434.2}    \PYG{l+m}{\PYGZhy{}1874.351}   \PYG{l+m}{\PYGZhy{}10109.21}
+CH4 \PYG{l+m}{\PYGZhy{}16313012.29} \PYG{l+m}{\PYGZhy{}4916126.629}  \PYG{l+m}{158440.7153}  \PYG{l+m}{49648363.2} \PYG{l+m}{\PYGZhy{}22971632.2} \PYG{l+m}{\PYGZhy{}1135935.429} \PYG{l+m}{\PYGZhy{}1899371.59}
+CH5   \PYG{l+m}{4413510.54}  \PYG{l+m}{1491308.999} \PYG{l+m}{\PYGZhy{}132434.1755} \PYG{l+m}{\PYGZhy{}22971632.2}  \PYG{l+m}{15181902.6}   \PYG{l+m}{390760.974}  \PYG{l+m}{1190534.28}
+CH6    \PYG{l+m}{466041.97}   \PYG{l+m}{135673.062}   \PYG{l+m}{\PYGZhy{}1874.3508}  \PYG{l+m}{\PYGZhy{}1135935.4}    \PYG{l+m}{390761.0}    \PYG{l+m}{29981.812}    \PYG{l+m}{34226.86}
+CH7    \PYG{l+m}{409500.04}   \PYG{l+m}{134446.801}  \PYG{l+m}{\PYGZhy{}10109.2121}  \PYG{l+m}{\PYGZhy{}1899371.6}   \PYG{l+m}{1190534.3}    \PYG{l+m}{34226.860}    \PYG{l+m}{94004.06}
+CH8    \PYG{l+m}{823641.31}   \PYG{l+m}{235143.784}    \PYG{l+m}{\PYGZhy{}739.1389}  \PYG{l+m}{\PYGZhy{}1733475.8}    \PYG{l+m}{432963.5}    \PYG{l+m}{50590.072}    \PYG{l+m}{41048.13}
+              CH8
+CH1   \PYG{l+m}{823641.3147}
+CH2   \PYG{l+m}{235143.7841}
+CH3     \PYG{l+m}{\PYGZhy{}739.1389}
+CH4 \PYG{l+m}{\PYGZhy{}1733475.8370}
+CH5   \PYG{l+m}{432963.5194}
+CH6    \PYG{l+m}{50590.0723}
+CH7    \PYG{l+m}{41048.1276}
+CH8    \PYG{l+m}{90443.6429}
+
+Multivariate Tests\PYG{o}{:} BigRegions
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df     Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{2}  \PYG{l+m}{1.593690} \PYG{l+m}{276.0350}     \PYG{l+m}{16}   \PYG{l+m}{1126} \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.22e\PYGZhy{}16} \PYG{o}{***}
+Wilks             \PYG{l+m}{2}  \PYG{l+m}{0.031702} \PYG{l+m}{324.3008}     \PYG{l+m}{16}   \PYG{l+m}{1124} \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.22e\PYGZhy{}16} \PYG{o}{***}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{2} \PYG{l+m}{10.816547} \PYG{l+m}{379.2552}     \PYG{l+m}{16}   \PYG{l+m}{1122} \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.22e\PYGZhy{}16} \PYG{o}{***}
+Roy               \PYG{l+m}{2}  \PYG{l+m}{8.494086} \PYG{l+m}{597.7713}      \PYG{l+m}{8}    \PYG{l+m}{563} \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.22e\PYGZhy{}16} \PYG{o}{***}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+\end{Verbatim}

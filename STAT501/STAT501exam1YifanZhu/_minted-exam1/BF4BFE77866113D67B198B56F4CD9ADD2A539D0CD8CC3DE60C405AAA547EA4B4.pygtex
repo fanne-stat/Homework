@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} test for difference in skull sizes between period 1 and period 3}
+\PYG{k+kn}{library}\PYG{p}{(}ICSNP\PYG{p}{)}
+T2test \PYG{o}{\PYGZlt{}\PYGZhy{}} HotellingsT2\PYG{p}{(}skulls\PYG{p}{[}skulls\PYG{o}{\PYGZdl{}}period \PYG{o}{==} \PYG{l+m}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}skulls\PYG{p}{)],} skulls\PYG{p}{[}skulls\PYG{o}{\PYGZdl{}}period \PYG{o}{==} \PYG{l+m}{3}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}skulls\PYG{p}{)],} test \PYG{o}{=} \PYG{l+s}{\PYGZsq{}f\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

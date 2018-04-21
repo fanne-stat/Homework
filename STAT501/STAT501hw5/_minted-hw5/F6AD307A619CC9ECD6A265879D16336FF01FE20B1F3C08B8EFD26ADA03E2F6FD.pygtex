@@ -1,0 +1,47 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+Type II MANOVA Tests\PYG{o}{:}
+
+Sum of squares and products \PYG{k+kr}{for} error\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL        \PYG{l+m}{225.90750}     \PYG{l+m}{33.57873}   \PYG{l+m}{41.58308}
+SELF\PYGZus{}CONCEPT             \PYG{l+m}{33.57873}    \PYG{l+m}{283.15145}   \PYG{l+m}{74.86532}
+MOTIVATION               \PYG{l+m}{41.58308}     \PYG{l+m}{74.86532}  \PYG{l+m}{354.80754}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} READ
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL        \PYG{l+m}{33.616976}    \PYG{l+m}{3.1957148}  \PYG{l+m}{20.255356}
+SELF\PYGZus{}CONCEPT             \PYG{l+m}{3.195715}    \PYG{l+m}{0.3037927}   \PYG{l+m}{1.925525}
+MOTIVATION              \PYG{l+m}{20.255356}    \PYG{l+m}{1.9255254}  \PYG{l+m}{12.204532}
+
+Multivariate Tests\PYG{o}{:} READ
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df     Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{1} \PYG{l+m}{0.1439298} \PYG{l+m}{33.28946}      \PYG{l+m}{3}    \PYG{l+m}{594} \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.22e\PYGZhy{}16} \PYG{o}{***}
+Wilks             \PYG{l+m}{1} \PYG{l+m}{0.8560702} \PYG{l+m}{33.28946}      \PYG{l+m}{3}    \PYG{l+m}{594} \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.22e\PYGZhy{}16} \PYG{o}{***}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{1} \PYG{l+m}{0.1681286} \PYG{l+m}{33.28946}      \PYG{l+m}{3}    \PYG{l+m}{594} \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.22e\PYGZhy{}16} \PYG{o}{***}
+Roy               \PYG{l+m}{1} \PYG{l+m}{0.1681286} \PYG{l+m}{33.28946}      \PYG{l+m}{3}    \PYG{l+m}{594} \PYG{o}{\PYGZlt{}} \PYG{l+m}{2.22e\PYGZhy{}16} \PYG{o}{***}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+Term\PYG{o}{:} PROG
+
+Sum of squares and products \PYG{k+kr}{for} the hypothesis\PYG{o}{:}
+                 LOCUS\PYGZus{}OF\PYGZus{}CONTROL SELF\PYGZus{}CONCEPT MOTIVATION
+LOCUS\PYGZus{}OF\PYGZus{}CONTROL         \PYG{l+m}{5.652949}      \PYG{l+m}{8.49380}   \PYG{l+m}{13.37923}
+SELF\PYGZus{}CONCEPT             \PYG{l+m}{8.493800}     \PYG{l+m}{13.90261}   \PYG{l+m}{20.98700}
+MOTIVATION              \PYG{l+m}{13.379228}     \PYG{l+m}{20.98700}   \PYG{l+m}{32.35107}
+
+Multivariate Tests\PYG{o}{:} PROG
+                 Df test stat approx \PYG{n+nb+bp}{F} num Df den Df     Pr\PYG{p}{(}\PYG{o}{\PYGZgt{}}\PYG{n+nb+bp}{F}\PYG{p}{)}
+Pillai            \PYG{l+m}{2} \PYG{l+m}{0.1121308} \PYG{l+m}{11.78009}      \PYG{l+m}{6}   \PYG{l+m}{1190} \PYG{l+m}{7.2868e\PYGZhy{}13} \PYG{o}{***}
+Wilks             \PYG{l+m}{2} \PYG{l+m}{0.8880617} \PYG{l+m}{12.10849}      \PYG{l+m}{6}   \PYG{l+m}{1188} \PYG{l+m}{3.0304e\PYGZhy{}13} \PYG{o}{***}
+Hotelling\PYG{o}{\PYGZhy{}}Lawley  \PYG{l+m}{2} \PYG{l+m}{0.1258310} \PYG{l+m}{12.43630}      \PYG{l+m}{6}   \PYG{l+m}{1186} \PYG{l+m}{1.2626e\PYGZhy{}13} \PYG{o}{***}
+Roy               \PYG{l+m}{2} \PYG{l+m}{0.1240839} \PYG{l+m}{24.60996}      \PYG{l+m}{3}    \PYG{l+m}{595} \PYG{l+m}{5.0622e\PYGZhy{}15} \PYG{o}{***}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+Signif. codes\PYG{o}{:}  \PYG{l+m}{0} ‘\PYG{o}{***}’ \PYG{l+m}{0.001} ‘\PYG{o}{**}’ \PYG{l+m}{0.01} ‘\PYG{o}{*}’ \PYG{l+m}{0.05} ‘\PYG{l+m}{.}’ \PYG{l+m}{0.1} ‘ ’ \PYG{l+m}{1}
+\end{Verbatim}

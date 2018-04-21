@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+df1 \PYG{o}{\PYGZlt{}\PYGZhy{}} T2test\PYG{o}{\PYGZdl{}}parameter\PYG{p}{[}\PYG{l+s}{\PYGZsq{}df1\PYGZsq{}}\PYG{p}{]}
+df2 \PYG{o}{\PYGZlt{}\PYGZhy{}} T2test\PYG{o}{\PYGZdl{}}parameter\PYG{p}{[}\PYG{l+s}{\PYGZsq{}df2\PYGZsq{}}\PYG{p}{]}
+T2stat \PYG{o}{\PYGZlt{}\PYGZhy{}} T2test\PYG{o}{\PYGZdl{}}statistic\PYG{o}{/}df2\PYG{o}{*}\PYG{p}{(}df1 \PYG{o}{+} df2 \PYG{o}{\PYGZhy{}} \PYG{l+m}{1}\PYG{p}{)}\PYG{o}{*}df1
+T2stat
+\end{Verbatim}

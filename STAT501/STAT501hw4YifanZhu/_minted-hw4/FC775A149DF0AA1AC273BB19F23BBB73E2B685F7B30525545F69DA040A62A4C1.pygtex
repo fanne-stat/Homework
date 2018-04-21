@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}ii) Provide a one\PYGZhy{}way multivariate analysis of variance.}
+BigRegions \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{rep}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,} \PYG{k+kp}{nrow}\PYG{p}{(}olive\PYG{p}{))}
+BigRegions\PYG{p}{[}olive\PYG{o}{\PYGZdl{}}Regions \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{4}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{1}
+BigRegions\PYG{p}{[}olive\PYG{o}{\PYGZdl{}}Regions \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{l+m}{5}\PYG{o}{:}\PYG{l+m}{6}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{2}
+BigRegions\PYG{p}{[}olive\PYG{o}{\PYGZdl{}}Regions \PYG{o}{\PYGZpc{}in\PYGZpc{}} \PYG{l+m}{7}\PYG{o}{:}\PYG{l+m}{9}\PYG{p}{]} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{3}
+olive \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{data.frame}\PYG{p}{(}olive\PYG{p}{,} BigRegions \PYG{o}{=} \PYG{k+kp}{as.factor}\PYG{p}{(}BigRegions\PYG{p}{))}
+fit.lm \PYG{o}{\PYGZlt{}\PYGZhy{}} lm\PYG{p}{(}\PYG{k+kp}{cbind}\PYG{p}{(}CH1\PYG{p}{,} CH2\PYG{p}{,} CH3\PYG{p}{,} CH4\PYG{p}{,} CH5\PYG{p}{,} CH6\PYG{p}{,} CH7\PYG{p}{,} CH8\PYG{p}{)} \PYG{o}{\PYGZti{}} BigRegions\PYG{p}{,} data \PYG{o}{=} olive\PYG{p}{)}
+fit.manova \PYG{o}{\PYGZlt{}\PYGZhy{}} Manova\PYG{p}{(}fit.lm\PYG{p}{)}
+
+\PYG{k+kp}{summary}\PYG{p}{(}fit.manova\PYG{p}{)}
+\end{Verbatim}

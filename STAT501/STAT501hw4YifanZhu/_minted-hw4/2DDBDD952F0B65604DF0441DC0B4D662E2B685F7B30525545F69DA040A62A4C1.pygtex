@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+ \PYG{c+c1}{\PYGZsh{}vi) Provide individual t\PYGZhy{}tests}
+
+ tp\PYGZus{}value\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kr}{function}\PYG{p}{(}X\PYG{p}{,} cl\PYG{p}{)\PYGZob{}}
+   class \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{levels}\PYG{p}{(}cl\PYG{p}{)}
+   \PYG{k+kr}{return}\PYG{p}{(}t.test\PYG{p}{(}X\PYG{p}{[}cl \PYG{o}{==} \PYG{k+kp}{class}\PYG{p}{[}\PYG{l+m}{1}\PYG{p}{]],} X\PYG{p}{[}cl \PYG{o}{==} \PYG{k+kp}{class}\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{]],} var.equal \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}\PYG{o}{\PYGZdl{}}p.value\PYG{p}{)}
+ \PYG{p}{\PYGZcb{}}
+
+ p\PYGZus{}vals \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}olive\PYGZus{}R2\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{],} tp\PYGZus{}value\PYG{p}{,} cl \PYG{o}{=} \PYG{k+kp}{as.factor}\PYG{p}{(}olive\PYGZus{}R2\PYG{o}{\PYGZdl{}}Regions\PYG{p}{))}
+
+ p.adjust\PYG{p}{(}p\PYGZus{}vals\PYG{p}{,} method \PYG{o}{=} \PYG{l+s}{\PYGZdq{}bonferroni\PYGZdq{}}\PYG{p}{)}
+ p.adjust\PYG{p}{(}p\PYGZus{}vals\PYG{p}{[}\PYG{k+kp}{order}\PYG{p}{(}p\PYGZus{}vals\PYG{p}{)],} method \PYG{o}{=} \PYG{l+s}{\PYGZdq{}fdr\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}
