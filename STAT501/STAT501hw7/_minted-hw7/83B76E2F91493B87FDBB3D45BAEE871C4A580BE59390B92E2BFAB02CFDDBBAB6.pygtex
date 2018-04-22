@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} AER}
+\PYG{k+kp}{mean}\PYG{p}{(}GRB\PYG{o}{\PYGZdl{}}\PYG{k+kp}{class}\PYG{o}{!=}predict\PYG{p}{(}GRB.lda\PYG{p}{)}\PYG{o}{\PYGZdl{}}\PYG{k+kp}{class}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} [1] 0.2307692}
+
+\PYG{c+c1}{\PYGZsh{} CV}
+GRBcv.lda \PYG{o}{\PYGZlt{}\PYGZhy{}} lda\PYG{p}{(}class \PYG{o}{\PYGZti{}} \PYG{l+m}{.}\PYG{p}{,} data \PYG{o}{=} GRB\PYG{p}{,} prior \PYG{o}{=} \PYG{k+kp}{rep}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{/}\PYG{l+m}{5}\PYG{p}{,} \PYG{l+m}{5}\PYG{p}{),} CV \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+\PYG{k+kp}{mean}\PYG{p}{(}GRB\PYG{o}{\PYGZdl{}}\PYG{k+kp}{class}\PYG{o}{!=} GRBcv.lda\PYG{o}{\PYGZdl{}}\PYG{k+kp}{class}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} [1] 0.235147}
+\end{Verbatim}

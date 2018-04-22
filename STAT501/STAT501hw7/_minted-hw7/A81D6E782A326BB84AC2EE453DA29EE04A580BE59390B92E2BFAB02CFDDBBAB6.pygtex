@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kp}{load}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}GRB\PYGZhy{}5groups.rda\PYGZdq{}}\PYG{p}{)}
+GRB\PYG{o}{\PYGZdl{}}class \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.factor}\PYG{p}{(}GRB\PYG{o}{\PYGZdl{}}\PYG{k+kp}{class}\PYG{p}{)}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}testnormality.R\PYGZdq{}}\PYG{p}{)}
+\PYG{k+kn}{library}\PYG{p}{(}energy\PYG{p}{)}
+\PYG{k+kn}{library}\PYG{p}{(}dplyr\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} 1.}
+GRB \PYG{o}{\PYGZpc{}\PYGZgt{}\PYGZpc{}} group\PYGZus{}by\PYG{p}{(}\PYG{k+kp}{class}\PYG{p}{)} \PYG{o}{\PYGZpc{}\PYGZgt{}\PYGZpc{}} do\PYG{p}{(}\PYG{k+kt}{data.frame}\PYG{p}{(}testnormality \PYG{o}{=} testnormality\PYG{p}{(}\PYG{l+m}{.}\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{]),}
+                                          energytest \PYG{o}{=} mvnorm.etest\PYG{p}{(}\PYG{l+m}{.}\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{],} R \PYG{o}{=} \PYG{l+m}{999}\PYG{p}{)}\PYG{o}{\PYGZdl{}}p.value\PYG{p}{))}
+\end{Verbatim}

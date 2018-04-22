@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}CART}
+\PYG{k+kn}{library}\PYG{p}{(}tree\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} getting optimal tree using cross\PYGZhy{}validation}
+GRB.tree \PYG{o}{\PYGZlt{}\PYGZhy{}} tree\PYG{p}{(}formula \PYG{o}{=} class \PYG{o}{\PYGZti{}} \PYG{l+m}{.}\PYG{p}{,} data \PYG{o}{=} GRB\PYG{p}{)}
+GRB.tree.cv \PYG{o}{\PYGZlt{}\PYGZhy{}} cv.tree\PYG{p}{(}GRB.tree\PYG{p}{,} K \PYG{o}{=} \PYG{k+kp}{nrow}\PYG{p}{(}GRB\PYG{p}{))}
+
+\PYG{c+c1}{\PYGZsh{} the best one is 10. Plot the best one.}
+plot\PYG{p}{(}GRB.tree\PYG{p}{)}
+text\PYG{p}{(}GRB.tree\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}AER}
+\PYG{k+kp}{mean}\PYG{p}{(}\PYG{k+kp}{apply}\PYG{p}{(}predict\PYG{p}{(}GRB.tree\PYG{p}{),} \PYG{l+m}{1}\PYG{p}{,} \PYG{k+kp}{which.max}\PYG{p}{)}\PYG{o}{!=}GRB\PYG{o}{\PYGZdl{}}\PYG{k+kp}{class}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} [1] 0.286429}
+
+\PYG{c+c1}{\PYGZsh{}CV}
+\PYG{k+kp}{mean}\PYG{p}{(}\PYG{k+kp}{sapply}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{:}\PYG{k+kp}{nrow}\PYG{p}{(}GRB\PYG{p}{),} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{)} \PYG{k+kp}{mean}\PYG{p}{(}\PYG{k+kp}{mean}\PYG{p}{(}\PYG{k+kp}{apply}\PYG{p}{(}predict\PYG{p}{(}tree\PYG{p}{(}class \PYG{o}{\PYGZti{}} \PYG{l+m}{.}\PYG{p}{,} data \PYG{o}{=} GRB\PYG{p}{[}\PYG{o}{\PYGZhy{}}x\PYG{p}{,]),} newdata \PYG{o}{=} GRB\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{]),} \PYG{l+m}{1}\PYG{p}{,} \PYG{k+kp}{which.max}\PYG{p}{)}\PYG{o}{!=}GRB\PYG{o}{\PYGZdl{}}\PYG{k+kp}{class}\PYG{p}{))))}
+\PYG{c+c1}{\PYGZsh{}[1] 0.2863993}
+\end{Verbatim}

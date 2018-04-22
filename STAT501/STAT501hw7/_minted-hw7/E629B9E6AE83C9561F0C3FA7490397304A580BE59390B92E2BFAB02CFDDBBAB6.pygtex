@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+pval\PYGZus{}sufficient\PYGZus{}factors \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}data\PYG{p}{,} n\PYG{p}{)\PYGZob{}}
+  \PYG{k+kp}{tryCatch}\PYG{p}{(}factanal\PYG{p}{(}data\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{],} factors \PYG{o}{=} n\PYG{p}{,} rotation \PYG{o}{=} \PYG{l+s}{\PYGZdq{}varimax\PYGZdq{}}\PYG{p}{)}\PYG{o}{\PYGZdl{}}PVAL\PYG{p}{,} error \PYG{o}{=} \PYG{k+kr}{function}\PYG{p}{(}e\PYG{p}{)} \PYG{k+kc}{NA}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+GRB \PYG{o}{\PYGZpc{}\PYGZgt{}\PYGZpc{}} group\PYGZus{}by\PYG{p}{(}\PYG{k+kp}{class}\PYG{p}{)} \PYG{o}{\PYGZpc{}\PYGZgt{}\PYGZpc{}} do\PYG{p}{(}\PYG{k+kt}{data.frame}\PYG{p}{(}pval\PYGZus{}1f \PYG{o}{=} pval\PYGZus{}sufficient\PYGZus{}factors\PYG{p}{(}\PYG{l+m}{.}\PYG{p}{,} n \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{),}
+                                          pval\PYGZus{}2f \PYG{o}{=} pval\PYGZus{}sufficient\PYGZus{}factors\PYG{p}{(}\PYG{l+m}{.}\PYG{p}{,} n \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{),}
+                                          pval\PYGZus{}3f \PYG{o}{=} pval\PYGZus{}sufficient\PYGZus{}factors\PYG{p}{(}\PYG{l+m}{.}\PYG{p}{,} n \PYG{o}{=} \PYG{l+m}{3}\PYG{p}{),}
+                                          pval\PYGZus{}4f \PYG{o}{=} pval\PYGZus{}sufficient\PYGZus{}factors\PYG{p}{(}\PYG{l+m}{.}\PYG{p}{,} n \PYG{o}{=} \PYG{l+m}{4}\PYG{p}{),}
+                                          pval\PYGZus{}5f \PYG{o}{=} pval\PYGZus{}sufficient\PYGZus{}factors\PYG{p}{(}\PYG{l+m}{.}\PYG{p}{,} n \PYG{o}{=} \PYG{l+m}{5}\PYG{p}{)))}
+\end{Verbatim}

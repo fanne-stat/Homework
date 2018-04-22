@@ -1,0 +1,32 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+Call\PYG{o}{:}
+lda\PYG{p}{(}class \PYG{o}{\PYGZti{}} \PYG{l+m}{.}\PYG{p}{,} data \PYG{o}{=} GRB\PYG{p}{,} prior \PYG{o}{=} \PYG{k+kp}{rep}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{/}\PYG{l+m}{5}\PYG{p}{,} \PYG{l+m}{5}\PYG{p}{),} CV \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{)}
+
+Prior probabilities of groups\PYG{o}{:}
+  \PYG{l+m}{1}   \PYG{l+m}{2}   \PYG{l+m}{3}   \PYG{l+m}{4}   \PYG{l+m}{5}
+\PYG{l+m}{0.2} \PYG{l+m}{0.2} \PYG{l+m}{0.2} \PYG{l+m}{0.2} \PYG{l+m}{0.2}
+
+Group means\PYG{o}{:}
+         T50         T90        F1        F2        F3        F4       P64         P256       P1024
+\PYG{l+m}{1}  \PYG{l+m}{0.7161427}  \PYG{l+m}{1.09999449} \PYG{l+m}{\PYGZhy{}6.866703} \PYG{l+m}{\PYGZhy{}6.755047} \PYG{l+m}{\PYGZhy{}6.303286} \PYG{l+m}{\PYGZhy{}5.970475} \PYG{l+m}{0.1076258} \PYG{l+m}{\PYGZhy{}0.003654604} \PYG{l+m}{\PYGZhy{}0.15569922}
+\PYG{l+m}{2}  \PYG{l+m}{0.8767503}  \PYG{l+m}{1.43435781} \PYG{l+m}{\PYGZhy{}5.911697} \PYG{l+m}{\PYGZhy{}5.764700} \PYG{l+m}{\PYGZhy{}5.272722} \PYG{l+m}{\PYGZhy{}5.167775} \PYG{l+m}{0.8160456}  \PYG{l+m}{0.781044750}  \PYG{l+m}{0.68898510}
+\PYG{l+m}{3}  \PYG{l+m}{1.2404441}  \PYG{l+m}{1.66702134} \PYG{l+m}{\PYGZhy{}6.271358} \PYG{l+m}{\PYGZhy{}6.178697} \PYG{l+m}{\PYGZhy{}5.776086} \PYG{l+m}{\PYGZhy{}5.860244} \PYG{l+m}{0.1346726}  \PYG{l+m}{0.068283039}  \PYG{l+m}{0.01101267}
+\PYG{l+m}{4} \PYG{l+m}{\PYGZhy{}0.6248785} \PYG{l+m}{\PYGZhy{}0.06790308} \PYG{l+m}{\PYGZhy{}7.979436} \PYG{l+m}{\PYGZhy{}7.770887} \PYG{l+m}{\PYGZhy{}7.052427} \PYG{l+m}{\PYGZhy{}6.489657} \PYG{l+m}{0.4285974}  \PYG{l+m}{0.127604005} \PYG{l+m}{\PYGZhy{}0.35581193}
+\PYG{l+m}{5} \PYG{l+m}{\PYGZhy{}0.7434956} \PYG{l+m}{\PYGZhy{}0.37041146} \PYG{l+m}{\PYGZhy{}7.901950} \PYG{l+m}{\PYGZhy{}7.607295} \PYG{l+m}{\PYGZhy{}6.820649} \PYG{l+m}{\PYGZhy{}6.444810} \PYG{l+m}{0.4985062}  \PYG{l+m}{0.316373558} \PYG{l+m}{\PYGZhy{}0.12758329}
+
+Coefficients of linear discriminants\PYG{o}{:}
+              LD1        LD2         LD3        LD4
+T50   \PYG{l+m}{\PYGZhy{}0.11140679}  \PYG{l+m}{0.5251030}   \PYG{l+m}{1.9297123} \PYG{l+m}{\PYGZhy{}0.9854645}
+T90   \PYG{l+m}{\PYGZhy{}0.03827327}  \PYG{l+m}{0.3970489}  \PYG{l+m}{\PYGZhy{}3.2310124}  \PYG{l+m}{0.7749042}
+F1    \PYG{l+m}{\PYGZhy{}0.46531093}  \PYG{l+m}{0.5711469}  \PYG{l+m}{\PYGZhy{}0.1632299}  \PYG{l+m}{0.3176527}
+F2    \PYG{l+m}{\PYGZhy{}1.19900658} \PYG{l+m}{\PYGZhy{}0.5821010}   \PYG{l+m}{0.2746655} \PYG{l+m}{\PYGZhy{}1.2768597}
+F3     \PYG{l+m}{0.26976994} \PYG{l+m}{\PYGZhy{}0.7932447}   \PYG{l+m}{1.0083814}  \PYG{l+m}{4.2040301}
+F4     \PYG{l+m}{0.17174454}  \PYG{l+m}{0.1467376}  \PYG{l+m}{\PYGZhy{}0.1972441} \PYG{l+m}{\PYGZhy{}1.5753747}
+P64    \PYG{l+m}{1.44760871}  \PYG{l+m}{6.0739405} \PYG{l+m}{\PYGZhy{}10.6699427}  \PYG{l+m}{0.0576076}
+P256   \PYG{l+m}{6.18726628} \PYG{l+m}{\PYGZhy{}9.2732590}  \PYG{l+m}{10.3833981}  \PYG{l+m}{3.0383037}
+P1024 \PYG{l+m}{\PYGZhy{}6.89112833}  \PYG{l+m}{1.5003026}  \PYG{l+m}{\PYGZhy{}2.0483281} \PYG{l+m}{\PYGZhy{}5.0926131}
+
+Proportion of \PYG{k+kp}{trace}\PYG{o}{:}
+   LD1    LD2    LD3    LD4
+\PYG{l+m}{0.8292} \PYG{l+m}{0.1084} \PYG{l+m}{0.0537} \PYG{l+m}{0.0087}
+\end{Verbatim}
