@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}  Compute K\PYGZhy{}means cluster analysis starting with results from hclust}
+kmnsinithcl \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}x.data\PYG{p}{,} nclus\PYG{p}{,} ncut \PYG{o}{=} nclus\PYG{p}{,} hcl.tree\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+  x.hcl \PYG{o}{\PYGZlt{}\PYGZhy{}} hcl.tree
+  x.cl \PYG{o}{\PYGZlt{}\PYGZhy{}} cutree\PYG{p}{(}x.hcl\PYG{p}{,} k \PYG{o}{=} ncut\PYG{p}{)}
+  data.x \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{data.frame}\PYG{p}{(}x.data\PYG{p}{,} cl \PYG{o}{=} x.cl\PYG{p}{)}
+  means \PYG{o}{\PYGZlt{}\PYGZhy{}} aggregate\PYG{p}{(}\PYG{l+m}{.} \PYG{o}{\PYGZti{}} cl\PYG{p}{,} data \PYG{o}{=} data.x\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kp}{mean}\PYG{p}{)}
+  \PYG{k+kr}{return}\PYG{p}{(}kmeans\PYG{p}{(}x.data\PYG{p}{,}centers\PYG{o}{=} means\PYG{p}{[,} \PYG{l+m}{\PYGZhy{}1}\PYG{p}{]))}
+\PYG{p}{\PYGZcb{}}
+
+hc.men2 \PYG{o}{\PYGZlt{}\PYGZhy{}} hclust\PYG{p}{(}dist\PYG{p}{(}men.sphere\PYG{p}{),}method\PYG{o}{=}\PYG{l+s}{\PYGZdq{}ward.D2\PYGZdq{}}\PYG{p}{)}
+km.men \PYG{o}{\PYGZlt{}\PYGZhy{}} kmnsinithcl\PYG{p}{(}men\PYG{p}{,} nclus \PYG{o}{=} \PYG{l+m}{3}\PYG{p}{,} ncut \PYG{o}{=} \PYG{l+m}{3}\PYG{p}{,} hcl.tree \PYG{o}{=} hc.men2\PYG{p}{)}
+km.men.lda \PYG{o}{\PYGZlt{}\PYGZhy{}} lda\PYG{p}{(}men\PYG{p}{,} km.men\PYG{o}{\PYGZdl{}}cluster\PYG{p}{)}
+plot\PYG{p}{(}km.men.lda\PYG{p}{)}
+
+hc.women2 \PYG{o}{\PYGZlt{}\PYGZhy{}} hclust\PYG{p}{(}dist\PYG{p}{(}women.sphere\PYG{p}{),}method\PYG{o}{=}\PYG{l+s}{\PYGZdq{}ward.D2\PYGZdq{}}\PYG{p}{)}
+km.women \PYG{o}{\PYGZlt{}\PYGZhy{}} kmnsinithcl\PYG{p}{(}women\PYG{p}{,} nclus \PYG{o}{=} \PYG{l+m}{3}\PYG{p}{,} ncut \PYG{o}{=} \PYG{l+m}{3}\PYG{p}{,} hcl.tree \PYG{o}{=} hc.women2\PYG{p}{)}
+km.women.lda \PYG{o}{\PYGZlt{}\PYGZhy{}} lda\PYG{p}{(}women\PYG{p}{,} km.women\PYG{o}{\PYGZdl{}}cluster\PYG{p}{)}
+plot\PYG{p}{(}km.women.lda\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,144 @@
+
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage[inline]{enumitem}
+\usepackage{blindtext}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{bm}
+\lstset{
+basicstyle = \small\tt,
+keywordstyle = \tt\color{blue},
+commentstyle = \it\color[cmyk]{1,0,1,0},
+stringstyle = \tt\color[RGB]{128,0,0},
+%frame = single,
+backgroundcolor = \color[RGB]{245,245,244},
+breaklines,
+extendedchars = false,
+xleftmargin = 2em,
+xrightmargin = 2em,
+aboveskip = 1em,
+tabsize = 4,
+showspaces = false
+}
+\begin{document}
+\setcounter{MaxMatrixCols}{20}
+
+% \newfontfamily\courier{Courier New}
+
+
+\title{STAT 543 Homework 5}
+\author{Yifan Zhu}
+\maketitle
+
+\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item
+	      Let $Y_i = \log X_i$. $y = \log x \Rightarrow x = \mathrm{e}^y,\, y \in \mathbb{R}$. Thus
+	      \[f(y) = f_X (x(y)) \left|\frac{\mathrm{d}x}{\mathrm{d}y}\right| = \alpha (\mathrm{e}^y)^{\alpha - 1} \mathrm{e}^{-(\mathrm{e}^y)^\alpha} \mathrm{e}^y  = \alpha \mathrm{e}^{\alpha y} \mathrm{e}^{-\mathrm{e}^{\alpha y}}\]
+	      Hence $Y_i$'s are in a scale family and there exist $Z_i \sim f(z) = \mathrm{e}^z \mathrm{e}^{-\mathrm{e}^z}$, such that $Y_i = \frac{1}{\alpha} Z_i$. Then
+	      \[\frac{\log X_1} {\log X_2} = \frac{Y_1}{Y_2} = \frac{\frac{1}{\alpha} Z_1} {\frac{1}{\alpha} Z_2} = \frac{Z_1}{Z_2}\]
+	      Hence it is independent of $\alpha$ and is ancillary.
+
+	      \item 
+	      \begin{enumerate}
+	      	\item 
+	      	The parameter space $\Theta = \{(\theta , a \theta^2): \theta > 0\}$ is a curve in $\mathbb{R}^2$. So it does not contain an two-dimensional open set.
+	      	\item 
+	      	\begin{align*}
+	      	 f(\bm x) & = \prod_{i = 1}^n \frac{1}{\sqrt{2 \pi a \theta^2}} \mathrm{e}^{- \frac{(x_i - \theta)^2}{2 a \theta^2}}\\
+	      	 & = \left(\frac{1}{2 \pi a \theta^2}\right)^{n/2} \mathrm{e}^{- \frac{\sum_{i=1}^n (x_i^2 - 2 \theta x_i + \theta^2)}{2 a \theta^2}}\\
+	      	 & = \left(\frac{1}{2 \pi a \theta^2}\right)^{n / 2} \mathrm{e}^{-\frac{1}{2 a}} \mathrm{e}^{-\frac{\sum_{i=1}^n x_i^2}{2 a \theta^2}} \mathrm{e}^{\frac{\sum_{i=1}^n x_i}{a \theta}}
+	      	 \end{align*}
+	      	 By Factorization Theorem, $(\sum_{i=1}^n X_i^2, \sum_{i=1}^n X_i)$ is sufficient statistic. We also know $\sum_{i=1}^n X_i = n \bar{X}$ and $\sum_{i=1}^n X_i^2 = (n-1)S^2 + n\bar{X}^2$. Hence $(\bar{X}, S^2)$ is also sufficient.
+
+	      	 $E(\bar{X}) = \theta,\, E(S^2) = a \theta^2$. Thus $E(\bar{X}^2) = Var(\bar{X}) + (E(\bar{X}))^2 = \frac{a \theta^2}{n} + \theta^2 = \frac{a + n}{n} \theta^2 $. Let
+	      	 \[u(\bar{X}, S^2) = \frac{n}{n + a} \bar{X}^2 - \frac{S^2}{a}\]
+	      	 Then
+	      	 \[E(u(\bar{X}, S^2)) = \frac{n}{n+a} E(\bar{X}^2) - \frac{1}{a} E(S^2) = \theta^2 - \theta^2 = 0\]
+	      	 However $P(u(\bar{X}, S^2) = 0) = P(\frac{n}{n+a} \bar{X}^2 - \frac{S^2}{a} = 0) \neq 1$. Thus it is not complete.
+	      \end{enumerate}
+	      
+	      \item 
+	      \begin{enumerate}
+	      	\item 
+	      	\begin{align*}
+	      	f(x_1, x_2 , x_3, x_4) & = \frac{n!}{x_1 ! x_2 ! x_3 ! x_4 !} \left(\frac{1}{2} + \frac{\theta}{4}\right)^{x_1} \left(\frac{1}{4}(1 - \theta)\right)^{x_2 + x_3} \left(\frac{\theta}{4}\right)^{x_4}\\
+	      	& = \frac{n!}{x_1 ! x_2 ! x_3 ! (n - x_1 - x_2 - x_3) !} \mathrm{e}^{x_1 \log (1/2 + \theta / 4) + (x_2 + x_3) \log( (1 - \theta)/4) + (n - x_1 - x_2 - x_3) \log (\theta / 4)}\\
+	      	& = \frac{n!}{x_1 ! x_2 ! x_3 ! (n - x_1 - x_2 - x_3) !} \left( \frac{\theta}{4}\right)^n \mathrm{e}^{x_1 (\log (\theta + 2) - \log \theta) + (x_2 + x_3) (\log (1 - \theta) - \log \theta) }
+	      	\end{align*}
+	      	$x_1,\, x_2 ,\, x_3$ do not have linear constraint. But $(\log (\theta + 2) - \log \theta , \log (1 - \theta) - \log \theta , \log (1 - \theta) - \log \theta)$ is a curve in $\mathbb{R}^3$. Thus it is a curved exponential family.
+	      	\item 
+	      	From the result of (a), we have
+	      	\[f(x_1, x_2 , x_3, x_4) = \frac{n!}{x_1 ! x_2 ! x_3 ! (n - x_1 - x_2 - x_3) !} \left(\frac{\theta}{4}\right)^n \left(\frac{\theta + 2}{\theta}\right)^{x_1} \left(\frac{1 - \theta}{\theta}\right)^{x_2 + x_3}\]
+	      	By Factorization Theorem, $(X_1, X_2 + X_3)$ is sufficient statistic.
+	      	\item 
+	      	\[\frac{f(\bm x)}{f(\bm y)} = \frac{y_1! y_2 ! y _3 ! (n - y_1 - y_ 2 - y_3)!}{x_1 ! x_2 ! x_3 ! (n - x_1 - x_2 - x_ 3)!} \left(\frac{\theta + 2}{\theta}\right)^{x_1 - y_1} \left(\frac{1 - \theta}{\theta}\right)^{(x_2 + x_3) - (y_2 + y_3)}\]
+	      	$\frac{f(\bm x)} {f(\bm y)}$ is a constant as a function of $\theta \iff x_1 = y_1$ and $x_2 + x_3 = y_2 + y_3$. Hence $(X_1, X_2 + X_3)$ is minimal sufficient statistic.
+	      \end{enumerate}
+
+	      \item 
+	      \begin{enumerate}
+	      	\item 
+	      	\[f(x) = \left(\frac{\theta}{2}\right)^{|x|} \left(1 - \theta\right)^{1 - |x|}\]
+	      	By Factorization Theorem, $X$ is sufficient.
+
+	      	However $E(X) = - \frac{\theta}{2} + \frac{\theta}{2} = 0$ and $P(X = 0) = 1 - \theta$. Thus $X$ is not complete.
+	      	\item 
+	      	$|X|$ is sufficient by Factorization Theorem. We also have $E(u(|X|)) = P(|X| = 1) u(1) + P(|X| = 0) u(0)= \theta u(1) + (1 - \theta) u(0) = \theta (u(1) - u(0)) + u(0) = 0 \Rightarrow u(1) = u(0) = 0 \Rightarrow P(u(|X|) = 0) = 1$. Thus $|X|$ is complete.
+	      	\item 
+	      	\[f(x|\theta) = \left(\frac{\theta}{2 (1 - \theta)}\right)^{|x|} (1 - \theta)\]
+	      	Thus it is exponential family.
+
+	      \end{enumerate}
+
+	      \item 
+	      \begin{enumerate}
+	      	\item 
+	      	\[f(\bm x) = \prod_{i=1}^n \mathrm{e}^{-(x_i - \mu)}\bm 1\{x_i > \mu\} = \mathrm{e}^{n \mu} \mathrm{e}^{-\sum_{i=1}^n x_i} \bm 1\{\mu < x_{(1)}\}\]
+	      	By Factorization Theorem $X_{(1)}$ is sufficient. 
+
+	      	Let $X_{(1)} = Y$, then we have
+	      	\[f(y) = n \mathrm{e}^{-n(y - \mu)},\, y > \mu\]
+	      	For any function $u(Y)$, $E(u(Y)) = \int_{\mu}^\infty u(y) n \mathrm{e}^{-n (y - \mu)}\mathrm{d}y = n \mathrm{e}^{n \mu} \int_{\mu}^\infty u(y) \mathrm{e}^{-ny} \mathrm{d}y = 0$ for any $\mu$. Then we have
+	      	\[\frac{\mathrm{d}}{\mathrm{d} \mu} \int_{\mu}^\infty u(y)\mathrm{e}^{-n y} \mathrm{d}y = -u(\mu) \mathrm{e}^{-n \mu} = 0 \Rightarrow u \equiv 0\]
+	      	Thus $P(u(Y) = 0 ) = 1$, $Y = X_{(1)}$ is complete.
+	      	\item 
+	      	$X_i$'s are from a location family, thus $X_i = Z_i + \mu$, where $Z_i \sim \mathrm{Exponemtial}(1)$. $S^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X})^2 = \frac{1}{n-1}\sum_{i=1}^n (Z_i + \mu - \bar{Z} - \mu)^2 = \frac{1}{n-1}\sum_{i=1}^n (Z_i - \bar{Z})^2$. Hence it is independent of $\mu$ and is ancillary. By Basu's Theorem, because $X_{(1)}$ is complete and sufficient, we have $X_{(1)}$ and $S^2$ being independent. 
+	      \end{enumerate}
+	      
+	      
+	      \item 
+	      $\phi(T) = E(h(X_1, \ldots , X_n)|T)$ is a function of $T$ and $E(\phi(T)) = E(E(h(X_1, \ldots , X_n)|T)) = E(h(X_1, \ldots , X_n)) = \tau(\theta)$. Then $\phi(T)$ is an UE of $\tau(\theta)$. Because $T$ is complete and sufficient, by Lehmann-Scheffe Theorem, $\phi(T)$ is UMVUE of $\tau(\theta)$.
+	      \item 
+	      \begin{enumerate}
+	      	\item 
+	      	\begin{align*}
+	      	E_\theta (\delta - \theta)^2 & = E_\theta (a \bar{X} + b - \theta)^2 \\
+	      	& = E_\theta (a^2 \bar{X}^2 + (b - \theta)^2 + 2 a ( b - \theta) \bar{X})\\
+	      	& = a^2 E_\theta (\bar{X}) + 2 a ( b - \theta) E(\bar{X}) + (b - \theta)^2\\
+	      	& = a^2 (Var_\theta (\bar{X})+ (E(\bar{X}))^2) + 2a (b  -\theta) E(\bar{X}) + (b - \theta)^2\\
+	      	& = a^2 \left(\frac{\sigma^2}{n} + \theta^2\right) + (a \theta)^2 + 2a \theta (b - \theta) + (b - \theta)^2\\
+	      	& = a^2 \frac{\sigma^2}{n} + (a \theta + b - \theta)^2\\
+	      	& = a^2 \frac{\sigma^2}{n} + (b - (1 - a) \theta)^2
+	      	\end{align*}
+
+	      	\item 
+	      	\[\delta^\pi = E(\theta | X_1, \ldots , X_n) = \frac{n \tau^2}{ n \tau^2 + \sigma^2} \bar{X} + \frac{\sigma^2}{n \tau^2 + \sigma^2} \mu = (1 - \eta) \bar{X} + \eta \mu\]
+	      	Plug in $a = 1 - \eta$ and $b = \eta \mu$ to the result in (a). We have
+	      	\[R(\theta , \delta^\pi) = (1 - \eta)^2 \frac{\sigma^2}{n} + (\eta \mu - (1 - 1 + \eta) \theta)^2  = (1 - \eta)^2 \frac{\sigma^2}{n} + (\theta - \mu)^2 \eta^2\]
+
+	      	\item 
+	      	\[B(\pi , \delta^\pi) = \int_{-\infty}^\infty R(\theta , \delta^\pi) \pi(\theta) \mathrm{d}\theta = (1 - \eta)^2 \frac{\sigma^2}{n} + \eta^2 \int_{-\infty}^\infty (\theta - \mu)^2 \pi(\theta) \mathrm{d}\theta = (1 - \eta)^2 \frac{\sigma^2}{n} + \eta^2 \tau^2 \to \eta^2  \tau^2 ,\, n \to \infty\]
+	      	
+	      \end{enumerate}
+	      
+
+\end{enumerate}
+
+\end{document}

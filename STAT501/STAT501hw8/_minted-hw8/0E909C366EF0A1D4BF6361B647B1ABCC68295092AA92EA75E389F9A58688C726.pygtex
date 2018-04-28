@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}  Model based clustering based on the assumption that}
+\PYG{c+c1}{\PYGZsh{}  the data were sampled from a mixture of multivariate normal}
+\PYG{c+c1}{\PYGZsh{}  distributions with common covariance matrix}
+
+\PYG{k+kn}{library}\PYG{p}{(}mclust\PYG{p}{)}
+
+mcl.men \PYG{o}{\PYGZlt{}\PYGZhy{}} Mclust\PYG{p}{(}men\PYG{p}{)}
+plot\PYG{p}{(}mcl.men\PYG{o}{\PYGZdl{}}BIC\PYG{p}{)}
+plot.Mclust\PYG{p}{(}mcl.men\PYG{p}{,} what \PYG{o}{=} \PYG{l+s}{\PYGZdq{}classification\PYGZdq{}}\PYG{p}{)}
+
+mcl.women \PYG{o}{\PYGZlt{}\PYGZhy{}} Mclust\PYG{p}{(}women\PYG{p}{)}
+plot\PYG{p}{(}mcl.women\PYG{o}{\PYGZdl{}}BIC\PYG{p}{)}
+plot.Mclust\PYG{p}{(}mcl.women\PYG{p}{,} what \PYG{o}{=} \PYG{l+s}{\PYGZdq{}classification\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

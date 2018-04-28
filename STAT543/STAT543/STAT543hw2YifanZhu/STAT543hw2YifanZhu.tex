@@ -1,0 +1,225 @@
+
+	\documentclass{article}
+	\usepackage{amsmath,amssymb}
+	\usepackage[inline]{enumitem}
+	\usepackage{blindtext}
+	\usepackage{booktabs}
+	\usepackage{graphicx}
+	\usepackage{xcolor}
+	\usepackage[vmargin = 1.5in, top = 1in, bottom = 1.2in, letterpaper]{geometry}
+	\usepackage{listings}
+	\usepackage{courier}
+	\usepackage{multicol}
+	\usepackage{multirow}
+	\usepackage{bm}
+	\lstset{
+	basicstyle = \small\tt,
+	keywordstyle = \tt\color{blue},
+	commentstyle = \it\color[cmyk]{1,0,1,0},
+	stringstyle = \tt\color[RGB]{128,0,0},
+	%frame = single,
+	backgroundcolor = \color[RGB]{245,245,244},
+	breaklines,
+	extendedchars = false,
+	xleftmargin = 2em,
+	xrightmargin = 2em,
+	aboveskip = 1em,
+	tabsize = 4,
+	showspaces = false
+	}
+	\begin{document}
+	
+	% \newfontfamily\courier{Courier New}
+
+	
+	\title{STAT 543 Homework 1}
+	\author{Yifan Zhu}
+	\maketitle
+	
+	\begin{enumerate}[leftmargin = 0 em, label = \arabic*., font = \bfseries]
+	\item 
+	\begin{enumerate}
+		\item 
+		$L(\theta) = \prod_{i=1}^n f(x_i | \theta) = \theta^n \prod_{i=1}^n x_i^{\theta - 1}$, then $\log L(\theta) = n \log \theta + (\theta - 1) \sum_{i=1}^n \log x_i$.
+		\[\frac{\mathrm{d}}{\mathrm{d}\theta} \log L(\theta) = \frac{n}{\theta} + \sum_{i=1}^n \log x_i\]
+		Then let $\frac{\mathrm{d}}{\mathrm{d}\theta} L(\theta)\big|_{\hat{\theta}} = 0 \Rightarrow \hat{\theta} = -\frac{n}{\sum_{i=1}^n \log x_i}$.
+
+		And we also have 
+		\[\frac{\mathrm{d^2}}{\mathrm{d}\theta^2} L(\theta) = -\frac{n}{\theta^2} < 0\]
+		Hence $\hat{\theta} = -\frac{n}{\sum_{i=1}^n \log X_i}$ is the MLE of $\theta$.
+
+		Let $Y_i = -\log X_i$, then the pdf of $Y_i$'s is
+		\[f(y|\theta) = \theta (\mathrm{e}^{-y})^{\theta - 1} |- \mathrm{e}^{-y}| = \theta \mathrm{e}^{-\theta y},\, y > 0\]
+		Thus $Y_i \overset{iid}{\sim} Exponential(1/\theta) \sim Gamma(1, 1/\theta)$. Then $-\sum_{i=1}^n \log X_i = \sum_{i=1}^n Y_i \sim Gamma(n, 1/\theta)$. Denote $Z = \sum_{i=1}^n Y_i$, then $\hat{\theta} = \frac{n}{Z}$.
+
+		For the variance,
+		\begin{align*}
+		E(\frac{1}{Z^2}) & = \int_{0}^\infty \frac{1}{z^2} \frac{\theta^n}{\Gamma(n)} z^{n-1} \mathrm{e}^{-\theta z} \mathrm{d}z\\
+		& = \frac{\theta^n}{\Gamma(n)} \int_{0}^\infty z^{n-3} \mathrm{e}^{-\theta z} \mathrm{d}z\\
+		& = \frac{\theta^n}{\Gamma(n)} \frac{\Gamma(n-2)}{\theta^{n-2}} \int_{0}^\infty \frac{\theta^{n-2}}{\Gamma(n-2)} z^{(n-2)-1} \mathrm{e}^{-\theta z} \mathrm{d}z\\
+		& = \frac{\theta^2}{(n-1)(n-2)}
+		\end{align*}
+
+		\begin{align*}
+		E(\frac{1}{Z}) & = \int_{0}^\infty \frac{1}{z} \frac{\theta^n}{\Gamma(n)} z^{n-1} \mathrm{e}^{-\theta z}\mathrm{d}z\\
+		& = \frac{\theta^n}{\Gamma(n)} \int_{0}^\infty z^{n-2} \mathrm{e}^{-\theta z} \mathrm{d}z\\
+		& = \frac{\theta^n}{\Gamma(n)}\frac{\Gamma(n-1)}{\theta^{n-1}} \int_{0}^\infty \frac{\theta^{n-1}}{\Gamma(n-1)} z^{(n-1)-1} \mathrm{e}^{- \theta z} \mathrm{d}z\\
+		& = \frac{\theta}{n-1}
+		\end{align*}
+		Then
+		\begin{align*}
+		Var(\hat{\theta}) & = Var(\frac{n}{Z})  = n^2 Var(\frac{1}{Z}) \\
+		& = n^2 \left[E(\frac{1}{Z^2}) - (E(\frac{1}{Z}))^2\right]\\
+		& = n^2 \left( \frac{\theta^2}{(n-1)(n-2)} - \frac{\theta^2}{(n-1)^2}\right)\\
+		& = \frac{n^2}{(n-1)^2 (n-2)} \theta^2 \to 0 \quad \textrm{as $n \to \infty$}
+		\end{align*}
+
+
+		\item 
+		We can see $X \sim Beta(\theta , 1)$, then $E(X) = \frac{\theta}{\theta + 1}$. Let $E(X) = \mu_1'$, then
+		\[\frac{\theta}{1 + \theta} \bigg|_{\hat{\theta}}= \bar{X}_n = \frac{\sum_{i=1}^n X_i}{n} \Rightarrow \hat{\theta} = \frac{\sum_{i=1}^n X_i}{n - \sum_{i=1}^n X_i}\]
+		
+		
+		
+		
+	\end{enumerate}
+
+	\item 
+	\[L(\lambda, \mu) = \prod_{i=1}^{n} f(z_i, w_i | \lambda, \mu) = \prod_{i=1}^n I(w_i) \mathrm{e}^{-z_i (\lambda^{-1} + \mu^{-1})}\]
+	where $I(w) = \begin{cases}
+		\lambda^{-1} &, w = 1\\
+		\mu^{-1} & , w = 0
+	\end{cases}$.
+
+	Hence 
+	\begin{align*}
+	\log L(\lambda , \mu) &= \sum_{i=1}^n \log I(w_i) - \sum_{i=1}^n z_i (\lambda^{-1} + \mu^{-1})\\
+	&= (\sum_{i=1}^n w_i) \log(\lambda^{-1}) + (n - \sum_{i=1}^n w_i) \log(\mu^{-1}) - \sum_{i=1}^n z_i (\lambda^{-1} + \mu^{-1})\\
+	& = - [(\sum_{i=1}^n w_i) \log \lambda + (\sum_{i=1}^n z_i) \lambda^{-1} ] - [(n - \sum_{i=1}^n w_i) \log \mu + (\sum_{i=1}^n z_i) \mu^{-1}]
+	\end{align*}
+
+	\begin{align*}
+	&\frac{\partial L(\lambda, \mu)}{\partial \lambda} = - (\sum_{i=1}^n w_i) \frac{1}{\lambda} + (\sum_{i=1}^n z_i) \frac{1}{\lambda^2} \\
+	& \frac{\partial L(\lambda, \mu)}{\partial \mu} = - (n - \sum_{i=1}^n w_i) \frac{1}{\mu} + (\sum_{i=1}^n z_i) \frac{1}{\mu^2} 
+	\end{align*}
+
+	Let $\frac{\partial L}{\partial \lambda}\big|_{\hat{\lambda}} = 0$ and $\frac{\partial L}{\partial \mu}\big|_{\hat{\mu}} = 0 \Rightarrow $
+	\begin{align*}
+	& \hat{\lambda} = \frac{\sum_{i=1}^n z_i}{\sum_{i=1}^n w_i}\\
+	& \hat{\mu} = \frac{\sum_{i=1}^n z_i}{n - \sum_{i=1}^n w_i}
+	\end{align*}
+
+	We also have 
+	\begin{align*}
+	& \frac{\partial^2 L(\lambda , \mu)}{\partial \lambda^2}\bigg|_{\hat{\lambda}} = (\sum_{i=1}^n w_i) \frac{1}{\lambda^2} - 2 (\sum_{i=1}^n z_i) \frac{1}{\lambda^3} = -\frac{(\sum_{i=1}^n w_i)^3}{(\sum_{i=1}^n z_i)^2}\\
+	& \frac{\partial^2 L(\lambda , \mu)}{\partial \mu^2}\bigg|_{\hat{\mu}} = (n - \sum_{i=1}^n w_i) \frac{1}{\mu^2} - 2 (\sum_{i=1}^n z_i) \frac{1}{\mu^3} = -\frac{(n - \sum_{i=1}^n w_i)^3}{(\sum_{i=1}^n z_i)^2}\\
+	& \frac{\partial^2 L(\lambda, \mu)}{\partial \lambda \partial \mu} = 0
+	\end{align*}
+
+	Thus Hessian matrix is 
+	\[H = \begin{bmatrix}
+		-\frac{(\sum_{i=1}^n w_i)^3}{(\sum_{i=1}^n z_i)^2} & 0\\
+		0 & -\frac{(n - \sum_{i=1}^n w_i)^3}{(\sum_{i=1}^n z_i)^2}
+	\end{bmatrix}\]
+
+	$h_{11}  < 0 $ and $|H| > 0 $, hence $\hat{\lambda} = (\sum_{i=1}^n Z_i)/ (\sum_{i=1}^n W_i)$ and $\hat{\mu} = (\sum_{i=1}^n Z_i)/(n - \sum_{i=1}^n W_i)$ is MLE of $\lambda$ and $\mu$.
+	
+	
+	
+	\item 
+	\begin{enumerate}[start = 2]
+		\item 
+		We know that $Y_i \sim N(\beta x_i , \sigma^2)$ and $Y_i$'s are independent. Thus 
+		\[L(\beta) = \prod_{i=1}^n f(y_i | \beta) = \prod_{i=1}^n \frac{1}{\sqrt{2 \pi} \sigma} \mathrm{e}^{- \frac{(y_i - \beta x_i)^2}{2 \sigma^2}}\]
+
+		Hence 
+		\[\log L(\beta) = - n \sum_{i=1}^n \log(\sqrt{2 \pi} \sigma) - \sum_{i=1}^n \frac{(y_i - \beta x_i)^2}{2 \sigma^2}\]
+
+		\begin{align*}
+		\frac{\mathrm{d}L(\beta)}{\mathrm{d} \beta} &= -\frac{1}{2 \sigma^2} \sum_{i=1}^n 2 (y_i - \beta x_i) (-x_i)\\
+		& =  \sum_{i=1}^n \frac{1}{\sigma^2} (y_i - \beta x_i) x_i\\
+		&= \frac{1}{\sigma^2} (\sum_{i=1}^n y_i x_i - \beta \sum_{i=1}^n x_i^2)
+		\end{align*}
+
+		Let $\frac{\mathrm{d}L(\beta)}{\mathrm{d}\beta} \big|_{\hat{\beta}} = 0 \Rightarrow $
+		\[\hat{\beta} = \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2}\]
+
+		Also, 
+		\[\frac{\mathrm{d}^2 L(\beta)}{\mathrm{d}\beta^2} \big|_{\hat{\beta}}= -\frac{\sum_{i=1}^n x_i^2}{\sigma^2} < 0 \]
+
+		Hence, $\hat{\beta} = \frac{\sum_{i=1}^n x_i Y_i}{\sum_{i=1}^n x_i^2}$ is the MLE of $\beta$.
+
+		\[E(\hat{\beta}) = E\left(\frac{\sum_{i=1}^n x_i Y_i}{\sum_{i=1}^n x_i^2}\right) = \frac{1}{\sum_{i=1}^n x_i^2} \sum_{i=1}^n x_i E(Y_i) = \frac{1}{\sum_{i=1}^n x_i^2} \sum_{i=1}^n x_i x_i \beta = \beta\]
+
+		Thus $\hat{\beta}$ is unbiased estimator of $\beta$.
+
+		\item 
+		\[Var(\hat{\beta}) = Var(\frac{1}{\sum_{i=1}^n x_i^2} \sum_{i=1}^n x_i Y_i) = \frac{1}{(\sum_{i=1}^n x_i^2)^2} \sum_{i=1}^n x_i^2 Var(Y_i) = \sigma^2 \frac{\sum_{i=1}^n x_i^2}{(\sum_{i=1}^n x_i^2)^2} = \frac{\sigma^2}{\sum_{i=1}^n x_i^2}\]
+
+		Hence $\hat{\beta} \sim N(\beta , \frac{\sigma^2}{\sum_{i=1}^n x_i^2})$.
+		
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item 
+		The pdf of $Y$
+		\[f(y) = \frac{n!}{(n-1)!} \frac{1}{\lambda} \mathrm{e}^{-y/\lambda} \left[1 - (1 - \mathrm{e}^{-y/\lambda})\right]^{n-1} = \frac{1}{\lambda / n} \mathrm{e}^{- \frac{y}{\lambda/n}}\]
+		Thus $Y \sim Exponential(\lambda / n) \Rightarrow E(n Y) = n E(Y) = n \frac{\lambda}{n} = \lambda$. Hence 
+		$\hat{\lambda}_1 = n \min \{X_1, X_2, \cdots, X_n\} $ is an unbiased estimator of $\lambda$.
+
+		\item 
+		Let $\hat{\lambda}_2 = \bar{X}_n = \sum_{i=1}^n X_i / n$. $E(\hat{\lambda}_2) = \frac{1}{n} \sum_{i=1}^n \lambda = \lambda$. Thus $\hat{\lambda}_2$ is an unbiased estimator of $\lambda$. And $Var(\hat{\lambda}_2) = n^2 Var(Y) = n^2 (\lambda / n)^2 = \lambda^2$. $Var(\hat{\lambda}_2) = \frac{1}{n^2} \sum_{i=1}^n \lambda^2 = \lambda^2 / n$. Hence $\hat{\lambda}_2$ has smaller variance and is a better unbiased estimator.
+
+		\item 
+		\begin{align*}
+		& \hat{\lambda}_1 = 50.1 \times 12 = 601.2\\
+		& \hat{\lambda}_2 = \bar{x} = 128.8
+		\end{align*}
+		
+	\end{enumerate}
+
+	\item 
+	\begin{enumerate}
+		\item 
+		\begin{align*}
+		L(\theta) & = \prod_{i=1}^n f(y_i | \theta)\\
+		& = \prod_{i=1}^n (\mathrm{e}^{-y_i \theta} - \mathrm{e}^{-\theta (1 + y_i)})\\
+		& = \prod_{i=1}^n \mathrm{e}^{-y_i \theta} (1 - \mathrm{e}{-^\theta})\\
+		& = \mathrm{e}^{-n \theta \bar{y}_n} (1 - \mathrm{e}^{-\theta})^n\\
+		& = \left[\mathrm{e}^{-\theta \bar{y}_n} (1 - \mathrm{e}^{-\theta})\right]^n
+		\end{align*}
+
+
+		\item 
+				When $\bar{Y}_n = 0$, $L(\theta) = (1 - \mathrm{e}^{-\theta})^n$ is monotone increasing in $(0 , \infty)$. Thus $L(\theta)$ do not have a minimum and MLE for $\theta$ does not exist.
+
+		\item 
+		\begin{align*}
+		& \log L(\theta) = n\left[- \theta \bar{y}_n + \log(1 - \mathrm{e}^{-\theta})\right]\\
+		&\frac{\mathrm{d}}{\mathrm{d}\theta}\log L(\theta) = n\left[- \bar{y}_n + \frac{\mathrm{e}^{-\theta}}{1 - \mathrm{e}^{-\theta}}\right] = n\left[\frac{- \bar{y}_n + (\bar{y}_n +1) \mathrm{e}^{-\theta}}{1 - \mathrm{e}^{-\theta}}\right]
+		\end{align*}
+		Let $\frac{\mathrm{d}L(\theta)}{\mathrm{d}\theta} \big|_{\hat{\theta}}= 0 \Rightarrow \hat{\theta} = \log(\frac{1}{\bar{y}_n} +1)$
+		Also,
+		\[\frac{\mathrm{d}^2 L(\theta)}{\mathrm{d}\theta^2} \big|_{\hat{\theta}}= - \frac{\mathrm{e}^{-\hat{\theta}}}{(1 - \mathrm{e}^{-\hat{\theta}})^2} < 0\]
+		Thus $\hat{\theta} = \log(\frac{1}{\bar{Y}_n} + 1)$ is MLE of $\theta$.
+		
+
+	\end{enumerate}
+	
+	
+
+	
+	
+	
+
+	
+
+
+ 	\end{enumerate}
+
+
+	
+	
+	
+	\end{document}

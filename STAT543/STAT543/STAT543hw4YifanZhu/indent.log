@@ -1,0 +1,45 @@
+latexindent.exe version 3.0, a script to indent .tex files
+	latexindent.exe lives here: C:/texlive/2016/bin/win32/
+	Wed Mar  1 22:55:26 2017
+Processing switches
+	-w|--overwrite: Overwrite mode active, will make a back up of STAT543hw4YifanZhu.tex first
+Directory for backup files and indent.log: .
+YAML settings read
+	Reading defaultSettings.yaml from C:/texlive/2016/bin/win32/defaultSettings.yaml
+	Reading defaultSettings.yaml (2nd attempt, TeXLive, Windows) from C:/texlive/2016/bin/win32/../../texmf-dist/scripts/latexindent/defaultSettings.yaml
+	Home directory is C:\Users\fanne (didn't find either indentconfig.yaml or .indentconfig.yaml)
+	To specify user settings you would put indentconfig.yaml here: C:\Users\fanne/indentconfig.yaml
+	Alternatively, you can use the hidden file .indentconfig.yaml as: C:\Users\fanne/.indentconfig.yaml
+Backup procedure (-w flag active):
+	copying STAT543hw4YifanZhu.tex to ./STAT543hw4YifanZhu.bak0
+List of items: myitem|item (see itemNames)
+looking for VERBATIM commands (see verbatimCommands)
+Storing trailing comments
+looking for FILE CONTENTS environments (see fileContentsEnvironments)
+	looking for filecontents*:1 environments
+	looking for filecontents:1 environments
+	\begin{document} found in body (after searching for filecontents)-- assuming that a preamble exists
+	Custom replacement text routine for preamble preamble
+	preamble found: LatexIndent::Preamble=HASH(0x392b6bc)
+	replaced with ID: LTXIN-TK-preamble1-END
+	\begin{document}
+	NOT storing LTXIN-TK-preamble1-END for indentation -- will store as VERBATIM object (see indentPreamble)
+Phase 1: searching for objects
+	looking for ENVIRONMENTS
+	looking for IFELSEFI
+	looking for HEADINGS (chapter, section, part, etc)
+	looking for COMMANDS and key = {value}
+	looking for SPECIAL begin/end
+Objects have been found.
+Operating on: masterdocument
+Number of children:
+	17
+Phase 2: finding surrounding indentation
+Phase 3: indenting objects
+Phase 4: final indentation check
+Returning trailing comments to body
+Output routine
+	Overwriting file STAT543hw4YifanZhu.tex
+--------------
+Please direct all communication/issues to: 
+	https://github.com/cmhughes/latexindent.pl

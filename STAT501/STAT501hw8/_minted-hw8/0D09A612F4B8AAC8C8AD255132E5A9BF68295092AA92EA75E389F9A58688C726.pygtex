@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+women \PYG{o}{\PYGZlt{}\PYGZhy{}} read.table\PYG{p}{(}\PYG{l+s}{\PYGZdq{}women\PYGZhy{}track\PYGZhy{}records.dat\PYGZdq{}}\PYG{p}{,}
+                    header\PYG{o}{=}\PYG{n+nb+bp}{F}\PYG{p}{,} col.names\PYG{o}{=}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}x1\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x2\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x3\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x4\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x5\PYGZdq{}}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}x6\PYGZdq{}}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}x7\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Country\PYGZdq{}}\PYG{p}{))}
+
+men \PYG{o}{\PYGZlt{}\PYGZhy{}} read.table\PYG{p}{(}\PYG{l+s}{\PYGZdq{}men\PYGZhy{}track\PYGZhy{}records.dat\PYGZdq{}}\PYG{p}{,}
+                    header\PYG{o}{=}\PYG{n+nb+bp}{F}\PYG{p}{,} col.names\PYG{o}{=}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}x1\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x2\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x3\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x4\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x5\PYGZdq{}}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}x6\PYGZdq{}}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}x7\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}x8\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Country\PYGZdq{}}\PYG{p}{))}
+
+women.country \PYG{o}{\PYGZlt{}\PYGZhy{}} women\PYG{o}{\PYGZdl{}}Country
+men.country \PYG{o}{\PYGZlt{}\PYGZhy{}} men\PYG{o}{\PYGZdl{}}Country
+
+women \PYG{o}{\PYGZlt{}\PYGZhy{}} women\PYG{p}{[,}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}women\PYG{p}{)]}
+men \PYG{o}{\PYGZlt{}\PYGZhy{}} men\PYG{p}{[,}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}men\PYG{p}{)]}
+
+\PYG{c+c1}{\PYGZsh{} standardize the data}
+women \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{scale}\PYG{p}{(}women\PYG{p}{)}
+men \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{scale}\PYG{p}{(}men\PYG{p}{)}
+\end{Verbatim}

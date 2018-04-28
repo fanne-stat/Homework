@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}  Sphere the data for correlation similarity distance}
+men.sphere\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kp}{t}\PYG{p}{(}\PYG{k+kp}{apply}\PYG{p}{(}men\PYG{p}{,}\PYG{l+m}{1}\PYG{p}{,}FUN\PYG{o}{=} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{)} \PYG{p}{(}x \PYG{o}{\PYGZhy{}} \PYG{k+kp}{mean}\PYG{p}{(}x\PYG{p}{))}\PYG{o}{/}\PYG{k+kp}{sqrt}\PYG{p}{(}\PYG{k+kp}{sum}\PYG{p}{((}x \PYG{o}{\PYGZhy{}} \PYG{k+kp}{mean}\PYG{p}{(}x\PYG{p}{))}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{))))}
+women.sphere\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kp}{t}\PYG{p}{(}\PYG{k+kp}{apply}\PYG{p}{(}women\PYG{p}{,}\PYG{l+m}{1}\PYG{p}{,}FUN\PYG{o}{=} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{)} \PYG{p}{(}x \PYG{o}{\PYGZhy{}} \PYG{k+kp}{mean}\PYG{p}{(}x\PYG{p}{))}\PYG{o}{/}\PYG{k+kp}{sqrt}\PYG{p}{(}\PYG{k+kp}{sum}\PYG{p}{((}x \PYG{o}{\PYGZhy{}} \PYG{k+kp}{mean}\PYG{p}{(}x\PYG{p}{))}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{))))}
+
+\PYG{c+c1}{\PYGZsh{}  Use complete linkage, this is also the default method}
+hc.men \PYG{o}{\PYGZlt{}\PYGZhy{}} hclust\PYG{p}{(}dist\PYG{p}{(}men.sphere\PYG{p}{),}method\PYG{o}{=}\PYG{l+s}{\PYGZdq{}complete\PYGZdq{}}\PYG{p}{)}
+plot\PYG{p}{(}hc.men\PYG{p}{,} label \PYG{o}{=} men.country\PYG{p}{,}
+main \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Complete Linkage Cluster Analysis: Men Track Records Data\PYGZdq{}}\PYG{p}{)}
+
+hc.women \PYG{o}{\PYGZlt{}\PYGZhy{}} hclust\PYG{p}{(}dist\PYG{p}{(}women.sphere\PYG{p}{),}method\PYG{o}{=}\PYG{l+s}{\PYGZdq{}complete\PYGZdq{}}\PYG{p}{)}
+plot\PYG{p}{(}hc.women\PYG{p}{,} label \PYG{o}{=} women.country\PYG{p}{,}
+     main \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Complete Linkage Cluster Analysis: Women Track Records Data\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}  Use canonical discriminants to display the clusters.}
+\PYG{c+c1}{\PYGZsh{}  The first function computes linear canonical discriminants and}
+\PYG{c+c1}{\PYGZsh{}  the second function is used to plot the computed scores.}
+\PYG{k+kn}{library}\PYG{p}{(}MASS\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}  Compute canonical discriminant scores and display 2\PYGZhy{}dimensional}
+\PYG{c+c1}{\PYGZsh{}  projections of the clusters}
+
+hc.men.lda \PYG{o}{\PYGZlt{}\PYGZhy{}} lda\PYG{p}{(}men\PYG{p}{,} cutree\PYG{p}{(}hc.men\PYG{p}{,} \PYG{l+m}{3}\PYG{p}{))}
+plot\PYG{p}{(}hc.men.lda\PYG{p}{)}
+
+hc.women.lda \PYG{o}{\PYGZlt{}\PYGZhy{}} lda\PYG{p}{(}women\PYG{p}{,} cutree\PYG{p}{(}hc.women\PYG{p}{,} \PYG{l+m}{3}\PYG{p}{))}
+plot\PYG{p}{(}hc.women.lda\PYG{p}{)}
+\end{Verbatim}
