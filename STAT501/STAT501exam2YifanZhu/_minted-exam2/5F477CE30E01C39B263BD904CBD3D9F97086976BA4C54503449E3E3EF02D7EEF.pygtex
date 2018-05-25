@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} CART}
+\PYG{k+kn}{library}\PYG{p}{(}tree\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} getting optimal tree using cross\PYGZhy{}validation}
+wine.tree \PYG{o}{\PYGZlt{}\PYGZhy{}} tree\PYG{p}{(}formula \PYG{o}{=} Cultivar \PYG{o}{\PYGZti{}} \PYG{l+m}{.}\PYG{p}{,} data \PYG{o}{=} wine.train\PYG{p}{)}
+wine.tree.cv \PYG{o}{\PYGZlt{}\PYGZhy{}} cv.tree\PYG{p}{(}wine.tree\PYG{p}{,} K \PYG{o}{=} \PYG{k+kp}{nrow}\PYG{p}{(}wine.train\PYG{p}{))}
+plot\PYG{p}{(}wine.tree.cv\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} the best one is 4. Plot the best one.}
+wine.tree.opt \PYG{o}{\PYGZlt{}\PYGZhy{}} prune.tree\PYG{p}{(}wine.tree\PYG{p}{,} k \PYG{o}{=} \PYG{l+m}{4}\PYG{p}{)}
+plot\PYG{p}{(}wine.tree.opt\PYG{p}{)}
+text\PYG{p}{(}wine.tree.opt\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}AER}
+\PYG{k+kp}{mean}\PYG{p}{(}\PYG{k+kp}{apply}\PYG{p}{(}predict\PYG{p}{(}wine.tree.opt\PYG{p}{),} \PYG{l+m}{1}\PYG{p}{,} \PYG{k+kp}{which.max}\PYG{p}{)}\PYG{o}{!=}wine.train\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}CV}
+\PYG{k+kp}{mean}\PYG{p}{(}\PYG{k+kp}{sapply}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{:}\PYG{k+kp}{nrow}\PYG{p}{(}wine.train\PYG{p}{),} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{)} \PYG{k+kp}{mean}\PYG{p}{(}\PYG{k+kp}{mean}\PYG{p}{(}\PYG{k+kp}{apply}\PYG{p}{(}predict\PYG{p}{(}tree\PYG{p}{(}Cultivar \PYG{o}{\PYGZti{}} \PYG{l+m}{.}\PYG{p}{,} data \PYG{o}{=} wine.train\PYG{p}{[}\PYG{o}{\PYGZhy{}}x\PYG{p}{,]),} newdata \PYG{o}{=} wine.train\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{]),} \PYG{l+m}{1}\PYG{p}{,} \PYG{k+kp}{which.max}\PYG{p}{)}\PYG{o}{!=}wine.train\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{))))}
+
+\PYG{c+c1}{\PYGZsh{} misclassification on test set}
+\PYG{k+kp}{mean}\PYG{p}{(}\PYG{k+kp}{apply}\PYG{p}{(}predict\PYG{p}{(}wine.tree.opt\PYG{p}{,} newdata \PYG{o}{=} wine.test\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{]),} \PYG{l+m}{1}\PYG{p}{,} \PYG{k+kp}{which.max}\PYG{p}{)}\PYG{o}{!=}wine.test\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{)}
+\end{Verbatim}

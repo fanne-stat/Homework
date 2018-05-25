@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} cultivar information}
+cultivar \PYG{o}{\PYGZlt{}\PYGZhy{}} wine\PYG{o}{\PYGZdl{}}Cultivar
+
+\PYG{c+c1}{\PYGZsh{} standardize data}
+wine.sc \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{scale}\PYG{p}{(}wine\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{])}
+\end{Verbatim}

@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} model based clustering}
+\PYG{k+kn}{library}\PYG{p}{(}mclust\PYG{p}{)}
+mcl \PYG{o}{\PYGZlt{}\PYGZhy{}} Mclust\PYG{p}{(}wine.sc\PYG{p}{)}
+plot\PYG{p}{(}mcl\PYG{o}{\PYGZdl{}}BIC\PYG{p}{)}
+plot.Mclust\PYG{p}{(}mcl\PYG{p}{,} what \PYG{o}{=} \PYG{l+s}{\PYGZdq{}classification\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} display using ggandrews}
+ggandrews\PYG{p}{(}\PYG{k+kt}{data.frame}\PYG{p}{(}mcl\PYG{o}{\PYGZdl{}}classification\PYG{p}{,} wine.sc\PYG{p}{),} clr \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} return\PYGZus{}value \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{)}
+\end{Verbatim}

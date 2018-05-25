@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} QDA}
+\PYG{k+kn}{library}\PYG{p}{(}MASS\PYG{p}{)}
+wine.qda \PYG{o}{\PYGZlt{}\PYGZhy{}} qda\PYG{p}{(}Cultivar \PYG{o}{\PYGZti{}} \PYG{l+m}{.}\PYG{p}{,} data \PYG{o}{=} wine.train\PYG{p}{,} CV \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} AER}
+\PYG{k+kp}{mean}\PYG{p}{(}wine.train\PYG{o}{\PYGZdl{}}Cultivar\PYG{o}{!=}predict\PYG{p}{(}wine.qda\PYG{p}{)}\PYG{o}{\PYGZdl{}}\PYG{k+kp}{class}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} CV}
+wine.qda.cv \PYG{o}{\PYGZlt{}\PYGZhy{}} qda\PYG{p}{(}Cultivar \PYG{o}{\PYGZti{}} \PYG{l+m}{.}\PYG{p}{,} data \PYG{o}{=} wine.train\PYG{p}{,} CV \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+\PYG{k+kp}{mean}\PYG{p}{(}wine.train\PYG{o}{\PYGZdl{}}Cultivar\PYG{o}{!=}wine.qda.cv\PYG{o}{\PYGZdl{}}\PYG{k+kp}{class}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} misclassification on test set}
+\PYG{k+kp}{mean}\PYG{p}{(}wine.test\PYG{o}{\PYGZdl{}}Cultivar\PYG{o}{!=}predict\PYG{p}{(}wine.qda\PYG{p}{,} newdata \PYG{o}{=} wine.test\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{])}\PYG{o}{\PYGZdl{}}\PYG{k+kp}{class}\PYG{p}{)}
+\end{Verbatim}

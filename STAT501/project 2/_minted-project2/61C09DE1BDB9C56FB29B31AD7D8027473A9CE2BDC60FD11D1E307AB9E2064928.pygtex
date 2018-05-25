@@ -1,0 +1,145 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{library}\PYG{p}{(}readxl\PYG{p}{)}
+senators\PYG{o}{\PYGZlt{}\PYGZhy{}}read\PYGZus{}xls\PYG{p}{(}\PYG{l+s}{\PYGZdq{}senate\PYGZus{}voting\PYGZus{}data.xls\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}b) Plot Andrews\PYGZsq{} curves}
+
+senators.names\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kp}{names}\PYG{p}{(}senators\PYG{p}{)[}\PYG{o}{\PYGZhy{}}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{)]}
+rev.party.state.names\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kp}{lapply}\PYG{p}{(}X\PYG{o}{=}\PYG{k+kp}{strsplit}\PYG{p}{(}\PYG{k+kp}{gsub}\PYG{p}{(}pattern\PYG{o}{=}\PYG{l+s}{\PYGZdq{}[.]\PYGZdq{}}\PYG{p}{,}replacement\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{,}x\PYG{o}{=}senators.names\PYG{p}{),}split\PYG{o}{=}\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{),}FUN \PYG{o}{=} \PYG{k+kp}{rev}\PYG{p}{)}
+
+senators.party \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{lapply}\PYG{p}{(}X \PYG{o}{=} rev.party.state.names\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{)(}\PYG{k+kp}{unlist}\PYG{p}{(}x\PYG{p}{)[}\PYG{l+m}{1}\PYG{p}{]))}
+senators.party \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{unlist}\PYG{p}{(}senators.party\PYG{p}{)}
+
+senators.last.names \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{lapply}\PYG{p}{(}X \PYG{o}{=} rev.party.state.names\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{)(}\PYG{k+kp}{unlist}\PYG{p}{(}x\PYG{p}{)[}\PYG{l+m}{4}\PYG{p}{]))}
+senators.last.names \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{unlist}\PYG{p}{(}senators.last.names\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{}Create new data.frame for plotting}
+senators\PYGZus{}new \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.data.frame}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{(}senators\PYG{p}{[,}\PYG{o}{\PYGZhy{}}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{)]))}
+
+\PYG{k+kp}{colnames}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{)} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kc}{NULL}
+\PYG{k+kp}{rownames}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{)} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kc}{NULL}
+
+senators\PYGZus{}new \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{data.frame}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{,} party \PYG{o}{=} senators.party\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{} Use the codes from Canvas}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}ggandrews.R\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Display the Andrews\PYGZsq{} curves}
+ggandrews\PYG{p}{(}senators\PYGZus{}new\PYG{p}{,} type \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} clr \PYG{o}{=} \PYG{l+m}{543}\PYG{p}{,} linecol \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}blue\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}green\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{),} return\PYGZus{}value \PYG{o}{=} \PYG{k+kc}{FALSE}\PYG{p}{)}
+
+
+epmf \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}x\PYG{p}{)\PYGZob{}}
+  n \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{length}\PYG{p}{(}x\PYG{p}{)}
+  \PYG{k+kr}{return}\PYG{p}{(}\PYG{k+kt}{c}\PYG{p}{(}\PYG{k+kp}{sum}\PYG{p}{(}x\PYG{o}{==}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{),} \PYG{k+kp}{sum}\PYG{p}{(}x\PYG{o}{==}\PYG{l+m}{0}\PYG{p}{),} \PYG{k+kp}{sum}\PYG{p}{(}x\PYG{o}{==}\PYG{l+m}{1}\PYG{p}{))}\PYG{o}{/}n\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+ecdf \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}epmf\PYG{p}{)\PYGZob{}}
+  \PYG{k+kr}{return}\PYG{p}{(}\PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,} epmf\PYG{p}{[}\PYG{l+m}{1}\PYG{p}{],} epmf\PYG{p}{[}\PYG{l+m}{1}\PYG{p}{]}\PYG{o}{+}epmf\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{],} \PYG{l+m}{1}\PYG{p}{))}
+\PYG{p}{\PYGZcb{}}
+
+senator\PYGZus{}epmf \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{[,}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{)],} epmf\PYG{p}{)}
+senator\PYGZus{}ecdf \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{apply}\PYG{p}{(}senator\PYGZus{}epmf\PYG{p}{,} MARGIN \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} ecdf\PYG{p}{)}
+
+\PYG{k+kn}{library}\PYG{p}{(}plyr\PYG{p}{)}
+
+gdtrans \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}i\PYG{p}{)\PYGZob{}}
+  u1 \PYG{o}{\PYGZlt{}\PYGZhy{}} mapvalues\PYG{p}{(}senators\PYGZus{}new\PYG{p}{[,}i\PYG{p}{],} from \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{1}\PYG{p}{),} to \PYG{o}{=} senator\PYGZus{}epmf\PYG{p}{[,}i\PYG{p}{])}
+  u2 \PYG{o}{\PYGZlt{}\PYGZhy{}} mapvalues\PYG{p}{(}senators\PYGZus{}new\PYG{p}{[,}i\PYG{p}{],} from \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{,}\PYG{l+m}{0}\PYG{p}{,}\PYG{l+m}{1}\PYG{p}{),} to \PYG{o}{=} senator\PYGZus{}ecdf\PYG{p}{[}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{3}\PYG{p}{,}i\PYG{p}{])}
+  \PYG{k+kr}{return}\PYG{p}{(}u2 \PYG{o}{+} u1\PYG{o}{*}runif\PYG{p}{(}n \PYG{o}{=} \PYG{k+kp}{length}\PYG{p}{(}u1\PYG{p}{)))}
+\PYG{p}{\PYGZcb{}}
+
+inv\PYGZus{}gdtrans \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}u\PYG{p}{,} i\PYG{p}{)\PYGZob{}}
+  \PYG{l+m}{\PYGZhy{}1}\PYG{o}{*} \PYG{p}{(}senator\PYGZus{}ecdf\PYG{p}{[}\PYG{l+m}{1}\PYG{p}{,}i\PYG{p}{]} \PYG{o}{\PYGZlt{}} u\PYG{p}{[,}i\PYG{p}{]} \PYG{o}{\PYGZam{}} senator\PYGZus{}ecdf\PYG{p}{[}\PYG{l+m}{2}\PYG{p}{,}i\PYG{p}{]} \PYG{o}{\PYGZgt{}=} u\PYG{p}{[,}i\PYG{p}{])} \PYG{o}{+} \PYG{l+m}{1}\PYG{o}{*} \PYG{p}{(}senator\PYGZus{}ecdf\PYG{p}{[}\PYG{l+m}{3}\PYG{p}{,}i\PYG{p}{]} \PYG{o}{\PYGZlt{}} u\PYG{p}{[,}i\PYG{p}{]} \PYG{o}{\PYGZam{}} senator\PYGZus{}ecdf\PYG{p}{[}\PYG{l+m}{4}\PYG{p}{,}i\PYG{p}{]} \PYG{o}{\PYGZgt{}=} u\PYG{p}{[,}i\PYG{p}{])}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}testnormality.R\PYGZdq{}}\PYG{p}{)}
+
+
+
+senators\PYGZus{}c \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{542}\PYG{p}{,} gdtrans\PYG{p}{)}
+
+senators\PYGZus{}normal \PYG{o}{\PYGZlt{}\PYGZhy{}} qnorm\PYG{p}{(}senators\PYGZus{}c\PYG{p}{,} mean \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{,} sd \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{)}
+
+testnormality\PYG{p}{(}senators\PYGZus{}normal\PYG{p}{)}
+
+\PYG{k+kn}{library}\PYG{p}{(}energy\PYG{p}{)}
+mvnorm.etest\PYG{p}{(}x \PYG{o}{=} senators\PYGZus{}normal\PYG{p}{,} R \PYG{o}{=} \PYG{l+m}{1000}\PYG{p}{)}
+
+\PYG{k+kn}{library}\PYG{p}{(}MASS\PYG{p}{)}
+\PYG{k+kn}{library}\PYG{p}{(}Matrix\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} rho based estimation}
+spearmanrho \PYG{o}{\PYGZlt{}\PYGZhy{}} cor\PYG{p}{(}senators\PYGZus{}c\PYG{p}{,} method \PYG{o}{=} \PYG{l+s}{\PYGZdq{}spearman\PYGZdq{}}\PYG{p}{)}
+sigmahat\PYGZus{}rho \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{2}\PYG{o}{*}\PYG{k+kp}{sin}\PYG{p}{(}\PYG{k+kc}{pi}\PYG{o}{/}\PYG{l+m}{6}\PYG{o}{*}spearmanrho\PYG{p}{)}
+sigmahat\PYGZus{}rho \PYG{o}{\PYGZlt{}\PYGZhy{}} nearPD\PYG{p}{(}sigmahat\PYGZus{}rho\PYG{p}{,} corr \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+decomp\PYGZus{}rho \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{eigen}\PYG{p}{(}sigmahat\PYGZus{}rho\PYG{o}{\PYGZdl{}}mat\PYG{p}{,} symmetric \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+
+s \PYG{o}{\PYGZlt{}\PYGZhy{}} decomp\PYGZus{}rho\PYG{o}{\PYGZdl{}}values
+
+pvar\PYG{o}{\PYGZlt{}\PYGZhy{}}s\PYG{o}{/}\PYG{k+kp}{sum}\PYG{p}{(}s\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}  cumulative proportion of total variance explained}
+\PYG{c+c1}{\PYGZsh{}  by each component}
+
+cpvar \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{cumsum}\PYG{p}{(}s\PYG{p}{)}\PYG{o}{/}\PYG{k+kp}{sum}\PYG{p}{(}s\PYG{p}{)}
+plot\PYG{p}{(}x \PYG{o}{=} \PYG{l+m}{1}\PYG{o}{:}\PYG{k+kp}{length}\PYG{p}{(}cpvar\PYG{p}{),} y \PYG{o}{=} cpvar\PYG{p}{,} \PYG{l+s}{\PYGZsq{}n\PYGZsq{}}\PYG{p}{,} xlab \PYG{o}{=} \PYG{l+s}{\PYGZsq{}number of PCs\PYGZsq{}}\PYG{p}{,} ylab \PYG{o}{=} \PYG{l+s}{\PYGZsq{}total variance\PYGZsq{}}\PYG{p}{)}
+lines\PYG{p}{(}x \PYG{o}{=} \PYG{l+m}{1}\PYG{o}{:}\PYG{k+kp}{length}\PYG{p}{(}cpvar\PYG{p}{),} y \PYG{o}{=} cpvar\PYG{p}{)}
+
+npc80 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{min}\PYG{p}{(}\PYG{k+kp}{which}\PYG{p}{(}cpvar \PYG{o}{\PYGZgt{}} \PYG{l+m}{0.8}\PYG{p}{))}
+npc90 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{min}\PYG{p}{(}\PYG{k+kp}{which}\PYG{p}{(}cpvar \PYG{o}{\PYGZgt{}} \PYG{l+m}{0.9}\PYG{p}{))}
+
+senators\PYGZus{}normal\PYGZus{}80 \PYG{o}{\PYGZlt{}\PYGZhy{}} senators\PYGZus{}normal\PYG{o}{\PYGZpc{}*\PYGZpc{}}decomp\PYGZus{}rho\PYG{o}{\PYGZdl{}}vectors\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}npc80\PYG{p}{]}\PYG{o}{\PYGZpc{}*\PYGZpc{}}\PYG{k+kp}{t}\PYG{p}{(}decomp\PYGZus{}rho\PYG{o}{\PYGZdl{}}vectors\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}npc80\PYG{p}{])}
+
+senators\PYGZus{}u\PYGZus{}80 \PYG{o}{\PYGZlt{}\PYGZhy{}} pnorm\PYG{p}{(}senators\PYGZus{}normal\PYGZus{}80\PYG{p}{,} mean \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{,} sd \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{)}
+
+senators\PYGZus{}80 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{542}\PYG{p}{,} inv\PYGZus{}gdtrans\PYG{p}{,} u \PYG{o}{=} senators\PYGZus{}u\PYGZus{}80\PYG{p}{)}
+
+\PYG{k+kp}{sum}\PYG{p}{(}senators\PYGZus{}80\PYG{o}{==}senators\PYGZus{}new\PYG{p}{[,}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{)])}\PYG{o}{/}\PYG{p}{(}\PYG{l+m}{542}\PYG{o}{*}\PYG{l+m}{100}\PYG{p}{)}
+
+
+senators\PYGZus{}normal\PYGZus{}90 \PYG{o}{\PYGZlt{}\PYGZhy{}} senators\PYGZus{}normal\PYG{o}{\PYGZpc{}*\PYGZpc{}}decomp\PYGZus{}rho\PYG{o}{\PYGZdl{}}vectors\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}npc90\PYG{p}{]}\PYG{o}{\PYGZpc{}*\PYGZpc{}}\PYG{k+kp}{t}\PYG{p}{(}decomp\PYGZus{}rho\PYG{o}{\PYGZdl{}}vectors\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}npc90\PYG{p}{])}
+
+senators\PYGZus{}u\PYGZus{}90 \PYG{o}{\PYGZlt{}\PYGZhy{}} pnorm\PYG{p}{(}senators\PYGZus{}normal\PYGZus{}90\PYG{p}{,} mean \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{,} sd \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{)}
+
+senators\PYGZus{}90 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{542}\PYG{p}{,} inv\PYGZus{}gdtrans\PYG{p}{,} u \PYG{o}{=} senators\PYGZus{}u\PYGZus{}90\PYG{p}{)}
+
+\PYG{k+kp}{sum}\PYG{p}{(}senators\PYGZus{}90\PYG{o}{==}senators\PYGZus{}new\PYG{p}{[,}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{)])}\PYG{o}{/}\PYG{p}{(}\PYG{l+m}{542}\PYG{o}{*}\PYG{l+m}{100}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} tau based estimation}
+kendalltau \PYG{o}{\PYGZlt{}\PYGZhy{}} cor\PYG{p}{(}senators\PYGZus{}c\PYG{p}{,} method \PYG{o}{=} \PYG{l+s}{\PYGZdq{}kendall\PYGZdq{}}\PYG{p}{)}
+sigmahat\PYGZus{}tau \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sin}\PYG{p}{(}\PYG{k+kc}{pi}\PYG{o}{/}\PYG{l+m}{2}\PYG{o}{*}kendalltau\PYG{p}{)}
+sigmahat\PYGZus{}tau \PYG{o}{\PYGZlt{}\PYGZhy{}} nearPD\PYG{p}{(}sigmahat\PYGZus{}tau\PYG{p}{,} corr \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+decomp\PYGZus{}tau \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{eigen}\PYG{p}{(}sigmahat\PYGZus{}tau\PYG{o}{\PYGZdl{}}mat\PYG{p}{,} symmetric \PYG{o}{=} \PYG{n+nb+bp}{T}\PYG{p}{)}
+
+s \PYG{o}{\PYGZlt{}\PYGZhy{}} decomp\PYGZus{}tau\PYG{o}{\PYGZdl{}}values
+
+pvar\PYG{o}{\PYGZlt{}\PYGZhy{}}s\PYG{o}{/}\PYG{k+kp}{sum}\PYG{p}{(}s\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}  cumulative proportion of total variance explained}
+\PYG{c+c1}{\PYGZsh{}  by each component}
+
+cpvar \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{cumsum}\PYG{p}{(}s\PYG{p}{)}\PYG{o}{/}\PYG{k+kp}{sum}\PYG{p}{(}s\PYG{p}{)}
+plot\PYG{p}{(}x \PYG{o}{=} \PYG{l+m}{1}\PYG{o}{:}\PYG{k+kp}{length}\PYG{p}{(}cpvar\PYG{p}{),} y \PYG{o}{=} cpvar\PYG{p}{,} \PYG{l+s}{\PYGZsq{}n\PYGZsq{}}\PYG{p}{,} xlab \PYG{o}{=} \PYG{l+s}{\PYGZsq{}number of PCs\PYGZsq{}}\PYG{p}{,} ylab \PYG{o}{=} \PYG{l+s}{\PYGZsq{}total variance\PYGZsq{}}\PYG{p}{)}
+lines\PYG{p}{(}x \PYG{o}{=} \PYG{l+m}{1}\PYG{o}{:}\PYG{k+kp}{length}\PYG{p}{(}cpvar\PYG{p}{),} y \PYG{o}{=} cpvar\PYG{p}{)}
+npc80 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{min}\PYG{p}{(}\PYG{k+kp}{which}\PYG{p}{(}cpvar \PYG{o}{\PYGZgt{}} \PYG{l+m}{0.8}\PYG{p}{))}
+npc90 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{min}\PYG{p}{(}\PYG{k+kp}{which}\PYG{p}{(}cpvar \PYG{o}{\PYGZgt{}} \PYG{l+m}{0.9}\PYG{p}{))}
+
+senators\PYGZus{}normal\PYGZus{}80 \PYG{o}{\PYGZlt{}\PYGZhy{}} senators\PYGZus{}normal\PYG{o}{\PYGZpc{}*\PYGZpc{}}decomp\PYGZus{}tau\PYG{o}{\PYGZdl{}}vectors\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}npc80\PYG{p}{]}\PYG{o}{\PYGZpc{}*\PYGZpc{}}\PYG{k+kp}{t}\PYG{p}{(}decomp\PYGZus{}tau\PYG{o}{\PYGZdl{}}vectors\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}npc80\PYG{p}{])}
+
+senators\PYGZus{}u\PYGZus{}80 \PYG{o}{\PYGZlt{}\PYGZhy{}} pnorm\PYG{p}{(}senators\PYGZus{}normal\PYGZus{}80\PYG{p}{,} mean \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{,} sd \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{)}
+
+senators\PYGZus{}80 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{542}\PYG{p}{,} inv\PYGZus{}gdtrans\PYG{p}{,} u \PYG{o}{=} senators\PYGZus{}u\PYGZus{}80\PYG{p}{)}
+
+\PYG{k+kp}{sum}\PYG{p}{(}senators\PYGZus{}80\PYG{o}{==}senators\PYGZus{}new\PYG{p}{[,}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{)])}\PYG{o}{/}\PYG{p}{(}\PYG{l+m}{542}\PYG{o}{*}\PYG{l+m}{100}\PYG{p}{)}
+
+
+senators\PYGZus{}normal\PYGZus{}90 \PYG{o}{\PYGZlt{}\PYGZhy{}} senators\PYGZus{}normal\PYG{o}{\PYGZpc{}*\PYGZpc{}}decomp\PYGZus{}tau\PYG{o}{\PYGZdl{}}vectors\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}npc90\PYG{p}{]}\PYG{o}{\PYGZpc{}*\PYGZpc{}}\PYG{k+kp}{t}\PYG{p}{(}decomp\PYGZus{}tau\PYG{o}{\PYGZdl{}}vectors\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}npc90\PYG{p}{])}
+
+senators\PYGZus{}u\PYGZus{}90 \PYG{o}{\PYGZlt{}\PYGZhy{}} pnorm\PYG{p}{(}senators\PYGZus{}normal\PYGZus{}90\PYG{p}{,} mean \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{,} sd \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{)}
+
+senators\PYGZus{}90 \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sapply}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{542}\PYG{p}{,} inv\PYGZus{}gdtrans\PYG{p}{,} u \PYG{o}{=} senators\PYGZus{}u\PYGZus{}90\PYG{p}{)}
+
+\PYG{k+kp}{sum}\PYG{p}{(}senators\PYGZus{}90\PYG{o}{==}senators\PYGZus{}new\PYG{p}{[,}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{ncol}\PYG{p}{(}senators\PYGZus{}new\PYG{p}{)])}\PYG{o}{/}\PYG{p}{(}\PYG{l+m}{542}\PYG{o}{*}\PYG{l+m}{100}\PYG{p}{)}
+\end{Verbatim}

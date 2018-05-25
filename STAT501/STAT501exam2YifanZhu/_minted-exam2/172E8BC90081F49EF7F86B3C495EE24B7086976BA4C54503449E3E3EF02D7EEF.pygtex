@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} display the first 5 PCs using 3d radviz}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}radviz3d\PYGZhy{}3.R\PYGZdq{}}\PYG{p}{)}
+radialvis3d\PYG{p}{(}data \PYG{o}{=} wine.pc\PYG{o}{\PYGZdl{}}x\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{5}\PYG{p}{],} cl \PYG{o}{=} wine\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{)}
+rgl.snapshot\PYG{p}{(}\PYG{l+s}{\PYGZdq{}radviz3d.jpg\PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} using 2d radviz}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}radviz2d.R\PYGZdq{}}\PYG{p}{)}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}mmnorm.R\PYGZdq{}}\PYG{p}{)}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}circledraw.R\PYGZdq{}}\PYG{p}{)}
+radviz2d\PYG{p}{(}dataset \PYG{o}{=} \PYG{k+kp}{cbind}\PYG{p}{(}wine.pc\PYG{o}{\PYGZdl{}}x\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{5}\PYG{p}{],} wine\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{),} name \PYG{o}{=} \PYG{l+s}{\PYGZdq{}wine\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

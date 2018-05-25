@@ -1,0 +1,42 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{}kNN}
+\PYG{k+kn}{library}\PYG{p}{(}\PYG{k+kp}{class}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} using cross\PYGZhy{}validation to pick k}
+\PYG{c+c1}{\PYGZsh{} using scaled data}
+wine.train.sc \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{scale}\PYG{p}{(}wine.train\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{])}
+wine.test.sc \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{scale}\PYG{p}{(}wine.test\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{])}
+\PYG{c+c1}{\PYGZsh{} try k = 1,..,10}
+knn.cv.err\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kc}{NULL}
+knn.cv.sd\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kc}{NULL}
+\PYG{k+kr}{for} \PYG{p}{(}i \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  temp\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kc}{NULL}
+  \PYG{k+kr}{for} \PYG{p}{(}j \PYG{k+kr}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10000}\PYG{p}{)}
+    temp \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{c}\PYG{p}{(}temp\PYG{p}{,}\PYG{k+kp}{mean}\PYG{p}{(}knn.cv\PYG{p}{(}wine.train.sc\PYG{p}{,}
+                               cl \PYG{o}{=} wine.train\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{,} k \PYG{o}{=} i\PYG{p}{)} \PYG{o}{!=} wine.train\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{))}
+  knn.cv.err\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kt}{c}\PYG{p}{(}knn.cv.err\PYG{p}{,}\PYG{k+kp}{mean}\PYG{p}{(}temp\PYG{p}{))}
+  knn.cv.sd\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{k+kt}{c}\PYG{p}{(}knn.cv.sd\PYG{p}{,}sd\PYG{p}{(}temp\PYG{p}{))}
+  \PYG{k+kp}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Done i= \PYGZdq{}}\PYG{p}{,}i\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+
+plot\PYG{p}{(}knn.cv.err\PYG{p}{,} xlim \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,} \PYG{l+m}{10}\PYG{p}{),}
+     ylim\PYG{o}{=}\PYG{k+kt}{c}\PYG{p}{(}\PYG{k+kp}{min}\PYG{p}{(}knn.cv.err \PYG{o}{\PYGZhy{}} \PYG{l+m}{1.96} \PYG{o}{*} knn.cv.sd\PYG{p}{),}
+            \PYG{k+kp}{max}\PYG{p}{(}knn.cv.err \PYG{o}{+} \PYG{l+m}{1.96} \PYG{o}{*} knn.cv.sd\PYG{p}{)),} type \PYG{o}{=} \PYG{l+s}{\PYGZdq{}n\PYGZdq{}}\PYG{p}{)}
+lines\PYG{p}{(}knn.cv.err \PYG{o}{+} \PYG{l+m}{1.96} \PYG{o}{*} knn.cv.sd\PYG{p}{,} lty \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} col \PYG{o}{=} \PYG{l+s}{\PYGZdq{}blue\PYGZdq{}}\PYG{p}{)}
+lines\PYG{p}{(}knn.cv.err \PYG{o}{\PYGZhy{}} \PYG{l+m}{1.96} \PYG{o}{*} knn.cv.sd\PYG{p}{,} lty \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{,} col \PYG{o}{=} \PYG{l+s}{\PYGZdq{}green\PYGZdq{}}\PYG{p}{)}
+lines\PYG{p}{(}knn.cv.err\PYG{p}{,} col \PYG{o}{=} \PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} use k = 5}
+
+wine.knn.train \PYG{o}{\PYGZlt{}\PYGZhy{}} knn\PYG{p}{(}train \PYG{o}{=} wine.train.sc\PYG{p}{,} test \PYG{o}{=} wine.train.sc\PYG{p}{,} cl \PYG{o}{=} wine.train\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{,} k \PYG{o}{=} \PYG{l+m}{5}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}AER}
+\PYG{k+kp}{mean}\PYG{p}{(}wine.knn.train \PYG{o}{!=} wine.train\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}CV}
+knn.cv.err\PYG{p}{[}\PYG{l+m}{5}\PYG{p}{]}
+
+\PYG{c+c1}{\PYGZsh{} misclassification on test set}
+wine.knn \PYG{o}{\PYGZlt{}\PYGZhy{}} knn\PYG{p}{(}train \PYG{o}{=} wine.train.sc\PYG{p}{,} test \PYG{o}{=} wine.test.sc\PYG{p}{,} cl \PYG{o}{=} wine.train\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{,} k \PYG{o}{=} \PYG{l+m}{5}\PYG{p}{)}
+\PYG{k+kp}{mean}\PYG{p}{(}wine.knn \PYG{o}{!=} wine.test\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{)}
+\end{Verbatim}

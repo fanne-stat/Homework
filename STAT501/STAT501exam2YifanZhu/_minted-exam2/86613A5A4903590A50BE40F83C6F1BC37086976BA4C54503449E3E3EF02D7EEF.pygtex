@@ -1,0 +1,38 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} compare the results with cultivar information}
+\PYG{c+c1}{\PYGZsh{} hierarchical clustering with average linkage}
+ftable\PYG{p}{(}\PYG{k+kp}{table}\PYG{p}{(}cultivar\PYG{p}{,} cutree\PYG{p}{(}hc\PYG{p}{,} k \PYG{o}{=} \PYG{l+m}{3}\PYG{p}{)))}
+
+           \PYG{l+m}{1}  \PYG{l+m}{2}  \PYG{l+m}{3}
+cultivar
+\PYG{l+m}{1}         \PYG{l+m}{58}  \PYG{l+m}{1}  \PYG{l+m}{0}
+\PYG{l+m}{2}         \PYG{l+m}{68}  \PYG{l+m}{2}  \PYG{l+m}{1}
+\PYG{l+m}{3}         \PYG{l+m}{48}  \PYG{l+m}{0}  \PYG{l+m}{0}
+
+\PYG{c+c1}{\PYGZsh{} k\PYGZhy{}means innitialized with hc}
+ftable\PYG{p}{(}\PYG{k+kp}{table}\PYG{p}{(}cultivar\PYG{p}{,} mapvalues\PYG{p}{(}km\PYG{o}{\PYGZdl{}}cluster\PYG{p}{,} from \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{2}\PYG{p}{,}\PYG{l+m}{3}\PYG{p}{,}\PYG{l+m}{1}\PYG{p}{),} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{,}\PYG{l+m}{3}\PYG{p}{))))}
+
+           \PYG{l+m}{1}  \PYG{l+m}{2}  \PYG{l+m}{3}
+cultivar
+\PYG{l+m}{1}         \PYG{l+m}{59}  \PYG{l+m}{0}  \PYG{l+m}{0}
+\PYG{l+m}{2}          \PYG{l+m}{3} \PYG{l+m}{65}  \PYG{l+m}{3}
+\PYG{l+m}{3}          \PYG{l+m}{0}  \PYG{l+m}{0} \PYG{l+m}{48}
+
+\PYG{c+c1}{\PYGZsh{} k\PYGZhy{}means with random initialization}
+ftable\PYG{p}{(}\PYG{k+kp}{table}\PYG{p}{(}cultivar\PYG{p}{,} km.r\PYG{o}{\PYGZdl{}}cluster\PYG{p}{))}
+
+           \PYG{l+m}{1}  \PYG{l+m}{2}  \PYG{l+m}{3}
+cultivar
+\PYG{l+m}{1}         \PYG{l+m}{59}  \PYG{l+m}{0}  \PYG{l+m}{0}
+\PYG{l+m}{2}          \PYG{l+m}{3} \PYG{l+m}{65}  \PYG{l+m}{3}
+\PYG{l+m}{3}          \PYG{l+m}{0}  \PYG{l+m}{0} \PYG{l+m}{48}
+
+\PYG{c+c1}{\PYGZsh{} model based clustering}
+ftable\PYG{p}{(}\PYG{k+kp}{table}\PYG{p}{(}cultivar\PYG{p}{,} mcl\PYG{o}{\PYGZdl{}}classification\PYG{p}{))}
+
+           \PYG{l+m}{1}  \PYG{l+m}{2}  \PYG{l+m}{3}
+cultivar
+\PYG{l+m}{1}         \PYG{l+m}{56}  \PYG{l+m}{3}  \PYG{l+m}{0}
+\PYG{l+m}{2}          \PYG{l+m}{0} \PYG{l+m}{70}  \PYG{l+m}{1}
+\PYG{l+m}{3}          \PYG{l+m}{0}  \PYG{l+m}{0} \PYG{l+m}{48}
+\end{Verbatim}

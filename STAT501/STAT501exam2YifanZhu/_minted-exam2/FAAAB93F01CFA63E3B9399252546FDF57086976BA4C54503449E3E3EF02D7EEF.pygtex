@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+  Cultivar testnormality energytest
+  \PYG{o}{\PYGZlt{}}fct\PYG{o}{\PYGZgt{}}            \PYG{o}{\PYGZlt{}}dbl\PYG{o}{\PYGZgt{}}      \PYG{o}{\PYGZlt{}}dbl\PYG{o}{\PYGZgt{}}
+\PYG{l+m}{1} \PYG{l+m}{1}          \PYG{l+m}{0.656}           \PYG{l+m}{0.0280}
+\PYG{l+m}{2} \PYG{l+m}{2}          \PYG{l+m}{0.000000712}     \PYG{l+m}{0.}
+\PYG{l+m}{3} \PYG{l+m}{3}          \PYG{l+m}{0.794}           \PYG{l+m}{0.456}
+\end{Verbatim}

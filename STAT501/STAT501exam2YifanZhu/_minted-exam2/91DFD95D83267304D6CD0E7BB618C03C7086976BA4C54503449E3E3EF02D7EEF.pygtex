@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}ggandrews.R\PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} Hierarchical clustering with average linkage}
+hc \PYG{o}{\PYGZlt{}\PYGZhy{}} hclust\PYG{p}{(}dist\PYG{p}{(}wine.sc\PYG{p}{),} method \PYG{o}{=} \PYG{l+s}{\PYGZdq{}average\PYGZdq{}}\PYG{p}{)}
+plot\PYG{p}{(}hc\PYG{p}{,} main \PYG{o}{=} \PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} display using ggandrews}
+ggandrews\PYG{p}{(}\PYG{k+kt}{data.frame}\PYG{p}{(}cutree\PYG{p}{(}hc\PYG{p}{,} k \PYG{o}{=} \PYG{l+m}{3}\PYG{p}{),} wine.sc\PYG{p}{),} clr \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} return\PYGZus{}value \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{)}
+\end{Verbatim}

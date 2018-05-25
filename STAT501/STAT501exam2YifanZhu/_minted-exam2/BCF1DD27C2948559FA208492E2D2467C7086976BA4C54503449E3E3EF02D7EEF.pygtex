@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} read data}
+wine \PYG{o}{\PYGZlt{}\PYGZhy{}} read.table\PYG{p}{(}\PYG{l+s}{\PYGZdq{}wine.dat\PYGZdq{}}\PYG{p}{,} head \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{,} sep \PYG{o}{=} \PYG{l+s}{\PYGZdq{},\PYGZdq{}}\PYG{p}{,}
+                   col.names \PYG{o}{=} \PYG{k+kt}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Cultivar\PYGZdq{}}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}Alcohol\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Malic acid\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Ash\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Alkalinity of ash\PYGZdq{}}\PYG{p}{,}
+                                 \PYG{l+s}{\PYGZdq{}Magnesium\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Total phenols\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Flavanoids\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Nonflavanoid phenols\PYGZdq{}}\PYG{p}{,}
+                                 \PYG{l+s}{\PYGZdq{}Proanthocyanins\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Color intensity\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Hue\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}OD280/OD315\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Proline\PYGZdq{}}\PYG{p}{))}
+wine\PYG{o}{\PYGZdl{}}Cultivar \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{as.factor}\PYG{p}{(}wine\PYG{o}{\PYGZdl{}}Cultivar\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} check multivariate normality for each cultivar}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}testnormality.R\PYGZdq{}}\PYG{p}{)}
+\PYG{k+kn}{library}\PYG{p}{(}energy\PYG{p}{)}
+\PYG{k+kn}{library}\PYG{p}{(}dplyr\PYG{p}{)}
+wine \PYG{o}{\PYGZpc{}\PYGZgt{}\PYGZpc{}} group\PYGZus{}by\PYG{p}{(}Cultivar\PYG{p}{)} \PYG{o}{\PYGZpc{}\PYGZgt{}\PYGZpc{}} do\PYG{p}{(}\PYG{k+kt}{data.frame}\PYG{p}{(}testnormality \PYG{o}{=} testnormality\PYG{p}{(}\PYG{l+m}{.}\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{]),}
+                                          energytest \PYG{o}{=} mvnorm.etest\PYG{p}{(}\PYG{l+m}{.}\PYG{p}{[,}\PYG{l+m}{\PYGZhy{}1}\PYG{p}{],} R \PYG{o}{=} \PYG{l+m}{999}\PYG{p}{)}\PYG{o}{\PYGZdl{}}p.value\PYG{p}{))}
+\end{Verbatim}

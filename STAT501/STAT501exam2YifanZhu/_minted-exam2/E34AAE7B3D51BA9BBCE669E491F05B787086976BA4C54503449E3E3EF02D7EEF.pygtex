@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+proportion of variance\PYG{o}{:}  \PYG{l+m}{0.3619885} \PYG{l+m}{0.1920749} \PYG{l+m}{0.1112363} \PYG{l+m}{0.0706903} \PYG{l+m}{0.06563294} \PYG{l+m}{0.04935823} \PYG{l+m}{0.04238679} \PYG{l+m}{0.02680749} \PYG{l+m}{0.02222153}
+\PYG{l+m}{0.01930019} \PYG{l+m}{0.01736836} \PYG{l+m}{0.01298233} \PYG{l+m}{0.007952149}
+
+cumulative proportion of variance\PYG{o}{:}  \PYG{l+m}{0.3619885} \PYG{l+m}{0.5540634} \PYG{l+m}{0.6652997} \PYG{l+m}{0.73599} \PYG{l+m}{0.8016229} \PYG{l+m}{0.8509812} \PYG{l+m}{0.893368} \PYG{l+m}{0.9201754}
+\PYG{l+m}{0.942397} \PYG{l+m}{0.9616972} \PYG{l+m}{0.9790655} \PYG{l+m}{0.9920479} \PYG{l+m}{1}
+\end{Verbatim}

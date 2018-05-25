@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} PCA}
+wine.pc \PYG{o}{\PYGZlt{}\PYGZhy{}} prcomp\PYG{p}{(}wine.sc\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}  compute proportion of total variance explained by}
+\PYG{c+c1}{\PYGZsh{}  each component}
+
+s \PYG{o}{\PYGZlt{}\PYGZhy{}} wine.pc\PYG{o}{\PYGZdl{}}sdev\PYG{o}{\PYGZca{}}\PYG{l+m}{2}
+
+pvar\PYG{o}{\PYGZlt{}\PYGZhy{}}s\PYG{o}{/}\PYG{k+kp}{sum}\PYG{p}{(}s\PYG{p}{)}
+\PYG{k+kp}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}proportion of variance: \PYGZdq{}}\PYG{p}{,} pvar\PYG{p}{,} fill\PYG{o}{=}\PYG{n+nb+bp}{T}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}  cumulative proportion of total variance explained}
+\PYG{c+c1}{\PYGZsh{}  by each component}
+
+cpvar \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{cumsum}\PYG{p}{(}s\PYG{p}{)}\PYG{o}{/}\PYG{k+kp}{sum}\PYG{p}{(}s\PYG{p}{)}
+\PYG{k+kp}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}cumulative proportion of variance: \PYGZdq{}}\PYG{p}{,} cpvar\PYG{p}{,} fill\PYG{o}{=}\PYG{n+nb+bp}{T}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} test 5 is enough while 4 is not}
+\PYG{k+kn}{source}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}PCs.proportion.variation.enuff.R\PYGZdq{}}\PYG{p}{)}
+PCs.proportion.variation.enuff\PYG{p}{(}lambda \PYG{o}{=} s\PYG{p}{,} q \PYG{o}{=} \PYG{l+m}{4}\PYG{p}{,} nobs \PYG{o}{=} \PYG{k+kp}{nrow}\PYG{p}{(}wine.sc\PYG{p}{),} propn \PYG{o}{=} \PYG{l+m}{0.8}\PYG{p}{)}
+PCs.proportion.variation.enuff\PYG{p}{(}lambda \PYG{o}{=} s\PYG{p}{,} q \PYG{o}{=} \PYG{l+m}{5}\PYG{p}{,} nobs \PYG{o}{=} \PYG{k+kp}{nrow}\PYG{p}{(}wine.sc\PYG{p}{),} propn \PYG{o}{=} \PYG{l+m}{0.8}\PYG{p}{)}
+\end{Verbatim}

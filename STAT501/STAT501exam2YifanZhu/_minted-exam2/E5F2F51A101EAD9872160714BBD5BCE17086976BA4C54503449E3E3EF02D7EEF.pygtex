@@ -1,0 +1,22 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} k\PYGZhy{}means initialized with hc}
+kmnsinithcl \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kr}{function}\PYG{p}{(}x.data\PYG{p}{,} nclus\PYG{p}{,} ncut \PYG{o}{=} nclus\PYG{p}{,} hcl.tree\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+  x.hcl \PYG{o}{\PYGZlt{}\PYGZhy{}} hcl.tree
+  x.cl \PYG{o}{\PYGZlt{}\PYGZhy{}} cutree\PYG{p}{(}x.hcl\PYG{p}{,} k \PYG{o}{=} ncut\PYG{p}{)}
+  data.x \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kt}{data.frame}\PYG{p}{(}x.data\PYG{p}{,} cl \PYG{o}{=} x.cl\PYG{p}{)}
+  means \PYG{o}{\PYGZlt{}\PYGZhy{}} aggregate\PYG{p}{(}\PYG{l+m}{.} \PYG{o}{\PYGZti{}} cl\PYG{p}{,} data \PYG{o}{=} data.x\PYG{p}{,} FUN \PYG{o}{=} \PYG{k+kp}{mean}\PYG{p}{)}
+  \PYG{k+kr}{return}\PYG{p}{(}kmeans\PYG{p}{(}x.data\PYG{p}{,}centers\PYG{o}{=} means\PYG{p}{[,} \PYG{l+m}{\PYGZhy{}1}\PYG{p}{]))}
+\PYG{p}{\PYGZcb{}}
+
+km \PYG{o}{\PYGZlt{}\PYGZhy{}} kmnsinithcl\PYG{p}{(}wine.sc\PYG{p}{,} nclus \PYG{o}{=} \PYG{l+m}{3}\PYG{p}{,} ncut \PYG{o}{=} \PYG{l+m}{3}\PYG{p}{,} hcl.tree \PYG{o}{=} hc\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} display using ggandrews}
+ggandrews\PYG{p}{(}\PYG{k+kt}{data.frame}\PYG{p}{(}km\PYG{o}{\PYGZdl{}}cluster\PYG{p}{,} wine.sc\PYG{p}{),} clr \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} return\PYGZus{}value \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} k\PYGZhy{}means with random initialization}
+km.r \PYG{o}{\PYGZlt{}\PYGZhy{}} kmeans\PYG{p}{(}wine.sc\PYG{p}{,} centers \PYG{o}{=} \PYG{l+m}{3}\PYG{p}{,} nstart \PYG{o}{=} \PYG{l+m}{10000}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} display using ggandrews}
+ggandrews\PYG{p}{(}\PYG{k+kt}{data.frame}\PYG{p}{(}km.r\PYG{o}{\PYGZdl{}}cluster\PYG{p}{,} wine.sc\PYG{p}{),} clr \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{,} return\PYGZus{}value \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+ \PYG{c+c1}{\PYGZsh{} split data}
+\PYG{k+kp}{set.seed}\PYG{p}{(}\PYG{l+m}{8413}\PYG{p}{)}
+train.idx \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{k+kp}{sample}\PYG{p}{(}\PYG{l+m}{1}\PYG{o}{:}\PYG{k+kp}{nrow}\PYG{p}{(}wine\PYG{p}{),} size \PYG{o}{=} \PYG{l+m}{128}\PYG{p}{,} replace \PYG{o}{=} \PYG{n+nb+bp}{F}\PYG{p}{)}
+wine.train \PYG{o}{\PYGZlt{}\PYGZhy{}} wine\PYG{p}{[}train.idx\PYG{p}{,]}
+wine.test \PYG{o}{\PYGZlt{}\PYGZhy{}} wine\PYG{p}{[}\PYG{o}{\PYGZhy{}}train.idx\PYG{p}{,]}
+\end{Verbatim}

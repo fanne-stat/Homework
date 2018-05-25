@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{c+c1}{\PYGZsh{} first 5 PCs}
+wine.pc\PYG{o}{\PYGZdl{}}rotation\PYG{p}{[,}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{5}\PYG{p}{]}
+
+                              PC1          PC2         PC3         PC4         PC5
+Alcohol              \PYG{l+m}{\PYGZhy{}0.144329395}  \PYG{l+m}{0.483651548} \PYG{l+m}{\PYGZhy{}0.20738262}  \PYG{l+m}{0.01785630} \PYG{l+m}{\PYGZhy{}0.26566365}
+Malic.acid            \PYG{l+m}{0.245187580}  \PYG{l+m}{0.224930935}  \PYG{l+m}{0.08901289} \PYG{l+m}{\PYGZhy{}0.53689028}  \PYG{l+m}{0.03521363}
+Ash                   \PYG{l+m}{0.002051061}  \PYG{l+m}{0.316068814}  \PYG{l+m}{0.62622390}  \PYG{l+m}{0.21417556} \PYG{l+m}{\PYGZhy{}0.14302547}
+Alkalinity.of.ash     \PYG{l+m}{0.239320405} \PYG{l+m}{\PYGZhy{}0.010590502}  \PYG{l+m}{0.61208035} \PYG{l+m}{\PYGZhy{}0.06085941}  \PYG{l+m}{0.06610294}
+Magnesium            \PYG{l+m}{\PYGZhy{}0.141992042}  \PYG{l+m}{0.299634003}  \PYG{l+m}{0.13075693}  \PYG{l+m}{0.35179658}  \PYG{l+m}{0.72704851}
+Total.phenols        \PYG{l+m}{\PYGZhy{}0.394660845}  \PYG{l+m}{0.065039512}  \PYG{l+m}{0.14617896} \PYG{l+m}{\PYGZhy{}0.19806835} \PYG{l+m}{\PYGZhy{}0.14931841}
+Flavanoids           \PYG{l+m}{\PYGZhy{}0.422934297} \PYG{l+m}{\PYGZhy{}0.003359812}  \PYG{l+m}{0.15068190} \PYG{l+m}{\PYGZhy{}0.15229479} \PYG{l+m}{\PYGZhy{}0.10902584}
+Nonflavanoid.phenols  \PYG{l+m}{0.298533103}  \PYG{l+m}{0.028779488}  \PYG{l+m}{0.17036816}  \PYG{l+m}{0.20330102} \PYG{l+m}{\PYGZhy{}0.50070298}
+Proanthocyanins      \PYG{l+m}{\PYGZhy{}0.313429488}  \PYG{l+m}{0.039301722}  \PYG{l+m}{0.14945431} \PYG{l+m}{\PYGZhy{}0.39905653}  \PYG{l+m}{0.13685982}
+Color.intensity       \PYG{l+m}{0.088616705}  \PYG{l+m}{0.529995672} \PYG{l+m}{\PYGZhy{}0.13730621} \PYG{l+m}{\PYGZhy{}0.06592568} \PYG{l+m}{\PYGZhy{}0.07643678}
+Hue                  \PYG{l+m}{\PYGZhy{}0.296714564} \PYG{l+m}{\PYGZhy{}0.279235148}  \PYG{l+m}{0.08522192}  \PYG{l+m}{0.42777141} \PYG{l+m}{\PYGZhy{}0.17361452}
+OD280.OD315          \PYG{l+m}{\PYGZhy{}0.376167411} \PYG{l+m}{\PYGZhy{}0.164496193}  \PYG{l+m}{0.16600459} \PYG{l+m}{\PYGZhy{}0.18412074} \PYG{l+m}{\PYGZhy{}0.10116099}
+Proline              \PYG{l+m}{\PYGZhy{}0.286752227}  \PYG{l+m}{0.364902832} \PYG{l+m}{\PYGZhy{}0.12674592}  \PYG{l+m}{0.23207086} \PYG{l+m}{\PYGZhy{}0.15786880}
+\end{Verbatim}
